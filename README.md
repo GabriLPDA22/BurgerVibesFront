@@ -48,7 +48,7 @@ Este proyecto está bajo la Licencia MIT - ver el archivo [LICENSE.md](/License.
 - Alfonso Coro - email@ejemplo.com
 - Gabriel Saiz - gsaiz.bajo@gmail.com
 
-Proyecto URL: [https://github.com/tu-usuario/BurgerVibes](https://github.com/GabriLPDA22/BurgerVibes)
+Proyecto URL: [https://github.com/GabriLPDA22/BurgerVibes](https://github.com/GabriLPDA22/BurgerVibes)
 
 ---
 
