@@ -1,6 +1,6 @@
 MIT License
 
-Copyright (c) 2024 Alfonso Coro y Gabriel LSaiz 
+Copyright (c) 2024 Alfonso Coro y Gabriel Saiz 
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
