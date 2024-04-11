@@ -15,7 +15,6 @@ Bienvenidos a **BurgerVibes** 🍔, la experiencia web definitiva para los entus
 - ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?&style=for-the-badge&logo=css3&logoColor=white) - Estilos de las páginas.
 - ![JavaScript](https://img.shields.io/badge/javascript-%23F7DF1E.svg?&style=for-the-badge&logo=javascript&logoColor=black) - Funcionalidad del cliente.
 - ![Java](https://img.shields.io/badge/java-%23ED8B00.svg?&style=for-the-badge&logo=java&logoColor=white) - Lógica del backend.
-- ![Spring](https://img.shields.io/badge/spring-%236DB33F.svg?&style=for-the-badge&logo=spring&logoColor=white) - Framework de backend.
 - ![AWS](https://img.shields.io/badge/aws-%23FF9900.svg?&style=for-the-badge&logo=amazonaws&logoColor=white) - Servicios de cloud computing.
 - ![Git](https://img.shields.io/badge/git-%23F05032.svg?&style=for-the-badge&logo=git&logoColor=white) - Control de versiones.
 - ![GitHub](https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white) - Hosting de repositorios.
