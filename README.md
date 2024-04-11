@@ -42,7 +42,7 @@ Para poner en marcha el proyecto localmente, sigue estos pasos:
 - **Gabriel Saiz** - [@GabriLPDA22](https://github.com/GabriLPDA22)
 
 ## Licencia 📄
-Este proyecto está bajo la Licencia MIT - ver el archivo [LICENSE.md](LICENSE.md) para detalles.
+Este proyecto está bajo la Licencia MIT - ver el archivo [LICENSE.md](/License.md) para detalles.
 
 
 ## Contacto 📫
