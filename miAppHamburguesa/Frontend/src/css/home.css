@@ -1,0 +1,235 @@
+body, html {
+    background-color: #000;
+    background-image: url(../assets/img/Fondo_Hero.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+    background-color: transparent; /* Color inicial de la barra de navegación */
+    width: 100%;
+    z-index: 1000;
+    transition: all 0.3s ease-in-out; /* Agregamos una transición suave */
+}
+  
+  /* Cambiar la clase 'scrolled' al hacer scroll usando JavaScript */
+  .navbar.scrolled {
+    background-color: #000; /* Nuevo color de fondo al hacer scroll */
+}
+  
+  .container-xxl {
+    max-width: 1290px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+  
+  .navbar-brand img {
+    width: 250px;
+    height: auto;
+}
+  
+  .navbar-nav {
+    display: flex;
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+    flex-grow: 1;
+    justify-content: center;
+    gap: 20px; /* Distancia entre los elementos del menú */
+}
+  
+  .navbar-nav .nav-link {
+    font-family: 'Sedgwick Ave', cursive;
+    font-size: 20px;
+    color: #FFF;
+    text-decoration: none; /* Quita la decoración de subrayado */
+    padding: 0.5rem 1rem;
+}
+  
+  .navbar-nav .nav-link:hover,
+  .navbar-nav .nav-link:focus {
+    color: #F67906;
+}
+  
+  
+  .pedido-online {
+    background-color: #F67906; /* Color de fondo del botón */
+    border: 1px solid #F67906; /* Borde del botón */
+    border-radius: 0.25rem; /* Borde redondeado */
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    color: #000;
+    font-family: 'Sedgwick Ave', cursive;
+    font-size: 20px;
+}
+  
+  .pedido-online:hover,
+  .pedido-online:focus {
+    background-color: #ffffff; /* Color de fondo del botón al pasar el ratón */
+    color: #000; /* Color del texto al pasar el ratón */
+}
+
+  .reserva-online {
+    background-color: #ffffff; /* Color de fondo del botón */
+    border: 1px solid #F67906; /* Borde del botón */
+    border-radius: 0.25rem; /* Borde redondeado */
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    color: #000;
+    font-family: 'Sedgwick Ave', cursive;
+    font-size: 20px;
+}
+  
+  .reserva-online:hover,
+  .reserva-online:focus {
+    background-color: #f1f1f1; /* Color de fondo del botón al pasar el ratón */
+    color: #000; /* Color del texto al pasar el ratón */
+}
+  
+/*HERO*/
+
+.container-hero {
+    margin-top: 30px;
+    margin: 0 auto;
+    max-width: 1200px; /* Ajusta el ancho según tus necesidades */
+}
+
+.hero {
+    position: relative;
+
+}
+
+.hero-content {
+    width: 100%;
+}
+
+.hero-row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.hero-column {
+    flex: 0 0 50%;
+    max-width: 50%;
+}
+
+.hero-title {
+    font-family: Arial, Helvetica, sans-serif;
+    color: #fff;
+    font-size: 48px;
+    font-weight: 500;
+}
+
+.hero-button {
+    font-family: 'Sedgwick Ave', cursive;
+    font-size: 20px;
+    border-radius: 4px;
+    padding: 10px 20px;
+    text-decoration: none;
+    margin-top: 50px;
+}
+
+.primary-button {
+    background-color: #F67906;
+    border-color: #F67906;
+    color: #fff;
+}
+
+.primary-button:hover {
+    background-color: #ffffff;
+    color: #000;
+}
+
+.light-button {
+    background-color: #ffffff;
+    border-color: #F67906;
+    color: #000;
+}
+
+.light-button:hover {
+    background-color: #f1f1f1;
+    color: #000;
+}
+
+
+.hero-subtitle {
+    font-family: 'Sedgwick Ave', cursive;
+    color: #fff;
+    font-size: 39px;
+    transform: rotate(-15deg); /* Ajusta el valor según tus necesidades */
+}
+
+/*SLOGAN*/
+
+.slogan-section {
+    margin-top: 40px;
+    width: 100%;
+    background-color: #fffdfc; /* Color de fondo de la sección */
+    text-align: center; /* Alineación del texto al centro */
+    padding: 10px 0; /* Espaciado interno superior e inferior */
+    
+}
+
+.slogan {
+    font-size: 35px;
+    color: #333; /* Color del texto */
+    font-weight: bold;
+    font-family: 'Sedgwick Ave', cursive;
+}
+
+/*RESPONSIVE NAVBAR*/
+  
+@media (max-width: 1120px) {
+    .pedido-online {
+        padding: auto;
+        text-align: center;
+    }
+}
+
+/* Estilos para mostrar la hamburguesa en dispositivos móviles */
+@media (max-width: 990px) {
+
+
+    .navbar-nav {
+        display: none; /* Oculta los enlaces de navegación en dispositivos móviles */
+    }
+
+    .navbar-toggler {
+        display: block; /* Muestra la hamburguesa en dispositivos móviles */
+    }
+
+    .navbar-nav {
+        display: none; /* Oculta el menú desplegable por defecto */
+        position: fixed; /* Mantiene el menú desplegable fijo en la pantalla */
+        top: 0; /* Alinea el menú desplegable con la parte superior de la pantalla */
+        right: 0; /* Alinea el menú desplegable a la derecha de la pantalla */
+        background-color: #333; /* Color de fondo del menú desplegable */
+        width: 30%; /* Ancho del menú desplegable */
+        height: 100%; /* Altura del menú desplegable */
+        padding-top: 3.5rem; /* Espacio adicional para compensar la altura de la barra de navegación */
+        z-index: 1000; /* Asegura que el menú desplegable esté por encima de otros elementos */
+    }
+
+    .navbar-toggler[aria-expanded="true"] + .navbar-collapse {
+        display: block; /* Muestra el menú desplegable cuando se hace clic en la hamburguesa */
+    }
+
+    .navbar-nav {
+        flex-direction: column; /* Muestra los enlaces de navegación en columna */
+        padding: 1rem; /* Espacio entre los enlaces de navegación */
+    }
+
+}
+
+
+
+  
