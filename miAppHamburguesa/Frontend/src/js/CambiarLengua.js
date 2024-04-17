@@ -29,3 +29,38 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 });
+
+
+/**
+ * Evitar el flasheo del slogan al cargar la web 
+ */
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Asegurarse de que el cuerpo de la página se desvanezca
+    document.body.classList.add('fade-in');
+
+    const dropdownItems = document.querySelectorAll('.dropdown-item');
+
+    dropdownItems.forEach(item => {
+        item.addEventListener('click', function(event) {
+            event.preventDefault();
+            // Desvanecer el cuerpo de la página
+            document.body.classList.remove('fade-in');
+            document.body.classList.add('fade-out');
+
+            // Establecer un breve retraso antes de cambiar la página
+            setTimeout(() => {
+                const lang = this.getAttribute('data-lang');
+                window.location.href = this.getAttribute('href');
+            }, 250); // 250ms para la mitad de la duración de la transición CSS
+        });
+    });
+});
+
+window.addEventListener('load', function() {
+    // Asegurarse de que el cuerpo de la página se desvanezca
+    if (document.body.classList.contains('fade-out')) {
+        document.body.classList.remove('fade-out');
+        document.body.classList.add('fade-in');
+    }
+});
