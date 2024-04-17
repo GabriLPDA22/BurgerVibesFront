@@ -12,12 +12,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Función para mostrar el modal
     function showModal() {
-        modal.style.display = 'block';
+            modal.style.display = 'block';
     }
 
     // Función para cerrar el modal
     function closeModal() {
-        modal.style.display = 'none';
+            modal.style.display = 'none';
     }
 
     // Asigna eventos a los botones
@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', function () {
             closeModal();
         }
     }
-});
+        });
 
 
 /**
@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Función para cerrar el modal de reserva de mesa
     function closeReservaMesaModal() {
-        reservaMesaModal.style.display = 'none';
+            reservaMesaModal.style.display = 'none';
     }
 
     // Agrega evento de clic al botón de Reserva mesa para mostrar el modal
