@@ -3,11 +3,21 @@ document.addEventListener('DOMContentLoaded', function () {
     const slides = document.querySelectorAll('.carousel-item');
     const dots = document.querySelectorAll('.dot');
     const totalSlides = slides.length;
+    
+    function updateSlidesPosition() {
+        slides.forEach((slide, index) => {
+            if (index < currentSlide) {
+                slide.style.transform = 'translateX(-100%)';
+            } else if (index > currentSlide) {
+                slide.style.transform = 'translateX(100%)';
+            } else {
+                slide.style.transform = 'translateX(0)';
+            }
+        });
+    }
 
     function showSlide(index) {
-        // Si el índice está fuera de rango, 'reinicia' al primer slide
         if (index >= totalSlides) index = 0;
-        // Si el índice es negativo, establece al último slide
         if (index < 0) index = totalSlides - 1;
 
         slides.forEach((slide) => slide.classList.remove('active'));
@@ -16,20 +26,20 @@ document.addEventListener('DOMContentLoaded', function () {
         slides[index].classList.add('active');
         dots[index].classList.add('active');
         currentSlide = index;
+        updateSlidesPosition();
     }
 
-    // Manejadores para los botones 'prev' y 'next'
     const prevButton = document.querySelector('.carousel-control.prev');
     const nextButton = document.querySelector('.carousel-control.next');
 
     prevButton.addEventListener('click', function (e) {
         e.preventDefault();
-        showSlide(currentSlide - 1);
+        showSlide(currentSlide + 1);  // Invertir la dirección del movimiento aquí
     });
 
     nextButton.addEventListener('click', function (e) {
         e.preventDefault();
-        showSlide(currentSlide + 1);
+        showSlide(currentSlide - 1);  // Invertir la dirección del movimiento aquí
     });
 
     dots.forEach((dot, index) => {
@@ -38,6 +48,6 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // Comentar o eliminar esta función si ya no deseas que el carrusel avance automáticamente
-    // startSlideShow();
+    updateSlidesPosition(); // Ajustar la posición inicial de los slides
+    showSlide(currentSlide); // Mostrar el slide inicial
 });

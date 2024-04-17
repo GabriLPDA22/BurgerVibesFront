@@ -202,7 +202,7 @@ body.fade-in {
 .carousel-item {
     display: none;
     width: 100%;
-    /* Ajustar altura o dejarla automática según el contenido */
+    transition: transform 0.5s ease-out; /* Ajusta la duración y el estilo de la animación a tu gusto */
 }
 
 .carousel-item.active {
