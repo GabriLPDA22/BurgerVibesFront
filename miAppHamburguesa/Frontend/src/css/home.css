@@ -289,6 +289,125 @@ body.fade-in {
     font-family: 'Sedgwick Ave', cursive;
 }
 
+/*CONCEPTO*/
+/* Estilos para la sección de concepto */
+/* Estilos para la sección de concepto */
+.concepto {
+    padding: 50px 0;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Alinear los elementos al principio verticalmente */
+}
+
+.columna {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start; /* Alinear los elementos al principio verticalmente */
+}
+
+.columna-izquierda {
+    flex: 1;
+    padding-right: 20px;
+    max-width: 40%;
+    margin-left: 15%;
+}
+
+.columna-derecha {
+    flex: 1;
+    display: flex;
+    flex-direction: column; /* Aplicar flexbox en columna para alinear verticalmente */
+    align-items: flex-end; /* Alinear elementos a la derecha */
+}
+
+/* Estilos para el contenido de la columna izquierda */
+.contenido {
+    text-align: justify;
+}
+.titulo h2{
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: flex-end;
+
+}
+.contenido h2 {
+    font-size: 40px;
+    margin-bottom: 20px;
+    color: #f37805;
+    margin-left: 10%;
+    font-family: 'Sedgwick Ave', cursive;
+ }
+
+.contenido p {
+    margin-bottom: 15px;
+    line-height: 1.5;
+    color: #fff;
+    font-size: 20px;
+    display: grid;
+    margin-left: 5%;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Estilos para los botones */
+.botones {
+    margin-top: 20px;
+}
+
+.BotonPedido {
+    background-color: #F67906;
+    border-color: #F67906;
+    color: #fff;
+    font-family: 'Sedgwick Ave', cursive;
+    font-size: 20px;
+    border-radius: 4px;
+    padding: 10px 20px;
+    text-decoration: none;
+    margin-top: 50px;
+}
+
+
+.BotonPedido:hover {
+    background-color: #ffffff;
+    color: #000;
+}
+
+.BotonReserva {
+    background-color: #ffffff;
+    border-color: #F67906;
+    color: #000;
+    font-family: 'Sedgwick Ave', cursive;
+    font-size: 20px;
+    border-radius: 4px;
+    padding: 10px 20px;
+    text-decoration: none;
+    margin-top: 50px;
+}
+
+
+.BotonReserva:hover {
+    background-color: #f1f1f1;
+    color: #000;
+
+}
+
+.botones {
+   align-items: center;
+   margin-left: 23%;
+}
+/* Estilos para la imagen de la columna derecha */
+.columna-derecha img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+
+
+
 /*RESPONSIVE NAVBAR*/
   
 @media (max-width: 1120px) {

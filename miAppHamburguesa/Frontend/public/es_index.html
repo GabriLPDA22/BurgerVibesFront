@@ -60,7 +60,7 @@
                                 <div class="hero-buttons">
                                     <a href="javascript:void(0);" class="hero-button primary-button"
                                         id="heroOrderButton">Pide online</a>
-                                    <a href="#" class="hero-button light-button">Reserva mesa</a>
+                                    <a href="#" class="hero-button light-button" id="reservaMesaButton">Reserva mesa</a>
                                 </div>
                             </div>
                             <div class="hero-column">
@@ -144,6 +144,66 @@
             </div>
         </div>
     </div>
+    <!--Modal de reserva-->
+    <div id="reservaMesaModal" class="custom-modal">
+        <div class="custom-modal-dialog">
+            <div class="custom-modal-content">
+                <div class="custom-modal-header">
+                    <span id="reservaMesaClose" class="custom-close">&times;</span>
+                    <img src="../src/assets/img/BurgerVibes.svg" alt="Vibes Logo" class="modal-logo">
+                </div>
+                <div class="location-section">
+                    <img src="../src/assets/img/Bandera_de_Zaragoza.svg" alt="Bandera de Zaragoza"
+                        class="location-flag" />
+                    <p class="location-name">Zaragoza</p>
+                </div>
+                <div class="custom-modal-body">
+                    <a href="#" target="_blank" class="modal-button pickup-button">
+                        Reserva mesa
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="concepto">
+        <div class="container">
+            <div class="columna">
+                <!-- Columna izquierda: Texto y botones -->
+                <div class="columna-izquierda">
+                    <div class="contenido">
+                        <div class="titulo">
+                            <h2>El Concepto
+                                <img src="../src/assets/img/BurgerVibes.svg" alt="Logo de BurgerVibes"
+                                    title="Logo de BurgerVibes" style="width: 40%;" />
+                            </h2>
+                        </div>
+                        <p>BurgerVibes es una hamburguesería en Zaragoza que nace de la amistad y pasión por la comida
+                            entre Alfonso y Gabriel. El objetivo es claro: elevar la experiencia de las hamburguesas a
+                            otro nivel, utilizando recetas creativas y los mejores ingredientes disponibles.</p>
+                        <p>En BurgerVibes, cada hamburguesa cuenta una historia única. Inspirados por su amor compartido
+                            por la comida, Alfonso y Gabriel han creado un espacio donde los clientes pueden disfrutar
+                            de sabores auténticos y momentos inolvidables.</p>
+                        <p>La decoración del local refleja la personalidad y el espíritu emprendedor de los fundadores,
+                            con detalles que hacen que cada visita sea especial.</p>
+                        <p>Sin duda, BurgerVibes es el lugar donde las hamburguesas cobran vida y las amistades se
+                            fortalecen.</p>
+                        <div class="botones">
+                            <a href="javascript:void(0);" class="BotonPedido" id="heroOrderButton">Haz tu Pedido</a>
+                            <a href="javascript:void(0);" class="BotonReserva" id="reservaMesaButton">Reserva una Mesa</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Columna derecha: Imagen o video -->
+                <div class="columna-derecha">
+                    <img src="img/burgervibes-founders.jpg" class="img-fluid mb-3" title="Fundadores de BurgerVibes"
+                        alt="Alfonso y Gabriel, los fundadores de BurgerVibes" />
+                </div>
+            </div>
+        </div>
+    </section>
+
+
 
     <!--Boton de Lenguaje-->
 
