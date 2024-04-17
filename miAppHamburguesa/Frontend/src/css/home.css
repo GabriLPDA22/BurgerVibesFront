@@ -308,27 +308,32 @@ body.fade-in {
 
     .navbar-toggler {
         display: block; /* Muestra la hamburguesa en dispositivos móviles */
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        cursor: pointer;
+        z-index: 1001; /* Debe estar sobre el panel deslizante */
     }
 
     .navbar-nav {
         display: none; /* Oculta el menú desplegable por defecto */
         position: fixed; /* Mantiene el menú desplegable fijo en la pantalla */
         top: 0; /* Alinea el menú desplegable con la parte superior de la pantalla */
-        right: 0; /* Alinea el menú desplegable a la derecha de la pantalla */
+        right: 0; /* Comienza fuera de la pantalla */
         background-color: #333; /* Color de fondo del menú desplegable */
-        width: 30%; /* Ancho del menú desplegable */
+        width: 70%; /* Ancho del menú desplegable */
         height: 100%; /* Altura del menú desplegable */
-        padding-top: 3.5rem; /* Espacio adicional para compensar la altura de la barra de navegación */
+        padding-top: 3.5rem; /* Espacio adicional en la parte superior */
         z-index: 1000; /* Asegura que el menú desplegable esté por encima de otros elementos */
+        transition: right 0.3s; /* Suaviza el efecto de deslizamiento */
     }
 
     .navbar-toggler[aria-expanded="true"] + .navbar-collapse {
         display: block; /* Muestra el menú desplegable cuando se hace clic en la hamburguesa */
     }
 
-    .navbar-nav {
-        flex-direction: column; /* Muestra los enlaces de navegación en columna */
-        padding: 1rem; /* Espacio entre los enlaces de navegación */
+    .navbar-nav.open {
+        right: 0; /* Cuando el menú está abierto, se alinea con la derecha de la pantalla */
     }
 
 }
