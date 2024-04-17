@@ -67,67 +67,49 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 });
 /**
- * MODAL CONCEPTO
+ * MODAL DEL CONCEPTO
  */
 
-document.addEventListener('DOMContentLoaded', function () {
-    // Obtener los elementos de los botones y los modales
-    var pedidoButton = document.getElementById('heroOrderButton');
-    var reservaMesaButton = document.getElementById('reservaMesaButton');
-    var pedidoModal = document.getElementById('customOrderModal');
-    var reservaMesaModal = document.getElementById('reservaMesaModal');
-    var pedidoClose = document.getElementById('customModalClose');
-    var reservaMesaClose = document.getElementById('reservaMesaClose');
 
-    // Función para mostrar el modal de pedido
-    function showPedidoModal() {
-        pedidoModal.style.display = 'block';
-    }
+document.addEventListener('DOMContentLoaded', function() {
+    var modalOrder = document.getElementById('customOrderModal');
+    var modalReserva = document.getElementById('reservaMesaModal');
+    var btnsOrder = document.querySelectorAll('.btn-order');
+    var btnsReserva = document.querySelectorAll('.btn-reserva');
+    var closeButtons = document.querySelectorAll('.custom-close'); // Asegúrate de que todos los botones de cierre tengan esta clase
 
-    // Función para ocultar el modal de pedido
-    function closePedidoModal() {
-        pedidoModal.style.display = 'none';
-    }
-
-    // Función para mostrar el modal de reserva de mesa
-    function showReservaMesaModal() {
-        reservaMesaModal.style.display = 'block';
-    }
-
-    // Función para ocultar el modal de reserva de mesa
-    function closeReservaMesaModal() {
-        reservaMesaModal.style.display = 'none';
-    }
-
-    // Evento de clic para mostrar el modal de pedido al hacer clic en el botón "Haz tu Pedido"
-    pedidoButton.addEventListener('click', showPedidoModal);
-
-    // Evento de clic para mostrar el modal de reserva de mesa al hacer clic en el botón "Reserva una Mesa"
-    reservaMesaButton.addEventListener('click', showReservaMesaModal);
-
-    // Evento de clic para ocultar el modal de pedido al hacer clic en el botón de cierre del modal
-    pedidoClose.addEventListener('click', closePedidoModal);
-
-    // Evento de clic para ocultar el modal de reserva de mesa al hacer clic en el botón de cierre del modal
-    reservaMesaClose.addEventListener('click', closeReservaMesaModal);
-
-    // Evento de clic para ocultar el modal de pedido al hacer clic fuera del modal
-    window.addEventListener('click', function (event) {
-        if (event.target === pedidoModal) {
-            closePedidoModal();
-        }
+    // Abrir modal de pedido
+    btnsOrder.forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            modalOrder.style.display = 'block';
+        });
     });
 
-    // Evento de clic para ocultar el modal de reserva de mesa al hacer clic fuera del modal
-    window.addEventListener('click', function (event) {
-        if (event.target === reservaMesaModal) {
-            closeReservaMesaModal();
+    // Abrir modal de reserva
+    btnsReserva.forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            modalReserva.style.display = 'block';
+        });
+    });
+
+    // Cerrar modal con el botón de cierre
+    closeButtons.forEach(function(button) {
+        button.addEventListener('click', function() {
+            // Esto asume que el botón de cierre está dentro del modal que debe cerrar
+            var modalToClose = this.closest('.custom-modal');
+            if (modalToClose) {
+                modalToClose.style.display = 'none';
+            }
+        });
+    });
+
+    // Cerrar modal al hacer clic fuera de él
+    window.addEventListener('click', function(event) {
+        if (event.target.classList.contains('custom-modal')) {
+            event.target.style.display = 'none';
         }
     });
 });
-
-
-
 
 /**
  * MODAL DE LA CARTA

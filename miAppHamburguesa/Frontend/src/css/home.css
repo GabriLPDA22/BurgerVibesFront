@@ -1,4 +1,5 @@
-body, html {
+body,
+html {
     background-color: #000;
     background-image: url(../assets/img/Fondo_Hero.svg);
     background-repeat: no-repeat;
@@ -25,18 +26,21 @@ body.fade-in {
     align-items: center;
     justify-content: space-between;
     padding: 1rem;
-    background-color: transparent; /* Color inicial de la barra de navegación */
+    background-color: transparent;
+    /* Color inicial de la barra de navegación */
     width: 100%;
     z-index: 1000;
-    transition: all 0.3s ease-in-out; /* Agregamos una transición suave */
+    transition: all 0.3s ease-in-out;
+    /* Agregamos una transición suave */
 }
-  
-  /* Cambiar la clase 'scrolled' al hacer scroll usando JavaScript */
-  .navbar.scrolled {
-    background-color: #000; /* Nuevo color de fondo al hacer scroll */
+
+/* Cambiar la clase 'scrolled' al hacer scroll usando JavaScript */
+.navbar.scrolled {
+    background-color: #000;
+    /* Nuevo color de fondo al hacer scroll */
 }
-  
-  .container-xxl {
+
+.container-xxl {
     max-width: 1290px;
     margin: auto;
     display: flex;
@@ -44,76 +48,89 @@ body.fade-in {
     justify-content: space-between;
     flex-wrap: wrap;
 }
-  
-  .navbar-brand img {
+
+.navbar-brand img {
     width: 250px;
     height: auto;
 }
-  
-  .navbar-nav {
+
+.navbar-nav {
     display: flex;
     list-style: none;
     padding-left: 0;
     margin: 0;
     flex-grow: 1;
     justify-content: center;
-    gap: 20px; /* Distancia entre los elementos del menú */
+    gap: 20px;
+    /* Distancia entre los elementos del menú */
 }
-  
-  .navbar-nav .nav-link {
+
+.navbar-nav .nav-link {
     font-family: 'Sedgwick Ave', cursive;
     font-size: 20px;
     color: #FFF;
-    text-decoration: none; /* Quita la decoración de subrayado */
-    padding: 0.5rem 1rem;
-}
-  
-  .navbar-nav .nav-link:hover,
-  .navbar-nav .nav-link:focus {
-    color: #F67906;
-}
-  
-  
-  .pedido-online {
-    background-color: #F67906; /* Color de fondo del botón */
-    border: 1px solid #F67906; /* Borde del botón */
-    border-radius: 0.25rem; /* Borde redondeado */
-    padding: 0.5rem 1rem;
     text-decoration: none;
-    color: #000;
-    font-family: 'Sedgwick Ave', cursive;
-    font-size: 20px;
-}
-  
-  .pedido-online:hover,
-  .pedido-online:focus {
-    background-color: #ffffff; /* Color de fondo del botón al pasar el ratón */
-    color: #000; /* Color del texto al pasar el ratón */
+    /* Quita la decoración de subrayado */
+    padding: 0.5rem 1rem;
 }
 
-  .reserva-online {
-    background-color: #ffffff; /* Color de fondo del botón */
-    border: 1px solid #F67906; /* Borde del botón */
-    border-radius: 0.25rem; /* Borde redondeado */
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link:focus {
+    color: #F67906;
+}
+
+
+.pedido-online {
+    background-color: #F67906;
+    /* Color de fondo del botón */
+    border: 1px solid #F67906;
+    /* Borde del botón */
+    border-radius: 0.25rem;
+    /* Borde redondeado */
     padding: 0.5rem 1rem;
     text-decoration: none;
     color: #000;
     font-family: 'Sedgwick Ave', cursive;
     font-size: 20px;
 }
-  
-  .reserva-online:hover,
-  .reserva-online:focus {
-    background-color: #f1f1f1; /* Color de fondo del botón al pasar el ratón */
-    color: #000; /* Color del texto al pasar el ratón */
+
+.pedido-online:hover,
+.pedido-online:focus {
+    background-color: #ffffff;
+    /* Color de fondo del botón al pasar el ratón */
+    color: #000;
+    /* Color del texto al pasar el ratón */
 }
-  
+
+.reserva-online {
+    background-color: #ffffff;
+    /* Color de fondo del botón */
+    border: 1px solid #F67906;
+    /* Borde del botón */
+    border-radius: 0.25rem;
+    /* Borde redondeado */
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    color: #000;
+    font-family: 'Sedgwick Ave', cursive;
+    font-size: 20px;
+}
+
+.reserva-online:hover,
+.reserva-online:focus {
+    background-color: #f1f1f1;
+    /* Color de fondo del botón al pasar el ratón */
+    color: #000;
+    /* Color del texto al pasar el ratón */
+}
+
 /*HERO*/
 
 .container-hero {
     margin-top: 30px;
     margin: 0 auto;
-    max-width: 1200px; /* Ajusta el ancho según tus necesidades */
+    max-width: 1200px;
+    /* Ajusta el ancho según tus necesidades */
 }
 
 .hero {
@@ -136,7 +153,7 @@ body.fade-in {
 }
 
 .hero-title {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: fantasy;
     color: #fff;
     font-size: 48px;
     font-weight: 500;
@@ -178,7 +195,8 @@ body.fade-in {
     font-family: 'Sedgwick Ave', cursive;
     color: #fff;
     font-size: 39px;
-    transform: rotate(-15deg); /* Ajusta el valor según tus necesidades */
+    transform: rotate(-15deg);
+    /* Ajusta el valor según tus necesidades */
 }
 
 /*CARRUSEL HERO*/
@@ -202,7 +220,8 @@ body.fade-in {
 .carousel-item {
     display: none;
     width: 100%;
-    transition: transform 0.5s ease-out; /* Ajusta la duración y el estilo de la animación a tu gusto */
+    transition: transform 0.5s ease-out;
+    /* Ajusta la duración y el estilo de la animación a tu gusto */
 }
 
 .carousel-item.active {
@@ -211,38 +230,48 @@ body.fade-in {
 
 .carousel-control-prev-icon,
 .carousel-control-next-icon {
-    font-size: 30px; /* O el tamaño que prefieras para las flechas */
-    color: #ffffff; /* Cambia el color según tu diseño */
+    font-size: 30px;
+    /* O el tamaño que prefieras para las flechas */
+    color: #ffffff;
+    /* Cambia el color según tu diseño */
 }
 
 .carousel-control {
     position: absolute;
-    top: 50%; /* Centra verticalmente las flechas */
-    z-index: 5; /* Asegura que las flechas estén sobre los demás elementos */
+    top: 50%;
+    /* Centra verticalmente las flechas */
+    z-index: 5;
+    /* Asegura que las flechas estén sobre los demás elementos */
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 30px; /* Ancho de la zona clickeable de las flechas */
-    height: 30px; /* Altura de la zona clickeable de las flechas */
+    width: 30px;
+    /* Ancho de la zona clickeable de las flechas */
+    height: 30px;
+    /* Altura de la zona clickeable de las flechas */
     padding: 0;
     color: #fff;
     text-align: center;
     background: none;
     border: none;
     outline: none;
-    transform: translateY(-50%); /* Ajuste para centrar las flechas con el top 50% */
+    transform: translateY(-50%);
+    /* Ajuste para centrar las flechas con el top 50% */
 }
 
 .carousel-control .fas {
-    font-size: 30px; /* Tamaño del ícono de FontAwesome */
+    font-size: 30px;
+    /* Tamaño del ícono de FontAwesome */
 }
 
 .carousel-control.prev {
-    left: calc(1% - 110px); /* Muever  la flecha hacia la izquierda basándote en un porcentaje del ancho del contenedor */
+    left: calc(1% - 110px);
+    /* Muever  la flecha hacia la izquierda basándote en un porcentaje del ancho del contenedor */
 }
 
 .carousel-control.next {
-    right: calc(1% - 110px); /* Muever  la flecha hacia la derecha basándote en un porcentaje del ancho del contenedor */
+    right: calc(1% - 110px);
+    /* Muever  la flecha hacia la derecha basándote en un porcentaje del ancho del contenedor */
 }
 
 
@@ -266,7 +295,8 @@ body.fade-in {
     transition: background-color 0.6s ease;
 }
 
-.dot.active, .dot:hover {
+.dot.active,
+.dot:hover {
     background-color: #f37805;
 }
 
@@ -276,15 +306,19 @@ body.fade-in {
 .slogan-section {
     margin-top: 50px;
     width: 100%;
-    background-color: #ffffff; /* Color de fondo de la sección */
-    text-align: center; /* Alineación del texto al centro */
-    padding: 10px 0; /* Espaciado interno superior e inferior */
-    
+    background-color: #ffffff;
+    /* Color de fondo de la sección */
+    text-align: center;
+    /* Alineación del texto al centro */
+    padding: 10px 0;
+    /* Espaciado interno superior e inferior */
+
 }
 
 .slogan {
     font-size: 35px;
-    color: #333; /* Color del texto */
+    color: #333;
+    /* Color del texto */
     font-weight: bold;
     font-family: 'Sedgwick Ave', cursive;
 }
@@ -299,13 +333,15 @@ body.fade-in {
 .container {
     display: flex;
     justify-content: center;
-    align-items: flex-start; /* Alinear los elementos al principio verticalmente */
+    align-items: flex-start;
+    /* Alinear los elementos al principio verticalmente */
 }
 
 .columna {
     display: flex;
     flex-direction: row;
-    align-items: flex-start; /* Alinear los elementos al principio verticalmente */
+    align-items: flex-start;
+    /* Alinear los elementos al principio verticalmente */
 }
 
 .columna-izquierda {
@@ -315,31 +351,28 @@ body.fade-in {
     margin-left: 15%;
 }
 
-.columna-derecha {
-    flex: 1;
-    display: flex;
-    flex-direction: column; /* Aplicar flexbox en columna para alinear verticalmente */
-    align-items: flex-end; /* Alinear elementos a la derecha */
-}
+
 
 /* Estilos para el contenido de la columna izquierda */
 .contenido {
     text-align: justify;
 }
-.titulo h2{
+
+.titulo h2 {
     display: flex;
     flex-direction: row-reverse;
     align-items: center;
     justify-content: flex-end;
 
 }
+
 .contenido h2 {
     font-size: 40px;
     margin-bottom: 20px;
     color: #f37805;
     margin-left: 10%;
     font-family: 'Sedgwick Ave', cursive;
- }
+}
 
 .contenido p {
     margin-bottom: 15px;
@@ -394,22 +427,77 @@ body.fade-in {
 }
 
 .botones {
-   align-items: center;
-   margin-left: 23%;
+    align-items: center;
+    margin-left: 23%;
 }
+
 /* Estilos para la imagen de la columna derecha */
-.columna-derecha img {
-    max-width: 100%;
+.square-video {
+    max-width: max-content;
     height: auto;
-    border-radius: 5px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    padding-top: 100%;
+    /* Establece la relación de aspecto a 1:1 */
 }
 
+.columna-derecha {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    /* Aplicar flexbox en columna para alinear verticalmente */
+    align-items: flex-end;
+    /* Alinear elementos a la derecha */
+    max-width: 40%;
+}
 
+/*ESTILO GALERIA*/
+
+.gallery-container {
+    display: flex;
+    justify-content: center;
+    /* Centra la galería horizontalmente */
+   background-image: linear-gradient(to top, rgba(116, 112, 112, 0), rgb(7, 7, 7)), url(../assets/img/FondoLadrillo.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.texto-galeria h2 {
+    color:  #F67906;
+    font-family: 'Sedgwick Ave', cursive;
+    margin-left: 38%;
+    font-size:50px;
+    transform: rotate(-15deg);
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 2fr);
+    /* Tres columnas */
+    grid-gap: 10px;
+    /* Espacio entre imágenes */
+    max-width: 80%;
+    /* Limita el ancho máximo de la galería */
+    margin: auto;
+    /* Centra la galería horizontalmente si es menor que el ancho máximo */
+    margin-top: 10%;
+    margin-bottom: 10%;
+    
+  
+}
+
+.gallery-item {
+    width: 100%;
+    /* Hace que las imágenes sean responsivas dentro de su contenedor */
+    height: auto;
+    aspect-ratio: 1 / 1;
+    /* Asegura que las imágenes sean cuadradas */
+    object-fit: cover;
+    /* Asegura que las imágenes cubran todo el espacio disponible sin distorsionarse */
+}
 
 
 /*RESPONSIVE NAVBAR*/
-  
+
 @media (max-width: 1120px) {
     .pedido-online {
         padding: auto;
@@ -422,37 +510,52 @@ body.fade-in {
 
 
     .navbar-nav {
-        display: none; /* Oculta los enlaces de navegación en dispositivos móviles */
+        display: none;
+        /* Oculta los enlaces de navegación en dispositivos móviles */
     }
 
     .navbar-toggler {
-        display: block; /* Muestra la hamburguesa en dispositivos móviles */
+        display: block;
+        /* Muestra la hamburguesa en dispositivos móviles */
         position: absolute;
         top: 20px;
         right: 20px;
         cursor: pointer;
-        z-index: 1001; /* Debe estar sobre el panel deslizante */
+        z-index: 1001;
+        /* Debe estar sobre el panel deslizante */
     }
 
     .navbar-nav {
-        display: none; /* Oculta el menú desplegable por defecto */
-        position: fixed; /* Mantiene el menú desplegable fijo en la pantalla */
-        top: 0; /* Alinea el menú desplegable con la parte superior de la pantalla */
-        right: 0; /* Comienza fuera de la pantalla */
-        background-color: #333; /* Color de fondo del menú desplegable */
-        width: 70%; /* Ancho del menú desplegable */
-        height: 100%; /* Altura del menú desplegable */
-        padding-top: 3.5rem; /* Espacio adicional en la parte superior */
-        z-index: 1000; /* Asegura que el menú desplegable esté por encima de otros elementos */
-        transition: right 0.3s; /* Suaviza el efecto de deslizamiento */
+        display: none;
+        /* Oculta el menú desplegable por defecto */
+        position: fixed;
+        /* Mantiene el menú desplegable fijo en la pantalla */
+        top: 0;
+        /* Alinea el menú desplegable con la parte superior de la pantalla */
+        right: 0;
+        /* Comienza fuera de la pantalla */
+        background-color: #333;
+        /* Color de fondo del menú desplegable */
+        width: 70%;
+        /* Ancho del menú desplegable */
+        height: 100%;
+        /* Altura del menú desplegable */
+        padding-top: 3.5rem;
+        /* Espacio adicional en la parte superior */
+        z-index: 1000;
+        /* Asegura que el menú desplegable esté por encima de otros elementos */
+        transition: right 0.3s;
+        /* Suaviza el efecto de deslizamiento */
     }
 
-    .navbar-toggler[aria-expanded="true"] + .navbar-collapse {
-        display: block; /* Muestra el menú desplegable cuando se hace clic en la hamburguesa */
+    .navbar-toggler[aria-expanded="true"]+.navbar-collapse {
+        display: block;
+        /* Muestra el menú desplegable cuando se hace clic en la hamburguesa */
     }
 
     .navbar-nav.open {
-        right: 0; /* Cuando el menú está abierto, se alinea con la derecha de la pantalla */
+        right: 0;
+        /* Cuando el menú está abierto, se alinea con la derecha de la pantalla */
     }
 
 }
