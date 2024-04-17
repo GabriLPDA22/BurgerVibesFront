@@ -437,6 +437,7 @@ body.fade-in {
     max-width: max-content;
     height: auto;
     padding-top: 100%;
+    
 }
 
 .columna-derecha {
@@ -487,12 +488,10 @@ body.fade-in {
 
 .gallery-item {
     width: 100%;
-    /* Hace que las imágenes sean responsivas dentro de su contenedor */
     height: auto;
     aspect-ratio: 1 / 1;
-    /* Asegura que las imágenes sean cuadradas */
     object-fit: cover;
-    /* Asegura que las imágenes cubran todo el espacio disponible sin distorsionarse */
+
 }
 
 
