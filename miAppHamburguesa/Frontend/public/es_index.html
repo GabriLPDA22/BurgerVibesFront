@@ -114,8 +114,7 @@
             <div class="custom-modal-content">
                 <div class="custom-modal-header">
                     <span id="customModalClose" class="custom-close">&times;</span>
-                    <img src="../src/assets/img/BurgerVibes.svg" alt="Vibes Logo"
-                        class="modal-logo">
+                    <img src="../src/assets/img/BurgerVibes.svg" alt="Vibes Logo" class="modal-logo">
                 </div>
                 <div class="custom-modal-body">
                     <!-- Aquí irá el contenido del modal, como textos, botones, etc. -->
@@ -125,12 +124,14 @@
                         <p>¡Agradecemos tu comprensión! 🍔</p>
                     </div>
                     <div class="location-section">
-                        <img src="../src/assets/img/Bandera_de_Zaragoza.svg" alt="Bandera de Zaragoza" class="location-flag" />
+                        <img src="../src/assets/img/Bandera_de_Zaragoza.svg" alt="Bandera de Zaragoza"
+                            class="location-flag" />
                         <p class="location-name">Zaragoza</p>
                     </div>
                     <a href="#" target="_blank" class="modal-button delivery-button">
-                        Pide a domicilio con 
-                        <img src="../src/assets/img/Uber_Eats.png" width="80px" style="margin-bottom: -1px; margin-right: 5px;">
+                        Pide a domicilio con
+                        <img src="../src/assets/img/Uber_Eats.png" width="80px"
+                            style="margin-bottom: -1px; margin-right: 5px;">
                     </a>
                     <a href="#" target="_blank" class="modal-button pickup-button">
                         Pide para recoger Zaragoza
@@ -141,14 +142,16 @@
     </div>
 
     <!--Boton de Lenguaje-->
-    <div id="language-switcher">
-        <button id="language-button">Idioma</button>
-        <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="/miAppHamburguesa/Frontend/public/es_index.html" data-lang="es" >Español</a></li>
-            <li><a class="dropdown-item" href="/miAppHamburguesa/Frontend/public/en_index.html" data-lang="en" >English</a></li>
-        </ul>
+
+    <div id="language-switcher" class="language-switcher">
+        <button id="language-button" class="language-button">Idioma</button>
+        <div class="dropdown-menu" style="display:none;">
+            <a class="dropdown-item" href="/miAppHamburguesa/Frontend/public/es_index.html" data-lang="es">Español</a>
+            <a class="dropdown-item" href="/miAppHamburguesa/Frontend/public/en_index.html" data-lang="en">English</a>
+        </div>
     </div>
-    
+
+
     <!--Links de Scripts-->
     <script src="../src/js/scrollNavabr.js"></script>
     <script src="../src/js/carrusel.js"></script>
