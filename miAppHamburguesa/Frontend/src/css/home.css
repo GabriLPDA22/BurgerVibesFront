@@ -4,6 +4,8 @@ body, html {
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
+    margin: 0;
+    padding: 0;
 }
 
 
@@ -168,12 +170,102 @@ body, html {
     transform: rotate(-15deg); /* Ajusta el valor según tus necesidades */
 }
 
+/*CARRUSEL HERO*/
+
+.container-hero {
+    max-width: 1200px;
+    margin: auto;
+    position: relative;
+}
+
+.hero.carousel {
+    position: relative;
+}
+
+.carousel-inner {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+.carousel-item {
+    display: none;
+    width: 100%;
+    /* Ajustar altura o dejarla automática según el contenido */
+}
+
+.carousel-item.active {
+    display: block;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    font-size: 30px; /* O el tamaño que prefieras para las flechas */
+    color: #ffffff; /* Cambia el color según tu diseño */
+}
+
+.carousel-control {
+    position: absolute;
+    top: 50%; /* Centra verticalmente las flechas */
+    z-index: 5; /* Asegura que las flechas estén sobre los demás elementos */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px; /* Ancho de la zona clickeable de las flechas */
+    height: 30px; /* Altura de la zona clickeable de las flechas */
+    padding: 0;
+    color: #fff;
+    text-align: center;
+    background: none;
+    border: none;
+    outline: none;
+    transform: translateY(-50%); /* Ajuste para centrar las flechas con el top 50% */
+}
+
+.carousel-control .fas {
+    font-size: 30px; /* Tamaño del ícono de FontAwesome */
+}
+
+.carousel-control.prev {
+    left: calc(1% - 110px); /* Muever  la flecha hacia la izquierda basándote en un porcentaje del ancho del contenedor */
+}
+
+.carousel-control.next {
+    right: calc(1% - 110px); /* Muever  la flecha hacia la derecha basándote en un porcentaje del ancho del contenedor */
+}
+
+
+
+/* Indicadores de puntos */
+.carousel-indicators {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-70%);
+    text-align: center;
+}
+
+.dot {
+    cursor: pointer;
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+}
+
+.dot.active, .dot:hover {
+    background-color: #f37805;
+}
+
+
 /*SLOGAN*/
 
 .slogan-section {
-    margin-top: 40px;
+    margin-top: 50px;
     width: 100%;
-    background-color: #fffdfc; /* Color de fondo de la sección */
+    background-color: #ffffff; /* Color de fondo de la sección */
     text-align: center; /* Alineación del texto al centro */
     padding: 10px 0; /* Espaciado interno superior e inferior */
     
@@ -229,7 +321,3 @@ body, html {
     }
 
 }
-
-
-
-  

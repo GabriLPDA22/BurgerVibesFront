@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/miAppHamburguesa/Frontend/src/css/home.css">
+    <link rel="stylesheet" href="../src/css/scrollbar.css">
+    <link rel="stylesheet" href="../src/css/Modal.css">
+    <link rel="stylesheet" href="../src/css/BotonLengua.css">
+    <link rel="stylesheet" href="../src/css/idioma.css">
+    <link rel="stylesheet" href="../src/css/loader.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+    <link href="https://fonts.googleapis.com/css2?family=Sedgwick+Ave&display=swap" rel="stylesheet">
+    <title>BurgerVibes</title>
+</head>
+
+<body>
+
+    <!--LOADER-->
+
+    <!--NAVEGACION-->
+    <nav id="container-xxl" class="container-xxl">
+        <div class="navbar">
+            <a href="#home" class="navbar-brand">
+                <!-- Asegúrate de tener tu imagen de logo disponible en la ruta especificada -->
+                <img src="/miAppHamburguesa/Frontend/src/assets/img/BurgerVibes.svg" alt="Logotipo" id="logo">
+            </a>
+            <ul class="navbar-nav">
+                <li><a href="#concepto" class="nav-link">Concepto</a></li>
+                <li><a href="#inspiracion" class="nav-link">Inspiración</a></li>
+                <li><a href="#retos" class="nav-link">Retos</a></li>
+                <li><a href="#galeria" class="nav-link">Galería</a></li>
+                <li><a href="#contacto" class="nav-link">Contacto</a></li>
+                <li><a href="#carta" class="nav-link">Carta</a></li>
+            </ul>
+            <a href="javascript:void(0);" class="pedido-online" id="navbarOrderButton">Pide online</a>
+            <!--<a href="#reserva" class="reserva-online">Reserva online</a>-->
+        </div>
+    </nav>
+
+
+    <!--HERO-->
+    <div class="container-hero">
+        <div id="hero" class="hero carousel">
+            <div class="carousel-inner">
+                <!-- Slide 1 -->
+                <div class="carousel-item active">
+                    <div class="hero-content">
+                        <div class="hero-row">
+                            <div class="hero-column">
+                                <h1 class="hero-title">
+                                    ¡Bienvenidos a Burger Vibes! <br> La experiencia gastronómica definitiva <br> llega
+                                    a Zaragoza
+                                </h1>
+                                <div class="hero-buttons">
+                                    <a href="javascript:void(0);" class="hero-button primary-button"
+                                        id="heroOrderButton">Pide online</a>
+                                    <a href="#" class="hero-button light-button">Reserva mesa</a>
+                                </div>
+                            </div>
+                            <div class="hero-column">
+                                <div class="hero-hidden">
+                                    <p class="hero-subtitle">
+                                        ¡Dale un mordisco a la vida <br> con Burger Vibes! 🍔
+                                    </p>
+                                    <img src="../src/assets/img/Hero_hamburguesa.png" alt="Imagen de fondo"
+                                        style="object-fit: contain; max-height: 500px;">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Slide 2 con la nueva imagen promocional -->
+                <div class="carousel-item">
+                    <img src="../src/assets/img/Gran_Promo.png" alt="Promoción La Gran Burger"
+                        style="width:100%; height: 600px; margin-top: 30px; margin-bottom: 51px;">
+                </div>
+                <!-- Agregar más slides si es necesario -->
+            </div>
+            <!-- Flechas de navegación -->
+            <a class="carousel-control prev" href="#hero" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"><i class="fas fa-chevron-left"></i></span>
+                <span class="sr-only"></span>
+            </a>
+            <a class="carousel-control next" href="#hero" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"><i class="fas fa-chevron-right"></i></span>
+                <span class="sr-only"></span>
+            </a>
+
+
+            <!-- Indicadores de puntos en la parte inferior -->
+            <div class="carousel-indicators">
+                <span class="dot active" data-slide-to="0"></span>
+                <span class="dot" data-slide-to="1"></span>
+                <!-- Agregar más puntos si se añaden más slides -->
+            </div>
+        </div>
+    </div>
+
+
+
+    <!--SLOGAN-->
+    <div class="slogan-section">
+        <p class="slogan">¡Más que Sabor, es una Sensación 😋 - BurgerVibes!</p>
+    </div>
+
+
+    <!--Modal (Formulario de pedido)-->
+
+    <!-- Modal Personalizado -->
+    <div id="customOrderModal" class="custom-modal">
+        <div class="custom-modal-dialog">
+            <div class="custom-modal-content">
+                <div class="custom-modal-header">
+                    <span id="customModalClose" class="custom-close">&times;</span>
+                    <img src="../src/assets/img/BurgerVibes.svg" alt="Vibes Logo"
+                        class="modal-logo">
+                </div>
+                <div class="custom-modal-body">
+                    <!-- Aquí irá el contenido del modal, como textos, botones, etc. -->
+                    <div class="modal-warning">
+                        <p>⚠️ Antes de confirmar tu pedido, verifica el restaurante seleccionado.</p>
+                        <p>No podemos hacernos responsables de pedidos realizados en el restaurante equivocado.</p>
+                        <p>¡Agradecemos tu comprensión! 🍔</p>
+                    </div>
+                    <div class="location-section">
+                        <img src="../src/assets/img/Bandera_de_Zaragoza.svg" alt="Bandera de Zaragoza" class="location-flag" />
+                        <p class="location-name">Zaragoza</p>
+                    </div>
+                    <a href="#" target="_blank" class="modal-button delivery-button">
+                        Pide a domicilio con 
+                        <img src="../src/assets/img/Uber_Eats.png" width="80px" style="margin-bottom: -1px; margin-right: 5px;">
+                    </a>
+                    <a href="#" target="_blank" class="modal-button pickup-button">
+                        Pide para recoger Zaragoza
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Boton de Lenguaje-->
+    <div id="language-switcher">
+        <button id="language-button">Idioma</button>
+        <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="/miAppHamburguesa/Frontend/public/es_index.html" data-lang="es" >Español</a></li>
+            <li><a class="dropdown-item" href="/miAppHamburguesa/Frontend/public/en_index.html" data-lang="en" >English</a></li>
+        </ul>
+    </div>
+    
+    <!--Links de Scripts-->
+    <script src="../src/js/scrollNavabr.js"></script>
+    <script src="../src/js/carrusel.js"></script>
+    <script src="../src/js/modal.js"></script>
+    <script src="../src/js/CambiarLengua.js"></script>
+    <script src="../src/js/load.js"></script>
+</body>
+
+
+</html>
