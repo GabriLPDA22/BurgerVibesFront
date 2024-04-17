@@ -1,4 +1,8 @@
-// Asegúrate de que este código se ejecuta después de que se haya cargado el DOM
+
+/**
+ * MODAL DE PIDE ONLINE
+*/
+
 document.addEventListener('DOMContentLoaded', function() {
     // Obtén el modal y los botones para abrirlo
     var modal = document.getElementById('customOrderModal');
@@ -28,3 +32,14 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 });
+
+
+/**
+ * MODAL DE RESERVA 
+ */
+
+
+
+/**
+ * MODAL DE LA CARTA
+ */
