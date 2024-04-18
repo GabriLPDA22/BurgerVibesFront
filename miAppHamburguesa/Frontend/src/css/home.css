@@ -143,7 +143,6 @@ body.fade-in {
     margin-top: 30px;
     margin: 0 auto;
     max-width: 1200px;
-    /* Ajusta el ancho según tus necesidades */
 }
 
 .hero {
@@ -317,7 +316,7 @@ body.fade-in {
 /*SLOGAN*/
 
 .slogan-section {
-    margin-top: 50px;
+    margin-top: 97px;
     width: 100%;
     background-color: #ffffff;
     /* Color de fondo de la sección */
@@ -325,6 +324,7 @@ body.fade-in {
     /* Alineación del texto al centro */
     padding: 10px 0;
     /* Espaciado interno superior e inferior */
+
 
 }
 
