@@ -464,7 +464,7 @@ body.fade-in {
     display: flex;
     justify-content: center;
     /* Centra la galería horizontalmente */
-   background-image: linear-gradient(to top, rgba(116, 112, 112, 0), rgb(7, 7, 7)), url(../assets/img/FondoLadrillo.jpg);
+    background-image: linear-gradient(to top, rgba(116, 112, 112, 0), rgb(7, 7, 7)), url(../assets/img/FondoLadrillo.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -502,6 +502,70 @@ body.fade-in {
 
 }
 
+/*OPINIONES*/
+
+.container-clientes {
+    background-color: #1C1C1C;
+    color: #FFFFFF;
+    font-family: 'Arial', sans-serif;
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+    box-sizing: border-box;
+     background-image: linear-gradient(to top, rgba(116, 112, 112, 0), rgb(7, 7, 7)), url(../assets/img/FondoLadrillo.jpg);
+     background-repeat: no-repeat;
+     background-size: cover;
+     background-position: center;
+  }
+  
+  .contenedor-opiniones {
+    text-align: center;
+    padding: 40px 0;
+  }
+  
+  .titulo-principal {
+    font-family: 'Sedgwick Ave', cursive;
+    color:  #F67906;
+    font-size: 3em;
+    margin-bottom: 50px;
+  }
+  
+  .opinion-card {
+    background-color: #000000;
+    margin: 15px;
+    padding: 30px;
+    display: inline-block;
+    vertical-align: top;
+    width: calc(33% - 30px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+  }
+  
+  .card-title {
+    font-family: fantasy;
+    color:  #F67906;
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    font-weight: 300;
+   
+  }
+  
+  .card-text {
+    font-size: 1em;
+    line-height: 1.6;
+    margin-bottom: 20px;
+  }
+  
+  .footer-card {
+    font-style: italic;
+    color: #CCCCCC;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    color:  #F67906;
+    margin-right: 8%;
+    margin-bottom: 2%;
+  }
 
 /*RESPONSIVE NAVBAR*/
 
