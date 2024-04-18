@@ -1,15 +1,17 @@
 body,
 html {
     background-color: #000000;
-    background-image: url(../assets/img/Fondo_Hero.svg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
     margin: 0;
     padding: 0;
     scroll-behavior: smooth
 }
-
+header {
+    background-image: url(/miAppHamburguesa/Frontend/src/assets/img/Fondo_Hero.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    margin-bottom: -3%;
+}
 
 /* Transiciones suaves para el cuerpo de la página */
 body.fade-out {
@@ -567,6 +569,72 @@ body.fade-in {
     margin-bottom: 2%;
   }
 
+  /*FOOTER*/
+  .footer {
+    background-color: #000000;
+    color: #fff;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+  }
+  
+  .footer-credits {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
+  
+  .footer-column {
+    width: 30%;
+  }
+  
+  .footer-section h4 {
+    color: #F67906;
+    margin-bottom: 15px;
+    text-align: center;
+    font-family: 'Sedgwick Ave', cursive;
+    font-size: 20px;
+  }
+  
+  .footer-section h3,
+  .footer-section p,
+  .footer-section a {
+    color: #fff;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+  
+  .footer-section a {
+    text-decoration: none;
+    color:  #ffffff;
+  }
+  
+  .horarios-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.horarios-table th,
+.horarios-table td {
+    border: 1px solid #ddd;
+    padding: 5px;
+    text-align: center;
+}
+
+.ubi1,
+.ubi2 
+{
+    max-width: 100%;
+    max-height: 50%;
+    margin-left: 21.7%;
+}
+
+
+.footer-section {
+    margin-bottom: 20px;
+    display: grid;
+}
+ 
 /*RESPONSIVE NAVBAR*/
 
 @media (max-width: 1120px) {
@@ -611,4 +679,12 @@ body.fade-in {
         display: block;
     }
     
+  }
+
+  /*RESPONSIVE DEL FOOTER*/
+  @media (max-width: 768px) {
+    .footer-column {
+      width: 100%;
+      margin-bottom: 20px;
+    }
   }

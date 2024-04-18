@@ -25,84 +25,91 @@
     </div>
 
     <!--NAVEGACION-->
-    <nav id="container-xxl" class="container-xxl">
-        <div class="navbar">
-            <a href="#home" class="navbar-brand">
-                <!-- Asegúrate de tener tu imagen de logo disponible en la ruta especificada -->
-                <img src="/miAppHamburguesa/Frontend/src/assets/img/BurgerVibes.svg" alt="Logotipo" id="logo">
-            </a>
-            <ul class="navbar-nav">
-                <li><a href="#concepto" class="nav-link">Concepto</a></li>
-                <li><a href="es_alergenos.html" class="nav-link">Alergenos</a></li>
-                <li><a href="#opiniones" class="nav-link">Opiniones</a></li>
-                <li><a href="#galeria" class="nav-link">Galería</a></li>
-                <li><a href="es_contacto.html" class="nav-link">Contacto</a></li>
-                <li><a href="es_carta.html" class="nav-link">Carta</a></li>
-            </ul>
+    <header >
+        <nav id="container-xxl" class="container-xxl">
+            <div class="navbar">
+                <a href="#home" class="navbar-brand">
+                    <!-- Asegúrate de tener tu imagen de logo disponible en la ruta especificada -->
+                    <img src="/miAppHamburguesa/Frontend/src/assets/img/BurgerVibes.svg" alt="Logotipo" id="logo">
+                </a>
+                <ul class="navbar-nav">
+                    <li><a href="#concepto" class="nav-link">Concepto</a></li>
+                    <li><a href="es_alergenos.html" class="nav-link">Alergenos</a></li>
+                    <li><a href="#opiniones" class="nav-link">Opiniones</a></li>
+                    <li><a href="#galeria" class="nav-link">Galería</a></li>
+                    <li><a href="es_contacto.html" class="nav-link">Contacto</a></li>
+                    <li><a href="es_carta.html" class="nav-link">Carta</a></li>
+                </ul>
 
-            <a href="javascript:void(0);" class="pedido-online" id="navbarOrderButton">Pide online</a>
-            <button class="navbar-toggler" type="button">&#9776;</button>
-            <button class="close-btn" aria-label="Cerrar menú">&times;</button>
-            <!--<a href="#reserva" class="reserva-online">Reserva online</a>-->
-        </div>
-    </nav>
-    <!--HERO-->
-    <div class="container-hero">
-        <div id="hero" class="hero carousel">
-            <div class="carousel-inner">
-                <!-- Slide 1 -->
-                <div class="carousel-item active">
-                    <div class="hero-content">
-                        <div class="hero-row">
-                            <div class="hero-column">
-                                <h1 class="hero-title">
-                                    ¡Bienvenidos a Burger Vibes! <br> La experiencia gastronómica definitiva <br> llega
-                                    a Zaragoza
-                                </h1>
-                                <div class="hero-buttons">
-                                    <a href="javascript:void(0);" class="hero-button primary-button"
-                                        id="heroOrderButton">Pide online</a>
-                                    <a href="#" class="hero-button light-button" id="reservaMesaButton">Reserva mesa</a>
+                <a href="javascript:void(0);" class="pedido-online" id="navbarOrderButton">Pide online</a>
+                <button class="navbar-toggler" type="button">&#9776;</button>
+                <button class="close-btn" aria-label="Cerrar menú">&times;</button>
+                <!--<a href="#reserva" class="reserva-online">Reserva online</a>-->
+            </div>
+        </nav>
+        <!--HERO-->
+        <div class="container-hero">
+            <div id="hero" class="hero carousel">
+                <div class="carousel-inner">
+                    <!-- Slide 1 -->
+                    <div class="carousel-item active">
+                        <div class="hero-content">
+                            <div class="hero-row">
+                                <div class="hero-column">
+                                    <h1 class="hero-title">
+                                        ¡Bienvenidos a Burger Vibes! <br> La experiencia gastronómica definitiva <br>
+                                        llega
+                                        a Zaragoza
+                                    </h1>
+                                    <div class="hero-buttons">
+                                        <a href="javascript:void(0);" class="hero-button primary-button"
+                                            id="heroOrderButton">Pide online</a>
+                                        <a href="#" class="hero-button light-button" id="reservaMesaButton">Reserva
+                                            mesa</a>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="hero-column">
-                                <div class="hero-hidden">
-                                    <p class="hero-subtitle">
-                                        ¡Dale un mordisco a la vida <br> con Burger Vibes! 🍔
-                                    </p>
-                                    <img src="/miAppHamburguesa/Frontend/src/assets/img/Hero_hamburguesa.png"
-                                        alt="Imagen de fondo" style="object-fit: contain; max-height: 500px;">
+                                <div class="hero-column">
+                                    <div class="hero-hidden">
+                                        <p class="hero-subtitle">
+                                            ¡Dale un mordisco a la vida <br> con Burger Vibes! 🍔
+                                        </p>
+                                        <img src="/miAppHamburguesa/Frontend/src/assets/img/Hero_hamburguesa.png"
+                                            alt="Imagen de fondo" style="object-fit: contain; max-height: 500px;">
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <!-- Slide 2 con la nueva imagen promocional -->
+                    <div class="carousel-item">
+                        <img src="/miAppHamburguesa/Frontend/src/assets/img/Gran_Promo.png"
+                            alt="Promoción La Gran Burger"
+                            style="width:100%; height: 600px; margin-top: 30px; margin-bottom: 51px;">
+                    </div>
+                    <!-- Agregar más slides si es necesario -->
                 </div>
-                <!-- Slide 2 con la nueva imagen promocional -->
-                <div class="carousel-item">
-                    <img src="/miAppHamburguesa/Frontend/src/assets/img/Gran_Promo.png" alt="Promoción La Gran Burger"
-                        style="width:100%; height: 600px; margin-top: 30px; margin-bottom: 51px;">
-                </div>
-                <!-- Agregar más slides si es necesario -->
-            </div>
-            <!-- Flechas de navegación -->
-            <a class="carousel-control prev" href="#hero" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"><i class="fas fa-chevron-left"></i></span>
-                <span class="sr-only"></span>
-            </a>
-            <a class="carousel-control next" href="#hero" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"><i class="fas fa-chevron-right"></i></span>
-                <span class="sr-only"></span>
-            </a>
+                <!-- Flechas de navegación -->
+                <a class="carousel-control prev" href="#hero" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"><i
+                            class="fas fa-chevron-left"></i></span>
+                    <span class="sr-only"></span>
+                </a>
+                <a class="carousel-control next" href="#hero" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"><i
+                            class="fas fa-chevron-right"></i></span>
+                    <span class="sr-only"></span>
+                </a>
 
 
-            <!-- Indicadores de puntos en la parte inferior -->
-            <div class="carousel-indicators">
-                <span class="dot active" data-slide-to="0"></span>
-                <span class="dot" data-slide-to="1"></span>
-                <!-- Agregar más puntos si se añaden más slides -->
+                <!-- Indicadores de puntos en la parte inferior -->
+                <div class="carousel-indicators">
+                    <span class="dot active" data-slide-to="0"></span>
+                    <span class="dot" data-slide-to="1"></span>
+                    <!-- Agregar más puntos si se añaden más slides -->
+                </div>
             </div>
         </div>
-    </div>
+    </header>
 
 
 
@@ -280,13 +287,13 @@
             </div>
             <article class="opinion-card">
                 <h3 class="card-title">
-                    Comida espectacular <br> repetiremos.
+                    Hamburguesas Que Capturan el Corazón
                 </h3>
                 <blockquote class="card-text">
-                    Hemos probado 4 hamburguesas diferentes y a cual mejor. El
-                    postre increíble, la tarta de queso de 10, pero la torrija es
-                    otro nivel, vamos de llorar. Los camareros muy atentos y
-                    amables, sin duda repetimos en breve.
+                    Una experiencia única en cada bocado. Las hamburguesas tienen un sabor
+                    que simplemente no se puede encontrar en otro lugar. Me quedé
+                    impresionado por la calidad de la carne y las combinaciones innovadoras.
+                    ¡Volveré muy pronto!
                 </blockquote>
                 <footer class="footer-card">
                     Por Mónica Rodea Rodríguez
@@ -295,13 +302,12 @@
             </article>
             <article class="opinion-card">
                 <h3 class="card-title">
-                    Comida espectacular <br> repetiremos.
+                    Sabor Inolvidable en Cada Visita
                 </h3>
                 <blockquote class="card-text">
-                    Hemos probado 4 hamburguesas diferentes y a cual mejor. El
-                    postre increíble, la tarta de queso de 10, pero la torrija es
-                    otro nivel, vamos de llorar. Los camareros muy atentos y
-                    amables, sin duda repetimos en breve.
+                    Fantástica comida y ambiente aún mejor. Me encanta la decoración del
+                    lugar, y el servicio es inmejorable. Probamos la hamburguesa de la casa y estaba deliciosa. La salsa
+                    casera es un secreto que necesito en mi vida. ¡Recomendadísimo¡ <br> <br>
                 </blockquote>
                 <footer class="footer-card">
                     Por Mónica Rodea Rodríguez
@@ -310,13 +316,12 @@
             </article>
             <article class="opinion-card">
                 <h3 class="card-title">
-                    Comida espectacular <br> repetiremos.
+                    Un Festín para los Sentidos
                 </h3>
                 <blockquote class="card-text">
-                    Hemos probado 4 hamburguesas diferentes y a cual mejor. El
-                    postre increíble, la tarta de queso de 10, pero la torrija es
-                    otro nivel, vamos de llorar. Los camareros muy atentos y
-                    amables, sin duda repetimos en breve.
+                    No exagero al decir que estas son algunas de las mejores hamburguesas
+                    que he probado. El pan artesano, la carne jugosa y los ingredientes
+                    frescos hacen una diferencia notable.
                 </blockquote>
                 <footer class="footer-card">
                     Por Mónica Rodea Rodríguez
@@ -326,6 +331,74 @@
         </section>
     </div>
 
+    <!--FOOTER-->
+    <footer class="footer">
+        <div class="footer-credits">
+            <div class="footer-column">
+                <div class="footer-section">
+                    <h4>Horarios Zaragoza</h4>
+                    <div class="horarios-restaurante">
+                        <h3>Hamburguesería BurgerVibes Zaragoza</h3>
+                        <table class="horarios-table">
+                            <tr>
+                                <th>Día</th>
+                                <th>Horario</th>
+                            </tr>
+                            <tr>
+                                <td>Lunes - Jueves</td>
+                                <td>12:00 AM - 21:00 PM</td>
+                            </tr>
+                            <tr>
+                                <td>Viernes - Domingo</td>
+                                <td>12:00 AM - 00:00 PM</td>
+                            </tr>
+                        </table>
+                        <p>Av. de Zaragoza, 50, 50004 Zaragoza</p>
+                        <!-- Aquí el iframe de Google Maps -->
+                        <iframe class="ubi1" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3299.9172237566636!2d-0.8820865847713147!3d41.65013997924538!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd582b9c99f3ae49%3A0x4d2d77a13c7dc669!2sAv.%20de%20Zaragoza%2C%2050%2C%2050004%20Zaragoza!5e0!3m2!1sen!2ses!4v1649172585905!5m2!1sen!2ses" style="border-radius:10px;" allowfullscreen="" loading="lazy"></iframe>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-column">
+                <div class="footer-section">
+                    <h4>Horarios Zaragoza</h4>
+                    <div class="horarios-restaurante">
+                        <h3>Hamburguesería BurgerVibes Zaragoza</h3>
+                        <table class="horarios-table">
+                            <tr>
+                                <th>Día</th>
+                                <th>Horario</th>
+                            </tr>
+                            <tr>
+                                <td>Lunes - Jueves</td>
+                                <td>12:00 AM - 21:00 PM</td>
+                            </tr>
+                            <tr>
+                                <td>Viernes - Domingo</td>
+                                <td>12:00 AM - 00:00 PM</td>
+                            </tr>
+                        </table>
+                        <p>Av. de Zaragoza, 50, 50004 Zaragoza</p>
+                        <!-- Aquí el iframe de Google Maps -->
+                        <iframe class="ubi1" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3299.9172237566636!2d-0.8820865847713147!3d41.65013997924538!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd582b9c99f3ae49%3A0x4d2d77a13c7dc669!2sAv.%20de%20Zaragoza%2C%2050%2C%2050004%20Zaragoza!5e0!3m2!1sen!2ses!4v1649172585905!5m2!1sen!2ses" style="border-radius:10px;" allowfullscreen="" loading="lazy"></iframe>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-column">
+                <div class="footer-section">
+                    <h4>Contacto</h4>
+                    <p>📧 reservasBurgerVibes@gmail.com</p>
+                    <p>Para cualquier modificación en su reserva, contáctenos a través de nuestro correo o Instagram.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <a href="#">Configuración de cookies</a>
+                    <a href="#">Términos y condiciones</a>
+                    <a href="#">Política de privacidad</a>
+                </div>
+            </div>
+        </div>
+    </footer>
     <!--Links de Scripts-->
     <script src="/miAppHamburguesa/Frontend/src/js/scrollnavbar.js"></script>
     <script src="/miAppHamburguesa/Frontend/src/js/carrusel.js"></script>
