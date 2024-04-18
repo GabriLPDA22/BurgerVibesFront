@@ -13,9 +13,9 @@ document.addEventListener('DOMContentLoaded', function () {
             event.preventDefault();
             const lang = this.getAttribute('data-lang');
             if (lang === 'en') {
-                window.location.href = '/miAppHamburguesa/Frontend/public/en_index.html';
+                window.location.href = '/miAppHamburguesa/Frontend/public/html_Ingles/en_index.html';
             } else if (lang === 'es') {
-                window.location.href = '/miAppHamburguesa/Frontend/public/es_index.html';
+                window.location.href = '/miAppHamburguesa/Frontend/public/html_Español/es_index.html';
             }
             // Ocultar el menú después de la selección
             dropdownMenu.style.display = 'none';

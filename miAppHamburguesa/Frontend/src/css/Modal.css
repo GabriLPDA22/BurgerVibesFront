@@ -85,7 +85,7 @@
 
 .modal-button {
   display: block;
-  width: 80%; /* Ajusta al ancho deseado */
+  width: 60%; /* Ajusta al ancho deseado */
   margin: 10px auto; /* Centrado con margen arriba y abajo */
   padding: 10px;
   text-align: center;
@@ -110,4 +110,9 @@
 /* Añade los estilos para hover y active si es necesario */
 .modal-button:hover {
   background-color: #e6e6e6; /* Ejemplo de color al pasar el mouse */
+}
+
+.divider {
+  border-top: 0.5px solid #ffffff; /* Color y estilo de la línea */
+  margin: 20px 0; /* Espacio superior e inferior para la línea */
 }
