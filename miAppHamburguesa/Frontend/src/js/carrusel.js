@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function showSlide(index) {
         if (index >= totalSlides) index = 0;
-        if (index < 0) index = totalSlides - 1;
+        if (index < 0) index = totalSlides - 2;
 
         slides.forEach((slide) => slide.classList.remove('active'));
         dots.forEach((dot) => dot.classList.remove('active'));
