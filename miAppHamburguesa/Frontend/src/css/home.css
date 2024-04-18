@@ -35,10 +35,18 @@ body.fade-in {
     /* Agregamos una transición suave */
 }
 
+.navbar-toggler {
+    display: none; /* Oculta el toggler por defecto */
+    cursor: pointer;
+  }
+
 /* Cambiar la clase 'scrolled' al hacer scroll usando JavaScript */
 .navbar.scrolled {
     background-color: #000;
-    /* Nuevo color de fondo al hacer scroll */
+}
+
+.close-btn{
+    display: none;
 }
 
 .container-xxl {
@@ -504,57 +512,39 @@ body.fade-in {
     }
 }
 
-/* Estilos para mostrar la hamburguesa en dispositivos móviles */
+/* Para pantallas menores a 990px */
 @media (max-width: 990px) {
-
-
-    .navbar-nav {
-        display: none;
-        /* Oculta los enlaces de navegación en dispositivos móviles */
+    /* Ocultamos el botón "Pide online" */
+    .pedido-online {
+      display: none;
     }
-
+  
+    /* Mostramos el botón de menú de hamburguesa */
     .navbar-toggler {
-        display: block;
-        /* Muestra la hamburguesa en dispositivos móviles */
-        position: absolute;
-        top: 20px;
-        right: 20px;
-        cursor: pointer;
-        z-index: 1001;
-        /* Debe estar sobre el panel deslizante */
+      display: block;
+      background-color: #FFA500; /* Fondo naranja para que resalte */
+      margin-left: auto; /* Para alinear a la derecha */
+      border-radius: 5px; /* Si quieres bordes redondeados */
+      font-size: 1.5rem; /* Ajusta al tamaño que prefieras */
+      border: none;
     }
-
+  
+    /* Hacemos que la navegación sea vertical y ocultamos los elementos */
     .navbar-nav {
-        display: none;
-        /* Oculta el menú desplegable por defecto */
-        position: fixed;
-        /* Mantiene el menú desplegable fijo en la pantalla */
-        top: 0;
-        /* Alinea el menú desplegable con la parte superior de la pantalla */
-        right: 0;
-        /* Comienza fuera de la pantalla */
-        background-color: #333;
-        /* Color de fondo del menú desplegable */
-        width: 70%;
-        /* Ancho del menú desplegable */
-        height: 100%;
-        /* Altura del menú desplegable */
-        padding-top: 3.5rem;
-        /* Espacio adicional en la parte superior */
-        z-index: 1000;
-        /* Asegura que el menú desplegable esté por encima de otros elementos */
-        transition: right 0.3s;
-        /* Suaviza el efecto de deslizamiento */
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      background-color: #000; /* El mismo color de fondo que tu navbar */
+    }
+  
+    /* Cuando se presiona el botón de hamburguesa, mostramos los elementos */
+    .responsive {
+      display: flex;
     }
 
-    .navbar-toggler[aria-expanded="true"]+.navbar-collapse {
+    .close-btn{
         display: block;
-        /* Muestra el menú desplegable cuando se hace clic en la hamburguesa */
     }
-
-    .navbar-nav.open {
-        right: 0;
-        /* Cuando el menú está abierto, se alinea con la derecha de la pantalla */
-    }
-
-}
+    
+  }

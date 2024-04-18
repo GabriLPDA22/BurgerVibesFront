@@ -1,10 +1,16 @@
-// Cambiar el color de la navbar al hacer scroll
-window.addEventListener('scroll', function() {
-    var navbar = document.getElementById('navbar');
-    if (window.pageYOffset > 0) {
-      navbar.classList.add('scrolled');
-    } else {
-      navbar.classList.remove('scrolled');
-    }
+document.addEventListener('DOMContentLoaded', function () {
+  var navbarToggler = document.querySelector('.navbar-toggler');
+  var navbarNav = document.querySelector('.navbar-nav');
+  var closeButton = document.querySelector('.close-btn');
+  var body = document.body;
+
+  navbarToggler.addEventListener('click', function () {
+    navbarNav.classList.add('responsive');
+    body.classList.add('body-fixed'); // Añade la clase al body para impedir el desplazamiento
   });
-  
+
+  closeButton.addEventListener('click', function() {
+    navbarNav.classList.remove('responsive');
+    body.classList.remove('body-fixed'); // Quita la clase del body para permitir el desplazamiento
+  });
+});
