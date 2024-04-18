@@ -25,7 +25,7 @@
     </div>
 
     <!--NAVEGACION-->
-    <header >
+    <header>
         <nav id="container-xxl" class="container-xxl">
             <div class="navbar">
                 <a href="#home" class="navbar-brand">
@@ -280,8 +280,10 @@
     </div>
 
     <!--Nuestros clientes-->
-    <div id="opiniones" class="container-clientes">
-        <section class="contenedor-opiniones">
+    <section class="contenedor-opiniones" style="background-image: url(/miAppHamburguesa/Frontend/src/assets/img/Fondo_Hero.svg);     background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center">
+        <div id="opiniones" class="container-clientes">
             <div class="fila">
                 <h2 class="titulo-principal">Opiniones sobre BurgerVibes 🧡</h2>
             </div>
@@ -328,8 +330,9 @@
                     <time datetime="2023-03" class="text-white-50" title="Source Title">Marzo de 2023</time>
                 </footer>
             </article>
-        </section>
-    </div>
+        </div>
+    </section>
+    
 
     <!--FOOTER-->
     <footer class="footer">
@@ -353,17 +356,19 @@
                                 <td>12:00 AM - 00:00 PM</td>
                             </tr>
                         </table>
-                        <p>Av. de Zaragoza, 50, 50004 Zaragoza</p>
+                        <p id="ubi-zaragoza">Av. de Zaragoza, 50, 50004 Zaragoza</p>
                         <!-- Aquí el iframe de Google Maps -->
-                        <iframe class="ubi1" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3299.9172237566636!2d-0.8820865847713147!3d41.65013997924538!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd582b9c99f3ae49%3A0x4d2d77a13c7dc669!2sAv.%20de%20Zaragoza%2C%2050%2C%2050004%20Zaragoza!5e0!3m2!1sen!2ses!4v1649172585905!5m2!1sen!2ses" style="border-radius:10px;" allowfullscreen="" loading="lazy"></iframe>
+                        <iframe class="ubi1"
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3299.9172237566636!2d-0.8820865847713147!3d41.65013997924538!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd582b9c99f3ae49%3A0x4d2d77a13c7dc669!2sAv.%20de%20Zaragoza%2C%2050%2C%2050004%20Zaragoza!5e0!3m2!1sen!2ses!4v1649172585905!5m2!1sen!2ses"
+                            style="border-radius:10px;" allowfullscreen="" loading="lazy"></iframe>
                     </div>
                 </div>
             </div>
             <div class="footer-column">
                 <div class="footer-section">
-                    <h4>Horarios Zaragoza</h4>
+                    <h4>Horarios Valencia</h4>
                     <div class="horarios-restaurante">
-                        <h3>Hamburguesería BurgerVibes Zaragoza</h3>
+                        <h3>Hamburguesería BurgerVibes Valencia</h3>
                         <table class="horarios-table">
                             <tr>
                                 <th>Día</th>
@@ -378,17 +383,20 @@
                                 <td>12:00 AM - 00:00 PM</td>
                             </tr>
                         </table>
-                        <p>Av. de Zaragoza, 50, 50004 Zaragoza</p>
+                        <p id="ubi-valencia">Carrer De Elena Just Castillo, 4</p>
                         <!-- Aquí el iframe de Google Maps -->
-                        <iframe class="ubi1" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3299.9172237566636!2d-0.8820865847713147!3d41.65013997924538!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd582b9c99f3ae49%3A0x4d2d77a13c7dc669!2sAv.%20de%20Zaragoza%2C%2050%2C%2050004%20Zaragoza!5e0!3m2!1sen!2ses!4v1649172585905!5m2!1sen!2ses" style="border-radius:10px;" allowfullscreen="" loading="lazy"></iframe>
+                        <iframe class="ubi2"
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6160.4648142240785!2d-0.40366601099265115!3d39.46407803987546!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd604f135c7cd745%3A0x71ea33068148130f!2sCarrer%20De%20Elena%20Just%20Castillo%2C%204%2C%20L&#39;Olivereta%2C%2046018%20Valencia!5e0!3m2!1sen!2ses!4v1713473633187!5m2!1sen!2ses"
+                            style="border-radius:10px;" allowfullscreen="" loading="lazy"></iframe>
                     </div>
                 </div>
             </div>
             <div class="footer-column">
                 <div class="footer-section">
                     <h4>Contacto</h4>
-                    <p>📧 reservasBurgerVibes@gmail.com</p>
-                    <p>Para cualquier modificación en su reserva, contáctenos a través de nuestro correo o Instagram.</p>
+                    <p id="texto-correo-footer">📧 reservasBurgerVibes@gmail.com</p>
+                    <p>Para cualquier modificación en su reserva, contáctenos a través de nuestro correo o Instagram.
+                    </p>
                 </div>
                 <div class="footer-section">
                     <h4>Legal</h4>
@@ -398,7 +406,22 @@
                 </div>
             </div>
         </div>
+
+        <div class="pie-de-pagina-contenedor">
+            <div class="contenido-pie">
+                <a href="#inicio" class="logo-enlace">
+                    <img src="/miAppHamburguesa/Frontend/src/assets/img/BurgerVibes.svg" alt="Logotipo de BurgerVibes" class="logo-pie">
+                </a>
+                
+                <span class="hecho-por">@2024 BurgerVibes</span>
+                <a href="https://www.instagram.com/BurgerVibes" target="_blank" class="icono-instagram">
+                    <img src="/miAppHamburguesa/Frontend/src/assets/img/instagram-icon.svg" alt="Instagram de BurgerVibes" class="imagen-instagram">
+                </a>
+            </div>
+        </div>
+        
     </footer>
+
     <!--Links de Scripts-->
     <script src="/miAppHamburguesa/Frontend/src/js/scrollnavbar.js"></script>
     <script src="/miAppHamburguesa/Frontend/src/js/carrusel.js"></script>

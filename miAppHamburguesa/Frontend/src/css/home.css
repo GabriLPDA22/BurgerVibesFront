@@ -5,6 +5,7 @@ html {
     padding: 0;
     scroll-behavior: smooth
 }
+
 header {
     background-image: url(/miAppHamburguesa/Frontend/src/assets/img/Fondo_Hero.svg);
     background-repeat: no-repeat;
@@ -38,16 +39,17 @@ body.fade-in {
 }
 
 .navbar-toggler {
-    display: none; /* Oculta el toggler por defecto */
+    display: none;
+    /* Oculta el toggler por defecto */
     cursor: pointer;
-  }
+}
 
 /* Cambiar la clase 'scrolled' al hacer scroll usando JavaScript */
 .navbar.scrolled {
     background-color: #000;
 }
 
-.close-btn{
+.close-btn {
     display: none;
 }
 
@@ -447,7 +449,7 @@ body.fade-in {
     max-width: max-content;
     height: auto;
     padding-top: 100%;
-    
+
 }
 
 .columna-derecha {
@@ -473,10 +475,10 @@ body.fade-in {
 }
 
 .texto-galeria h2 {
-    color:  #F67906;
+    color: #F67906;
     font-family: 'Sedgwick Ave', cursive;
     margin-left: 38%;
-    font-size:50px;
+    font-size: 50px;
     transform: rotate(-15deg);
 }
 
@@ -492,8 +494,8 @@ body.fade-in {
     /* Centra la galería horizontalmente si es menor que el ancho máximo */
     margin-top: 10%;
     margin-bottom: 10%;
-    
-  
+
+
 }
 
 .gallery-item {
@@ -514,25 +516,28 @@ body.fade-in {
     margin: auto;
     padding: 20px;
     box-sizing: border-box;
-     background-image: linear-gradient(to top, rgba(116, 112, 112, 0), rgb(7, 7, 7)), url(../assets/img/FondoLadrillo.jpg);
-     background-repeat: no-repeat;
-     background-size: cover;
-     background-position: center;
-  }
-  
-  .contenedor-opiniones {
+    background-image: linear-gradient(to top, rgba(116, 112, 112, 0), rgb(7, 7, 7)), url(/miAppHamburguesa/Frontend/src/assets/img/FondoLadrillo.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    box-shadow: inset 0 0 7px 7px #fda604; /* Difuminado en los bordes */
+    z-index: -1;
+    border-radius: 2%;
+}
+
+.contenedor-opiniones {
     text-align: center;
     padding: 40px 0;
-  }
-  
-  .titulo-principal {
+}
+
+.titulo-principal {
     font-family: 'Sedgwick Ave', cursive;
-    color:  #F67906;
+    color: #F67906;
     font-size: 3em;
     margin-bottom: 50px;
-  }
-  
-  .opinion-card {
+}
+
+.opinion-card {
     background-color: #000000;
     margin: 15px;
     padding: 30px;
@@ -541,74 +546,93 @@ body.fade-in {
     width: calc(33% - 30px);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     position: relative;
-  }
-  
-  .card-title {
+}
+
+.card-title {
     font-family: fantasy;
-    color:  #F67906;
+    color: #F67906;
     font-size: 1.5em;
     margin-bottom: 10px;
     font-weight: 300;
-   
-  }
-  
-  .card-text {
+
+}
+
+.card-text {
     font-size: 1em;
     line-height: 1.6;
     margin-bottom: 20px;
-  }
-  
-  .footer-card {
+}
+
+.footer-card {
     font-style: italic;
     color: #CCCCCC;
     position: absolute;
     bottom: 10px;
     right: 10px;
-    color:  #F67906;
+    color: #F67906;
     margin-right: 8%;
     margin-bottom: 2%;
-  }
+}
 
-  /*FOOTER*/
-  .footer {
+/*FOOTER*/
+.footer {
     background-color: #000000;
     color: #fff;
     padding: 20px;
     font-family: Arial, sans-serif;
-  }
-  
-  .footer-credits {
+}
+
+.footer-credits {
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
-  }
-  
-  .footer-column {
+}
+
+.footer-column {
     width: 30%;
-  }
-  
-  .footer-section h4 {
+}
+
+.footer-section h4 {
     color: #F67906;
     margin-bottom: 15px;
     text-align: center;
     font-family: 'Sedgwick Ave', cursive;
     font-size: 20px;
-  }
-  
-  .footer-section h3,
-  .footer-section p,
-  .footer-section a {
-    color: #fff;
+
+}
+
+.footer-section p {
+    font-family: 'Times New Roman', Times, serif;
+    color: #ff9100;
+    font-size: 20px;
+}
+
+#texto-correo-footer {
+    color: #f1f1f1;
+}
+
+#ubi-zaragoza, #ubi-valencia{
+    color: #f1f1f1;
+}
+
+.footer-section h3 {
+    color: #F67906;
+}
+
+.footer-section h3,
+.footer-section p,
+.footer-section a {
     margin-bottom: 10px;
     text-align: center;
-  }
-  
-  .footer-section a {
+}
+
+.footer-section a {
     text-decoration: none;
-    color:  #ffffff;
-  }
-  
-  .horarios-table {
+    color: #fff;
+    font-family: Arial, Helvetica, sans-serif
+}
+
+.horarios-table {
     width: 100%;
     border-collapse: collapse;
     margin-bottom: 20px;
@@ -622,11 +646,18 @@ body.fade-in {
 }
 
 .ubi1,
-.ubi2 
-{
-    max-width: 100%;
-    max-height: 50%;
-    margin-left: 21.7%;
+.ubi2 {
+    width: 80%;
+    /* Establece un ancho definido para los iframes */
+    max-width: 400px;
+    /* Opcional: un ancho máximo para los iframes */
+    height: auto;
+    /* Altura automática basada en el ancho */
+    border-radius: 10px;
+    /* Estilo para redondear las esquinas del iframe */
+    margin-left: 21%;
+    /* Remueve cualquier margen que pudiera interferir */
+
 }
 
 
@@ -634,7 +665,72 @@ body.fade-in {
     margin-bottom: 20px;
     display: grid;
 }
- 
+
+/*COPYRIRHT-FOOTER*/
+
+.pie-de-pagina-contenedor {
+    background-color: #000;
+    color: #fff;
+    padding: 20px 0;
+    display: flex;
+    justify-content: center; /* Centra el contenido */
+    align-items: center; /* Alineación vertical */
+    flex-wrap: wrap; /* Permite la envoltura para evitar desbordamiento */
+    border-top: solid 5px #F67906;
+}
+
+.contenido-pie {
+    display: flex;
+    justify-content: space-between; /* Centra los elementos internos */
+    align-items: center;
+    flex-grow: 1; /* Permite que el contenedor crezca */
+}
+
+.logo-pie {
+    height: 80px; /* Altura del logo más grande */
+    width: auto; /* Mantiene la proporción del logo */
+    order: 1; /* Orden de aparición */
+   
+}
+
+.derechos {
+    font-size: 1rem; /* Tamaño del texto de derechos de autor */
+    order: 2; /* Orden de aparición */
+}
+
+.hecho-por {
+    font-size: 20px; 
+    order: 3; /* Orden de aparición */
+    margin-left: 20px; /* Espacio a la izquierda para separar del texto de derechos */
+    transform: translateX(-50%);
+    font-family: 'Sedgwick Ave', cursive;
+    color: #f37805;
+}
+
+.icono-instagram {
+    order: 4; /* Orden de aparición */
+}
+
+.imagen-instagram {
+    height: 30px; /* Altura para el icono de Instagram */
+    width: auto; /* Mantiene la proporción */
+    margin-left: 20px; /* Espacio a la izquierda para separar del texto 'Hecho con ♥ por' */
+}
+
+/* Puedes querer agregar más estilos para adaptabilidad y diseño responsive */
+@media (max-width: 768px) {
+    .contenido-pie {
+        flex-direction: column; /* Alinea los elementos verticalmente en pantallas pequeñas */
+        text-align: center;
+    }
+
+    .logo-pie,
+    .imagen-instagram {
+        width: 40px; /* Ajusta el tamaño para pantallas pequeñas */
+    }
+}
+
+
 /*RESPONSIVE NAVBAR*/
 
 @media (max-width: 1120px) {
@@ -646,45 +742,51 @@ body.fade-in {
 
 /* Para pantallas menores a 990px */
 @media (max-width: 990px) {
+
     /* Ocultamos el botón "Pide online" */
     .pedido-online {
-      display: none;
+        display: none;
     }
-  
+
     /* Mostramos el botón de menú de hamburguesa */
     .navbar-toggler {
-      display: block;
-      background-color: #FFA500; /* Fondo naranja para que resalte */
-      margin-left: auto; /* Para alinear a la derecha */
-      border-radius: 5px; /* Si quieres bordes redondeados */
-      font-size: 1.5rem; /* Ajusta al tamaño que prefieras */
-      border: none;
+        display: block;
+        background-color: #FFA500;
+        /* Fondo naranja para que resalte */
+        margin-left: auto;
+        /* Para alinear a la derecha */
+        border-radius: 5px;
+        /* Si quieres bordes redondeados */
+        font-size: 1.5rem;
+        /* Ajusta al tamaño que prefieras */
+        border: none;
     }
-  
+
     /* Hacemos que la navegación sea vertical y ocultamos los elementos */
     .navbar-nav {
-      display: none;
-      flex-direction: column;
-      align-items: center;
-      width: 100%;
-      background-color: #000; /* El mismo color de fondo que tu navbar */
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        background-color: #000;
+        /* El mismo color de fondo que tu navbar */
     }
-  
+
     /* Cuando se presiona el botón de hamburguesa, mostramos los elementos */
     .responsive {
-      display: flex;
+        display: flex;
     }
 
-    .close-btn{
+    .close-btn {
         display: block;
     }
-    
-  }
 
-  /*RESPONSIVE DEL FOOTER*/
-  @media (max-width: 768px) {
+}
+
+/*RESPONSIVE DEL FOOTER*/
+@media (max-width: 768px) {
     .footer-column {
-      width: 100%;
-      margin-bottom: 20px;
+        width: 100%;
+        margin-bottom: 20px;
     }
-  }
+}
