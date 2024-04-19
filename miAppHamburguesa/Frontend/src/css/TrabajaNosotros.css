@@ -1,0 +1,58 @@
+main {
+    width: 20%;
+    margin: 0 auto;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    height: auto;
+}
+
+h1 {
+    color: #ff7504;
+    text-align: center;
+    font-family: 'Sedgwick Ave', cursive;
+
+}
+
+.formulario {
+    padding: 20px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+label {
+    display: block;
+    margin: 10px 0 5px;
+    color: rgb(255, 255, 255);
+}
+
+input[type="text"],
+input[type="email"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+
+button {
+    background-color: #ff8800;
+    color: rgb(0, 0, 0);
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+    font-family: 'Sedgwick Ave', cursive;
+    margin-left: 1px;
+}
+
+button:hover {
+    background-color: #ffffff;
+}
