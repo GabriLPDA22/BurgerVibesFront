@@ -615,6 +615,12 @@ body.fade-in {
     color: #f1f1f1;
 }
 
+#TrabajaConNostros{
+    font-family: 'Sedgwick Ave', cursive;
+    color: #ff9100;
+    font-size: 20px;
+}
+
 .footer-section h3 {
     color: #F67906;
 }
