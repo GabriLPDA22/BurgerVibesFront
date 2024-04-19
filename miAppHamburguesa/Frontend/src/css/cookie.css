@@ -1,102 +1,44 @@
-* {
-	padding: 0;
-	margin: 0;
-	box-sizing: border-box;
+
+.cookies-msg{
+  width: 80%;
+  background-color: #fff;
+  position: fixed;
+  bottom: 5%;
+  left: 50%;
+  transform: translate(-50%);
+  border-radius: 15px;
+  
 }
 
-body {
-	background: #f2f2f2;
-	font-family: 'Roboto', sans-serif;
+.cookies-msg.mostrar{
+  display: block;
+}
+.cookies-msg.ocultar{
+  display: none;
 }
 
-p {
-	margin-bottom: 20px;
-	line-height: 150%;
+.cookies-msg .cookies-txt{
+  display: flex;
+  align-items: center;
+  text-align: justify;
+  padding: 20px;
 }
 
-main {
-	margin: 20px auto;
-	max-width: 1000px;
-	background: #fff;
-	min-height: 80vh;
-	padding: 20px;
-	border-radius: 10px;
+.cookies-msg .cookies-btn{
+  margin-left: 30px;
 }
 
-  .aviso-cookies {
-	display: none;
-	background: #fff;
-	padding: 20px;
-	width: calc(100% - 40px);
-	max-width: 300px;
-	line-height: 150%;
-	border-radius: 10px;
-	position: fixed;
-	bottom: 20px;
-	left: 20px;
-	z-index: 100;
-	padding-top: 60px;
-	box-shadow: 0px 2px 20px 10px rgba(222,222,222,.25);
-	text-align: center;
+.cookies-msg .cookies-btn button{
+  background-color: #000;
+  color: #fff;
+  font-weight: 700;
+  font-size: 18px;
+  padding: 10px 40px;
+  cursor: pointer;
+  transition: .2s;
 }
 
-.aviso-cookies.activo {
-	display: block;
+.cookies-msg .cookies-btn button:hover{
+  transform: scale(0.9);
 }
 
-.aviso-cookies .galleta {
-	max-width: 100px;
-	position: absolute;
-	top: -50px;
-	left: calc(50% - 50px);
-}
-
-.aviso-cookies .titulo,
-.aviso-cookies .parrafo {
-	margin-bottom: 15px;
-}
-
-.aviso-cookies .boton {
-	width: 100%;
-	background: #595959;
-	border: none;
-	color: #fff;
-	font-family: 'Roboto', sans-serif;
-	text-align: center;
-	padding: 15px 20px;
-	font-weight: 700;
-	cursor: pointer;
-	transition: .3s ease all;
-	border-radius: 5px;
-	margin-bottom: 15px;
-	font-size: 14px;
-}
-
-.aviso-cookies .boton:hover {
-	background: #000;
-}
-
-.aviso-cookies .enlace {
-	color: #4DBFFF;
-	text-decoration: none;
-	font-size: 14px;
-}
-
-.aviso-cookies .enlace:hover {
-	text-decoration: underline;
-}
-
-.fondo-aviso-cookies {
-	display: none;
-	background: rgba(255, 255, 255, 0.2);
-	position: fixed;
-	z-index: 99;
-	width: 100vw;
-	height: 100vh;
-	top: 0;
-	left: 0;
-}
-
-.fondo-aviso-cookies.activo {
-	display: block;
-}

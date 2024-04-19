@@ -10,9 +10,10 @@
     <link rel="stylesheet" href="/miAppHamburguesa/Frontend/src/css/BotonLengua.css">
     <link rel="stylesheet" href="/miAppHamburguesa/Frontend/src/css/idioma.css">
     <link rel="stylesheet" href="/miAppHamburguesa/Frontend/src/css/loader.css">
-    <link rel="stylesheet" href="/miAppHamburguesa/Frontend/src/css/cookies.css">
+    <link rel="stylesheet" href="/miAppHamburguesa/Frontend/src/css/cookie.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
     <link href="https://fonts.googleapis.com/css2?family=Sedgwick+Ave&display=swap" rel="stylesheet">
+
 
 
     <title>BurgerVibes</title>
@@ -415,7 +416,8 @@
             <div class="footer-column">
                 <div class="footer-section">
                     <h4>Contacto</h4>
-                    <a href="/miAppHamburguesa/Frontend/public/html_Español/" id="TrabajaConNostros">¡Únete a nuestro equipo hoy!</a>
+                    <a href="/miAppHamburguesa/Frontend/public/html_Español/TrabajaNostros.html"
+                        id="TrabajaConNostros">¡Únete a nuestro equipo hoy!</a>
                     <p id="texto-correo-footer">📧 reservasBurgerVibes@gmail.com</p>
                     <p>Para cualquier modificación en su reserva, contáctenos a través de nuestro correo o Instagram.
                     </p>
@@ -449,16 +451,24 @@
     </footer>
 
     <!--COOKIES-->
-    <div class="aviso-cookies" id="aviso-cookies">
-		<img class="galleta" src="./img/cookie.svg" alt="Galleta">
-		<h3 class="titulo">Cookies</h3>
-		<p class="parrafo">Utilizamos cookies propias y de terceros para mejorar nuestros servicios.</p>
-		<button class="boton" id="btn-aceptar-cookies">De acuerdo</button>
-		<a class="enlace" href="/miAppHamburguesa/Frontend/public/html_Español/aviso-cookies.html">Aviso de Cookies</a>
-	</div>
-	<div class="fondo-aviso-cookies" id="fondo-aviso-cookies"></div>
 
-	<script src="/miAppHamburguesa/Frontend/src/js/cookies.js"></script>
+
+    <div class="cookies-msg" id="cookies-msg">
+        <div class="cookies-txt">
+            <p>Este sitio web utiliza cookies y tecnologías relacionadas, que son pequeños archivos o fragmentos de
+                texto descargados a un dispositivo cuando un visitante accede a un sitio web o aplicación. Al utilizar
+                nuestro sitio web, acepta el uso de cookies para brindarle una mejor experiencia.</p>
+
+            <div class="cookies-btn">
+                <button id="aceptar" onclick="aceptar()">Aceptar</button>
+
+            </div>
+        </div>
+    </div><!--cookies-msg-->
+
+    <script src="/miAppHamburguesa/Frontend/src/js/cookies.js"></script>
+
+
 
     <!--Links de Scripts-->
     <script src="/miAppHamburguesa/Frontend/src/js/scrollnavbar.js"></script>
