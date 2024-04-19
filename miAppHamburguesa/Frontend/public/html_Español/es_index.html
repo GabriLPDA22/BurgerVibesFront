@@ -93,13 +93,14 @@
                             <div class="hero-row">
                                 <div class="hero-column">
                                     <p class="hero-subtitle" style="margin-top: 70px;">
-                                        ¡Aprovecha ya! 🎉 2x1 en todos los combos de domingo a jueves. 
+                                        ¡Aprovecha ya! 🎉 2x1 en todos los combos de domingo a jueves.
                                         ¡No esperes más para disfrutar de tus hamburguesas favoritas!
                                     </p>
                                 </div>
                                 <div class="hero-column">
                                     <img src="/miAppHamburguesa/Frontend/src/assets/img/2x1_Español.png"
-                                        alt="Nueva Hamburguesa" style="object-fit: contain; max-height: 681px; max-width: 681px;">
+                                        alt="Nueva Hamburguesa"
+                                        style="object-fit: contain; max-height: 681px; max-width: 681px;">
                                 </div>
                             </div>
                         </div>
@@ -414,7 +415,7 @@
             <div class="footer-column">
                 <div class="footer-section">
                     <h4>Contacto</h4>
-                    <a href="#" id="TrabajaConNostros">¡Únete a nuestro equipo hoy!</a>
+                    <a href="/miAppHamburguesa/Frontend/public/html_Español/" id="TrabajaConNostros">¡Únete a nuestro equipo hoy!</a>
                     <p id="texto-correo-footer">📧 reservasBurgerVibes@gmail.com</p>
                     <p>Para cualquier modificación en su reserva, contáctenos a través de nuestro correo o Instagram.
                     </p>
@@ -422,8 +423,10 @@
                 <div class="footer-section">
                     <h4>Legal</h4>
                     <a href="#">Configuración de cookies</a>
-                    <a href="/miAppHamburguesa/Frontend/public/html_Español/Terminos_Condiciones.html">Términos y condiciones</a>
-                    <a href="/miAppHamburguesa/Frontend/public/html_Español/Politica_Privacidad.html">Política de privacidad</a>
+                    <a href="/miAppHamburguesa/Frontend/public/html_Español/Terminos_Condiciones.html">Términos y
+                        condiciones</a>
+                    <a href="/miAppHamburguesa/Frontend/public/html_Español/Politica_Privacidad.html">Política de
+                        privacidad</a>
                 </div>
             </div>
         </div>
@@ -446,8 +449,16 @@
     </footer>
 
     <!--COOKIES-->
+    <div class="aviso-cookies" id="aviso-cookies">
+		<img class="galleta" src="./img/cookie.svg" alt="Galleta">
+		<h3 class="titulo">Cookies</h3>
+		<p class="parrafo">Utilizamos cookies propias y de terceros para mejorar nuestros servicios.</p>
+		<button class="boton" id="btn-aceptar-cookies">De acuerdo</button>
+		<a class="enlace" href="/miAppHamburguesa/Frontend/public/html_Español/aviso-cookies.html">Aviso de Cookies</a>
+	</div>
+	<div class="fondo-aviso-cookies" id="fondo-aviso-cookies"></div>
 
-      
+	<script src="/miAppHamburguesa/Frontend/src/js/cookies.js"></script>
 
     <!--Links de Scripts-->
     <script src="/miAppHamburguesa/Frontend/src/js/scrollnavbar.js"></script>
