@@ -150,14 +150,14 @@ main {
     overflow: auto; /* Asegura el desplazamiento si el contenido es muy largo */
 }
 h2 {
-    color: #e95420; /* Cambia al color deseado */
+    color: #f37805; /* Cambia al color deseado */
     padding: 10px 15px; /* Espacio alrededor del texto del título */
     margin: 20px 0; /* Espacio antes y después del título */
     font-family: 'Sedgwick Ave', cursive;
     font-size: 35px;
 }
 h3 {
-    color: #e95420; /* Para los títulos de subsección */
+    color: #f37805; /* Para los títulos de subsección */
     margin-top: 30px; /* Más espacio antes de cada subsección */
     font-size: 25px;
 }
