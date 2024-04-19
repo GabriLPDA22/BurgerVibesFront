@@ -1,0 +1,47 @@
+/* Estilos para el interruptor de idioma */
+.language-switcher {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000; /* Asegurarse de que esté encima de otros elementos */
+}
+
+.language-button {
+    background-color: #ffa500; /* Un color naranja para el botón */
+    border: none;
+    border-radius: 5px; /* Bordes redondeados pero no completamente circulares */
+    width: 100px;
+    height: 40px;
+    font-weight: bold; /* Texto en negrita */
+    color: white; /* Texto en color blanco */
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2); /* Sombra para dar profundidad */
+    transition: background-color 0.3s; /* Transición suave para el hover */
+}
+
+.language-button:hover {
+    background-color: #ff8c00; /* Un color naranja más oscuro al pasar el ratón */
+}
+
+.dropdown-menu {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-top: 5px; /* Espacio entre el botón y el menú */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    padding: 10px;
+    position: absolute;
+    right: 0;
+}
+
+.dropdown-item {
+    display: block;
+    padding: 5px 10px;
+    color: #333;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.dropdown-item:hover {
+    background-color: #f0f0f0; /* Un suave fondo gris para los items al hacer hover */
+}

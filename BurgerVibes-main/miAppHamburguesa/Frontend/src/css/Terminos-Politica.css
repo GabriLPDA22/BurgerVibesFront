@@ -1,0 +1,393 @@
+body,
+html {
+    background-color: #000000;
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth
+}
+
+header {
+    background-image: url(/miAppHamburguesa/Frontend/src/assets/img/Fondo_Hero.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    margin-bottom: -3%;
+}
+
+/* Transiciones suaves para el cuerpo de la página */
+body.fade-out {
+    opacity: 0;
+    transition: opacity 0.5s ease-out;
+}
+
+body.fade-in {
+    opacity: 1;
+    transition: opacity 0.5s ease-in;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+    background-color: transparent;
+    /* Color inicial de la barra de navegación */
+    width: 100%;
+    z-index: 1000;
+    transition: all 0.3s ease-in-out;
+    /* Agregamos una transición suave */
+}
+
+.navbar-toggler {
+    display: none;
+    /* Oculta el toggler por defecto */
+    cursor: pointer;
+}
+
+/* Cambiar la clase 'scrolled' al hacer scroll usando JavaScript */
+.navbar.scrolled {
+    background-color: #000;
+}
+
+.close-btn {
+    display: none;
+}
+
+.container-xxl {
+    max-width: 1290px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.navbar-brand img {
+    width: 250px;
+    height: auto;
+}
+
+.navbar-nav {
+    display: flex;
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+    flex-grow: 1;
+    justify-content: center;
+    gap: 20px;
+    /* Distancia entre los elementos del menú */
+}
+
+.navbar-nav .nav-link {
+    font-family: 'Sedgwick Ave', cursive;
+    font-size: 20px;
+    color: #FFF;
+    text-decoration: none;
+    /* Quita la decoración de subrayado */
+    padding: 0.5rem 1rem;
+}
+
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link:focus {
+    color: #F67906;
+}
+
+
+.pedido-online {
+    background-color: #F67906;
+    /* Color de fondo del botón */
+    border: 1px solid #F67906;
+    /* Borde del botón */
+    border-radius: 0.25rem;
+    /* Borde redondeado */
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    color: #000;
+    font-family: 'Sedgwick Ave', cursive;
+    font-size: 20px;
+}
+
+.pedido-online:hover,
+.pedido-online:focus {
+    background-color: #ffffff;
+    /* Color de fondo del botón al pasar el ratón */
+    color: #000;
+    /* Color del texto al pasar el ratón */
+}
+
+.reserva-online {
+    background-color: #ffffff;
+    /* Color de fondo del botón */
+    border: 1px solid #F67906;
+    /* Borde del botón */
+    border-radius: 0.25rem;
+    /* Borde redondeado */
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    color: #000;
+    font-family: 'Sedgwick Ave', cursive;
+    font-size: 20px;
+}
+
+.reserva-online:hover,
+.reserva-online:focus {
+    background-color: #f1f1f1;
+    /* Color de fondo del botón al pasar el ratón */
+    color: #000;
+    /* Color del texto al pasar el ratón */
+}
+
+
+/*TERMINOS y PRIVACIDAD*/
+
+main {
+    width: 90%;
+    max-width: 1000px; /* Aumenta para un ancho mayor */
+    margin: 40px auto; /* Aumenta el margen superior e inferior */
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    overflow: auto; /* Asegura el desplazamiento si el contenido es muy largo */
+}
+h2 {
+    color: #f37805; /* Cambia al color deseado */
+    padding: 10px 15px; /* Espacio alrededor del texto del título */
+    margin: 20px 0; /* Espacio antes y después del título */
+    font-family: 'Sedgwick Ave', cursive;
+    font-size: 35px;
+}
+h3 {
+    color: #f37805; /* Para los títulos de subsección */
+    margin-top: 30px; /* Más espacio antes de cada subsección */
+    font-size: 25px;
+}
+p {
+    text-align: justify;
+    line-height: 1.8; /* Espacio más amplio entre líneas para mejorar la legibilidad */
+    margin: 10px 0 20px; /* Espacio antes y después de cada párrafo */
+    color: #fff;
+    font-size: 20px;
+}
+
+/*FOOTER*/
+.footer {
+    background-color: #000000;
+    color: #fff;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+.footer-credits {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.footer-column {
+    width: 30%;
+}
+
+.footer-section h4 {
+    color: #F67906;
+    margin-bottom: 15px;
+    text-align: center;
+    font-family: 'Sedgwick Ave', cursive;
+    font-size: 20px;
+
+}
+
+.footer-section p {
+    font-family: 'Times New Roman', Times, serif;
+    color: #ff9100;
+    font-size: 20px;
+}
+
+#texto-correo-footer {
+    color: #f1f1f1;
+}
+
+#ubi-zaragoza, #ubi-valencia{
+    color: #f1f1f1;
+}
+
+#TrabajaConNostros{
+    font-family: 'Sedgwick Ave', cursive;
+    color: #ff9100;
+    font-size: 20px;
+}
+
+
+.footer-section h3 {
+    color: #F67906;
+}
+
+.footer-section h3,
+.footer-section p,
+.footer-section a {
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.footer-section a {
+    text-decoration: none;
+    color: #fff;
+    font-family: Arial, Helvetica, sans-serif
+}
+
+.horarios-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.horarios-table th,
+.horarios-table td {
+    border: 1px solid #ddd;
+    padding: 5px;
+    text-align: center;
+}
+
+.ubi1,
+.ubi2 {
+    width: 80%;
+    /* Establece un ancho definido para los iframes */
+    max-width: 400px;
+    /* Opcional: un ancho máximo para los iframes */
+    height: auto;
+    /* Altura automática basada en el ancho */
+    border-radius: 10px;
+    /* Estilo para redondear las esquinas del iframe */
+    margin-left: 21%;
+    /* Remueve cualquier margen que pudiera interferir */
+
+}
+
+
+.footer-section {
+    margin-bottom: 20px;
+    display: grid;
+}
+
+/*COPYRIRHT-FOOTER*/
+
+.pie-de-pagina-contenedor {
+    background-color: #000;
+    color: #fff;
+    padding: 20px 0;
+    display: flex;
+    justify-content: center; /* Centra el contenido */
+    align-items: center; /* Alineación vertical */
+    flex-wrap: wrap; /* Permite la envoltura para evitar desbordamiento */
+    border-top: solid 5px #F67906;
+}
+
+.contenido-pie {
+    display: flex;
+    justify-content: space-between; /* Centra los elementos internos */
+    align-items: center;
+    flex-grow: 1; /* Permite que el contenedor crezca */
+}
+
+.logo-pie {
+    height: 80px; /* Altura del logo más grande */
+    width: auto; /* Mantiene la proporción del logo */
+    order: 1; /* Orden de aparición */
+   
+}
+
+.derechos {
+    font-size: 1rem; /* Tamaño del texto de derechos de autor */
+    order: 2; /* Orden de aparición */
+}
+
+.hecho-por {
+    font-size: 20px; 
+    order: 3; /* Orden de aparición */
+    margin-left: 20px; /* Espacio a la izquierda para separar del texto de derechos */
+    transform: translateX(-50%);
+    font-family: 'Sedgwick Ave', cursive;
+    color: #f37805;
+}
+
+.icono-instagram {
+    order: 4; /* Orden de aparición */
+}
+
+.imagen-instagram {
+    height: 30px; /* Altura para el icono de Instagram */
+    width: auto; /* Mantiene la proporción */
+    margin-left: 20px; /* Espacio a la izquierda para separar del texto 'Hecho con ♥ por' */
+}
+
+/* Puedes querer agregar más estilos para adaptabilidad y diseño responsive */
+@media (max-width: 768px) {
+    .contenido-pie {
+        flex-direction: column; /* Alinea los elementos verticalmente en pantallas pequeñas */
+        text-align: center;
+    }
+
+    .logo-pie,
+    .imagen-instagram {
+        width: 40px; /* Ajusta el tamaño para pantallas pequeñas */
+    }
+}
+
+/*RESPONSIVE NAVBAR*/
+
+@media (max-width: 1120px) {
+    .pedido-online {
+        padding: auto;
+        text-align: center;
+    }
+}
+
+/* Para pantallas menores a 990px */
+@media (max-width: 990px) {
+
+    /* Ocultamos el botón "Pide online" */
+    .pedido-online {
+        display: none;
+    }
+
+    /* Mostramos el botón de menú de hamburguesa */
+    .navbar-toggler {
+        display: block;
+        background-color: #FFA500;
+        /* Fondo naranja para que resalte */
+        margin-left: auto;
+        /* Para alinear a la derecha */
+        border-radius: 5px;
+        /* Si quieres bordes redondeados */
+        font-size: 1.5rem;
+        /* Ajusta al tamaño que prefieras */
+        border: none;
+    }
+
+    /* Hacemos que la navegación sea vertical y ocultamos los elementos */
+    .navbar-nav {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        background-color: #000;
+        /* El mismo color de fondo que tu navbar */
+    }
+
+    /* Cuando se presiona el botón de hamburguesa, mostramos los elementos */
+    .responsive {
+        display: flex;
+    }
+
+    .close-btn {
+        display: block;
+    }
+
+}
+
+/*RESPONSIVE DEL FOOTER*/
+@media (max-width: 768px) {
+    .footer-column {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+}
