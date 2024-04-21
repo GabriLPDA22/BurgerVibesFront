@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', function () {
     
     function updateSlidesPosition() {
         slides.forEach((slide, index) => {
+            slide.style.transition = 'none';  // Desactivar la transición durante el cálculo de posición
             if (index < currentSlide) {
                 slide.style.transform = 'translateX(-100%)';
             } else if (index > currentSlide) {
@@ -13,12 +14,15 @@ document.addEventListener('DOMContentLoaded', function () {
             } else {
                 slide.style.transform = 'translateX(0)';
             }
+            slide.offsetHeight; // Provoca un reflow para que la transición se desactive realmente
+            slide.style.transition = 'transform 0.5s ease-out'; // Reactiva la transición para la animación
         });
     }
+    
 
     function showSlide(index) {
         if (index >= totalSlides) index = 0;
-        if (index < 0) index = totalSlides - 2;
+        if (index < 0) index = totalSlides - 1;
 
         slides.forEach((slide) => slide.classList.remove('active'));
         dots.forEach((dot) => dot.classList.remove('active'));
@@ -34,12 +38,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
     prevButton.addEventListener('click', function (e) {
         e.preventDefault();
-        showSlide(currentSlide + 1);  // Invertir la dirección del movimiento aquí
+        showSlide(currentSlide - 1); // Mover al slide anterior
     });
 
     nextButton.addEventListener('click', function (e) {
         e.preventDefault();
-        showSlide(currentSlide - 1);  // Invertir la dirección del movimiento aquí
+        showSlide(currentSlide + 1); // Mover al slide siguiente
     });
 
     dots.forEach((dot, index) => {

@@ -1,5 +1,5 @@
 window.addEventListener('load', function() {
-    var loaderWrapper = document.getElementById('burger-loader-wrapper');
+    const loaderWrapper = document.getElementById('burger-loader-wrapper');
     // Se asegura de que el loader se oculte de forma suave
     loaderWrapper.style.opacity = '0';
     loaderWrapper.style.transition = 'opacity 0.5s ease-in-out';
