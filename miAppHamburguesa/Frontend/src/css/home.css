@@ -794,4 +794,30 @@ body.fade-in {
         width: 100%;
         margin-bottom: 20px;
     }
+
+    .contenido-pie{
+        display: flex;
+        flex-direction: column;
+
+    }
+
+    .logo-pie {
+        height: 80px; /* Altura del logo más grande */
+        width: auto; /* Mantiene la proporción del logo */
+        order: 1; /* Orden de aparición */
+       
+    }
+
+    .hecho-por {
+        font-size: 18px; 
+        order: 3; /* Orden de aparición */
+        font-family: 'Sedgwick Ave', cursive;
+        color: #f37805;
+        margin-left: 150px;
+        margin-bottom: 20px;
+    }
+
+    .icono-instagram {
+        margin-right: 20px;
+    }
 }
