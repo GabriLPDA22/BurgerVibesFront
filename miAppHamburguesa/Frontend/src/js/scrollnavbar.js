@@ -1,16 +1,16 @@
-document.addEventListener('DOMContentLoaded', function () {
+// Esperar a que el DOM esté cargado completamente
+document.addEventListener('DOMContentLoaded', function() {
   var navbarToggler = document.querySelector('.navbar-toggler');
   var navbarNav = document.querySelector('.navbar-nav');
-  var closeButton = document.querySelector('.close-btn');
-  var body = document.body;
+  var customModalClose = document.getElementById('customModalClose');
 
-  navbarToggler.addEventListener('click', function () {
-    navbarNav.classList.add('responsive');
-    body.classList.add('body-fixed'); // Añade la clase al body para impedir el desplazamiento
+  // Evento para abrir el menú
+  navbarToggler.addEventListener('click', function() {
+      navbarNav.classList.add('open');
   });
 
-  closeButton.addEventListener('click', function() {
-    navbarNav.classList.remove('responsive');
-    body.classList.remove('body-fixed'); // Quita la clase del body para permitir el desplazamiento
+  // Evento para cerrar el menú
+  customModalClose.addEventListener('click', function() {
+      navbarNav.classList.remove('open');
   });
 });

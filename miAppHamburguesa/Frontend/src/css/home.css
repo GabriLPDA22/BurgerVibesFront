@@ -20,6 +20,14 @@ body.fade-out {
     transition: opacity 0.5s ease-out;
 }
 
+.logo-responsive {
+    display: none;
+}
+
+.reserva-online-responsive {
+    display: none;
+}
+
 body.fade-in {
     opacity: 1;
     transition: opacity 0.5s ease-in;
@@ -49,8 +57,9 @@ body.fade-in {
     background-color: #000;
 }
 
-.close-btn {
+.custom-close-responsive {
     display: none;
+    z-index: 1;
 }
 
 .container-xxl {
@@ -115,7 +124,8 @@ body.fade-in {
     /* Color del texto al pasar el ratón */
 }
 
-.reserva-online {
+.reserva-online,
+.reserva-online-responsive {
     background-color: #ffffff;
     /* Color de fondo del botón */
     border: 1px solid #F67906;
@@ -130,7 +140,9 @@ body.fade-in {
 }
 
 .reserva-online:hover,
-.reserva-online:focus {
+.reserva-online:focus,
+.reserva-online-responsive:hover,
+.reserva-online-responsive:focus {
     background-color: #f1f1f1;
     /* Color de fondo del botón al pasar el ratón */
     color: #000;
@@ -159,7 +171,7 @@ body.fade-in {
     flex-wrap: wrap;
 }
 
-.hero-column {
+.hero-column, .hero-column2 {
     flex: 0 0 50%;
     max-width: 50%;
 }
@@ -477,7 +489,7 @@ body.fade-in {
     color: #F67906;
     font-family: 'Sedgwick Ave', cursive;
     margin-left: 38%;
-    font-size: 70px;
+    font-size: 90px;
     transform: rotate(-15deg);
 }
 
@@ -519,7 +531,8 @@ body.fade-in {
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    box-shadow: inset 0 0 7px 7px #fda604; /* Difuminado en los bordes */
+    box-shadow: inset 0 0 7px 7px #fda604;
+    /* Difuminado en los bordes */
     z-index: -1;
     border-radius: 2%;
 }
@@ -610,11 +623,12 @@ body.fade-in {
     color: #f1f1f1;
 }
 
-#ubi-zaragoza, #ubi-valencia{
+#ubi-zaragoza,
+#ubi-valencia {
     color: #f1f1f1;
 }
 
-#TrabajaConNostros{
+#TrabajaConNostros {
     font-family: 'Sedgwick Ave', cursive;
     color: #ff9100;
     font-size: 20px;
@@ -678,62 +692,67 @@ body.fade-in {
     color: #fff;
     padding: 20px 0;
     display: flex;
-    justify-content: center; /* Centra el contenido */
-    align-items: center; /* Alineación vertical */
-    flex-wrap: wrap; /* Permite la envoltura para evitar desbordamiento */
+    justify-content: center;
+    /* Centra el contenido */
+    align-items: center;
+    /* Alineación vertical */
+    flex-wrap: wrap;
+    /* Permite la envoltura para evitar desbordamiento */
     border-top: solid 5px #F67906;
 }
 
 .contenido-pie {
     display: flex;
-    justify-content: space-between; /* Centra los elementos internos */
+    justify-content: space-between;
+    /* Centra los elementos internos */
     align-items: center;
-    flex-grow: 1; /* Permite que el contenedor crezca */
+    flex-grow: 1;
+    /* Permite que el contenedor crezca */
 }
 
 .logo-pie {
-    height: 80px; /* Altura del logo más grande */
-    width: auto; /* Mantiene la proporción del logo */
-    order: 1; /* Orden de aparición */
-   
+    height: 80px;
+    /* Altura del logo más grande */
+    width: auto;
+    /* Mantiene la proporción del logo */
+    order: 1;
+    /* Orden de aparición */
+
 }
 
 .derechos {
-    font-size: 1rem; /* Tamaño del texto de derechos de autor */
-    order: 2; /* Orden de aparición */
+    font-size: 1rem;
+    /* Tamaño del texto de derechos de autor */
+    order: 2;
+    /* Orden de aparición */
 }
 
 .hecho-por {
-    font-size: 20px; 
-    order: 3; /* Orden de aparición */
-    margin-left: 20px; /* Espacio a la izquierda para separar del texto de derechos */
+    font-size: 20px;
+    order: 3;
+    /* Orden de aparición */
+    margin-left: 20px;
+    /* Espacio a la izquierda para separar del texto de derechos */
     transform: translateX(-50%);
     font-family: 'Sedgwick Ave', cursive;
     color: #f37805;
 }
 
 .icono-instagram {
-    order: 4; /* Orden de aparición */
+    order: 4;
+    /* Orden de aparición */
 }
 
 .imagen-instagram {
-    height: 30px; /* Altura para el icono de Instagram */
-    width: auto; /* Mantiene la proporción */
-    margin-left: 20px; /* Espacio a la izquierda para separar del texto 'Hecho con ♥ por' */
+    height: 30px;
+    /* Altura para el icono de Instagram */
+    width: auto;
+    /* Mantiene la proporción */
+    margin-left: 20px;
+    /* Espacio a la izquierda para separar del texto 'Hecho con ♥ por' */
 }
 
-/* Puedes querer agregar más estilos para adaptabilidad y diseño responsive */
-@media (max-width: 768px) {
-    .contenido-pie {
-        flex-direction: column; /* Alinea los elementos verticalmente en pantallas pequeñas */
-        text-align: center;
-    }
 
-    .logo-pie,
-    .imagen-instagram {
-        width: 40px; /* Ajusta el tamaño para pantallas pequeñas */
-    }
-}
 
 
 /*RESPONSIVE NAVBAR*/
@@ -745,72 +764,218 @@ body.fade-in {
     }
 }
 
-/* Para pantallas menores a 990px */
 @media (max-width: 990px) {
-
-    /* Ocultamos el botón "Pide online" */
     .pedido-online {
         display: none;
     }
 
-    /* Mostramos el botón de menú de hamburguesa */
     .navbar-toggler {
         display: block;
         background-color: #FFA500;
-        /* Fondo naranja para que resalte */
         margin-left: auto;
-        /* Para alinear a la derecha */
         border-radius: 5px;
-        /* Si quieres bordes redondeados */
         font-size: 1.5rem;
-        /* Ajusta al tamaño que prefieras */
         border: none;
     }
 
-    /* Hacemos que la navegación sea vertical y ocultamos los elementos */
     .navbar-nav {
-        display: none;
+        position: fixed;
+        top: 0;
+        right: -100%;
+        height: 100vh;
+        width: 350px;
+        background-color: #000;
+        display: flex;
         flex-direction: column;
         align-items: center;
-        width: 100%;
-        background-color: #000;
-        /* El mismo color de fondo que tu navbar */
+        transition: right 0.3s;
+        z-index: 999;
+        padding-top: 3rem;
+        z-index: 1;
     }
 
-    /* Cuando se presiona el botón de hamburguesa, mostramos los elementos */
-    .responsive {
+
+    .navbar-nav.open {
+        display: flex;
+        right: 0;
+    }
+
+    .custom-close-responsive {
+        display: none;
+        position: absolute;
+        top: 10px;
+        right: 5px;
+        color: #fff;
+        font-size: 30px;
+        cursor: pointer;
+        z-index: 2;
+        
+    }
+
+    /* Solo mostramos el botón de cierre cuando .navbar-nav tiene la clase .open */
+    .navbar-nav.open .custom-close-responsive {
+        display: block;
+    }
+
+    .logo-responsive {
+        display: none;
+        margin: 0 auto;
+        width: 240px;
+        margin-top: -30px;
+        /* Adjust this to position your logo */
+    }
+
+    .navbar-nav.open .logo-responsive,
+    .navbar-nav.open .pedido-online,
+    .navbar-nav.open .reserva-online-responsive {
+        display: block;
+        /* Se muestran cuando el menú está abierto */
+    }
+}
+
+
+/*RSPONSIVE-HERO*/
+
+@media(max-width:768px), (max-width: 884px) {
+
+
+
+    .hero-row {
+        display: flex;
+        max-width: 90%;
+        flex-wrap: nowrap;
+
+        img {
+            height: 350px;
+        }
+
+
+    }
+
+    .hero-column {
+        margin-left: 30px;
+    }
+
+    .hero-title {
+        font-size: 30px;
+    }
+
+    .carousel-control prev,
+    .carousel-control.next {
+        display: none;
+    }
+
+
+    .carousel-indicators {
+        display: flex;
+        align-items: center;
+    }
+}
+
+
+
+
+
+/*RESPONSIVE-CONCEPTO*/
+@media (max-width: 768px), (max-width: 884px) {
+    .concepto {
         display: flex;
     }
 
-    .close-btn {
+    .columna {
         display: block;
+    }
+
+    .contenido h2{
+        display: flex;
+        flex-direction: column-reverse;
+    }
+
+    .columna-izquierda,
+    .columna-derecha {
+        max-width: 100%;
+        margin: 0;
+    }
+
+    .hero-subtitle {
+        display: none;
+    }
+
+    .concepto .botones {
+        margin-top: 30px;
+        margin-left: 30%;
+    }
+
+    .contenido p{
+        text-align: center;
+    }
+}
+
+
+
+/*RESPONSIVE GALERIA*/
+
+@media (max-width: 768px), (max-width: 884px) {
+
+    .texto-galeria h2 {
+        font-size: 40px;
+        margin: 0;
+        margin-bottom: 5px;
+        transform: rotate(0);
+        text-align: center;
     }
 
 }
 
+/*RESPONSIVE OPINIONES*/
+
+@media (max-width: 768px), (max-width: 884px),(max-width: 320px) {
+    .container-clientes {
+        flex-direction: column;
+        text-align: center;
+        display: flex;
+        align-items: center;
+
+    }
+
+    .opinion-card {
+        width: 80%;
+    }
+
+    .footer-card {
+        margin-right: auto;
+        margin-right: 30px;
+    }
+}
+
+
 /*RESPONSIVE DEL FOOTER*/
-@media (max-width: 768px) {
+@media (max-width: 768px), (max-width: 884px),(max-width: 320px) {
     .footer-column {
         width: 100%;
         margin-bottom: 20px;
     }
 
-    .contenido-pie{
-        display: flex;
+    .contenido-pie {
         flex-direction: column;
-
+        /* Alinea los elementos verticalmente en pantallas pequeñas */
+        text-align: center;
     }
 
     .logo-pie {
-        height: 80px; /* Altura del logo más grande */
-        width: auto; /* Mantiene la proporción del logo */
-        order: 1; /* Orden de aparición */
-       
+        height: 80px;
+        /* Altura del logo más grande */
+        width: auto;
+        /* Mantiene la proporción del logo */
+        order: 1;
+        /* Orden de aparición */
+
     }
 
     .hecho-por {
-        font-size: 18px; 
-        order: 3; /* Orden de aparición */
+        font-size: 18px;
+        order: 3;
+        /* Orden de aparición */
         font-family: 'Sedgwick Ave', cursive;
         color: #f37805;
         margin-left: 150px;
@@ -821,3 +986,119 @@ body.fade-in {
         margin-right: 20px;
     }
 }
+
+
+
+
+/*RESPONSIVE 430*/
+
+/*HERO*/
+
+@media (max-width: 430px),((max-width: 390px)) {
+
+    .hero-button{
+        display: flex;
+        text-align: center;
+        gap: 0px;
+        margin-top: 7px;
+    }
+
+    .hero-column{
+        width: 70%;
+    }
+
+    .carousel-indicators{
+        margin-top: 10px;
+    }
+    .concepto .botones {
+        margin-left: 0%;
+    }
+}
+
+
+
+/*CONCEPTO*/
+
+@media (max-width: 430px),((max-width: 390px)) {
+
+    .botones{
+        margin-left: 5%;
+    }
+
+    .contenido p{
+        text-align: center;
+    }
+    .botones{
+        display: flex;
+        flex-direction: column;
+     }
+}
+
+
+/*FOOTER*/
+
+@media (max-width: 430px),((max-width: 390px)) {
+
+    .ubi1, .ubi2{
+        margin-left: 10%;
+    }
+}
+
+
+/*CONCEPTO*/
+
+@media (max-width:375px) {
+    .contenido p{
+        font-size: 15px;
+        text-align: center;
+    }
+
+
+}   
+
+
+/*320px*/
+
+
+@media (max-width: 320px){
+    .hero-row{
+        display: flex;
+        img{
+            height: auto;
+        }
+    }
+    
+
+    .hero-title{
+        max-width: 100%;
+    }
+
+}
+
+
+@media (max-width: 320px){
+    .texto-galeria h2{
+        font-size: 30px;
+    }
+
+
+    .container-clientes{
+        width: 80%;
+    }
+
+    .card-text, .footer-card{
+        text-align: center;
+    }
+
+    .horarios-table{
+        width: 250px;
+        margin-left: 10px;
+    }
+
+    .footer-section p{
+        font-size: 14px;
+
+    }
+
+}   
+

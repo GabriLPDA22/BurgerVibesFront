@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', function () {
     var reservaMesaButton = document.getElementById('reservaMesaButton');
     var reservaMesaModal = document.getElementById('reservaMesaModal');
     var reservaMesaClose = document.getElementById('reservaMesaClose');
-
+    
     // Función para mostrar el modal de reserva de mesa
     function showReservaMesaModal() {
         reservaMesaModal.style.display = 'block';

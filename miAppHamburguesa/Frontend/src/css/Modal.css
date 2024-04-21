@@ -116,3 +116,64 @@
   border-top: 0.5px solid #ffffff; /* Color y estilo de la línea */
   margin: 20px 0; /* Espacio superior e inferior para la línea */
 }
+
+
+
+
+/*MODAL*/
+@media (max-width: 768px),(max-width: 884px) {
+
+  .modal-warning p{
+      font-size: 20px;
+  }
+
+  .custom-modal-dialog{
+    width: 80%;
+  }
+
+}
+
+/*MODAL*/
+
+@media (max-width: 428px) {
+
+  .modal-warning p{
+      font-size: 12px;
+  }
+
+  .custom-modal-dialog{
+    width: 70%;
+  }
+
+  .location-flag{
+    display: none;
+  }
+
+}
+
+/*MODAL*/
+
+@media (max-width: 375px),((max-width: 390px)) {
+
+  .modal-warning p{
+      font-size: 12px;
+  }
+
+  .custom-modal-dialog{
+    width: 100%;
+    height: auto;
+  }
+
+  .pickup-button{
+    margin-bottom: 20px;
+  }
+
+  .location-name, .location-section{
+    margin-bottom: 0;
+  }
+  
+  .modal-logo{
+    margin-top: 0;
+  }
+
+}

@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="/miAppHamburguesa/Frontend/src/css/BotonLengua.css">
     <link rel="stylesheet" href="/miAppHamburguesa/Frontend/src/css/idioma.css">
     <link rel="stylesheet" href="/miAppHamburguesa/Frontend/src/css/loader.css">
+    <link rel="stylesheet" href="/miAppHamburguesa/Frontend/src/css/cookie.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
     <link href="https://fonts.googleapis.com/css2?family=Sedgwick+Ave&display=swap" rel="stylesheet">
 
@@ -31,6 +32,7 @@
                 <a href="#home" class="navbar-brand">
                     <!-- Asegúrate de tener tu imagen de logo disponible en la ruta especificada -->
                     <img src="/miAppHamburguesa/Frontend/src/assets/img/BurgerVibes.svg" alt="Logotipo" id="logo">
+                    <img src="/miAppHamburguesa/Frontend/src/assets/img/BurgerVibes.svg" alt="Logotipo" id="logo" class="logo-responsive">
                 </a>
                 <ul class="navbar-nav">
                     <li><a href="#concepto" class="nav-link">Concept</a></li>
@@ -39,9 +41,12 @@
                     <li><a href="#galeria" class="nav-link">Galery</a></li>
                     <li><a href="#contacto" class="nav-link">Contact</a></li>
                     <li><a href="#carta" class="nav-link">Menu</a></li>
+                    <button class="close-btn" aria-label="Cerrar menú">&times;</button>
                 </ul>
                 <a href="javascript:void(0);" class="pedido-online" id="navbarOrderButton">order-online</a>
-                <!--<a href="#reserva" class="reserva-online">Reserva online</a>-->
+                <a href="javascript:void(0)" class="reserva-online-responsive" id="ResponsiveReserva">Order-online</a>
+                <button class="navbar-toggler" type="button">&#9776;</button>
+                
             </div>
         </nav>
         <!--HERO-->
@@ -65,7 +70,7 @@
                                             table</a>
                                     </div>
                                 </div>
-                                <div class="hero-column">
+                                <div class="hero-column2">
                                     <div class="hero-hidden">
                                         <p class="hero-subtitle">
                                             ¡Take a bite out of life <br> with Burger Vibes! 🍔
@@ -262,7 +267,7 @@
 
 
     <div class="texto-galeria">
-        <h2 style="font-size: 60px;">@OURVIBES</h2>
+        <h2>@OURVIBES</h2>
     </div>
     <section class="gallery-container" id="galeria">
         <div class="gallery">
@@ -434,8 +439,29 @@
 
     </footer>
 
+    
+    <!--COOKIES-->
+
+    <div class="cookies-msg" id="cookies-msg">
+        <div class="cookies-header">
+            <img src="/miAppHamburguesa/Frontend/src/assets/img/Cookie.png" alt="Cookie Icon" class="cookie-icon" style="width: 70px;">
+            <h2 class="cookies-title">Consentimiento de Cookies</h2>
+        </div>
+        <div class="cookies-txt">
+            <p>Este sitio web utiliza cookies y tecnologías relacionadas, que son pequeños archivos o fragmentos de
+                texto descargados a un dispositivo cuando un visitante accede a un sitio web o aplicación. Al utilizar
+                nuestro sitio web, acepta el uso de cookies para brindarle una mejor experiencia.</p>
+
+            <div class="cookies-btn">
+                <button id="aceptar" onclick="aceptar()">Aceptar</button>
+                <button id="rechazar" onclick="rechazar()">Rechazar</button>
+            </div>
+        </div>
+    </div>
+
 
     <!--Links de Scripts-->
+    <script src="/miAppHamburguesa/Frontend/src/js/cookies.js"></script>
     <script src="/miAppHamburguesa/Frontend/src/js/scrollnavbar.js"></script>
     <script src="/miAppHamburguesa/Frontend/src/js/carrusel.js"></script>
     <script src="/miAppHamburguesa/Frontend/src/js/modal.js"></script>
