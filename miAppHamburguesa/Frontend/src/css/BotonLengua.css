@@ -47,6 +47,13 @@
 }
 
 
+@media (max-width:1024px) {
+    .language-switcher{
+        margin-right: 90px;
+        
+    }
+}
+
 @media (max-width: 768px) {
     .language-switcher{
         margin-right: 40px;

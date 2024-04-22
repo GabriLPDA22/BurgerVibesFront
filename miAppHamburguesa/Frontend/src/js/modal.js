@@ -4,24 +4,28 @@
 */
 
 document.addEventListener('DOMContentLoaded', function () {
-    // Obtén el modal y los botones para abrirlo
     var modal = document.getElementById('customOrderModal');
     var btnNavbar = document.getElementById('navbarOrderButton');
+    var btnNavbar2 = document.getElementById('navbarOrderButton2');
     var btnHero = document.getElementById('heroOrderButton');
     var btnClose = document.getElementById('customModalClose');
+    var body = document.body;
 
     // Función para mostrar el modal
     function showModal() {
-            modal.style.display = 'block';
+        modal.style.display = 'block';
+        body.classList.add('body-no-scroll');
     }
 
     // Función para cerrar el modal
     function closeModal() {
-            modal.style.display = 'none';
+        modal.style.display = 'none';
+        body.classList.remove('body-no-scroll');
     }
 
     // Asigna eventos a los botones
     btnNavbar.onclick = showModal;
+    btnNavbar2.onclick = showModal;
     btnHero.onclick = showModal;
     btnClose.onclick = closeModal;
 
@@ -31,7 +35,7 @@ document.addEventListener('DOMContentLoaded', function () {
             closeModal();
         }
     }
-        });
+});
 
 
 /**
@@ -66,11 +70,11 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 });
+
+
 /**
  * MODAL DEL CONCEPTO
  */
-
-
 document.addEventListener('DOMContentLoaded', function() {
     var modalOrder = document.getElementById('customOrderModal');
     var modalReserva = document.getElementById('reservaMesaModal');
@@ -114,3 +118,6 @@ document.addEventListener('DOMContentLoaded', function() {
 /**
  * MODAL DE LA CARTA
  */
+
+
+

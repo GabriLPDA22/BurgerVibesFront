@@ -8,6 +8,7 @@
   height: 100%;
   background-color: rgba(0, 0, 0, 0.6);
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  overflow-y: auto;
 }
 
 .custom-modal-dialog {
@@ -120,6 +121,8 @@
 
 
 
+
+
 /*MODAL*/
 @media (max-width: 768px),(max-width: 884px) {
 
@@ -135,19 +138,20 @@
 
 /*MODAL*/
 
-@media (max-width: 428px) {
+@media (max-width: 430px) {
 
   .modal-warning p{
       font-size: 12px;
   }
 
   .custom-modal-dialog{
-    width: 70%;
+    width: 100%;
   }
 
   .location-flag{
     display: none;
   }
+
 
 }
 

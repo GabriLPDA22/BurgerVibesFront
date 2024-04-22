@@ -30,7 +30,7 @@
     <header>
         <nav id="container-xxl" class="container-xxl">
             <div class="navbar">
-                <a href="#home" class="navbar-brand">
+                <a href="#" class="navbar-brand">
                     <!-- Asegúrate de tener tu imagen de logo disponible en la ruta especificada -->
                     <img src="/miAppHamburguesa/Frontend/src/assets/img/BurgerVibes.svg" alt="Logotipo" id="logo">
                     
@@ -45,16 +45,17 @@
                     <li><a href="#Contacto" class="nav-link">Contacto</a></li>
                     <li><a href="es_carta.html" class="nav-link">Carta</a></li>
                     <span id="customModalClose" class="custom-close-responsive">&times;</span>
-                    <a href="javascript:void(0);" class="pedido-online-responsive" id="navbarOrderButton">Pide online</a>
+                    <a href="javascript:void(0);" class="pedido-online-responsive" id="navbarOrderButton2">Pide online</a>
                     <a href="#" class="reserva-online-responsive" id="reservaMesaButton">Reserva
                         mesa</a>
                 </ul>
                 <a href="javascript:void(0);" class="pedido-online" id="navbarOrderButton">Pide online</a>
             </div>
         </nav>
+        </nav>
 
         <!--HERO-CARRUSEL-->
-        <div class="container-hero" >
+        <div class="container-hero">
             <div id="hero" class="hero carousel">
                 <div class="carousel-inner">
                     <!-- Slide 1 -->
@@ -88,26 +89,13 @@
                     </div>
                     <!-- Slide 2 con la nueva imagen promocional -->
                     <div class="carousel-item" id="GranBurger">
-                        <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu_Hamburguesa.png" 
+                        <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu_Hamburguesa.png"
                             alt="Promoción La Gran Burger" class="Foto2">
                     </div>
                     <!-- Slide 3 -->
                     <div class="carousel-item" id="Slide3">
-                        <div class="hero-content">
-                            <div class="hero-row">
-                                <div class="hero-column">
-                                    <p class="hero-subtitle2" style="margin-top: 70px;">
-                                        ¡Aprovecha ya! 🎉 2x1 en todos los combos de domingo a jueves.
-                                        ¡No esperes más para disfrutar de tus hamburguesas favoritas!
-                                    </p>
-                                </div>
-                                <div class="hero-column">
-                                    <img src="/miAppHamburguesa/Frontend/src/assets/img/2x1_Español.png"
-                                        alt="Nueva Hamburguesa" id="2x1"
-                                        class="Foto3">
-                                </div>
-                            </div>
-                        </div>
+                        <img src="/miAppHamburguesa/Frontend/src/assets/img/2x1_Español.png" alt="Nueva Hamburguesa"
+                            id="2x1" class="Foto3">
                     </div>
                     <!-- Continuar con los demás slides si es necesario -->
 
@@ -146,7 +134,7 @@
 
     <!--Modal (Formulario de pedido)-->
 
-    <!-- Modal Personalizado -->
+    <!-- Modal PEDIDO -->
     <div id="customOrderModal" class="custom-modal">
         <div class="custom-modal-dialog">
             <div class="custom-modal-content">
@@ -251,7 +239,7 @@
                             fortalecen.</p>
                         <div class="botones">
                             <a href="javascript:void(0);" class="BotonPedido btn-order">Haz tu Pedido</a>
-                            <a href="javascript:void(0);" class="BotonReserva btn-reserva">Reserva una Mesa</a>
+                            <a href="javascript:void(0);" class="BotonReserva btn-reserva ">Reserva una Mesa</a>
                         </div>
 
 
@@ -260,7 +248,7 @@
                 <!-- Columna derecha: Imagen o video -->
                 <div class="columna-derecha">
                     <video src="/miAppHamburguesa/Frontend/src/assets/Videos/ConceptoBueno.mp4"
-                        style=" margin-top: 25%; margin-right:auto; width: 100%;" class="img-fluid mb-3"
+                        class="img-fluid mb-3" id="Video"
                         title="Fundadores de BurgerVibes" alt="Alfonso y Gabriel, los fundadores de BurgerVibes"
                         playsinline autoplay muted loop></video>
                 </div>
@@ -286,7 +274,9 @@
             <img src="/miAppHamburguesa/Frontend/src/assets/img/hamburguesa4.jpg" alt="Hamburguesa 4"
                 class="gallery-item">
             <img src="/miAppHamburguesa/Frontend/src/assets/img/BurgerVibes.svg" alt="Hamburguesa 5"
-                class="gallery-item">
+                class="gallery-item" id="CambioImagen">
+            <img src="/miAppHamburguesa/Frontend/src/assets/img/hamburguesa1.jpg" alt="CambioImagen" id="Tablet" 
+                class="gallery-item">    
             <img src="/miAppHamburguesa/Frontend/src/assets/img/hamburguesa5.jpg" alt="Hamburguesa 6"
                 class="gallery-item">
         </div>
@@ -458,7 +448,8 @@
 
     <div class="cookies-msg" id="cookies-msg">
         <div class="cookies-header">
-            <img src="/miAppHamburguesa/Frontend/src/assets/img/Cookie.png" alt="Cookie Icon" class="cookie-icon" style="width: 70px;">
+            <img src="/miAppHamburguesa/Frontend/src/assets/img/Cookie.png" alt="Cookie Icon" class="cookie-icon"
+                style="width: 70px;">
             <h2 class="cookies-title">Consentimiento de Cookies</h2>
         </div>
         <div class="cookies-txt">

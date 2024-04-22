@@ -20,6 +20,9 @@ body.fade-out {
     transition: opacity 0.5s ease-out;
 }
 
+
+
+
 .logo-responsive {
     display: none;
 }
@@ -219,7 +222,7 @@ body.fade-in {
 }
 
 
-.hero-subtitle, .hero-subtitle2 {
+.hero-subtitle{
     font-family: 'Sedgwick Ave', cursive;
     color: #fff;
     font-size: 39px;
@@ -365,8 +368,6 @@ body.fade-in {
 }
 
 /*CONCEPTO*/
-/* Estilos para la sección de concepto */
-/* Estilos para la sección de concepto */
 .concepto {
     padding: 50px 0;
 }
@@ -406,6 +407,12 @@ body.fade-in {
     justify-content: flex-end;
 
 }
+#Video{
+    margin-top: 25%; 
+    margin-right:auto; 
+    width: 100%;
+}
+ 
 
 .contenido h2 {
     font-size: 40px;
@@ -505,9 +512,9 @@ body.fade-in {
 .texto-galeria h2 {
     color: #F67906;
     font-family: 'Sedgwick Ave', cursive;
-    margin-left: 29%;
+    justify-content: center;
+    text-align: center;
     font-size: 90px;
-    transform: rotate(-15deg);
 }
 
 .gallery {
@@ -526,7 +533,11 @@ body.fade-in {
 
 }
 
-.gallery-item {
+#Tablet{
+    display: none;
+}
+
+.gallery-item{
     width: 100%;
     height: auto;
     aspect-ratio: 1 / 1;
@@ -774,18 +785,7 @@ body.fade-in {
 
 /*RESPONSIVE NAVBAR*/
 
-@media (max-width: 1395px) {
-    .carousel-control prev, .carousel-control.next{
-        display: none;
-    }
-}
 
-@media (max-width: 1120px) {
-    .pedido-online {
-        padding: auto;
-        text-align: center;
-    }
-}
 
 @media (max-width: 1400px){
 
@@ -812,13 +812,6 @@ body.fade-in {
         margin: 0;
     }
 
-    .columna{
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        font-size: 50px;
-    }
-
     .titulo h2{
         display: flex;
         flex-direction: column-reverse;
@@ -827,7 +820,6 @@ body.fade-in {
 
     .texto-galeria h2{
         font-size: 60px;
-        margin-left: 25%;
     }
 
     .concepto p{
@@ -835,6 +827,28 @@ body.fade-in {
         text-align: center;
     }
 
+    #Video{
+        margin-top: 50%;
+    }
+
+}
+
+@media (max-width: 1395px),(max-width: 3000px) {
+
+    .Foto3{
+        margin-left: 25%;
+    }
+
+    .carousel-item.active{
+        height: 685px;
+    }
+}
+
+@media (max-width: 1120px) {
+    .pedido-online {
+        padding: auto;
+        text-align: center;
+    }
 }
 
 @media (max-width: 1095px) {
@@ -854,9 +868,9 @@ body.fade-in {
     .navbar-nav {
         position: fixed;
         top: 0;
-        right: -100%;
-        height: 100vh;
-        width: 350px;
+        right: -100x;
+        height: 100%;
+        width: 400px;
         background-color: #000;
         display: flex;
         flex-direction: column;
@@ -864,7 +878,7 @@ body.fade-in {
         transition: right 0.3s;
         z-index: 999;
         padding-top: 3rem;
-        overflow: scroll;
+        overflow-y: scroll;
     }
 
 
@@ -910,7 +924,9 @@ body.fade-in {
 
 @media(max-width:768px), (max-width: 884px) {
 
-
+    .carousel-item.active{
+        height: 350px;
+    }
 
     .hero-row {
         display: flex;
@@ -932,12 +948,6 @@ body.fade-in {
         font-size: 30px;
     }
 
-    .carousel-control prev,
-    .carousel-control.next {
-        display: none;
-    }
-
-
     .carousel-indicators {
         display: flex;
         align-items: center;
@@ -947,17 +957,15 @@ body.fade-in {
     .Foto2, .Foto3{
         width: 50%;
         height: 354px;
-        margin-left: 25%;
 
     }
 
+    .Foto3{
+        margin-left: 25%;
+    }
     
     .hero-subtitle {
         display: none;
-    }
-
-    .hero-subtitle2{
-        display: flex;
     }
 
 
@@ -984,6 +992,21 @@ body.fade-in {
     .contenido p{
         text-align: center;
     }
+
+    .columna{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        font-size: 50px;
+    }
+
+    #Video{
+        margin-top: 10px;
+    }
+
+    .BotonReserva, .BotonPedido{
+        margin: 10px;
+    }
 }
 
 
@@ -991,6 +1014,19 @@ body.fade-in {
 /*RESPONSIVE GALERIA*/
 
 @media (max-width: 768px), (max-width: 884px) {
+
+    .gallery{
+        display: grid;
+        grid-template-columns: repeat(2, 2fr);
+    }
+
+    #CambioImagen{
+        display: none;
+    }
+
+    #Tablet{
+        display: block;
+    }
 
     .texto-galeria h2 {
         font-size: 40px;
@@ -1061,22 +1097,39 @@ body.fade-in {
     .icono-instagram {
         margin-right: 20px;
     }
+
 }
 
-
-@media (max-width:680px) {
-
-    .hero-subtitle2{
-        display: none;
-    }
-    
-}
 
 /*RESPONSIVE 430*/
 
+/*NAVBVAR*/
+
+@media (max-width:430px) {
+    .navbar-nav{
+        width: 100%;
+    }
+
+    .carousel-item.active{
+        position: relative;
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+    }
+
+    #language-button{
+        margin-left: 50%;
+    }
+
+    .carousel-control.next,.carousel-control-prev-icon{
+        display: none;
+    }
+
+}
+
 /*HERO*/
 
-@media (max-width: 430px),((max-width: 390px)) {
+@media (max-width: 430px),(max-width: 390px) {
 
     .hero-button{
         display: flex;
@@ -1091,9 +1144,6 @@ body.fade-in {
 
     .carousel-indicators{
         margin-top: 10px;
-    }
-    .concepto .botones {
-        margin-left: 0%;
     }
 
     .carousel-item.active{
@@ -1134,12 +1184,51 @@ body.fade-in {
     .contenido p{
         text-align: center;
     }
-    .botones{
+
+    .concepto .botones {
+        margin-left: 0%;
         display: flex;
         flex-direction: column;
-     }
+        margin: 0;
+    }
+
+    .BotonReserva, .BotonPedido{
+        margin: 0;
+    }
+
 }
 
+
+/*OPINIONES*/
+
+@media (max-width:430px) {
+    .opinion-card{
+        text-align: left;
+    }
+
+    .card-text{
+        padding-bottom: 25px;
+        margin-left: 0;
+        
+    }
+
+    .footer-card{
+        text-align: left;
+        margin-left: 25px;
+        margin-right:0 ;
+    }
+}
+
+/*GALERIA*/
+
+@media (max-width:430px) {
+    .gallery{
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    
+}
 
 /*FOOTER*/
 
