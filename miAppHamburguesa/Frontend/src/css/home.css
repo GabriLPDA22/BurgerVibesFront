@@ -24,7 +24,11 @@ body.fade-out {
     display: none;
 }
 
-.reserva-online-responsive {
+.pedido-online-responsive {
+    display: none;
+}
+
+.reserva-online-responsive{
     display: none;
 }
 
@@ -44,6 +48,7 @@ body.fade-in {
     z-index: 1000;
     transition: all 0.3s ease-in-out;
     /* Agregamos una transición suave */
+    
 }
 
 .navbar-toggler {
@@ -57,10 +62,7 @@ body.fade-in {
     background-color: #000;
 }
 
-.custom-close-responsive {
-    display: none;
-    z-index: 1;
-}
+
 
 .container-xxl {
     max-width: 1290px;
@@ -102,7 +104,7 @@ body.fade-in {
 }
 
 
-.pedido-online {
+.pedido-online, .pedido-online-responsive {
     background-color: #F67906;
     /* Color de fondo del botón */
     border: 1px solid #F67906;
@@ -117,7 +119,9 @@ body.fade-in {
 }
 
 .pedido-online:hover,
-.pedido-online:focus {
+.pedido-online:focus,
+.pedido-online-responsive:hover,
+.pedido-online-responsive:focus {
     background-color: #ffffff;
     /* Color de fondo del botón al pasar el ratón */
     color: #000;
@@ -215,7 +219,7 @@ body.fade-in {
 }
 
 
-.hero-subtitle {
+.hero-subtitle, .hero-subtitle2 {
     font-family: 'Sedgwick Ave', cursive;
     color: #fff;
     font-size: 39px;
@@ -249,6 +253,19 @@ body.fade-in {
 
 .carousel-item.active {
     display: block;
+    width: 100%;
+    height: auto;
+}
+
+.Foto2{
+    margin-left: 25%;
+    height: 680px;
+}
+
+.Foto3{
+    object-fit: contain; 
+    max-height: 681px; 
+    max-width: 681px;
 }
 
 .carousel-control-prev-icon,
@@ -488,7 +505,7 @@ body.fade-in {
 .texto-galeria h2 {
     color: #F67906;
     font-family: 'Sedgwick Ave', cursive;
-    margin-left: 38%;
+    margin-left: 29%;
     font-size: 90px;
     transform: rotate(-15deg);
 }
@@ -757,6 +774,12 @@ body.fade-in {
 
 /*RESPONSIVE NAVBAR*/
 
+@media (max-width: 1395px) {
+    .carousel-control prev, .carousel-control.next{
+        display: none;
+    }
+}
+
 @media (max-width: 1120px) {
     .pedido-online {
         padding: auto;
@@ -764,7 +787,57 @@ body.fade-in {
     }
 }
 
-@media (max-width: 990px) {
+@media (max-width: 1400px){
+
+    .hero-title{
+        padding-left: 7px;
+    }
+
+    .hero-button{
+        margin-left: 5px;
+    }
+
+    .concepto .botones{
+        display: flex;
+        flex-direction: row;
+        margin: 0;
+        gap: 10px;
+        justify-content: center;
+
+    }
+
+    .columna-izquierda,
+    .columna-derecha {
+        max-width: 100%;
+        margin: 0;
+    }
+
+    .columna{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        font-size: 50px;
+    }
+
+    .titulo h2{
+        display: flex;
+        flex-direction: column-reverse;
+        
+    }
+
+    .texto-galeria h2{
+        font-size: 60px;
+        margin-left: 25%;
+    }
+
+    .concepto p{
+        align-items: center;
+        text-align: center;
+    }
+
+}
+
+@media (max-width: 1095px) {
     .pedido-online {
         display: none;
     }
@@ -791,7 +864,7 @@ body.fade-in {
         transition: right 0.3s;
         z-index: 999;
         padding-top: 3rem;
-        z-index: 1;
+        overflow: scroll;
     }
 
 
@@ -818,16 +891,15 @@ body.fade-in {
     }
 
     .logo-responsive {
-        display: none;
-        margin: 0 auto;
-        width: 240px;
-        margin-top: -30px;
-        /* Adjust this to position your logo */
+        position: relative;
+        margin-top: 0px;
+        width: 240px; 
     }
 
     .navbar-nav.open .logo-responsive,
     .navbar-nav.open .pedido-online,
-    .navbar-nav.open .reserva-online-responsive {
+    .navbar-nav.open .reserva-online-responsive,
+    .pedido-online-responsive {
         display: block;
         /* Se muestran cuando el menú está abierto */
     }
@@ -870,6 +942,25 @@ body.fade-in {
         display: flex;
         align-items: center;
     }
+
+    
+    .Foto2, .Foto3{
+        width: 50%;
+        height: 354px;
+        margin-left: 25%;
+
+    }
+
+    
+    .hero-subtitle {
+        display: none;
+    }
+
+    .hero-subtitle2{
+        display: flex;
+    }
+
+
 }
 
 
@@ -878,32 +969,16 @@ body.fade-in {
 
 /*RESPONSIVE-CONCEPTO*/
 @media (max-width: 768px), (max-width: 884px) {
-    .concepto {
-        display: flex;
-    }
-
-    .columna {
-        display: block;
-    }
 
     .contenido h2{
         display: flex;
         flex-direction: column-reverse;
     }
 
-    .columna-izquierda,
-    .columna-derecha {
-        max-width: 100%;
-        margin: 0;
-    }
-
-    .hero-subtitle {
-        display: none;
-    }
 
     .concepto .botones {
         margin-top: 30px;
-        margin-left: 30%;
+        margin-left: 30px;
     }
 
     .contenido p{
@@ -946,6 +1021,7 @@ body.fade-in {
         margin-right: auto;
         margin-right: 30px;
     }
+
 }
 
 
@@ -988,7 +1064,13 @@ body.fade-in {
 }
 
 
+@media (max-width:680px) {
 
+    .hero-subtitle2{
+        display: none;
+    }
+    
+}
 
 /*RESPONSIVE 430*/
 
@@ -1013,6 +1095,30 @@ body.fade-in {
     .concepto .botones {
         margin-left: 0%;
     }
+
+    .carousel-item.active{
+        width:100%;
+        height:393px;
+        margin: 0;
+        
+    }  
+
+    .Foto2{
+        width: 100%;
+        height: auto;
+        margin: 0;
+    }
+
+    
+    .hero-button{
+        display: none;
+    }
+
+    .navbar{
+        overflow: scroll;
+    }
+
+
 }
 
 
@@ -1061,26 +1167,30 @@ body.fade-in {
 
 
 @media (max-width: 320px){
-    .hero-row{
-        display: flex;
-        img{
-            height: auto;
-        }
-    }
-    
 
     .hero-title{
         max-width: 100%;
     }
 
+    .carousel-item.active{
+        width:100%;
+        height:393px;
+        margin: 0;
+        
+    }  
+
 }
 
 
-@media (max-width: 320px){
+@media (max-width: 320px),(max-width:350px){
     .texto-galeria h2{
         font-size: 30px;
     }
 
+
+    .slogan-section p{
+        font-size: 20px;
+    }
 
     .container-clientes{
         width: 80%;
@@ -1098,6 +1208,16 @@ body.fade-in {
     .footer-section p{
         font-size: 14px;
 
+    }
+
+    .concepto .botones{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .navbar-nav {
+        width: 319px;
+       
     }
 
 }   

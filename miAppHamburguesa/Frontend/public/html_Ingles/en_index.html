@@ -32,21 +32,23 @@
                 <a href="#home" class="navbar-brand">
                     <!-- Asegúrate de tener tu imagen de logo disponible en la ruta especificada -->
                     <img src="/miAppHamburguesa/Frontend/src/assets/img/BurgerVibes.svg" alt="Logotipo" id="logo">
-                    <img src="/miAppHamburguesa/Frontend/src/assets/img/BurgerVibes.svg" alt="Logotipo" id="logo" class="logo-responsive">
+
                 </a>
+                <button class="navbar-toggler" type="button">&#9776;</button>
                 <ul class="navbar-nav">
+                    <li><img src="/miAppHamburguesa/Frontend/src/assets/img/BurgerVibes.svg" alt="Logotipo" id="logo"
+                            class="logo-responsive"></li>
                     <li><a href="#concepto" class="nav-link">Concept</a></li>
                     <li><a href="#retos" class="nav-link">Allergens</a></li>
                     <li><a href="#opiniones" class="nav-link">Opinions</a></li>
                     <li><a href="#galeria" class="nav-link">Galery</a></li>
                     <li><a href="#contacto" class="nav-link">Contact</a></li>
                     <li><a href="#carta" class="nav-link">Menu</a></li>
-                    <button class="close-btn" aria-label="Cerrar menú">&times;</button>
+                    <span id="customModalClose" class="custom-close-responsive">&times;</span>
+                    <a href="javascript:void(0);" class="pedido-online-responsive"
+                        id="navbarOrderButton">Order-online</a>
+                    <a href="#" class="reserva-online-responsive" id="reservaMesaButton">Book Table</a>
                 </ul>
-                <a href="javascript:void(0);" class="pedido-online" id="navbarOrderButton">order-online</a>
-                <a href="javascript:void(0)" class="reserva-online-responsive" id="ResponsiveReserva">Order-online</a>
-                <button class="navbar-toggler" type="button">&#9776;</button>
-                
             </div>
         </nav>
         <!--HERO-->
@@ -84,15 +86,15 @@
                     </div>
                     <!-- Slide 2 con la nueva imagen promocional -->
                     <div class="carousel-item">
-                        <img src="/miAppHamburguesa/Frontend/src/assets/img/Fotos_ingles/Gran_Promo_Inlges.png"
-                            alt="Promoción La Gran Burger"
-                            style="width:100%; height: 600px; margin-top: 30px; margin-bottom: 51px;">
+                        <img src="/miAppHamburguesa/Frontend/src/assets/img/Fotos_ingles/Menu_hamburguesa_ingles.png"
+                            alt="Promoción La Gran Burger" class="Foto2">
+                            
                     </div>
                     <div class="carousel-item">
                         <div class="hero-content">
                             <div class="hero-row">
                                 <div class="hero-column">
-                                    <p class="hero-subtitle" style="margin-top: 70px;line-height: 35px;">
+                                    <p class="hero-subtitle2" style="margin-top: 70px;line-height: 35px;">
                                         Take advantage now! 🎉 2-for-1 on all combos from Sunday to Thursday.
                                         Don't wait any longer to enjoy your favorite burgers!
 
@@ -416,7 +418,8 @@
                 <div class="footer-section">
                     <h4>Legal</h4>
                     <a href="#">Cookie settings</a>
-                    <a href="/miAppHamburguesa/Frontend/public/html_Ingles/Terminos_Condiciones.html">Terms and conditions of use</a>
+                    <a href="/miAppHamburguesa/Frontend/public/html_Ingles/Terminos_Condiciones.html">Terms and
+                        conditions of use</a>
                     <a href="/miAppHamburguesa/Frontend/public/html_Ingles/Politica_Privacidad.html">Privacy policy</a>
                 </div>
             </div>
@@ -439,22 +442,23 @@
 
     </footer>
 
-    
+
     <!--COOKIES-->
 
     <div class="cookies-msg" id="cookies-msg">
         <div class="cookies-header">
-            <img src="/miAppHamburguesa/Frontend/src/assets/img/Cookie.png" alt="Cookie Icon" class="cookie-icon" style="width: 70px;">
-            <h2 class="cookies-title">Consentimiento de Cookies</h2>
+            <img src="/miAppHamburguesa/Frontend/src/assets/img/Cookie.png" alt="Cookie Icon" class="cookie-icon"
+                style="width: 70px;">
+            <h2 class="cookies-title">Consent of Cookies</h2>
         </div>
         <div class="cookies-txt">
-            <p>Este sitio web utiliza cookies y tecnologías relacionadas, que son pequeños archivos o fragmentos de
-                texto descargados a un dispositivo cuando un visitante accede a un sitio web o aplicación. Al utilizar
-                nuestro sitio web, acepta el uso de cookies para brindarle una mejor experiencia.</p>
+            <p>This website uses cookies and related technologies, which are small files or pieces of text downloaded to
+                a device when a visitor accesses a website or application. By using our website, you agree to the use of
+                cookies to provide you with a better experience.</p>
 
             <div class="cookies-btn">
-                <button id="aceptar" onclick="aceptar()">Aceptar</button>
-                <button id="rechazar" onclick="rechazar()">Rechazar</button>
+                <button id="aceptar" onclick="aceptar()">Acept</button>
+                <button id="rechazar" onclick="rechazar()">Decline</button>
             </div>
         </div>
     </div>

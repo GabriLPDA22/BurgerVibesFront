@@ -33,27 +33,28 @@
                 <a href="#home" class="navbar-brand">
                     <!-- Asegúrate de tener tu imagen de logo disponible en la ruta especificada -->
                     <img src="/miAppHamburguesa/Frontend/src/assets/img/BurgerVibes.svg" alt="Logotipo" id="logo">
-                    <img src="/miAppHamburguesa/Frontend/src/assets/img/BurgerVibes.svg" alt="Logotipo" id="logo" class="logo-responsive">
+                    
                 </a>
                 <button class="navbar-toggler" type="button">&#9776;</button>
                 <ul class="navbar-nav">
+                    <li></li><img src="/miAppHamburguesa/Frontend/src/assets/img/BurgerVibes.svg" alt="Logotipo" id="logo" class="logo-responsive">
                     <li><a href="#concepto" class="nav-link">Concepto</a></li>
                     <li><a href="es_alergenos.html" class="nav-link">Alergenos</a></li>
                     <li><a href="#opiniones" class="nav-link">Opiniones</a></li>
                     <li><a href="#galeria" class="nav-link">Galería</a></li>
                     <li><a href="#Contacto" class="nav-link">Contacto</a></li>
                     <li><a href="es_carta.html" class="nav-link">Carta</a></li>
+                    <span id="customModalClose" class="custom-close-responsive">&times;</span>
+                    <a href="javascript:void(0);" class="pedido-online-responsive" id="navbarOrderButton">Pide online</a>
+                    <a href="#" class="reserva-online-responsive" id="reservaMesaButton">Reserva
+                        mesa</a>
                 </ul>
-
-                <span id="customModalClose" class="custom-close-responsive">&times;</span>
-
                 <a href="javascript:void(0);" class="pedido-online" id="navbarOrderButton">Pide online</a>
-                <a href="javascript:void(0)" class="reserva-online-responsive" id="ResponsiveReserva">Reserva online</a>
             </div>
         </nav>
 
         <!--HERO-CARRUSEL-->
-        <div class="container-hero">
+        <div class="container-hero" >
             <div id="hero" class="hero carousel">
                 <div class="carousel-inner">
                     <!-- Slide 1 -->
@@ -73,7 +74,7 @@
                                             mesa</a>
                                     </div>
                                 </div>
-                                <div class="hero-column">
+                                <div class="hero-column2">
                                     <div class="hero-hidden">
                                         <p class="hero-subtitle">
                                             ¡Dale un mordisco a la vida <br> con Burger Vibes! 🍔
@@ -87,16 +88,15 @@
                     </div>
                     <!-- Slide 2 con la nueva imagen promocional -->
                     <div class="carousel-item" id="GranBurger">
-                        <img src="/miAppHamburguesa/Frontend/src/assets/img/Gran_Promo.png"
-                            alt="Promoción La Gran Burger" 
-                            style="width:100%; height: 600px; margin-top: 30px; margin-bottom: 51px;">
+                        <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu_Hamburguesa.png" 
+                            alt="Promoción La Gran Burger" class="Foto2">
                     </div>
                     <!-- Slide 3 -->
                     <div class="carousel-item" id="Slide3">
                         <div class="hero-content">
                             <div class="hero-row">
                                 <div class="hero-column">
-                                    <p class="hero-subtitle" style="margin-top: 70px;">
+                                    <p class="hero-subtitle2" style="margin-top: 70px;">
                                         ¡Aprovecha ya! 🎉 2x1 en todos los combos de domingo a jueves.
                                         ¡No esperes más para disfrutar de tus hamburguesas favoritas!
                                     </p>
@@ -104,7 +104,7 @@
                                 <div class="hero-column">
                                     <img src="/miAppHamburguesa/Frontend/src/assets/img/2x1_Español.png"
                                         alt="Nueva Hamburguesa" id="2x1"
-                                        style="object-fit: contain; max-height: 681px; max-width: 681px;">
+                                        class="Foto3">
                                 </div>
                             </div>
                         </div>
