@@ -1,4 +1,3 @@
-
 /**
  * MODAL DE PIDE ONLINE
 */
@@ -118,6 +117,3 @@ document.addEventListener('DOMContentLoaded', function() {
 /**
  * MODAL DE LA CARTA
  */
-
-
-

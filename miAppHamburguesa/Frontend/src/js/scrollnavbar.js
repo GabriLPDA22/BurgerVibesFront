@@ -3,7 +3,6 @@ document.addEventListener('DOMContentLoaded', function() {
     var navbarNav = document.querySelector('.navbar-nav');
     var navLinks = document.querySelectorAll('.nav-link'); // Selecciona todos los enlaces de navegación
     var customModalClose = document.getElementById('customModalClose');
-    var btnNavbarOrder = document.getElementById('navbarOrderButton2');
     var btnReservaMesa = document.getElementById('reservaMesaButton');
 
     // Función para cerrar el navbar
@@ -32,10 +31,7 @@ document.addEventListener('DOMContentLoaded', function() {
         link.addEventListener('click', closeNavbar);
     });
 
-    // Evento para abrir el modal de pedidos online y cerrar el navbar
-    btnNavbarOrder.addEventListener('click', function() {
-        openModal('customOrderModal'); // Asegúrate de que el ID del modal es correcto
-    });
+
 
     // Evento para abrir el modal de reserva de mesa y cerrar el navbar
     btnReservaMesa.addEventListener('click', function() {

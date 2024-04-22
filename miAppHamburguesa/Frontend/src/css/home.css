@@ -851,7 +851,7 @@ body.fade-in {
     }
 }
 
-@media (max-width: 1095px) {
+@media (max-width: 1024px) {
     .pedido-online {
         display: none;
     }
@@ -868,7 +868,7 @@ body.fade-in {
     .navbar-nav {
         position: fixed;
         top: 0;
-        right: -100x;
+        right: -1000px;
         height: 100%;
         width: 400px;
         background-color: #000;
@@ -878,9 +878,9 @@ body.fade-in {
         transition: right 0.3s;
         z-index: 999;
         padding-top: 3rem;
-        overflow-y: scroll;
+        overflow-y: auto; /* Usar 'auto' para que el scroll solo aparezca cuando es necesario */
     }
-
+    
 
     .navbar-nav.open {
         display: flex;
