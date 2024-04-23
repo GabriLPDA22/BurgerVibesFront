@@ -52,13 +52,14 @@
 
                     <!--PRIMER ENTRANTE-->
 
-                    <div class="menu-item" class="menu-item" data-product-name="Nachos Rainforest"
-                        data-product-price="12.50"
+                    <div class="menu-item" id="product1"data-product-name="Nachos Rainforest" data-product-price="12.50"
                         data-product-description="Inspirados en rainforest café de Chicago. Totopos de maíz, cheddar cream, guacamole, carne deshilachada, pico de gallo y crema agria."
                         data-product-allergens="Gluten, Sulfitos y trigo"
                         data-product-image1="/miAppHamburguesa/Frontend/src/assets/img/Menu/Nachos.jpg"
-                        data-product-image2="/miAppHamburguesa/Frontend/src/assets/img/Menu/sulphur.svg"
-                        data-product-image3="/miAppHamburguesa/Frontend/src/assets/img/Menu/leche.svg">
+                        data-product-image2="/miAppHamburguesa/Frontend/src/assets/img/Menu/gluten.svg"
+                        data-product-image3="/miAppHamburguesa/Frontend/src/assets/img/Menu/sulphur.svg"
+                        data-product-image4="/miAppHamburguesa/Frontend/src/assets/img/Menu/leche.svg">
+
                         <!-- Columna de imagen -->
                         <div class="menu-item-column image-column">
                             <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/Nachos.jpg" alt="Nachos Rainforest"
@@ -92,40 +93,40 @@
                     <!--SEGUNDO ENTRANTE-->
 
 
-                    <div class="menu-item" data-product-name="Alitas Thai" data-product-price="8.00"
-                        data-product-description="Alitas de pollo cocinadas a baja temperatura sumergidas en una salsa agripicante que te hará volar la cabeza."
-                        data-product-allergens="Gluten, Sulfitos"
-                        data-product-image1="/miAppHamburguesa/Frontend/src/assets/img/Menu/Alitas.jpg"
-                        data-product-image2="/miAppHamburguesa/Frontend/src/assets/img/Menu/sulphur.svg"
-                        data-product-image3="/miAppHamburguesa/Frontend/src/assets/img/Menu/leche.svg">
-                        <!-- Columna de imagen -->
-                        <div class="menu-item-column image-column">
-                            <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/Alitas.jpg" alt="Nachos Rainforest"
-                                class="menu-item-img">
+                    <div class="menu-item" id="product2" data-product-name="Alitas Thai" data-product-price="8.00"
+                    data-product-description="Alitas de pollo cocinadas a baja temperatura sumergidas en una salsa agripicante que te hará volar la cabeza."
+                    data-product-allergens="Gluten, Sulfitos"
+                    data-product-image1="/miAppHamburguesa/Frontend/src/assets/img/Menu/Alitas.jpg"
+                    data-product-image2="/miAppHamburguesa/Frontend/src/assets/img/Menu/gluten.svg"
+                    data-product-image3="/miAppHamburguesa/Frontend/src/assets/img/Menu/sulphur.svg">
+                    <!-- Columna de imagen -->
+                    <div class="menu-item-column image-column">
+                        <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/Alitas.jpg" alt="Nachos Rainforest"
+                            class="menu-item-img">
+                    </div>
+                    <!-- Columna de texto e información -->
+                    <div class="menu-item-column info-column">
+                        <div class="menu-item-header">
+                            <h3 class="menu-item-title">Alitas Thai</h3>
+                            <div class="menu-item-price-action">
+                                <button class="add-button" data-product-id="product1">
+                                    <i class="bi bi-plus-circle"></i>
+                                    <!-- Asumiendo que quieres usar un ícono de 'plus' -->
+                                </button>
+                                <span class="price">8.00 €</span>
+                            </div>
                         </div>
-                        <!-- Columna de texto e información -->
-                        <div class="menu-item-column info-column">
-                            <div class="menu-item-header">
-                                <h3 class="menu-item-title">Alitas Thai</h3>
-                                <div class="menu-item-price-action">
-                                    <button class="add-button">
-                                        <i class="bi bi-plus-circle"></i>
-                                        <!-- Asumiendo que quieres usar un ícono de 'plus' -->
-                                    </button>
-                                    <span class="price">8.00 €</span>
-                                </div>
-                            </div>
-                            <p class="menu-item-description">
-                                Alitas de pollo cocinadas a baja temperatura sumergidas en una salsa agripicante que te
-                                hará volar la cabeza.
-                            </p>
-                            <div class="menu-item-icons">
-                                <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/gluten.svg" alt="gluten">
-                                <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/sulphur.svg" alt="sulfuro">
-                                <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/leche.svg" alt="leche">
-                            </div>
+                        <p class="menu-item-description">
+                            Alitas de pollo cocinadas a baja temperatura sumergidas en una salsa agripicante que te
+                            hará volar la cabeza.
+                        </p>
+                        <div class="menu-item-icons">
+                            <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/gluten.svg" alt="gluten">
+                            <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/sulphur.svg" alt="sulfuro">
                         </div>
                     </div>
+                </div>
+                
 
 
                     <!--TERCER ENTRANTE-->
@@ -337,6 +338,7 @@
         </div>
 
 
+
         <!-- Columna del pedido a la derecha -->
         <div class="order-column">
             <div class="order-header">
@@ -352,16 +354,17 @@
                     <span>Tu pedido está vacío, añade algún producto para continuar</span>
                 </div>
                 <!-- Contenedor para los elementos del pedido -->
-                <div class="order-items" style="display: none;"> <!-- Inicialmente oculto -->
+                <div class="order-items"> <!-- Este es el contenedor de los elementos del pedido -->
                     <!-- Aquí se agregarán los elementos del pedido -->
                 </div>
                 <!-- Total del pedido -->
-                <div class="order-total" style="display: none;"> <!-- Inicialmente oculto -->
+                <div class="order-total"> <!-- Este es el contenedor del total del pedido -->
                     <span>Total:</span>
                     <span class="total-amount">0,00 €</span>
                 </div>
             </div>
         </div>
+
 
 
     </div>
@@ -372,24 +375,22 @@
     <div id="productModal" class="modal" style="display:none;">
         <div class="modal-content">
             <span class="close">&times;</span>
-            <img src="" class="modal-image">
+            <img src="" id="productImage" class="modal-image">
             <h2></h2>
             <p id="descripcion"></p>
             <p id="alegernos"></p>
-            <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/gluten.svg" alt="gluten" style="width: 24px; 
-            height: auto;">
-            <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/sulphur.svg" alt="sulfuro" style="width: 24px; 
-            height: auto;">
+            <img id="allergenImage1" alt="gluten" style="width: 24px; height: auto;">
+            <img id="allergenImage2" alt="sulfuro" style="width: 24px; height: auto;">
+            <img id="allergenImage3" alt="leche" style="width: 24px; height: auto;">
             <div class="quantity-control">
                 <button class="minus-btn">-</button>
-                <input type="number" id="quantity" value="1">
+                <input type="number" id="quantity" value="1" min="1">
                 <button class="plus-btn">+</button>
             </div>
             <div class="modal-footer ">
                 <div class="btn-añadir"></div>
                 <button type="button" class="add-to-cart-btn">
-                    <i class="bi bi-plus-circle-fill"></i>
-                    <span></span>
+                    <span>Añadir al carrito - </span> <!-- El precio se actualizará aquí -->
                 </button>
             </div>
         </div>
@@ -397,10 +398,7 @@
 
 
 
-
     <!--SCRIPT LOGICA DEL MENU-->
-
-    <script src="/miAppHamburguesa/Frontend/src/js/LogicaMenu/TotalPedido.js"></script>
     <script src="/miAppHamburguesa/Frontend/src/js/LogicaMenu/ModalsProductosDinamico.js"></script>
 
 
