@@ -144,3 +144,30 @@
     align-items: stretch;
     flex-direction: column;
 }
+
+
+@media (max-width:800px) {
+    .modal-content{
+        width: 75%;
+        height: auto;
+        border-radius: 2%;
+    }
+
+    .close{
+        margin-right: 5px;
+    }
+}  
+
+@media (max-width:430px) {
+    .modal-content{
+        width: 100%;
+        height: auto;
+        padding-left: 0;
+        padding-right: 0;
+        border-radius: 0;
+    }
+
+    .close{
+        margin-right: 5px;
+    }
+}   
