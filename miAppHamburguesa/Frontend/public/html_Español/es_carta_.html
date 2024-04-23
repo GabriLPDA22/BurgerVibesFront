@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+    <link href="https://fonts.googleapis.com/css2?family=Sedgwick+Ave&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/miAppHamburguesa/Frontend/src/css/Bootstrap/icons.css">
+    <link rel="stylesheet" href="/miAppHamburguesa/Frontend/src/css/Menu/menu.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="/miAppHamburguesa/Frontend/src/css/Menu/Modals.css">
+
+    <title>MenuBurgerVibes</title>
+</head>
+
+<body>
+
+    <nav>
+        <div class="nav-content">
+            <a href="/miAppHamburguesa/Frontend/public/html_Español/es_carta_Zaragoza.html" class="ruta">
+                <div class="logo">
+                    <img src="/miAppHamburguesa/Frontend/src/assets/img/Home/BurgerVibes.svg" alt="Logo">
+                </div>
+                <div class="restaurant-info">
+                    <h1 class="restaurant-name" style="text-decoration: none;">BURGERVIBES ZARAGOZA</h1>
+                </div>
+            </a>
+        </div>
+    </nav>
+
+
+    <div class="main-wrapper">
+        <div class="flex-container">
+            <div class="content-section">
+                <div class="navigation-tabs">
+                    <ul class="tabs-list">
+                        <li class="tab-element" id="tabOne">Entrantes</li>
+                        <li class="tab-element" id="tabTwo">Burgers</li>
+                        <li class="tab-element" id="tabThree">Psotres</li>
+                        <li class="tab-element" id="tabFour">Bebidas</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="column left-column">
+                <div class="titulo-seccion">
+                    <h2 style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Entrantes</h2>
+                </div>
+                <div class="tabs-content">
+                    <!-- Item del menú -->
+
+
+                    <!--PRIMER ENTRANTE-->
+
+                    <div class="menu-item" class="menu-item" data-product-name="Nachos Rainforest"
+                        data-product-price="12.50"
+                        data-product-description="Inspirados en rainforest café de Chicago. Totopos de maíz, cheddar cream, guacamole, carne deshilachada, pico de gallo y crema agria."
+                        data-product-allergens="Gluten, Sulfitos y trigo"
+                        data-product-image1="/miAppHamburguesa/Frontend/src/assets/img/Menu/Nachos.jpg"
+                        data-product-image2="/miAppHamburguesa/Frontend/src/assets/img/Menu/sulphur.svg"
+                        data-product-image3="/miAppHamburguesa/Frontend/src/assets/img/Menu/leche.svg">
+                        <!-- Columna de imagen -->
+                        <div class="menu-item-column image-column">
+                            <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/Nachos.jpg" alt="Nachos Rainforest"
+                                class="menu-item-img" id="Cabezera">
+                        </div>
+                        <!-- Columna de texto e información -->
+                        <div class="menu-item-column info-column">
+                            <div class="menu-item-header">
+                                <h3 class="menu-item-title">Nachos Rainforest</h3>
+                                <div class="menu-item-price-action">
+                                    <button class="add-button">
+                                        <i class="bi bi-plus-circle"></i>
+                                        <!-- Asumiendo que quieres usar un ícono de 'plus' -->
+                                    </button>
+                                    <span class="price">12,50 €</span>
+                                </div>
+                            </div>
+                            <p class="menu-item-description">
+                                Inspirados en rainforest café de Chicago. Totopos de maíz, cheddar cream, guacamole,
+                                carne deshilachada, pico de gallo y crema agria.
+                            </p>
+                            <div class="menu-item-icons">
+                                <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/gluten.svg" alt="gluten">
+                                <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/sulphur.svg" alt="sulfuro">
+                                <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/leche.svg" alt="leche">
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!--SEGUNDO ENTRANTE-->
+
+
+                    <div class="menu-item" data-product-name="Alitas Thai" data-product-price="8.00"
+                        data-product-description="Alitas de pollo cocinadas a baja temperatura sumergidas en una salsa agripicante que te hará volar la cabeza."
+                        data-product-allergens="Gluten, Sulfitos"
+                        data-product-image1="/miAppHamburguesa/Frontend/src/assets/img/Menu/Alitas.jpg"
+                        data-product-image2="/miAppHamburguesa/Frontend/src/assets/img/Menu/sulphur.svg"
+                        data-product-image3="/miAppHamburguesa/Frontend/src/assets/img/Menu/leche.svg">
+                        <!-- Columna de imagen -->
+                        <div class="menu-item-column image-column">
+                            <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/Alitas.jpg" alt="Nachos Rainforest"
+                                class="menu-item-img">
+                        </div>
+                        <!-- Columna de texto e información -->
+                        <div class="menu-item-column info-column">
+                            <div class="menu-item-header">
+                                <h3 class="menu-item-title">Alitas Thai</h3>
+                                <div class="menu-item-price-action">
+                                    <button class="add-button">
+                                        <i class="bi bi-plus-circle"></i>
+                                        <!-- Asumiendo que quieres usar un ícono de 'plus' -->
+                                    </button>
+                                    <span class="price">8.00 €</span>
+                                </div>
+                            </div>
+                            <p class="menu-item-description">
+                                Alitas de pollo cocinadas a baja temperatura sumergidas en una salsa agripicante que te
+                                hará volar la cabeza.
+                            </p>
+                            <div class="menu-item-icons">
+                                <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/gluten.svg" alt="gluten">
+                                <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/sulphur.svg" alt="sulfuro">
+                                <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/leche.svg" alt="leche">
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!--TERCER ENTRANTE-->
+
+
+                    <div class="menu-item">
+                        <!-- Columna de imagen -->
+                        <div class="menu-item-column image-column">
+                            <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/Nachos.jpg" alt="Nachos Rainforest"
+                                class="menu-item-img">
+                        </div>
+                        <!-- Columna de texto e información -->
+                        <div class="menu-item-column info-column">
+                            <div class="menu-item-header">
+                                <h3 class="menu-item-title">Nachos Rainforest</h3>
+                                <div class="menu-item-price-action">
+                                    <button class="add-button">
+                                        <i class="bi bi-plus-circle"></i>
+                                        <!-- Asumiendo que quieres usar un ícono de 'plus' -->
+                                    </button>
+                                    <span class="price">12,50 €</span>
+                                </div>
+                            </div>
+                            <p class="menu-item-description">
+                                Inspirados en rainforest café de Chicago. Totopos de maíz, cheddar cream, guacamole,
+                                carne deshilachada, pico de gallo y crema agria.
+                            </p>
+                            <div class="menu-item-icons">
+                                <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/gluten.svg" alt="gluten">
+                                <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/sulphur.svg" alt="sulfuro">
+                                <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/leche.svg" alt="leche">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--CUARTO ENTRANTE-->
+
+                    <div class="menu-item">
+                        <!-- Columna de imagen -->
+                        <div class="menu-item-column image-column">
+                            <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/Nachos.jpg" alt="Nachos Rainforest"
+                                class="menu-item-img">
+                        </div>
+                        <!-- Columna de texto e información -->
+                        <div class="menu-item-column info-column">
+                            <div class="menu-item-header">
+                                <h3 class="menu-item-title">Nachos Rainforest</h3>
+                                <div class="menu-item-price-action">
+                                    <button class="add-button">
+                                        <i class="bi bi-plus-circle"></i>
+                                        <!-- Asumiendo que quieres usar un ícono de 'plus' -->
+                                    </button>
+                                    <span class="price">12,50 €</span>
+                                </div>
+                            </div>
+                            <p class="menu-item-description">
+                                Inspirados en rainforest café de Chicago. Totopos de maíz, cheddar cream, guacamole,
+                                carne deshilachada, pico de gallo y crema agria.
+                            </p>
+                            <div class="menu-item-icons">
+                                <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/gluten.svg" alt="gluten">
+                                <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/sulphur.svg" alt="sulfuro">
+                                <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/leche.svg" alt="leche">
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!--QUINTO ENTRANTE-->
+
+                    <div class="menu-item">
+                        <!-- Columna de imagen -->
+                        <div class="menu-item-column image-column">
+                            <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/Nachos.jpg" alt="Nachos Rainforest"
+                                class="menu-item-img">
+                        </div>
+                        <!-- Columna de texto e información -->
+                        <div class="menu-item-column info-column">
+                            <div class="menu-item-header">
+                                <h3 class="menu-item-title">Nachos Rainforest</h3>
+                                <div class="menu-item-price-action">
+                                    <button class="add-button">
+                                        <i class="bi bi-plus-circle"></i>
+                                        <!-- Asumiendo que quieres usar un ícono de 'plus' -->
+                                    </button>
+                                    <span class="price">12,50 €</span>
+                                </div>
+                            </div>
+                            <p class="menu-item-description">
+                                Inspirados en rainforest café de Chicago. Totopos de maíz, cheddar cream, guacamole,
+                                carne deshilachada, pico de gallo y crema agria.
+                            </p>
+                            <div class="menu-item-icons">
+                                <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/gluten.svg" alt="gluten">
+                                <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/sulphur.svg" alt="sulfuro">
+                                <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/leche.svg" alt="leche">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="column left-column">
+                <div class="titulo-seccion">
+                    <h2 style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Burgers</h2>
+                </div>
+                <div class="tabs-content">
+                    <!-- Item del menú -->
+                    <div class="menu-item">
+                        <!-- Columna de imagen -->
+                        <div class="menu-item-column image-column">
+                            <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/Nachos.jpg" alt="Nachos Rainforest"
+                                class="menu-item-img">
+                        </div>
+                        <!-- Columna de texto e información -->
+                        <div class="menu-item-column info-column">
+                            <div class="menu-item-header">
+                                <h3 class="menu-item-title">Nachos Rainforest</h3>
+                                <div class="menu-item-price-action">
+                                    <button class="add-button">
+                                        <i class="bi bi-plus-circle"></i>
+                                        <!-- Asumiendo que quieres usar un ícono de 'plus' -->
+                                    </button>
+                                    <span class="price">12,50 €</span>
+                                </div>
+                            </div>
+                            <p class="menu-item-description">
+                                Inspirados en rainforest café de Chicago. Totopos de maíz, cheddar cream, guacamole,
+                                carne deshilachada, pico de gallo y crema agria.
+                            </p>
+                            <div class="menu-item-icons">
+                                <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/gluten.svg" alt="gluten">
+                                <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/sulphur.svg" alt="sulfuro">
+                                <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/leche.svg" alt="leche">
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- Segundo entrante -->
+
+
+                    <div class="menu-item">
+                        <!-- Columna de imagen -->
+                        <div class="menu-item-column image-column">
+                            <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/Nachos.jpg" alt="Nachos Rainforest"
+                                class="menu-item-img">
+                        </div>
+                        <!-- Columna de texto e información -->
+                        <div class="menu-item-column info-column">
+                            <div class="menu-item-header">
+                                <h3 class="menu-item-title">Nachos Rainforest</h3>
+                                <div class="menu-item-price-action">
+                                    <button class="add-button">
+                                        <i class="bi bi-plus-circle"></i>
+                                        <!-- Asumiendo que quieres usar un ícono de 'plus' -->
+                                    </button>
+                                    <span class="price">12,50 €</span>
+                                </div>
+                            </div>
+                            <p class="menu-item-description">
+                                Inspirados en rainforest café de Chicago. Totopos de maíz, cheddar cream, guacamole,
+                                carne deshilachada, pico de gallo y crema agria.
+                            </p>
+                            <div class="menu-item-icons">
+                                <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/gluten.svg" alt="gluten">
+                                <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/sulphur.svg" alt="sulfuro">
+                                <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/leche.svg" alt="leche">
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- Tercer entrante -->
+
+
+                    <div class="menu-item">
+                        <!-- Columna de imagen -->
+                        <div class="menu-item-column image-column">
+                            <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/Nachos.jpg" alt="Nachos Rainforest"
+                                class="menu-item-img">
+                        </div>
+                        <!-- Columna de texto e información -->
+                        <div class="menu-item-column info-column">
+                            <div class="menu-item-header">
+                                <h3 class="menu-item-title">Nachos Rainforest</h3>
+                                <div class="menu-item-price-action">
+                                    <button class="add-button">
+                                        <i class="bi bi-plus-circle"></i>
+                                        <!-- Asumiendo que quieres usar un ícono de 'plus' -->
+                                    </button>
+                                    <span class="price">12,50 €</span>
+                                </div>
+                            </div>
+                            <p class="menu-item-description">
+                                Inspirados en rainforest café de Chicago. Totopos de maíz, cheddar cream, guacamole,
+                                carne deshilachada, pico de gallo y crema agria.
+                            </p>
+                            <div class="menu-item-icons">
+                                <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/gluten.svg" alt="gluten">
+                                <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/sulphur.svg" alt="sulfuro">
+                                <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/leche.svg" alt="leche">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Columna del pedido a la derecha -->
+        <div class="order-column">
+            <div class="order-header">
+                <i class="bi bi-list"></i><span class="order-title">Tu pedido</span>
+            </div>
+            <div class="order-content">
+                <!-- Logo y mensaje de pedido vacío se muestran por defecto -->
+                <div class="order-logo">
+                    <img src="/miAppHamburguesa/Frontend/src/assets/img/Home/BurgerVibes.svg" alt="Brand Logo"
+                        class="order-brand-logo">
+                </div>
+                <div class="order-empty">
+                    <span>Tu pedido está vacío, añade algún producto para continuar</span>
+                </div>
+                <!-- Contenedor para los elementos del pedido -->
+                <div class="order-items" style="display: none;"> <!-- Inicialmente oculto -->
+                    <!-- Aquí se agregarán los elementos del pedido -->
+                </div>
+                <!-- Total del pedido -->
+                <div class="order-total" style="display: none;"> <!-- Inicialmente oculto -->
+                    <span>Total:</span>
+                    <span class="total-amount">0,00 €</span>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+
+    <!--MODALES DE CADA PRODUCTO-->
+
+    <div id="productModal" class="modal" style="display:none;">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <img src="" class="modal-image">
+            <h2></h2>
+            <p id="descripcion"></p>
+            <p id="alegernos"></p>
+            <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/gluten.svg" alt="gluten" style="width: 24px; 
+            height: auto;">
+            <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/sulphur.svg" alt="sulfuro" style="width: 24px; 
+            height: auto;">
+            <div class="quantity-control">
+                <button class="minus-btn">-</button>
+                <input type="number" id="quantity" value="1">
+                <button class="plus-btn">+</button>
+            </div>
+            <div class="modal-footer ">
+                <div class="btn-añadir"></div>
+                <button type="button" class="add-to-cart-btn">
+                    <i class="bi bi-plus-circle-fill"></i>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!--SCRIPT LOGICA DEL MENU-->
+
+    <script src="/miAppHamburguesa/Frontend/src/js/LogicaMenu/TotalPedido.js"></script>
+    <script src="/miAppHamburguesa/Frontend/src/js/LogicaMenu/ModalsProductosDinamico.js"></script>
+
+
+</body>
+
+</html>
+
+
+<!--<div class="modal-content">
+    <div class="modal-header sticky-top bg-white border-bottom py-2 px-3">
+        <h5 class="modal-title text-center fs-5 ps-2 py-1 fw-normal w-100">Alitas Thai</h5><button type="button"
+            class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+    <div class="modal-body p-0 align-items-center">
+        <div data-v-f6003611=""><img data-v-f6003611="" class="item-img" alt="Item image" lazy="loaded"
+                src="https://content.sinqro.com/913bcf5354_2e84667798_79991706008813alitasthai_1.jpg">
+            <h4 data-v-f6003611="" class="line-breaks mx-4 mt-4 text-secondary fs-6 fw-light">Alitas de pollo cocinadas
+                a baja temperatura sumergidas en una salsa agripicante que te hará volar la cabeza.
+
+                Alergenos: Gluten, Sulfitos y trigo.</h4>
+            <div data-v-f6003611="" class="flex-wrap d-flex mx-4 mt-2"><img
+                    src="https://img.delitbee.com/icons/allergens/gluten.svg" class="me-2 mt-2" data-bs-toggle="tooltip"
+                    data-bs-title="Gluten" tabindex="0"><img src="https://img.delitbee.com/icons/allergens/sulphur.svg"
+                    class="me-2 mt-2" data-bs-toggle="tooltip" data-bs-title="Sulfitos" tabindex="0"></div>
+        </div><
+        <div class="px-4">
+            <div></div>
+            <div class="mt-5">
+                <div class="mb-3 d-flex flex-column justify-content-center align-items-center">
+                    <div class="text-center">¿Cuántas unidades de Alitas Thai como esta quieres?</div>
+                    <div class="dtb-cart-control d-flex align-items-center my-3">
+                        <div class="px-2 cursor-pointer"><i class="bi bi-dash-circle-fill fs-3 text-primary"></i></div>
+                        <div class="fs-4 mx-2 fw-bolder">1</div>
+                        <div class="px-2 cursor-pointer"><i class="bi bi-plus-circle-fill fs-3 text-primary"></i></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer sticky-bottom bg-light"><button type="button"
+            class="btn btn-primary d-flex flex-row align-items-center justify-content-center w-100"><i
+                class="bi bi-plus-circle-fill fs-3 me-2"></i><span>Añadir a las notas · 8,00&nbsp;€</span></button>
+    </div>
+</div>
+
+-->

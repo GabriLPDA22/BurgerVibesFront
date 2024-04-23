@@ -1,0 +1,146 @@
+.modal {
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden; /* Cambiado de "auto" a "hidden" para evitar el scroll */
+    background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+    background-color: #ffffff;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #888;
+    max-width: 500px;
+    border-radius: 4%;
+    max-height: 100vh; /* Limitar la altura máxima del modal para evitar el desbordamiento */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Añade una sombra al modal */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40%; /* Ajusta el ancho como sea necesario */
+}
+
+  
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  .plus-btn, .minus-btn {
+    background-color: #000000;
+    color: #fff;
+    border: none;
+    width: 22px;
+    height: 22px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: larger;
+}
+
+  .quantity-control {
+    margin: 10px 0;
+  }
+  
+  .quantity-control input {
+    text-align: center;
+    width: 50px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+}
+
+.quantity-control input:focus {
+    border-color: #000000;
+}
+
+#quantity {
+    text-align: center;
+    width: 50px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+}
+
+#quantity:focus {
+    border-color: #000000;
+}
+
+
+.add-to-cart-btn {
+    background-color: #ff7f00;
+    border: 2px solid #ff7f00;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+    cursor: pointer;
+}
+
+.add-to-cart-btn:hover {
+    background-color: #f19d00;
+    border-color: #f19d00;
+}
+
+.add-to-cart-btn:active {
+    background-color: #994d00;
+    border-color: #994d00;
+}
+
+
+  .modal-content img{
+    width: 100%;
+    height: 350px;
+  }
+  
+  .modal-content h2{
+    font-family: 'Sedgwick Ave', cursive;
+  }
+
+  .modal-content p{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  }
+
+  .modal-content h2,
+  .modal-content p,
+  .quantity-control{
+    text-align: center;
+  }
+
+
+  .btn-añadir {
+    border-top: 1px solid #918a8a; /* Agrega una línea separadora arriba del elemento */
+    padding-top: 10px; /* Ajusta el espacio encima del botón */
+    margin-bottom: 5px;
+}
+
+
+.modal-footer{
+    display: flex;
+    align-items: stretch;
+    flex-direction: column;
+}

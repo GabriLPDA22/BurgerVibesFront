@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+    <link href="https://fonts.googleapis.com/css2?family=Sedgwick+Ave&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/miAppHamburguesa/Frontend/src/css/menu.css">
+    <title>MenuBurgerVibes</title>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="/miAppHamburguesa/Frontend/src/assets/img/Home/BurgerVibes.svg" alt="Logo">
+                <h1 class="Lugar-Restaurante">BURGERVIVES VALENCIA</h1>
+            </div>
+            <div class="login">
+                <a href="#" id="loginBtn">Iniciar sesión</a>
+            </div>
+        </nav>
+    </header>
+
+    <!--MODAL DEL LOGIN-->
+
+    <div id="modalLogin" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Inicio de sesión</h2>
+        </div>
+    </div>
+
+</body>
+<script>
+    // Obtener el modal
+    var modal = document.getElementById("modalLogin");
+
+    // Obtener el botón para abrir el modal
+    var loginBtn = document.getElementById("loginBtn");
+
+    // Obtener el elemento para cerrar el modal
+    var closeBtn = document.getElementsByClassName("close")[0];
+
+    // Abrir el modal al hacer clic en el botón de inicio de sesión
+    loginBtn.onclick = function () {
+        modal.style.display = "block";
+    }
+
+    // Cerrar el modal al hacer clic en la "x"
+    closeBtn.onclick = function () {
+        modal.style.display = "none";
+    }
+
+    // Cerrar el modal al hacer clic fuera del contenido
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+
+</script>
+
+</html>
