@@ -15,7 +15,7 @@
     padding: 20px;
     border: 1px solid #888;
     max-width: 500px;
-    border-radius: 4%;
+    border-radius: 2%;
     max-height: 100vh; /* Limitar la altura máxima del modal para evitar el desbordamiento */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Añade una sombra al modal */
     position: fixed;
@@ -150,7 +150,6 @@
     .modal-content{
         width: 75%;
         height: auto;
-        border-radius: 2%;
     }
 
     .close{
