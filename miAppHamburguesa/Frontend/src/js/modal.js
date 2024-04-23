@@ -114,6 +114,51 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-/**
- * MODAL DE LA CARTA
- */
+/*MODAL CARTA*/
+// Obtener el modal
+var modal = document.getElementById("myModal");
+
+// Obtener el botón para cerrar el modal
+var span = document.getElementsByClassName("close")[0];
+
+var cartaLink = document.querySelector('a[href="#carta"]');
+cartaLink.onclick = function() {
+    modal.style.display = "block";
+}
+// Obtener el botón "Ver Carta" dentro del modal
+var verCartaBtn = document.querySelector(".verCartaBtn");
+
+// Obtener el botón "Descargar Carta" dentro del modal
+var descargarCartaBtn = document.querySelector(".descargarCartaBtn");
+
+// Función para abrir el modal
+verCartaBtn.onclick = function() {
+    // Abrir la página "es_carta.html" en una nueva ventana
+    window.open("es_carta.html", "_blank");
+}
+
+// Función para cerrar el modal al hacer clic en la "x"
+span.onclick = function() {
+    modal.style.display = "none";
+}
+
+// Función para cerrar el modal al hacer clic fuera del contenido
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+
+// Función para descargar la carta al hacer clic en "Descargar Carta"
+descargarCartaBtn.onclick = function() {
+    // URL del archivo PDF para descargar (reemplaza con la ruta correcta)
+    var pdfUrl = "/miAppHamburguesa/Frontend/src/assets/CartaPdf/CARTA BURGERVIBES.pdf";
+
+    // Crea un elemento <a> temporal para iniciar la descarga del PDF
+    var a = document.createElement("a");
+    a.href = pdfUrl;
+    a.download = "/miAppHamburguesa/Frontend/src/assets/CartaPdf/CARTA BURGERVIBES.pdf"; // Nombre del archivo descargado
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+}
