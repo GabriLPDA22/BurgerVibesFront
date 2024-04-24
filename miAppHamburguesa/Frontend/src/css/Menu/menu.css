@@ -148,6 +148,7 @@ nav {
   /* Esto permitirá que el contenedor crezca y ocupe el espacio disponible */
   padding-right: 20px;
   /* Ajusta para dar espacio entre las columnas si es necesario */
+  overflow-y: auto;
 }
 
 .navigation-tabs {
@@ -295,16 +296,11 @@ nav {
 .order-column {
   width: 100%;
   flex-basis: 600px;
-  flex-grow: 0;
-  flex-shrink: 0;
   background: #fff;
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
   max-height: 100vh;
-  overflow-y: auto;
-  /* Añadido para agregar una barra de desplazamiento vertical */
   position: sticky;
-  top: 0px;
-
+  
 }
 
 .order-header {
@@ -356,18 +352,10 @@ nav {
 
 
 .order-content {
-  overflow: scroll !important;
-  /* Agrega una barra de desplazamiento si es necesario */
-  max-height: 100% !important;
-  /* Limita la altura máxima del contenido */
-  flex-direction: column;
-  /* Cambia la dirección principal a una columna */
-  align-items: stretch !important;
-  /* Ajusta los elementos a lo largo del eje transversal */
-  flex-grow: 1 !important;
-  /* Permite que el contenido crezca para ocupar el espacio restante */
-  padding: 1rem !important;
-  /* Añade relleno al contenido */
+  height: 80vh; /* Limita la altura máxima del contenido */
+  flex-direction: column; /* Cambia la dirección principal a una columna */
+  align-items: stretch; /* Ajusta los elementos a lo largo del eje transversal */
+  padding: 1rem; /* Añade relleno al contenido */
   display: flex;
   gap: 30px;
 
