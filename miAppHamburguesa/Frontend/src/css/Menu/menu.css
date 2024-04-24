@@ -315,13 +315,13 @@ nav {
 
 
 .order-content {
-  height: 80vh; /* Limita la altura máxima del contenido */
+  height: 82vh; /* Limita la altura máxima del contenido */
   flex-direction: column; /* Cambia la dirección principal a una columna */
   align-items: stretch; /* Ajusta los elementos a lo largo del eje transversal */
   padding: 1rem; /* Añade relleno al contenido */
   display: flex;
   gap: 30px;
-
+  overflow-y: auto; 
 }
 
 
@@ -395,6 +395,69 @@ nav {
 
 
 
+/*FOOTER*/
+
+#siteFooter {
+  background-color: #333; /* Color de fondo del footer */
+  color: #fff; /* Color del texto del footer */
+  padding: 20px; /* Espaciado interno */
+  text-align: center; /* Alineación del texto */
+  width: 68%;
+}
+
+
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 15px; /* Espacio entre los enlaces */
+  padding-bottom: 20px; /* Espaciado debajo de los enlaces */
+}
+
+.footer-links a {
+  color: #fff; /* Color del texto de los enlaces */
+  text-decoration: none; /* No subrayar los enlaces */
+  transition: color 0.3s; /* Transición suave para el color */
+}
+
+.footer-links a:hover {
+  color: #f79e02; /* Color del texto de los enlaces al pasar el ratón */
+}
+
+hr {
+  border: 0; /* Remover el borde predeterminado */
+  height: 1px; /* Altura de la línea */
+  background-color: #777; /* Color de la línea */
+  margin: 20px 0; /* Margen arriba y abajo de la línea */
+}
+
+.last-part{
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.footer-branding {
+  margin-bottom: 20px; /* Espaciado debajo del logo */
+}
+
+.footer-language-selector {
+  margin-top: 20px; /* Espaciado arriba del selector de idioma */
+  color: white;
+}
+
+#language-select option {
+  color: black; /* Asegura que las opciones sean negras */
+  background: white; /* Fondo claro para contraste */
+}
+
+#language-select {
+  background: transparent;
+  color: #ffffff;
+  border: 1px solid #000000;
+  padding: 5px;
+  border-radius: 5px;
+}
 
 
 /* Utiliza media queries para hacer la página responsive */
