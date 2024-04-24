@@ -34,3 +34,7 @@
     content: "\f10c"; /* Asegúrate de usar el valor correcto para el ícono */
   }
   
+
+  .g-signin2 {
+    color: #000000;
+  }

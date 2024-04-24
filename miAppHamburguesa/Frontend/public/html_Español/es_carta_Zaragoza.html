@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
     <link href="https://fonts.googleapis.com/css2?family=Sedgwick+Ave&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/miAppHamburguesa/Frontend/src/css//Menu/menu.css">
+    <link rel="stylesheet" href="/miAppHamburguesa/Frontend/src/css/Bootstrap/icons.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
     <title>MenuBurgerVibes</title>
 </head>
 
@@ -37,11 +39,14 @@
                 <h2>Inicio de sesión</h2>
             </div>
             <div class="btninicio">
+                <div class="g-signin2" data-onsuccess="onSignIn" data-clientid="319131057628-a7rtsu3ghmhogl4esj12he2ku82spqc1.apps.googleusercontent.com"></div>
+            </div>
                 
             </div>
 
         </div>
     </div>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
 
 </body>
 <script>
@@ -71,6 +76,45 @@
         }
     }
 
+</script>
+
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+<script>
+  function initGoogleAuth() {
+    gapi.load('auth2', function() {
+      // Inicializa la autenticación de Google con tu ID de cliente.
+      gapi.auth2.init({
+        client_id: '319131057628-a7rtsu3ghmhogl4esj12he2ku82spqc1.apps.googleusercontent.com', // Asegúrate de reemplazar 'TU_CLIENT_ID' con tu ID de cliente real.
+        cookiepolicy: 'single_host_origin',
+        // Añade más opciones de configuración si es necesario.
+      });
+    });
+  }
+
+  function onSignIn(googleUser) {
+    var profile = googleUser.getBasicProfile();
+    console.log('ID: ' + profile.getId());
+    console.log('Nombre: ' + profile.getName());
+    console.log('Imagen URL: ' + profile.getImageUrl());
+    console.log('Email: ' + profile.getEmail());
+
+    var id_token = googleUser.getAuthResponse().id_token;
+    localStorage.setItem('userToken', id_token);
+    // Aquí puedes añadir el código para enviar el token a tu servidor y manejar la sesión.
+  }
+
+  function signOut() {
+    var auth2 = gapi.auth2.getAuthInstance();
+    auth2.signOut().then(function () {
+      console.log('Usuario cerró sesión.');
+      localStorage.removeItem('userToken');
+      // Aquí puedes añadir más manejo al cierre de sesión, como actualizar la UI.
+    });
+  }
+
+  window.onload = function() {
+    initGoogleAuth(); // Asegúrate de que la API de Google se inicializa al cargar la página.
+  };
 </script>
 
 </html>
