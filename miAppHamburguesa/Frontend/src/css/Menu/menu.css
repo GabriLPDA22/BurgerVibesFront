@@ -44,7 +44,7 @@ nav {
 }
 
 
-/*MODAL*/
+/*MODAL-LOGIN*/
 
 /* Estilos del modal */
 .modal {
@@ -259,6 +259,7 @@ nav {
     .order-logo img {
         max-width: 100%; /* Asegura que la imagen no sobrepase el ancho de la columna */
         height: auto;
+        background-color: black;
     }
     
     .order-empty {
@@ -269,7 +270,7 @@ nav {
 
 
 /* Utiliza media queries para hacer la página responsive */
-  @media (max-width: 768px) {
+  @media (max-width: 800px) {
     .main-wrapper {
       flex-direction: column;
     }
@@ -284,5 +285,14 @@ nav {
       border-left: none;
       padding-left: 0;
     }
+
+    .order-column{
+      width: 100%;
+    }
+    
+    .tabs-list{
+      display: flex;
+    }
+
   }
   
