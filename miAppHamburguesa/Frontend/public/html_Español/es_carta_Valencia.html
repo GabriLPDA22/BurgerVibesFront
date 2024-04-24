@@ -12,57 +12,67 @@
 </head>
 
 <body>
-    <header>
-        <nav>
+
+    <nav>
+        <div class="nav-content">
             <div class="logo">
                 <img src="/miAppHamburguesa/Frontend/src/assets/img/Home/BurgerVibes.svg" alt="Logo">
-                <h1 class="Lugar-Restaurante">BURGERVIVES VALENCIA</h1>
-                <div class="login">
-                    <a href="#" id="loginBtn" data-toggle="modal" data-target="#modalLogin">Iniciar sesión</a>
-                    
-                    <!-- Menú desplegable que será visible tras iniciar sesión -->
-                    <div id="userMenu" class="dropdown" style="display:none;">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span id="usernameDisplay">Nombre Usuario</span>
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="#">Nuevo pedido</a>
-                            <a class="dropdown-item" href="#">Mis pedidos</a>
-                            <a class="dropdown-item" href="#" onclick="signOut();">Desconectar</a>
-                        </div>
+                <div class="restaurant-info">
+                    <h1 class="restaurant-name" style="text-decoration: none;">BURGERVIBES VALENCIA</h1>
+                </div>
+            </div>
+
+            <div class="login">
+                <a href="#" id="loginBtn" data-toggle="modal" data-target="#modalLogin">
+                    <i class="fas fa-user"></i> Iniciar sesión
+                </a>
+
+                <!-- Menú desplegable que será visible tras iniciar sesión -->
+                <div id="userMenu" class="dropdown" style="display:none;">
+                    <button class="btn btn-secondary dropdown-toggle custom-dropdown-toggle" type="button"
+                        id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span id="usernameDisplay">Nombre Usuario</span>
+                    </button>
+                    <div class="dropdown-menu custom-dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item custom-dropdown-item" href="#">Nuevo pedido</a>
+                        <a class="dropdown-item custom-dropdown-item" href="#">Mis pedidos</a>
+                        <a class="dropdown-item custom-dropdown-item" href="#" onclick="signOut();">Desconectar</a>
                     </div>
                 </div>
-        </nav>
-    </header>
+            </div>
+
+    </nav>
+
 
     <!--MODAL DEL LOGIN-->
 
     <!-- Modal de Inicio de Sesión -->
-<div class="modal fade" id="modalLogin" tabindex="-1" role="dialog" aria-labelledby="modalLoginTitle" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="modalLoginTitle">Inicio de sesión</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <form id="loginForm">
-            <div class="form-group">
-              <label for="username">Nombre de usuario:</label>
-              <input type="text" class="form-control" id="username" required>
+    <div class="modal fade" id="modalLogin" tabindex="-1" role="dialog" aria-labelledby="modalLoginTitle"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalLoginTitle">Inicio de sesión</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="loginForm">
+                        <div class="form-group">
+                            <label for="username">Nombre de usuario:</label>
+                            <input type="text" class="form-control" id="username" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Contraseña:</label>
+                            <input type="password" class="form-control" id="password" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Iniciar sesión</button>
+                    </form>
+                </div>
             </div>
-            <div class="form-group">
-              <label for="password">Contraseña:</label>
-              <input type="password" class="form-control" id="password" required>
-            </div>
-            <button type="submit" class="btn btn-primary">Iniciar sesión</button>
-          </form>
         </div>
-      </div>
     </div>
-  </div>
 
 </body>
 <script>
@@ -92,26 +102,26 @@
         }
     }
 
-   // Función para mostrar el menú del usuario y ocultar el botón de inicio de sesión
-function showUserMenu(username) {
-  document.getElementById('loginBtn').style.display = 'none'; // Oculta el botón de inicio de sesión
-  document.getElementById('userMenu').style.display = 'block'; // Muestra el menú del usuario
-  document.getElementById('usernameDisplay').textContent = username; // Actualiza el nombre de usuario en el menú
-}
+    // Función para mostrar el menú del usuario y ocultar el botón de inicio de sesión
+    function showUserMenu(username) {
+        document.getElementById('loginBtn').style.display = 'none'; // Oculta el botón de inicio de sesión
+        document.getElementById('userMenu').style.display = 'block'; // Muestra el menú del usuario
+        document.getElementById('usernameDisplay').textContent = username; // Actualiza el nombre de usuario en el menú
+    }
 
-document.getElementById('loginForm').addEventListener('submit', function(e) {
-  e.preventDefault();
-  var username = document.getElementById('username').value;
-  showUserMenu(username); // Muestra el menú del usuario con el nombre ingresado
-  $('#modalLogin').modal('hide'); // Cierra el modal
-});
+    document.getElementById('loginForm').addEventListener('submit', function (e) {
+        e.preventDefault();
+        var username = document.getElementById('username').value;
+        showUserMenu(username); // Muestra el menú del usuario con el nombre ingresado
+        $('#modalLogin').modal('hide'); // Cierra el modal
+    });
 
-// Función para manejar el cierre de sesión
-function signOut() {
-  document.getElementById('loginBtn').style.display = 'block'; // Muestra el botón de inicio de sesión
-  document.getElementById('userMenu').style.display = 'none'; // Oculta el menú del usuario
-  // Aquí puedes agregar más lógica para manejar el cierre de sesión, como borrar la sesión del servidor
-}
+    // Función para manejar el cierre de sesión
+    function signOut() {
+        document.getElementById('loginBtn').style.display = 'block'; // Muestra el botón de inicio de sesión
+        document.getElementById('userMenu').style.display = 'none'; // Oculta el menú del usuario
+        // Aquí puedes agregar más lógica para manejar el cierre de sesión, como borrar la sesión del servidor
+    }
 
 </script>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>

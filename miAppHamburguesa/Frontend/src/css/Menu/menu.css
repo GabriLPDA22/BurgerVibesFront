@@ -25,6 +25,38 @@ nav {
   /* Define un borde de 1px sólido de color blanco */
 }
 
+.logo {
+  display: flex;
+  align-items: center;
+  padding: 5px;
+  color: black;
+  /* Color negro */
+}
+
+.logo:hover {
+  color: orange; /* Color naranja al pasar el cursor */
+}
+
+#loginBtn {
+  color: black; /* Color negro */
+  transition: color 0.3s; /* Transición de color */
+}
+
+#loginBtn:hover {
+  color: orange; /* Color naranja al pasar el cursor */
+}
+
+    .custom-dropdown-toggle {
+        background-color: black; /* Color de fondo */
+        color: white; /* Color de texto */
+        transition: background-color 0.3s, color 0.3s; /* Transición de color */
+    }
+
+    .custom-dropdown-toggle:hover {
+        background-color: orange; /* Color de fondo al pasar el cursor */
+        color: black; /* Color de texto al pasar el cursor */
+    }
+
 /* Estilos del nombre del restaurante */
 .restaurant-info .restaurant-name {
   margin: 0;
@@ -34,6 +66,7 @@ nav {
   color: #000000;
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   font-weight: 300;
+  padding-left: 5px;
 }
 
 /* Estilos para el enlace */
@@ -264,7 +297,7 @@ nav {
   width: 100%;
   flex-basis: 600px;
   background: #fff;
-  box-shadow: 0px 0px 5px rgba(0,0,0,0.2);
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
   max-height: 100vh;
   position: sticky;
   
@@ -289,19 +322,30 @@ nav {
 }
 
 .alert {
-  background-color: #fff3cd; /* Color de fondo */
-  color: #856404; /* Color del texto */
-  border-color: #ffeeba; /* Color del borde */
-  border-radius: 0.5rem; /* Borde redondeado */
-  padding: 1rem; /* Espaciado interno */
-  margin-bottom: 1rem; /* Margen inferior */
-  font-size: 1.2rem; /* Tamaño del texto */
+  background-color: #fff3cd;
+  /* Color de fondo */
+  color: #856404;
+  /* Color del texto */
+  border-color: #ffeeba;
+  /* Color del borde */
+  border-radius: 0.5rem;
+  /* Borde redondeado */
+  padding: 1rem;
+  /* Espaciado interno */
+  margin-bottom: 1rem;
+  /* Margen inferior */
+  font-size: 1.2rem;
+  /* Tamaño del texto */
 }
+
 .alert span {
-  font-weight: bold; /* Texto en negrita */
+  font-weight: bold;
+  /* Texto en negrita */
 }
+
 .alert i {
-  margin-right: 1rem; /* Espaciado a la derecha del ícono */
+  margin-right: 1rem;
+  /* Espaciado a la derecha del ícono */
 }
 
 
@@ -314,7 +358,7 @@ nav {
   padding: 1rem; /* Añade relleno al contenido */
   display: flex;
   gap: 30px;
-  
+
 }
 
 
@@ -334,7 +378,8 @@ nav {
 
 .order-items {
   /* Agregado para permitir una barra de desplazamiento */
-  max-height: 300px; /* Ajusta la altura máxima según sea necesario */
+  max-height: 300px;
+  /* Ajusta la altura máxima según sea necesario */
   overflow-y: auto;
 }
 
@@ -345,33 +390,43 @@ nav {
   display: flex;
   flex-direction: column;
 }
+
 .order-total {
   display: flex;
-    justify-content: space-between;
-    margin-top: 10px;
+  justify-content: space-between;
+  margin-top: 10px;
 }
 
 .total-amount {
-  font-weight: bold; /* Resalta el monto total */
+  font-weight: bold;
+  /* Resalta el monto total */
 }
 
-.btnConf{
+.btnConf {
   display: flex;
   flex-direction: column;
 }
 
 .confirm-order {
-  background-color: #007bff; /* Color de fondo del botón */
-  color: #fff; /* Color del texto */
-  padding: 10px 20px; /* Espacio interno del botón */
-  border: none; /* Sin borde */
-  border-radius: 5px; /* Borde redondeado */
-  cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
-  transition: background-color 0.3s ease; /* Efecto de transición suave para el color de fondo */
+  background-color: #007bff;
+  /* Color de fondo del botón */
+  color: #fff;
+  /* Color del texto */
+  padding: 10px 20px;
+  /* Espacio interno del botón */
+  border: none;
+  /* Sin borde */
+  border-radius: 5px;
+  /* Borde redondeado */
+  cursor: pointer;
+  /* Cambia el cursor al pasar sobre el botón */
+  transition: background-color 0.3s ease;
+  /* Efecto de transición suave para el color de fondo */
 }
 
 .confirm-order:hover {
-  background-color: #0056b3; /* Color de fondo del botón al pasar el cursor sobre él */
+  background-color: #0056b3;
+  /* Color de fondo del botón al pasar el cursor sobre él */
 }
 
 
