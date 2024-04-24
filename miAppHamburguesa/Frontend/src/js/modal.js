@@ -5,7 +5,6 @@
 document.addEventListener('DOMContentLoaded', function () {
     var modal = document.getElementById('customOrderModal');
     var btnNavbar = document.getElementById('navbarOrderButton');
-    var btnNavbar2 = document.getElementById('navbarOrderButton2');
     var btnHero = document.getElementById('heroOrderButton');
     var btnClose = document.getElementById('customModalClose');
 
@@ -24,7 +23,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Asigna eventos a los botones
     btnNavbar.onclick = showModal;
-    btnNavbar2.onclick = showModal;
     btnHero.onclick = showModal;
     btnClose.onclick = closeModal;
 
