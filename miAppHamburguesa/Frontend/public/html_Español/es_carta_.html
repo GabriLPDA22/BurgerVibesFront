@@ -35,20 +35,19 @@
             <div class="content-section">
                 <div class="navigation-tabs">
                     <ul class="tabs-list">
-                        <li class="tab-element" id="tabOne">Entrantes</li>
-                        <li class="tab-element" id="tabTwo">Burgers</li>
-                        <li class="tab-element" id="tabThree">Psotres</li>
-                        <li class="tab-element" id="tabFour">Bebidas</li>
+                        <li class="tab-element"><a href="#tabOne" style="text-decoration: none; color: black;">Entrantes</a></li>
+                        <li class="tab-element"><a href="#tabTwo" style="text-decoration: none; color: black;">Burgers</a></li>
+                        <li class="tab-element"><a href="#tabThree" style="text-decoration: none; color: black;">Postres</a></li>
+                        <li class="tab-element"><a href="#tabFour" style="text-decoration: none; color: black;">Bebidas</a></li>                        
                     </ul>
                 </div>
             </div>
             <div class="column left-column">
-                <div class="titulo-seccion">
+                <div class="titulo-seccion" id="tabOne">
                     <h2 style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Entrantes</h2>
                 </div>
                 <div class="tabs-content">
                     <!-- Item del menú -->
-
 
                     <!--PRIMER ENTRANTE-->
 
@@ -250,7 +249,7 @@
             <!--BURGERS-->
 
             <div class="column left-column">
-                <div class="titulo-seccion">
+                <div class="titulo-seccion" id="tabTwo">
                     <h2 style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Burgers</h2>
                 </div>
                 <div class="tabs-content">
@@ -450,8 +449,8 @@
 
                     <div class="menu-item" id="product11" data-product-name="Baile De Pollo" data-product-price="11.50"
                         data-product-description="Crispy chicken marinado durante 12 horas, queso cheddar, relish de pepinillo, cebolla roja encurtida y la salsa gringa de Joe.
-                    Alergenos: Gluten, Huevo, Lácteo, Sulfito y Trigo.
-                    data-product-image1=" /miAppHamburguesa/Frontend/src/assets/img/Menu/hmg6.png"
+                    Alergenos: Gluten, Huevo, Lácteo, Sulfito y Trigo."
+                        data-product-image1=" /miAppHamburguesa/Frontend/src/assets/img/Menu/hmg6.png"
                         data-product-image2="/miAppHamburguesa/Frontend/src/assets/img/Menu/gluten.svg"
                         data-product-image3="/miAppHamburguesa/Frontend/src/assets/img/Menu/sulphur.svg">
                         <!-- Columna de imagen -->
@@ -489,32 +488,31 @@
             <!--Postres-->
 
             <div class="column left-column">
-                <div class="titulo-seccion">
-                    <h2 style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Burgers</h2>
+                <div class="titulo-seccion" id="tabThree">
+                    <h2 style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Psotres</h2>
                 </div>
                 <div class="tabs-content">
                     <!-- Item del menú -->
                     <div class="menu-item">
                         <!-- Columna de imagen -->
                         <div class="menu-item-column image-column">
-                            <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/Nachos.jpg" alt="Nachos Rainforest"
+                            <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/QuesoLotus.png" alt="Nachos Rainforest"
                                 class="menu-item-img">
                         </div>
                         <!-- Columna de texto e información -->
                         <div class="menu-item-column info-column">
                             <div class="menu-item-header">
-                                <h3 class="menu-item-title">Nachos Rainforest</h3>
+                                <h3 class="menu-item-title">Lotus Cheesecake</h3>
                                 <div class="menu-item-price-action">
                                     <button class="add-button">
                                         <i class="bi bi-plus-circle"></i>
                                         <!-- Asumiendo que quieres usar un ícono de 'plus' -->
                                     </button>
-                                    <span class="price">12,50 €</span>
+                                    <span class="price">6,00 €</span>
                                 </div>
                             </div>
                             <p class="menu-item-description">
-                                Inspirados en rainforest café de Chicago. Totopos de maíz, cheddar cream, guacamole,
-                                carne deshilachada, pico de gallo y crema agria.
+                                Tarta de queso con crema y galleta lotus
                             </p>
                             <div class="menu-item-icons">
                                 <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/gluten.svg" alt="gluten">
@@ -531,24 +529,23 @@
                     <div class="menu-item">
                         <!-- Columna de imagen -->
                         <div class="menu-item-column image-column">
-                            <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/Nachos.jpg" alt="Nachos Rainforest"
+                            <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/CheeseCakeBasic.png" alt="Nachos Rainforest"
                                 class="menu-item-img">
                         </div>
                         <!-- Columna de texto e información -->
                         <div class="menu-item-column info-column">
                             <div class="menu-item-header">
-                                <h3 class="menu-item-title">Nachos Rainforest</h3>
+                                <h3 class="menu-item-title">Tarta de queso</h3>
                                 <div class="menu-item-price-action">
                                     <button class="add-button">
                                         <i class="bi bi-plus-circle"></i>
                                         <!-- Asumiendo que quieres usar un ícono de 'plus' -->
                                     </button>
-                                    <span class="price">12,50 €</span>
+                                    <span class="price">5,50 €</span>
                                 </div>
                             </div>
                             <p class="menu-item-description">
-                                Inspirados en rainforest café de Chicago. Totopos de maíz, cheddar cream, guacamole,
-                                carne deshilachada, pico de gallo y crema agria.
+                                Tarta cremosa de queso con base de galleta.
                             </p>
                             <div class="menu-item-icons">
                                 <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/gluten.svg" alt="gluten">
@@ -565,24 +562,23 @@
                     <div class="menu-item">
                         <!-- Columna de imagen -->
                         <div class="menu-item-column image-column">
-                            <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/Nachos.jpg" alt="Nachos Rainforest"
+                            <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/LionCake.png" alt="Nachos Rainforest"
                                 class="menu-item-img">
                         </div>
                         <!-- Columna de texto e información -->
                         <div class="menu-item-column info-column">
                             <div class="menu-item-header">
-                                <h3 class="menu-item-title">Nachos Rainforest</h3>
+                                <h3 class="menu-item-title">Lion Cheesecake</h3>
                                 <div class="menu-item-price-action">
                                     <button class="add-button">
                                         <i class="bi bi-plus-circle"></i>
                                         <!-- Asumiendo que quieres usar un ícono de 'plus' -->
                                     </button>
-                                    <span class="price">12,50 €</span>
+                                    <span class="price">6,00 €</span>
                                 </div>
                             </div>
                             <p class="menu-item-description">
-                                Inspirados en rainforest café de Chicago. Totopos de maíz, cheddar cream, guacamole,
-                                carne deshilachada, pico de gallo y crema agria.
+                                Cheesecake de cereales Lion con base de Oreo
                             </p>
                             <div class="menu-item-icons">
                                 <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/gluten.svg" alt="gluten">
