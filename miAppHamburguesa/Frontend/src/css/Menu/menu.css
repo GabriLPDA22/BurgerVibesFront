@@ -2,45 +2,50 @@
 
 /* Estilos generales del encabezado */
 nav {
-    background-color: #ffffff;
-    padding: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
+  padding: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 /* Estilos para el contenedor principal */
 .nav-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 /* Estilos del logo */
 .logo img {
-    width: 150px;
-    height: auto;
-    background-color: #000000;
-    border-radius:5%; /* Define un radio de esquinas de 5px */
-    border: 5px solid rgb(255, 153, 0); /* Define un borde de 1px sólido de color blanco */
+  width: 150px;
+  height: auto;
+  background-color: #000000;
+  border-radius: 5%;
+  /* Define un radio de esquinas de 5px */
+  border: 5px solid rgb(255, 153, 0);
+  /* Define un borde de 1px sólido de color blanco */
 }
 
 /* Estilos del nombre del restaurante */
 .restaurant-info .restaurant-name {
-    margin: 0;
-    font-size: 25px;
-    font-weight: bold;
-    text-decoration: none;
-    color: #000000;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    font-weight: 300;
+  margin: 0;
+  font-size: 25px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #000000;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-weight: 300;
 }
 
 /* Estilos para el enlace */
 .ruta {
-    display: flex;
-    align-items: center; /* Centrar verticalmente los elementos */
-    text-decoration: none; /* Eliminar la decoración de texto */
-    color: inherit; /* Heredar el color del texto */
-    gap: 20px;
+  display: flex;
+  align-items: center;
+  /* Centrar verticalmente los elementos */
+  text-decoration: none;
+  /* Eliminar la decoración de texto */
+  color: inherit;
+  /* Heredar el color del texto */
+  gap: 20px;
 }
 
 
@@ -48,251 +53,356 @@ nav {
 
 /* Estilos del modal */
 .modal {
-    display: none; /* Ocultar modal por defecto */
-    position: fixed; /* Posición fija */
-    z-index: 1; /* Hacer que el modal esté por encima del contenido */
-    left: 0;
-    top: 0;
-    width: 100%; /* Ancho completo */
-    height: 100%; /* Altura completa */
-    overflow: auto; /* Permitir desplazamiento si el contenido es más grande que el modal */
-    background-color: rgba(0,0,0,0.4); /* Fondo semi-transparente */
+  display: none;
+  /* Ocultar modal por defecto */
+  position: fixed;
+  /* Posición fija */
+  z-index: 1;
+  /* Hacer que el modal esté por encima del contenido */
+  left: 0;
+  top: 0;
+  width: 100%;
+  /* Ancho completo */
+  height: 100%;
+  /* Altura completa */
+  overflow: auto;
+  /* Permitir desplazamiento si el contenido es más grande que el modal */
+  background-color: rgba(0, 0, 0, 0.4);
+  /* Fondo semi-transparente */
 }
 
 /* Estilos del contenido del modal */
 .modal-content {
-    background-color: #fefefe;
-    margin: 15% auto; /* Centrar verticalmente */
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
-    max-width: 400px; /* Ancho máximo del modal */
+  background-color: #fefefe;
+  margin: 15% auto;
+  /* Centrar verticalmente */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 400px;
+  /* Ancho máximo del modal */
 }
 
 /* Estilos para cerrar el modal */
 .close {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
 }
 
 .close:hover,
 .close:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 
 /*MENU*/
 
 .main-wrapper {
-    display: flex;
-    justify-content: space-between;
-    padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
 }
-  
-  .flex-container {
-    display: flex;
-    flex-direction: column;
-    width: 70%;
-    flex: 1; /* Esto permitirá que el contenedor crezca y ocupe el espacio disponible */
-    padding-right: 20px; /* Ajusta para dar espacio entre las columnas si es necesario */
-  }
-  
-  .navigation-tabs {
-    display: flex;
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-    gap: 20px;
-  }
-  
-  /*COLUMNA IZQUIERDA*/
 
-  .tabs-list {
-    padding-left: 0;
-  }
-  
-  .tab-element {
-    display: inline-block;
-    padding: 10px 20px;
-    cursor: pointer;
-  }
-  
-  .tab-element:hover {
-    background-color: #ddd;
-  }
-  
-  .tabs-content {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 15px; /* Ajustar si es necesario para el espacio entre columnas */
-    padding: 10px; /* Ajustar según sea necesario */
-    background-color: rgb(255, 255, 255);
-    border: 1px solid rgb(221, 221, 221);
-    margin-top: 10px; /* Reducido el margen superior */
-  }
-  
-  
-  .footer-sticky {
-    position: sticky;
-    bottom: 0;
-    background-color: #f8f9fa;
-    padding: 10px;
-    border-top: 1px solid #ddd;
-  }
-  
-  .column-side.flex-small {
-    width: 30%;
-    border-left: 1px solid #ddd;
-    padding-left: 20px;
-  }
+.flex-container {
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+  flex: 1;
+  /* Esto permitirá que el contenedor crezca y ocupe el espacio disponible */
+  padding-right: 20px;
+  /* Ajusta para dar espacio entre las columnas si es necesario */
+}
 
-  
-  
-  .menu-item {
-    width: 100%; /* O el porcentaje que se ajuste mejor a tu diseño */
-    display: flex;
-    flex-wrap: wrap;
-    align-items: flex-start;
-    background: #f9f9f9;
-    border: 1px solid #ddd;
-    margin-bottom: 10px; /* Reducir para disminuir el espacio entre elementos */
-    border-radius: 10px;
-  }
-  
-  .image-column {
-    flex: 0 0 120px; /* Ancho fijo para la columna de imagen */
-    margin-right: 20px; /* Espacio entre imagen y contenido */
-  }
-  
-  .menu-item-img {
-    object-fit: cover;
-    width: 100%;
-    height: 100%;
-    image-rendering: auto;
-  }
-  
-  .info-column {
-    flex: 1; /* Toma el espacio restante */
-    padding: 5px;
-  }
-  
-  .menu-item-header {
-    display: flex;
-    flex-direction: column; /* Organiza los elementos en columna */
-    width: 100%; /* Fuerza al contenedor a ocupar todo el ancho */
-  }
-  
-  .menu-item-title {
-    font-size: 1.4em;
-    color: #333;
-    margin: 0 0 5px 0; /* Margen debajo del título */
-    font-weight: bold; /* Título en negrita */
-  }
-  
-  .menu-item-price-action {
-    display: flex;
-    align-items: center; /* Alinea el precio y el botón verticalmente */
-    gap: 5px;
-  }
-  
-  .price {
-    font-size: 1.2em;
-    color: #555;
-    font-weight: bold;
-    border-radius: 5px; /* Bordes redondeados del precio */
-  }
-  
-  .menu-item-description {
-    font-size: 0.9em;
-    color: #666;
-    margin-top: 8px; /* Espacio encima de la descripción */
-  }
-  
-  .menu-item-icons {
-    display: flex;
-    gap: 10px; /* Espacio entre íconos */
-    margin-top: 8px; /* Espacio encima de los íconos */
-  }
-  
-  .menu-item-icons img {
-    width: 24px; /* Tamaño de los íconos */
-    height: auto;
-  }
-  
+.navigation-tabs {
+  display: flex;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  gap: 20px;
+}
 
-    /*COLUMNA DERECHA*/
-    .order-column {
-        width: 100%; /* Ajusta este porcentaje según tu diseño */
-        flex-basis: 600px; /* Ancho inicial de la columna de pedidos */
-        flex-grow: 0; /* Prevenir que la columna de pedidos crezca */
-        flex-shrink: 0; /* Prevenir que la columna de pedidos se encoja */
-        background: #fff; /* O cualquier color de fondo que necesites */
-        box-shadow: 0px 0px 5px rgba(0,0,0,0.2); /* Sombra suave para la columna */
-        max-height: 100vh; /* Para que ocupe la altura de la pantalla */
-        overflow-y: auto; /* Para permitir desplazamiento si el contenido es largo */
-        position: sticky;
-        top: 0px;
-    }
-    
-    .order-header {
-        display: flex;
-        align-items: center;
-        padding: 10px;
-        border-bottom: 1px solid #ddd; /* Línea divisoria debajo del encabezado */
-        background-color: #f8f9fa; /* Fondo para el encabezado */
-    }
-    
-    .order-title {
-        margin-left: 10px; /* Espacio entre el ícono y el texto */
-        font-weight: bold;
-    }
-    
-    .order-content {
-        padding: 20px;
-        text-align: center; /* Centra el contenido si es poco */
-    }
-    
-    .order-logo img {
-        max-width: 100%; /* Asegura que la imagen no sobrepase el ancho de la columna */
-        height: auto;
-        background-color: black;
-    }
-    
-    .order-empty {
-        margin-top: 20px; /* Espacio entre la imagen del logo y este texto */
-        color: #666; /* Color del texto cuando el pedido está vacío */
-        font-size: 0.9em; /* Tamaño del texto */
-    }
+/*COLUMNA IZQUIERDA*/
+
+.tabs-list {
+  padding-left: 0;
+}
+
+.tab-element {
+  display: inline-block;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.tab-element:hover {
+  background-color: #ddd;
+}
+
+.tabs-content {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+  /* Ajustar si es necesario para el espacio entre columnas */
+  padding: 10px;
+  /* Ajustar según sea necesario */
+  background-color: rgb(255, 255, 255);
+  border: 1px solid rgb(221, 221, 221);
+  margin-top: 10px;
+  /* Reducido el margen superior */
+}
+
+
+.footer-sticky {
+  position: sticky;
+  bottom: 0;
+  background-color: #f8f9fa;
+  padding: 10px;
+  border-top: 1px solid #ddd;
+}
+
+.column-side.flex-small {
+  width: 30%;
+  border-left: 1px solid #ddd;
+  padding-left: 20px;
+}
+
+
+
+.menu-item {
+  width: 100%;
+  /* O el porcentaje que se ajuste mejor a tu diseño */
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  background: #f9f9f9;
+  border: 1px solid #ddd;
+  margin-bottom: 10px;
+  /* Reducir para disminuir el espacio entre elementos */
+  border-radius: 10px;
+}
+
+.image-column {
+  flex: 0 0 120px;
+  /* Ancho fijo para la columna de imagen */
+  margin-right: 20px;
+  /* Espacio entre imagen y contenido */
+}
+
+.menu-item-img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  image-rendering: auto;
+}
+
+.info-column {
+  flex: 1;
+  /* Toma el espacio restante */
+  padding: 5px;
+}
+
+.menu-item-header {
+  display: flex;
+  flex-direction: column;
+  /* Organiza los elementos en columna */
+  width: 100%;
+  /* Fuerza al contenedor a ocupar todo el ancho */
+}
+
+.menu-item-title {
+  font-size: 1.4em;
+  color: #333;
+  margin: 0 0 5px 0;
+  /* Margen debajo del título */
+  font-weight: bold;
+  /* Título en negrita */
+}
+
+.menu-item-price-action {
+  display: flex;
+  align-items: center;
+  /* Alinea el precio y el botón verticalmente */
+  gap: 5px;
+}
+
+.price {
+  font-size: 1.2em;
+  color: #555;
+  font-weight: bold;
+  border-radius: 5px;
+  /* Bordes redondeados del precio */
+}
+
+.menu-item-description {
+  font-size: 0.9em;
+  color: #666;
+  margin-top: 8px;
+  /* Espacio encima de la descripción */
+}
+
+.menu-item-icons {
+  display: flex;
+  gap: 10px;
+  /* Espacio entre íconos */
+  margin-top: 8px;
+  /* Espacio encima de los íconos */
+}
+
+.menu-item-icons img {
+  width: 24px;
+  /* Tamaño de los íconos */
+  height: auto;
+}
+
+
+/*COLUMNA DERECHA*/
+.order-column {
+  width: 100%;
+  flex-basis: 600px;
+  flex-grow: 0;
+  flex-shrink: 0;
+  background: #fff;
+  box-shadow: 0px 0px 5px rgba(0,0,0,0.2);
+  max-height: 100vh;
+  overflow-y: auto; /* Añadido para agregar una barra de desplazamiento vertical */
+  position: sticky;
+  top: 0px;
+  
+}
+
+.order-header {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+  background-color: #f8f9fa;
+}
+
+.order-title {
+  margin-left: 10px;
+  font-weight: bold;
+}
+
+.order-minimum {
+  display: flex;
+  justify-content: center;
+}
+
+.alert {
+  background-color: #ffc107;
+  color: #212529;
+  border-color: #ffc107;
+  border-radius: 0.25rem;
+  padding: 0.5rem 1rem;
+  margin-bottom: 1rem;
+}
+.alert span {
+  font-size: 1rem;
+}
+.alert i {
+  margin-right: 0.5rem;
+}
+
+
+.order-content {
+  overflow: scroll !important; /* Agrega una barra de desplazamiento si es necesario */
+  max-height: 100% !important; /* Limita la altura máxima del contenido */
+  flex-direction: column; /* Cambia la dirección principal a una columna */
+  align-items: stretch !important; /* Ajusta los elementos a lo largo del eje transversal */
+  flex-grow: 1 !important; /* Permite que el contenido crezca para ocupar el espacio restante */
+  padding: 1rem !important; /* Añade relleno al contenido */
+  display: flex;
+  gap: 30px;
+  
+}
+
+
+.order-logo img {
+  max-width: 100%;
+  height: auto;
+  background-color: black;
+}
+
+.order-empty {
+  margin-top: 20px;
+  color: #666;
+  font-size: 0.9em;
+  display: flex;
+  justify-content: center;
+}
+
+.order-items {
+  /* Agregado para permitir una barra de desplazamiento */
+  max-height: 300px; /* Ajusta la altura máxima según sea necesario */
+  overflow-y: auto;
+}
+
+.order-footer {
+  padding: 10px;
+  border-top: 1px solid #ddd;
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+}
+.order-total {
+  display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.total-amount {
+  font-weight: bold; /* Resalta el monto total */
+}
+
+.btnConf{
+  display: flex;
+  flex-direction: column;
+}
+
+.confirm-order {
+  background-color: #007bff; /* Color de fondo del botón */
+  color: #fff; /* Color del texto */
+  padding: 10px 20px; /* Espacio interno del botón */
+  border: none; /* Sin borde */
+  border-radius: 5px; /* Borde redondeado */
+  cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+  transition: background-color 0.3s ease; /* Efecto de transición suave para el color de fondo */
+}
+
+.confirm-order:hover {
+  background-color: #0056b3; /* Color de fondo del botón al pasar el cursor sobre él */
+}
+
+
+
 
 
 /* Utiliza media queries para hacer la página responsive */
-  @media (max-width: 800px) {
-    .main-wrapper {
-      flex-direction: column;
-    }
-  
-    .flex-container {
-      width: 100%;
-    }
-  
-    .column-side.flex-small {
-      width: 100%;
-      margin-top: 20px;
-      border-left: none;
-      padding-left: 0;
-    }
-
-    .order-column{
-      width: 100%;
-    }
-    
-    .tabs-list{
-      display: flex;
-    }
-
+@media (max-width: 800px) {
+  .main-wrapper {
+    flex-direction: column;
   }
-  
+
+  .flex-container {
+    width: 100%;
+  }
+
+  .column-side.flex-small {
+    width: 100%;
+    margin-top: 20px;
+    border-left: none;
+    padding-left: 0;
+  }
+
+  .order-column {
+    width: 100%;
+  }
+
+  .tabs-list {
+    display: flex;
+  }
+
+}
