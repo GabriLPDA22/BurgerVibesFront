@@ -292,19 +292,22 @@ nav {
 }
 
 .alert {
-  background-color: #ffc107;
-  color: #212529;
-  border-color: #ffc107;
-  border-radius: 0.25rem;
-  padding: 0.5rem 1rem;
-  margin-bottom: 1rem;
+  background-color: #fff3cd; /* Color de fondo */
+  color: #856404; /* Color del texto */
+  border-color: #ffeeba; /* Color del borde */
+  border-radius: 0.5rem; /* Borde redondeado */
+  padding: 1rem; /* Espaciado interno */
+  margin-bottom: 1rem; /* Margen inferior */
+  font-size: 1.2rem; /* Tamaño del texto */
 }
 .alert span {
-  font-size: 1rem;
+  font-weight: bold; /* Texto en negrita */
 }
 .alert i {
-  margin-right: 0.5rem;
+  margin-right: 1rem; /* Espaciado a la derecha del ícono */
 }
+
+
 
 
 .order-content {
