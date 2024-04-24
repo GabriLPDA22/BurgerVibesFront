@@ -7,7 +7,10 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
     <link href="https://fonts.googleapis.com/css2?family=Sedgwick+Ave&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/miAppHamburguesa/Frontend/src/css/Menu/menu.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/miAppHamburguesa/Frontend/src/css/Bootstrap/icons.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css">
+    <link href="https://fonts.googleapis.com/css2?family=Sedgwick+Ave&display=swap" rel="stylesheet">
+
     <title>MenuBurgerVibes</title>
 </head>
 
@@ -16,27 +19,29 @@
     <nav>
         <div class="nav-content">
             <div class="logo">
-                <img src="/miAppHamburguesa/Frontend/src/assets/img/Home/BurgerVibes.svg" alt="Logo">
+                <a href="/miAppHamburguesa/Frontend/public/html_Español/es_index.html">
+                    <img src="/miAppHamburguesa/Frontend/src/assets/img/Home/BurgerVibes.svg" alt="Logo">
+                </a>
                 <div class="restaurant-info">
                     <h1 class="restaurant-name" style="text-decoration: none;">BURGERVIBES VALENCIA</h1>
                 </div>
             </div>
 
             <div class="login">
-                <a href="#" id="loginBtn" data-toggle="modal" data-target="#modalLogin">
+                <a href="#" id="loginBtn">
                     <i class="fas fa-user"></i> Iniciar sesión
                 </a>
-
-                <!-- Menú desplegable que será visible tras iniciar sesión -->
                 <div id="userMenu" class="dropdown" style="display:none;">
-                    <button class="btn btn-secondary dropdown-toggle custom-dropdown-toggle" type="button"
-                        id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <span id="usernameDisplay">Nombre Usuario</span>
+                    <button type="button" id="dropdownMenuButton">
+                        <i class="fas fa-user-check"></i> <!-- Añade el ícono aquí -->
+                        <span id="usernameDisplay">GabrielPDA</span>
                     </button>
-                    <div class="dropdown-menu custom-dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item custom-dropdown-item" href="#">Nuevo pedido</a>
-                        <a class="dropdown-item custom-dropdown-item" href="#">Mis pedidos</a>
-                        <a class="dropdown-item custom-dropdown-item" href="#" onclick="signOut();">Desconectar</a>
+
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="#"><i class="fas fa-shopping-cart"></i> Nuevo pedido</a>
+                        <a class="dropdown-item" href="#"><i class="fas fa-clipboard-list"></i> Mis pedidos</a>
+                        <a class="dropdown-item" href="#" onclick="signOut();"><i class="fas fa-sign-out-alt"></i>
+                            Desconectar</a>
                     </div>
                 </div>
             </div>
@@ -46,31 +51,17 @@
 
     <!--MODAL DEL LOGIN-->
 
-    <!-- Modal de Inicio de Sesión -->
-    <div class="modal fade" id="modalLogin" tabindex="-1" role="dialog" aria-labelledby="modalLoginTitle"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="modalLoginTitle">Inicio de sesión</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form id="loginForm">
-                        <div class="form-group">
-                            <label for="username">Nombre de usuario:</label>
-                            <input type="text" class="form-control" id="username" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="password">Contraseña:</label>
-                            <input type="password" class="form-control" id="password" required>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Iniciar sesión</button>
-                    </form>
-                </div>
-            </div>
+    <div id="modalLogin" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h5>Inicio de sesión</h5>
+            <form id="loginForm">
+                <label for="username">Nombre de usuario:</label>
+                <input type="text" id="username" required>
+                <label for="password">Contraseña:</label>
+                <input type="password" id="password" required>
+                <button type="submit">Iniciar sesión</button>
+            </form>
         </div>
     </div>
 
@@ -104,28 +95,45 @@
 
     // Función para mostrar el menú del usuario y ocultar el botón de inicio de sesión
     function showUserMenu(username) {
-        document.getElementById('loginBtn').style.display = 'none'; // Oculta el botón de inicio de sesión
-        document.getElementById('userMenu').style.display = 'block'; // Muestra el menú del usuario
-        document.getElementById('usernameDisplay').textContent = username; // Actualiza el nombre de usuario en el menú
+        document.getElementById('loginBtn').style.display = 'none';
+        document.getElementById('userMenu').style.display = 'block';
+        document.getElementById('usernameDisplay').textContent = username;
     }
 
+    // Manejo del formulario de inicio de sesión
     document.getElementById('loginForm').addEventListener('submit', function (e) {
         e.preventDefault();
         var username = document.getElementById('username').value;
-        showUserMenu(username); // Muestra el menú del usuario con el nombre ingresado
-        $('#modalLogin').modal('hide'); // Cierra el modal
+        showUserMenu(username);
+        modal.style.display = "none";
     });
 
     // Función para manejar el cierre de sesión
     function signOut() {
-        document.getElementById('loginBtn').style.display = 'block'; // Muestra el botón de inicio de sesión
-        document.getElementById('userMenu').style.display = 'none'; // Oculta el menú del usuario
-        // Aquí puedes agregar más lógica para manejar el cierre de sesión, como borrar la sesión del servidor
+        document.getElementById('loginBtn').style.display = 'block';
+        document.getElementById('userMenu').style.display = 'none';
     }
 
+    document.getElementById('dropdownMenuButton').addEventListener('click', function (event) {
+        var dropdownMenu = document.querySelector('.dropdown-menu');
+        if (dropdownMenu.style.display === 'block') {
+            dropdownMenu.style.display = 'none';
+        } else {
+            dropdownMenu.style.display = 'block';
+        }
+
+        // Previene que el clic se propague y cierre el menú inmediatamente
+        event.stopPropagation();
+    });
+
+    // Cierra el menú desplegable si se hace clic fuera de él
+    window.addEventListener('click', function (event) {
+        var dropdownMenu = document.querySelector('.dropdown-menu');
+        if (event.target !== dropdownMenu && !dropdownMenu.contains(event.target)) {
+            dropdownMenu.style.display = 'none';
+        }
+    });
+
 </script>
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
 </html>

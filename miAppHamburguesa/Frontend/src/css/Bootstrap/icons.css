@@ -36,48 +36,20 @@
   
   /*BOTON LOGIN CARTA*/
 
-  .login-btn {
-    background-color: #007bff;
-    color: #fff;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s, color 0.3s;
+/* Agrega esta clase personalizada a tu archivo CSS */
+.custom-dropdown-toggle {
+  background-color: #5b6d5b; /* Cambia el color de fondo */
+  color: #ffffff;            /* Cambia el color del texto */
+  border: 1px solid #4e5e4e; /* Ajusta el color del borde si es necesario */
+  border-radius: 4px;        /* Redondea las esquinas del botón */
+  padding: 5px 10px;         /* Ajusta el espaciado interno */
+  margin-left: 10px;         /* Añade un margen a la izquierda */
+  /* Puedes añadir más estilos aquí según necesites */
 }
 
-.login-btn:hover {
-    background-color: #0056b3;
+/* Personaliza el hover para que el botón cambie cuando el usuario pase el mouse por encima */
+.custom-dropdown-toggle:hover {
+  background-color: #6e7f6e; /* Oscurece el fondo ligeramente */
+  /* Puedes añadir más estilos de hover aquí */
 }
 
-/* Estilos del menú desplegable */
-.dropdown {
-    position: relative;
-    display: inline-block;
-}
-
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f9f9f9;
-    min-width: 160px;
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-    z-index: 1;
-}
-
-.dropdown-content a {
-    color: #333;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-    transition: background-color 0.3s, color 0.3s;
-}
-
-.dropdown-content a:hover {
-    background-color: #e9ecef;
-    color: #333;
-}
-
-.dropdown:hover .dropdown-content {
-    display: block;
-}
