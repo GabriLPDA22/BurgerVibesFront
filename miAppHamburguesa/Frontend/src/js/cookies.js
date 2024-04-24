@@ -16,5 +16,3 @@ function rechazar() {
     msgCookies.classList.remove('mostrar');
     msgCookies.classList.add('ocultar');
 }
-  
-
