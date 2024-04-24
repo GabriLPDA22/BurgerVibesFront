@@ -223,6 +223,7 @@ nav {
   /* Ancho fijo para la columna de imagen */
   margin-right: 20px;
   /* Espacio entre imagen y contenido */
+  height: 100%;
 }
 
 .menu-item-img {
@@ -294,12 +295,13 @@ nav {
 
 /*COLUMNA DERECHA*/
 .order-column {
-  width: 100%;
+  width: 30%;
   flex-basis: 600px;
   background: #fff;
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
   max-height: 100vh;
-  position: sticky;
+  position: fixed;
+  right: 0;
   
 }
 
