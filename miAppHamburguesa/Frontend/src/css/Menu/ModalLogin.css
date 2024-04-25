@@ -1,7 +1,7 @@
 /*MODAL-LOGIN*/
 
 /* Estilo del modal */
-.modal {
+.modal2 {
     display: none;
     position: fixed;
     z-index: 1000;
@@ -12,7 +12,7 @@
     background-color: rgba(0, 0, 0, 0.5);
   }
   
-  .modal-content {
+  .modal2-content {
     background-color: #fefefe;
     margin: 10% auto;
     padding: 20px;
@@ -40,8 +40,8 @@
   }
   
   /* Estilos para los inputs y botones dentro del modal */
-  .modal input[type="text"],
-  .modal input[type="password"] {
+  .modal2 input[type="text"],
+  .modal2 input[type="password"] {
     width: calc(100% - 20px);
     padding: 10px;
     margin: 8px 0;
@@ -52,7 +52,7 @@
     color: #000000;
   }
   
-  .modal button {
+  .modal2 button {
     background-color: #F67906; /* Color naranja para los botones */
     color: white;
     padding: 14px 20px;
@@ -65,17 +65,17 @@
     font-size: 20px;
   }
   
-  .modal button:hover {
+  .modal2 button:hover {
     background-color: #d56704; /* Un tono más oscuro de naranja en hover */
   }
   
   /* Aplica la fuente y el color a todo el contenido del modal */
-  .modal-content {
+  .modal2-content {
     font-family: 'Sedgwick Ave', cursive;
     color: #F67906;
   }
   
-  .modal h5 {
+  .modal2 h5 {
     margin: 0 0 15px 0;
     text-align: center;
     font-family: 'Sedgwick Ave', cursive;
@@ -83,7 +83,7 @@
   }
   
   
-  .modal label{
+  .modal2 label{
     color: #000000;
   }
   

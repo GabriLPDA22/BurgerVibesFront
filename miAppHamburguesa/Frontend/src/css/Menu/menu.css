@@ -17,6 +17,7 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding-right: 30px;
 }
 
 /* Estilos del logo */

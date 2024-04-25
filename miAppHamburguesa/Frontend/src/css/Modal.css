@@ -287,15 +287,31 @@
   color: #000000;
   border-radius: 20px;
   text-decoration: none;
-  font-size: 1em;
-  margin-bottom: 15%;
+  margin-bottom: 5%;
+  border: 1px solid #000000;
 }
 
 /* Estilo adicional para el botón de "Ver Carta" */
-.verCartaBtn {
-  margin-bottom: 10px;
+#VerCarta{
+  color: #000;
+  font-size: 1em;
 }
 
+.p.VerCarta {
+  font-size: 1em;
+  color: #000;
+  padding: 0;
+}
+
+.carta-location p{
+  color: white;
+  text-align: center;
+  font-size: 30px;
+}
+
+.descargarCartaBtn{
+  margin-top: 30px;
+}
 /* Estilos adicionales para los botones cuando se pasa el cursor sobre ellos */
 .verCartaBtn:hover,
 .descargarCartaBtn:hover {
