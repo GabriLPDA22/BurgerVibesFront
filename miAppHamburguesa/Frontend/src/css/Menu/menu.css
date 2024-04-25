@@ -87,9 +87,6 @@ nav {
 }
 
 
-
-
-
 /*MENU*/
 
 .main-wrapper {
@@ -344,6 +341,7 @@ nav {
   max-height: 300px;
   /* Ajusta la altura máxima según sea necesario */
   overflow-y: auto;
+
 }
 
 .order-footer {
@@ -358,7 +356,6 @@ nav {
 .order-total {
   display: flex;
   justify-content: space-between;
-  margin-top: 10px;
 }
 
 .total-amount {
@@ -458,6 +455,103 @@ hr {
   padding: 5px;
   border-radius: 5px;
 }
+
+
+
+/*CARIITO*/
+
+.order-item {
+  border: 1px solid #FFA500; /* Bordes naranjas */
+  padding: 15px; /* Aumenta el padding para más espacio */
+  margin-bottom: 15px; /* Aumenta el margen inferior para más espacio entre ítems */
+  border-radius: 5px;
+  display: flex;
+  align-items: center; /* Asegura que los elementos estén alineados verticalmente */
+  justify-content: space-between;
+}
+
+.product-name{
+  font-family: 'Sedgwick Ave', cursive;
+}
+
+.order-item .product-quantity {
+  display: flex; /* Asegura que los botones y el input estén en línea */
+  align-items: center; /* Alinea verticalmente */
+}
+
+.order-item .product-quantity button {
+  color: white;
+  border: none;
+  margin: 0; /* Remueve cualquier margen */
+  border-radius: 3px;
+}
+
+.order-item .product-quantity input {
+  width: 50px; /* Fija un ancho para el input */
+  text-align: center; /* Centra el texto dentro del input */
+  margin: 0 10px; /* Agrega margen a los lados para separar de los botones */
+  border: 1px solid #FFA500; /* Borde naranja para el input */
+  border-radius: 3px;
+  padding: 5px; /* Añade algo de padding dentro del input */
+}
+
+.order-item{
+  font-family: 'Sedgwick Ave', cursive;
+  font-size: 1.2em;
+  color: #333; /* Color oscuro para el precio */
+  margin-left: 20px; /* Agrega margen izquierdo si es necesario */
+}
+
+.product-price{
+  font-family:'Urbanist', sans-serif;
+  font-size: 1.2em;
+  color: #333; /* Color oscuro para el precio */
+  margin-left: 20px; /* Agrega margen izquierdo si es necesario */
+  font-weight: 300;
+}
+
+.order-item .remove-btn {
+  background: #FF6347; /* Rojo para el botón eliminar */
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 3px;
+  cursor: pointer;
+  margin-left: 20px; /* Agrega margen izquierdo si es necesario */
+}
+
+/* Ajusta los siguientes estilos según tus preferencias */
+.order-total {
+  text-align: right;
+  font-size:medium;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-weight: 300;
+}
+
+.order-total {
+  font-family:"Inter";
+  font-size: 1em;
+}
+
+.total-amount{
+  font-family:"Inter";
+  font-size: 1.3em;
+  font-weight: 700;
+}
+
+#confirm-order-btn {
+  background: #ff9900; /* Naranja para el botón de confirmar */
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  font-family: 'Urbanist', sans-serif;
+}
+
+
+/* Importante: Asegúrate de tener la fuente 'Sedgwick Ave' importada en tu CSS */
+@import url('https://fonts.googleapis.com/css?family=Sedgwick+Ave&display=swap');
 
 
 /* Utiliza media queries para hacer la página responsive */
