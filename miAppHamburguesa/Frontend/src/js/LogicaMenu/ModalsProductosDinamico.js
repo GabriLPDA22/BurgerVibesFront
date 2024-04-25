@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function () {
         images: []
       };
 
-      for (let i = 1; i <= 4; i++) {
+      for (let i = 1; i <= 10; i++) {
         let image = this.getAttribute(`data-product-image${i}`);
         if (image) {
           productAttributes.images.push(image);
@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', function () {
       actualizarPrecioTotal(currentProductPrice, 1);
 
       // Actualizar imágenes de alérgenos
-      ['allergenImage1', 'allergenImage2', 'allergenImage3'].forEach((id, index) => {
+      ['allergenImage1', 'allergenImage2', 'allergenImage3','allergenImage4','allergenImage5','allergenImage6','allergenImage7','allergenImage8','allergenImage9' ].forEach((id, index) => {
         const allergenImage = modal.querySelector(`#${id}`);
         allergenImage.style.display = productAttributes.images[index + 1] ? 'inline-block' : 'none';
         if (productAttributes.images[index + 1]) {
