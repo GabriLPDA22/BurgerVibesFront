@@ -40,28 +40,37 @@ nav {
 }
 
 .logo:hover {
-  color: orange; /* Color naranja al pasar el cursor */
+  color: orange;
+  /* Color naranja al pasar el cursor */
 }
 
 #loginBtn {
-  color: black; /* Color negro */
-  transition: color 0.3s; /* Transición de color */
+  color: black;
+  /* Color negro */
+  transition: color 0.3s;
+  /* Transición de color */
 }
 
 #loginBtn:hover {
-  color: orange; /* Color naranja al pasar el cursor */
+  color: orange;
+  /* Color naranja al pasar el cursor */
 }
 
-    .custom-dropdown-toggle {
-        background-color: black; /* Color de fondo */
-        color: white; /* Color de texto */
-        transition: background-color 0.3s, color 0.3s; /* Transición de color */
-    }
+.custom-dropdown-toggle {
+  background-color: black;
+  /* Color de fondo */
+  color: white;
+  /* Color de texto */
+  transition: background-color 0.3s, color 0.3s;
+  /* Transición de color */
+}
 
-    .custom-dropdown-toggle:hover {
-        background-color: orange; /* Color de fondo al pasar el cursor */
-        color: black; /* Color de texto al pasar el cursor */
-    }
+.custom-dropdown-toggle:hover {
+  background-color: orange;
+  /* Color de fondo al pasar el cursor */
+  color: black;
+  /* Color de texto al pasar el cursor */
+}
 
 /* Estilos del nombre del restaurante */
 .restaurant-info .restaurant-name {
@@ -261,7 +270,7 @@ nav {
   position: fixed;
   right: 0;
   top: 0;
-  
+
 }
 
 .order-header {
@@ -313,13 +322,17 @@ nav {
 
 
 .order-content {
-  height: 82vh; /* Limita la altura máxima del contenido */
-  flex-direction: column; /* Cambia la dirección principal a una columna */
-  align-items: stretch; /* Ajusta los elementos a lo largo del eje transversal */
-  padding: 1rem; /* Añade relleno al contenido */
+  height: 82vh;
+  /* Limita la altura máxima del contenido */
+  flex-direction: column;
+  /* Cambia la dirección principal a una columna */
+  align-items: stretch;
+  /* Ajusta los elementos a lo largo del eje transversal */
+  padding: 1rem;
+  /* Añade relleno al contenido */
   display: flex;
   gap: 30px;
-  overflow-y: auto; 
+  overflow-y: auto;
 }
 
 
@@ -392,14 +405,48 @@ nav {
 }
 
 
+/*BOTON MENU PARA EL RESPONSIVE*/
+
+/* Estilos para el botón de mostrar el carrito */
+.order-toggle-button {
+  display: none;
+  /* inicialmente no visible */
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #ffc107;
+  /* elige el color que prefieras */
+  text-align: center;
+  padding: 6px 12px;
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
+  z-index: 100;
+  margin-bottom: 10px;
+  max-width: 80%;
+  margin-left: 9%;
+}
+
+.order-toggle-button button {
+  background: none;
+  border: none;
+  font-size: 1.2em;
+  color: #333;
+  /* o el color que desees */
+}
+
+
 
 /*FOOTER*/
 
 #siteFooter {
-  background-color: #333; /* Color de fondo del footer */
-  color: #fff; /* Color del texto del footer */
-  padding: 20px; /* Espaciado interno */
-  text-align: center; /* Alineación del texto */
+  background-color: #333;
+  /* Color de fondo del footer */
+  color: #fff;
+  /* Color del texto del footer */
+  padding: 20px;
+  /* Espaciado interno */
+  text-align: center;
+  /* Alineación del texto */
   width: 68%;
 }
 
@@ -408,45 +455,59 @@ nav {
 .footer-links {
   display: flex;
   justify-content: center;
-  gap: 15px; /* Espacio entre los enlaces */
-  padding-bottom: 20px; /* Espaciado debajo de los enlaces */
+  gap: 15px;
+  /* Espacio entre los enlaces */
+  padding-bottom: 20px;
+  /* Espaciado debajo de los enlaces */
 }
 
 .footer-links a {
-  color: #fff; /* Color del texto de los enlaces */
-  text-decoration: none; /* No subrayar los enlaces */
-  transition: color 0.3s; /* Transición suave para el color */
+  color: #fff;
+  /* Color del texto de los enlaces */
+  text-decoration: none;
+  /* No subrayar los enlaces */
+  transition: color 0.3s;
+  /* Transición suave para el color */
 }
 
 .footer-links a:hover {
-  color: #f79e02; /* Color del texto de los enlaces al pasar el ratón */
+  color: #f79e02;
+  /* Color del texto de los enlaces al pasar el ratón */
 }
 
 hr {
-  border: 0; /* Remover el borde predeterminado */
-  height: 1px; /* Altura de la línea */
-  background-color: #777; /* Color de la línea */
-  margin: 20px 0; /* Margen arriba y abajo de la línea */
+  border: 0;
+  /* Remover el borde predeterminado */
+  height: 1px;
+  /* Altura de la línea */
+  background-color: #777;
+  /* Color de la línea */
+  margin: 20px 0;
+  /* Margen arriba y abajo de la línea */
 }
 
-.last-part{
+.last-part {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
 }
 
 .footer-branding {
-  margin-bottom: 20px; /* Espaciado debajo del logo */
+  margin-bottom: 20px;
+  /* Espaciado debajo del logo */
 }
 
 .footer-language-selector {
-  margin-top: 20px; /* Espaciado arriba del selector de idioma */
+  margin-top: 20px;
+  /* Espaciado arriba del selector de idioma */
   color: white;
 }
 
 #language-select option {
-  color: black; /* Asegura que las opciones sean negras */
-  background: white; /* Fondo claro para contraste */
+  color: black;
+  /* Asegura que las opciones sean negras */
+  background: white;
+  /* Fondo claro para contraste */
 }
 
 #language-select {
@@ -462,86 +523,105 @@ hr {
 /*CARIITO*/
 
 .order-item {
-  border: 1px solid #FFA500; /* Bordes naranjas */
-  padding: 15px; /* Aumenta el padding para más espacio */
-  margin-bottom: 15px; /* Aumenta el margen inferior para más espacio entre ítems */
+  border: 1px solid #FFA500;
+  /* Bordes naranjas */
+  padding: 15px;
+  /* Aumenta el padding para más espacio */
+  margin-bottom: 15px;
+  /* Aumenta el margen inferior para más espacio entre ítems */
   border-radius: 5px;
   display: flex;
-  align-items: center; /* Asegura que los elementos estén alineados verticalmente */
+  align-items: center;
+  /* Asegura que los elementos estén alineados verticalmente */
   justify-content: space-between;
 }
 
-.product-name{
+.product-name {
   font-family: 'Sedgwick Ave', cursive;
 }
 
 .order-item .product-quantity {
-  display: flex; /* Asegura que los botones y el input estén en línea */
-  align-items: center; /* Alinea verticalmente */
+  display: flex;
+  /* Asegura que los botones y el input estén en línea */
+  align-items: center;
+  /* Alinea verticalmente */
 }
 
 .order-item .product-quantity button {
   color: white;
   border: none;
-  margin: 0; /* Remueve cualquier margen */
+  margin: 0;
+  /* Remueve cualquier margen */
   border-radius: 3px;
 }
 
 .order-item .product-quantity input {
-  width: 50px; /* Fija un ancho para el input */
-  text-align: center; /* Centra el texto dentro del input */
-  margin: 0 10px; /* Agrega margen a los lados para separar de los botones */
-  border: 1px solid #FFA500; /* Borde naranja para el input */
+  width: 50px;
+  /* Fija un ancho para el input */
+  text-align: center;
+  /* Centra el texto dentro del input */
+  margin: 0 10px;
+  /* Agrega margen a los lados para separar de los botones */
+  border: 1px solid #FFA500;
+  /* Borde naranja para el input */
   border-radius: 3px;
-  padding: 5px; /* Añade algo de padding dentro del input */
+  padding: 5px;
+  /* Añade algo de padding dentro del input */
 }
 
-.order-item{
+.order-item {
   font-family: 'Sedgwick Ave', cursive;
   font-size: 1.2em;
-  color: #333; /* Color oscuro para el precio */
-  margin-left: 20px; /* Agrega margen izquierdo si es necesario */
+  color: #333;
+  /* Color oscuro para el precio */
+  margin-left: 20px;
+  /* Agrega margen izquierdo si es necesario */
 }
 
-.product-price{
-  font-family:'Urbanist', sans-serif;
+.product-price {
+  font-family: 'Urbanist', sans-serif;
   font-size: 1.2em;
-  color: #333; /* Color oscuro para el precio */
-  margin-left: 20px; /* Agrega margen izquierdo si es necesario */
+  color: #333;
+  /* Color oscuro para el precio */
+  margin-left: 20px;
+  /* Agrega margen izquierdo si es necesario */
   font-weight: 300;
 }
 
 .order-item .remove-btn {
-  background: #FF6347; /* Rojo para el botón eliminar */
+  background: #FF6347;
+  /* Rojo para el botón eliminar */
   color: white;
   border: none;
   padding: 5px 10px;
   border-radius: 3px;
   cursor: pointer;
-  margin-left: 20px; /* Agrega margen izquierdo si es necesario */
+  margin-left: 20px;
+  /* Agrega margen izquierdo si es necesario */
 }
 
 /* Ajusta los siguientes estilos según tus preferencias */
 .order-total {
   text-align: right;
-  font-size:medium;
+  font-size: medium;
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   font-weight: 300;
 }
 
 .order-total {
-  font-family:"Inter";
+  font-family: "Inter";
   font-size: 1em;
 }
 
-.total-amount{
-  font-family:"Inter";
+.total-amount {
+  font-family: "Inter";
   font-size: 1.3em;
   font-weight: 700;
 }
 
 #confirm-order-btn {
-  background: #ff9900; /* Naranja para el botón de confirmar */
+  background: #ff9900;
+  /* Naranja para el botón de confirmar */
   color: white;
   padding: 10px 20px;
   border: none;
@@ -557,19 +637,28 @@ hr {
 
 /* Utiliza media queries para hacer la página responsive */
 @media (max-width: 800px) {
-  .main-wrapper {
+  .main-wrapper,.tabs-content, #siteFooter{
     flex-direction: column;
+    width: 100%;
+    padding: 0;
+    
   }
 
   .flex-container {
     width: 100%;
+    padding: 0;
+    
   }
 
-  .column-side.flex-small {
-    width: 100%;
-    margin-top: 20px;
-    border-left: none;
-    padding-left: 0;
+
+  .order-toggle-button {
+    display: block;
+    /* hacer visible el botón */
+  }
+
+  .order-column {
+    display: none;
+    /* ocultar el carrito inicialmente */
   }
 
   .order-column {
@@ -578,6 +667,11 @@ hr {
 
   .tabs-list {
     display: flex;
+  }
+
+  .footer-links{
+    margin: 0;
+    padding-top:20px;
   }
 
 }
