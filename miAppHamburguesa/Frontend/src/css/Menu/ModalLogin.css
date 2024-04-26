@@ -21,7 +21,7 @@
     max-width: 500px; /* Un ancho máximo para dispositivos más grandes */
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     border-radius: 5px;
-    height: 250px;
+    height: auto;
     font-size: 20px;
   }
   
