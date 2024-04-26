@@ -7,7 +7,7 @@ html {
 }
 
 header {
-    background-image: url(/miAppHamburguesa/Frontend/src/assets/img/Fondo_Hero.svg);
+    background-image: url(/miAppHamburguesa/Frontend/src/assets/img/Home/Fondo_Hero.svg);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -370,6 +370,7 @@ body.fade-in {
 /*CONCEPTO*/
 .concepto {
     padding: 50px 0;
+    background-image: url(/miAppHamburguesa/Frontend/src/assets/img/Home/Fondo_Hero.svg);
 }
 
 .container {
@@ -503,7 +504,7 @@ body.fade-in {
     display: flex;
     justify-content: center;
     /* Centra la galería horizontalmente */
-    background-image: linear-gradient(to top, rgba(116, 112, 112, 0), rgb(7, 7, 7)), url(../assets/img/FondoLadrillo.jpg);
+    background-image: linear-gradient(to top, rgba(116, 112, 112, 0), rgb(7, 7, 7)), url(../assets/img/Home/FondoLadrillo.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -533,7 +534,7 @@ body.fade-in {
 
 }
 
-#Tablet{
+#Tablet, #Tablet_ingles{
     display: none;
 }
 
@@ -1022,11 +1023,11 @@ body.fade-in {
         grid-template-columns: repeat(2, 2fr);
     }
 
-    #CambioImagen{
+    #CambioImagen, #CambioImagen_ingles{
         display: none;
     }
 
-    #Tablet{
+    #Tablet, #Tablet_ingles{
         display: block;
     }
 

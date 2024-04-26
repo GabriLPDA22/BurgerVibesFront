@@ -4,7 +4,9 @@
 
 document.addEventListener('DOMContentLoaded', function () {
     var modal = document.getElementById('customOrderModal');
+    var btnNavbarEspañol = document.getElementById('navbarOrderButton2');
     var btnNavbar = document.getElementById('navbarOrderButton');
+    var btnNavbarIngles = document.getElementById('navbarOrderButtonIngles');
     var btnHero = document.getElementById('heroOrderButton');
     var btnClose = document.getElementById('customModalClose');
 
@@ -23,8 +25,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Asigna eventos a los botones
     btnNavbar.onclick = showModal;
+    btnNavbarEspañol.onclick = showModal;
     btnHero.onclick = showModal;
+    btnNavbarIngles.onclick=showModal;
     btnClose.onclick = closeModal;
+    
 
     // Cierra el modal al hacer clic fuera del contenido
     window.onclick = function (event) {
@@ -39,8 +44,9 @@ document.addEventListener('DOMContentLoaded', function () {
  * MODAL DE RESERVA 
  */
 document.addEventListener('DOMContentLoaded', function () {
-    // Obtén el botón de Reserva mesa y el modal
-    var reservaMesaButton = document.getElementById('reservaMesaButton');
+    // Obtén el botón de Reserva mesa original, el modal y el botón en inglés
+    var reservaMesaButtonInicio = document.getElementById('reservaMesaButtonInicio');
+    var reservaMesaButtonIngles = document.getElementById('reservaMesaButtonIngles'); /*PREGUNTAR VANESSA PORQUE NO FUNCIONA*/
     var reservaMesaModal = document.getElementById('reservaMesaModal');
     var reservaMesaClose = document.getElementById('reservaMesaClose');
 
@@ -54,8 +60,11 @@ document.addEventListener('DOMContentLoaded', function () {
         reservaMesaModal.style.display = 'none';
     }
 
-    // Agrega evento de clic al botón de Reserva mesa para mostrar el modal
-    reservaMesaButton.onclick = showReservaMesaModal;
+    // Agrega evento de clic al botón de Reserva mesa original para mostrar el modal
+    reservaMesaButtonInicio.onclick = showReservaMesaModal;
+
+    // Agrega evento de clic al botón de Reserva mesa en inglés para mostrar el modal
+    reservaMesaButtonIngles.onclick = showReservaMesaModal;
 
     // Agrega evento de clic al botón de cierre del modal
     reservaMesaClose.onclick = closeReservaMesaModal;
@@ -67,6 +76,8 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 });
+
+
 
 
 /**
