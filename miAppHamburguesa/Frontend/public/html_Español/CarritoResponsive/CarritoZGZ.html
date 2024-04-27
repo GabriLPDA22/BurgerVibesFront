@@ -88,19 +88,54 @@
     }
 
 
-    #loginMessage {
+    /* Estilos para el mensaje de inicio de sesión */
+    #loginMessageContainer {
         display: flex;
-        align-items: center;
+        /* Usamos flexbox para centrar el contenido */
         justify-content: center;
-        height: 100vh;
+        /* Centrado horizontal */
+        align-items: center;
+        /* Centrado vertical */
+        position: fixed;
+        /* Fijamos el contenedor */
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        /* Fondo semitransparente para resaltar el mensaje */
+        z-index: 1050;
+        /* Asegúrate de que está por encima de otros elementos */
     }
 
-    #loginMessage .card {
-        margin-top: -20vh;
-        /* Ajusta este valor según sea necesario */
+    #loginMessage {
+        background: #fff;
+        /* Fondo blanco para la alerta */
+        padding: 20px;
+        border-radius: 5px;
+        /* Bordes redondeados */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        /* Sombra para darle profundidad */
         width: 100%;
         max-width: 400px;
-        /* Puedes ajustar este ancho como prefieras */
+        /* Ancho máximo para dispositivos grandes */
+        margin: auto;
+    }
+
+    #loginMessage a {
+        color: #007bff;
+        /* Color de Bootstrap para los enlaces */
+        text-decoration: none;
+        /* Quitamos el subrayado */
+        font-weight: bold;
+        /* Fuente en negrita */
+    }
+
+    .alert-link {
+        text-decoration: none;
+        font-weight: bold;
+        color: #007bff;
+        /* Color azul de enlace típico, o cualquier color que prefieras */
     }
 </style>
 
@@ -116,37 +151,42 @@
                 </div>
             </div>
 
+            <!-- Botón de inicio de sesión -->
             <div class="login">
                 <a href="#" id="loginBtn">
                     <i class="fas fa-user"></i> Iniciar sesión
                 </a>
-                <div id="userMenu" class="dropdown" style="display:none;">
-                    <button type="button" id="dropdownMenuButton">
-                        <i class="fas fa-user-check"></i> <!-- Añade el ícono aquí -->
-                        <span id="usernameDisplay"></span>
-                    </button>
+            </div>
 
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="#"><i class="fas fa-shopping-cart"></i> Nuevo pedido</a>
-                        <a class="dropdown-item" href="#"><i class="fas fa-clipboard-list"></i> Mis pedidos</a>
-                        <a class="dropdown-item" href="#" onclick="signOut();"><i class="fas fa-sign-out-alt"></i>
-                            Desconectar</a>
-                    </div>
+            <!-- Menú de usuario -->
+            <div id="userMenu" class="dropdown" style="display:none;">
+                <!-- Botón del menú de usuario -->
+                <button type="button" id="dropdownMenuButton">
+                    <i class="fas fa-user-check"></i>
+                    <span id="usernameDisplay"></span>
+                </button>
+
+                <!-- Contenido del menú de usuario -->
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="#"><i class="fas fa-shopping-cart"></i> Nuevo pedido</a>
+                    <a class="dropdown-item" href="#"><i class="fas fa-clipboard-list"></i> Mis pedidos</a>
+                    <a class="dropdown-item" href="#" onclick="signOut();"><i class="fas fa-sign-out-alt"></i>
+                        Desconectar</a>
                 </div>
             </div>
     </nav>
 
 
     <!--FORM DE COMPRA-->
-    <div id="loginMessage" class="d-flex justify-content-center align-items-center" style="min-height: 100vh;">
-        <div class="card shadow-lg p-5 rounded" style="max-width: 400px; width: 100%;">
-            <div class="card-body text-center">
-                <h4 class="card-title mb-4">Inicio de Sesión Requerido</h4>
-                <p class="card-text mb-4">Debes iniciar sesión para poder pagar.</p>
-            </div>
+
+
+    <!-- Mensaje de alerta -->
+    <div id="loginMessageContainer" class="container my-5" style="display: none;">
+        <div class="bg-white p-4 shadow rounded-3 text-center">
+            <p>Accede o regístrate para proceder con el pedido. Solo te llevará 1 minuto.</p>
+            <button id="loginPromptButton" class="btn btn-primary">Acceder</button>
         </div>
     </div>
-    
 
 
     <main class="container my-5" id="paymentFormContainer" style="display: none;">
@@ -285,19 +325,19 @@
 
     <!--MODAL DEL LOGIN-->
 
-<div id="modalLogin" class="modal2">
-    <div class="modal2-content">
-        <span class="close">&times;</span>
-        <h5>Inicio de sesión</h5>
-        <form id="loginForm">
-            <label for="username">Nombre de usuario:</label>
-            <input type="text" id="username" required>
-            <label for="password">Contraseña:</label>
-            <input type="password" id="password" required>
-            <button type="submit">Iniciar sesión</button>
-        </form>
+    <div id="modalLogin" class="modal2">
+        <div class="modal2-content">
+            <span class="close">&times;</span>
+            <h5>Inicio de sesión</h5>
+            <form id="loginForm">
+                <label for="username">Nombre de usuario:</label>
+                <input type="text" id="username" required>
+                <label for="password">Contraseña:</label>
+                <input type="password" id="password" required>
+                <button type="submit">Iniciar sesión</button>
+            </form>
+        </div>
     </div>
-</div>
 
 
 </body>
@@ -314,8 +354,5 @@
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-
-
-
 
 </html>
