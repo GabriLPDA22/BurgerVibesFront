@@ -86,6 +86,22 @@
         margin-right: auto;
         display: block;
     }
+
+
+    #loginMessage {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+    }
+
+    #loginMessage .card {
+        margin-top: -20vh;
+        /* Ajusta este valor según sea necesario */
+        width: 100%;
+        max-width: 400px;
+        /* Puedes ajustar este ancho como prefieras */
+    }
 </style>
 
 <body>
@@ -122,33 +138,43 @@
 
 
     <!--FORM DE COMPRA-->
+    <div id="loginMessage" class="d-flex justify-content-center align-items-center" style="min-height: 100vh;">
+        <div class="card shadow-lg p-5 rounded" style="max-width: 400px; width: 100%;">
+            <div class="card-body text-center">
+                <h4 class="card-title mb-4">Inicio de Sesión Requerido</h4>
+                <p class="card-text mb-4">Debes iniciar sesión para poder pagar.</p>
+            </div>
+        </div>
+    </div>
+    
 
 
-    <main class="container my-5">
+    <main class="container my-5" id="paymentFormContainer" style="display: none;">
         <div class="bg-white p-4 shadow rounded-3">
             <!-- Botón para volver atrás -->
             <div class="mb-3">
-                <a href="/miAppHamburguesa/Frontend/public/html_Español/Carta/es_carta_Zaragoza.html" class="btn btn-outline-secondary">
-                    <i class="bi bi-arrow-left-circle-fill"></i> 
+                <a href="/miAppHamburguesa/Frontend/public/html_Español/Carta/es_carta_Zaragoza.html"
+                    class="btn btn-outline-secondary">
+                    <i class="bi bi-arrow-left-circle-fill"></i>
                 </a>
             </div>
 
-            <h2 class="text-center mb-3">Tu pedido · 25,00 €</h2>
+            <h2 class="text-center mb-3" style="font-size: 25px;">Total Pedido - <span id="total-price"></span></h2>
             <div class="my-3">
                 <h5 style="font-family: 'Sedgwick Ave', cursive;">
-                    <i class="bi bi-shop me-2 text-orange"></i>Nachos Rainforest
+                    <i class="bi bi-shop me-2 text-orange"></i>
                 </h5>
                 <div class="d-flex justify-content-between align-items-center border rounded-3 p-3 my-3">
                     <div class="d-flex align-items-center">
                         <button class="btn btn-outline-orange btn-sm me-2">
                             <i class="bi bi-dash-circle-fill"></i>
                         </button>
-                        <strong>2</strong>
+                        <strong></strong>
                         <button class="btn btn-outline-orange btn-sm ms-2">
                             <i class="bi bi-plus-circle-fill"></i>
                         </button>
                     </div>
-                    <span>25,00 €</span>
+                    <span> €</span>
                 </div>
             </div>
             <form>
@@ -184,7 +210,18 @@
                         <i class="bi bi-clock-fill me-2 text-orange"></i>Hora de recogida
                     </h4>
                     <select id="pickup-time" class="form-select">
+                        <option value="12:00">12:00</option>
+                        <option value="13:00">13:00</option>
+                        <option value="14:00">14:00</option>
+                        <option value="15:00">15:00</option>
+                        <option value="16:00">16:00</option>
+                        <option value="17:00">17:00</option>
+                        <option value="18:00">18:00</option>
+                        <option value="19:00">19:00</option>
+                        <option value="20:00">20:00</option>
                         <option value="21:00">21:00</option>
+                        <option value="22:00">22:00</option>
+                        <option value="23:00">23:00</option>
                     </select>
                 </div>
 
@@ -246,12 +283,7 @@
     </main>
 
 
-
-</body>
-
-
-
-<!--MODAL DEL LOGIN-->
+    <!--MODAL DEL LOGIN-->
 
 <div id="modalLogin" class="modal2">
     <div class="modal2-content">
@@ -268,13 +300,22 @@
 </div>
 
 
+</body>
+
+
+
+
+
 <!--SCRIPT LOGICA DEL MENU-->
-<script src="/miAppHamburguesa/Frontend/src/js/LogicaMenu/ModalsProductosDinamico.js"></script>
-<script src="/miAppHamburguesa/Frontend/src/js/LogicaMenu/Carrito.js"></script>
+<script src="/miAppHamburguesa/Frontend/src/js/LogicaMenu/Pago.js"></script>
 <script src="/miAppHamburguesa/Frontend/src/js/LogicaMenu/Login/login.js"></script>
+
+
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+
 
 
 </html>

@@ -25,6 +25,8 @@ function showUserMenu(username) {
     document.getElementById('loginBtn').style.display = 'none';
     document.getElementById('userMenu').style.display = 'block';
     document.getElementById('usernameDisplay').textContent = username;
+    // Guarda el estado de autenticación
+    localStorage.setItem('authenticated', 'true');
 }
 
 // Manejo del formulario de inicio de sesión
@@ -33,33 +35,39 @@ document.getElementById('loginForm').addEventListener('submit', function (e) {
     var username = document.getElementById('username').value;
     showUserMenu(username);
     modal2.style.display = "none";
+    checkAuthentication();
 });
 
 // Función para manejar el cierre de sesión
 function signOut() {
     document.getElementById('loginBtn').style.display = 'block';
     document.getElementById('userMenu').style.display = 'none';
+    // Limpia el estado de autenticación
+    localStorage.removeItem('authenticated');
+    checkAuthentication();
 }
 
-document.getElementById('dropdownMenuButton').addEventListener('click', function (event) {
-    var dropdownMenu = document.querySelector('.dropdown-menu');
-    if (dropdownMenu.style.display === 'block') {
-        dropdownMenu.style.display = 'none';
+function checkAuthentication() {
+    var isAuthenticated = localStorage.getItem('authenticated');
+    var loginMessage = document.getElementById('loginMessage');
+    var paymentFormContainer = document.getElementById('paymentFormContainer');
+    console.log('Authenticated:', isAuthenticated); // Imprime el estado de autenticación
+  
+    if (isAuthenticated) {
+      console.log('User is authenticated, showing payment form, hiding login message.');
+      if (paymentFormContainer) paymentFormContainer.style.display = 'block';
+      if (loginMessage) loginMessage.style.display = 'none';
     } else {
-        dropdownMenu.style.display = 'block';
+      console.log('User is not authenticated, hiding payment form, showing login message.');
+      if (paymentFormContainer) paymentFormContainer.style.display = 'none';
+      if (loginMessage) loginMessage.style.display = 'block';
     }
+  }
+  
 
-    // Previene que el clic se propague y cierre el menú inmediatamente
-    event.stopPropagation();
-});
+// Asegúrate de llamar a checkAuthentication cuando la página se cargue para establecer el estado inicial correcto
+document.addEventListener('DOMContentLoaded', checkAuthentication);
 
-// Cierra el menú desplegable si se hace clic fuera de él
-window.addEventListener('click', function (event) {
-    var dropdownMenu = document.querySelector('.dropdown-menu');
-    if (event.target !== dropdownMenu && !dropdownMenu.contains(event.target)) {
-        dropdownMenu.style.display = 'none';
-    }
-});
 
 
 

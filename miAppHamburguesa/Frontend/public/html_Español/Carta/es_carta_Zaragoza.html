@@ -1162,7 +1162,14 @@
       </div>
     </div>
 
-
+    <script>
+      document.getElementById('confirm-order-btn').addEventListener('click', function () {
+        if (!this.disabled) {
+          window.location.href =
+          '/miAppHamburguesa/Frontend/public/html_Español/CarritoResponsive/CarritoZGZ.html'; // La ruta a la que quieres que el botón lleve
+        }
+      });
+    </script>
 
   </div>
 
@@ -1247,6 +1254,7 @@
   <script src="/miAppHamburguesa/Frontend/src/js/LogicaMenu/ModalsProductosDinamico.js"></script>
   <script src="/miAppHamburguesa/Frontend/src/js/LogicaMenu/Carrito.js"></script>
   <script src="/miAppHamburguesa/Frontend/src/js/LogicaMenu/Login/login.js"></script>
+  <script src="/miAppHamburguesa/Frontend/src/js/LogicaMenu/Pago.js"></script>
 
 </body>
 

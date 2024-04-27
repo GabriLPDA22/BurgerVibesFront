@@ -36,37 +36,38 @@ function addToCart(productName, productPrice, quantity) {
         document.querySelector('.order-items').appendChild(orderItem);
         updateTotal(productPrice * quantity);
     }
-}
 
-function removeItem(button) {
-    var orderItem = button.parentNode;
-    var priceElement = orderItem.querySelector('.product-price');
-    var price = parseFloat(priceElement.textContent.replace('€', '').trim());
-    document.querySelector('.order-items').removeChild(orderItem);
-    updateTotal(-price);
-}
-
-function updateQuantity(button, change, pricePerUnit) {
-    var input = button.parentNode.querySelector('input[type=number]');
-    var currentQuantity = parseInt(input.value);
-    var newQuantity = currentQuantity + change;
-    if (newQuantity > 0) {
-        input.value = newQuantity;
-        var totalPrice = (pricePerUnit * newQuantity).toFixed(2);
-        button.parentNode.nextElementSibling.textContent = totalPrice + ' €';
-        updateTotal(change * pricePerUnit);
-    }
+    // Almacena el estado del carrito en localStorage para que persista entre páginas
+    updateLocalStorage();
 }
 
 function updateTotal(change) {
     var totalAmountElement = document.querySelector('.total-amount');
     var currentTotal = parseFloat(totalAmountElement.textContent.replace('€', '').trim());
-    console.log('Current Total:', currentTotal, 'Change:', change); // Añadido para depuración
     var newTotal = currentTotal + change;
     totalAmountElement.textContent = newTotal.toFixed(2) + ' €';
 
+    updateLocalStorage(); // Actualiza el localStorage al modificar el total del carrito
+
     updateCartInterface();
 }
+
+function updateLocalStorage() {
+    var items = Array.from(document.querySelectorAll('.order-item')).map(item => ({
+        name: item.querySelector('.product-name').textContent,
+        quantity: parseInt(item.querySelector('.product-quantity input[type=number]').value),
+        price: parseFloat(item.querySelector('.product-price').textContent.replace('€', '').trim())
+    }));
+
+    var total = parseFloat(document.querySelector('.total-amount').textContent.replace('€', '').trim());
+
+    localStorage.setItem('carrito', JSON.stringify({
+        items: items,
+        total: total
+    }));
+}
+
+
 
 
 
@@ -129,7 +130,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
-
 
 
 

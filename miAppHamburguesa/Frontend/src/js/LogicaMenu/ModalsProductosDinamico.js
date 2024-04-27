@@ -3,7 +3,7 @@ let carrito = [];
 let currentProductPrice = 0; // Variable global para almacenar el precio del producto actual
 
 function actualizarPrecioTotal(productPrice, cantidad) {
-  const span = document.querySelector('.add-to-cart-btn span');
+  const span = document.querySelector('.add-to-cart-btn > span');
   const precioTotal = (cantidad * productPrice).toFixed(2);
   span.textContent = `Añadir al carrito - ${precioTotal} €`;
 }
@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', function () {
       actualizarPrecioTotal(currentProductPrice, 1);
 
       // Actualizar imágenes de alérgenos
-      ['allergenImage1', 'allergenImage2', 'allergenImage3','allergenImage4','allergenImage5','allergenImage6','allergenImage7','allergenImage8','allergenImage9' ].forEach((id, index) => {
+      ['allergenImage1', 'allergenImage2', 'allergenImage3', 'allergenImage4', 'allergenImage5', 'allergenImage6', 'allergenImage7', 'allergenImage8', 'allergenImage9'].forEach((id, index) => {
         const allergenImage = modal.querySelector(`#${id}`);
         allergenImage.style.display = productAttributes.images[index + 1] ? 'inline-block' : 'none';
         if (productAttributes.images[index + 1]) {
@@ -49,8 +49,22 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
-  modal.querySelector('.close').addEventListener('click', () => modal.style.display = 'none');
-  window.addEventListener('click', (event) => { if (event.target == modal) modal.style.display = 'none'; });
+  // Función para cerrar el modal
+  function closeModal() {
+    modal.style.display = 'none';
+  }
+
+
+  // Event listener para el botón de cierre del modal
+  modal.querySelector('.close').addEventListener('click', () => {
+    closeModal();
+  });
+  // Event listener para cerrar el modal haciendo clic fuera de él
+  window.addEventListener('click', function (event) {
+    if (event.target == modal) {
+      closeModal();
+    }
+  });
 
   modal.querySelector('.add-to-cart-btn').addEventListener('click', () => {
     const cantidad = parseInt(document.getElementById('quantity').value);
@@ -74,6 +88,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 });
+
 
 
 
