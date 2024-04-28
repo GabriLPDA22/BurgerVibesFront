@@ -47,9 +47,10 @@
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
           <a class="dropdown-item" href="#"><i class="fas fa-shopping-cart"></i> Nuevo pedido</a>
           <a class="dropdown-item" href="#"><i class="fas fa-clipboard-list"></i> Mis pedidos</a>
-          <a class="dropdown-item" href="#" onclick="signOut();"><i class="fas fa-sign-out-alt"></i>
-            Desconectar</a>
+          <!-- Agrega un ID aquí para el enlace de desconexión -->
+          <a class="dropdown-item" href="#" id="signOutLink"><i class="fas fa-sign-out-alt"></i> Desconectar</a>
         </div>
+
       </div>
   </nav>
 
@@ -1216,17 +1217,17 @@
 
   <div id="modalLogin" class="modal2">
     <div class="modal2-content">
-        <span class="close">&times;</span>
-        <h5>Inicio de sesión</h5>
-        <form id="loginForm">
-            <label for="username">Nombre de usuario:</label>
-            <input type="text" id="username" required>
-            <label for="password">Contraseña:</label>
-            <input type="password" id="password" required>
-            <button type="submit">Iniciar sesión</button>
-        </form>
+      <span class="close">&times;</span>
+      <h5>Inicio de sesión</h5>
+      <form id="loginForm">
+        <label for="username">Nombre de usuario:</label>
+        <input type="text" id="username" required>
+        <label for="password">Contraseña:</label>
+        <input type="password" id="password" required>
+        <button type="submit">Iniciar sesión</button>
+      </form>
     </div>
-</div>
+  </div>
 
 
   <footer id="siteFooter">

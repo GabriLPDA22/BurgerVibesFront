@@ -28,23 +28,29 @@
         </div>
       </div>
 
+      <!-- Botón de inicio de sesión -->
       <div class="login">
         <a href="#" id="loginBtn">
           <i class="fas fa-user"></i> Iniciar sesión
         </a>
-        <div id="userMenu" class="dropdown" style="display:none;">
-          <button type="button" id="dropdownMenuButton">
-            <i class="fas fa-user-check"></i> <!-- Añade el ícono aquí -->
-            <span id="usernameDisplay"></span>
-          </button>
+      </div>
 
-          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <a class="dropdown-item" href="#"><i class="fas fa-shopping-cart"></i> Nuevo pedido</a>
-            <a class="dropdown-item" href="#"><i class="fas fa-clipboard-list"></i> Mis pedidos</a>
-            <a class="dropdown-item" href="#" onclick="signOut();"><i class="fas fa-sign-out-alt"></i>
-              Desconectar</a>
-          </div>
+      <!-- Menú de usuario -->
+      <div id="userMenu" class="dropdown" style="display:none;">
+        <!-- Botón del menú de usuario -->
+        <button type="button" id="dropdownMenuButton">
+          <i class="fas fa-user-check"></i>
+          <span id="usernameDisplay"></span>
+        </button>
+
+        <!-- Contenido del menú de usuario -->
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item" href="#"><i class="fas fa-shopping-cart"></i> Nuevo pedido</a>
+          <a class="dropdown-item" href="#"><i class="fas fa-clipboard-list"></i> Mis pedidos</a>
+          <!-- Agrega un ID aquí para el enlace de desconexión -->
+          <a class="dropdown-item" href="#" id="signOutLink"><i class="fas fa-sign-out-alt"></i> Desconectar</a>
         </div>
+
       </div>
   </nav>
 
