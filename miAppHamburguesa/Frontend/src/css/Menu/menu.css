@@ -679,10 +679,8 @@ hr {
 
 }
 
+/*RESPONSIVE CARTA ZARAGOZA*/
 @media (max-width: 425px) {
-
-
-
   /* Ajustes para las imágenes */
   .menu-item-img {
     width: auto;
@@ -794,5 +792,129 @@ hr {
     margin: 0;
     gap: 20px;
     font-size: 13px;
+}
+}
+
+@media (max-width: 768px) {
+nav {
+  background-color: #ffffff;
+  padding: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 100%;
+}
+}
+
+@media (max-width: 1024px) {
+  /* Ajustes para las imágenes */
+  .menu-item-img {
+    width: auto;
+    height: auto;
+  }
+
+  /* Ajustes para el título del producto */
+  .menu-item-title {
+    font-size: 1.2em;
+  }
+
+  /* Ajustes para el precio */
+  .price {
+    font-size: 1.2em;
+  }
+
+  /* Ajustes para la descripción */
+  .menu-item-description {
+    font-size: 0.9em;
+    margin-left: 0%;
+  }
+
+  /* Ajustes para los iconos de alérgenos */
+  .menu-item-icons img {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+  }
+
+  /* Estilos generales */
+  .menu-item {
+    margin-bottom: 35px;
+  }
+
+
+  .menu-item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .menu-item-title {
+    font-size: 1.2rem;
+  }
+
+  .menu-item-price-action {
+    display: flex;
+    align-items: center;
+  }
+
+  .menu-item-price-action button {
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+
+  .price {
+    font-weight: bold;
+  }
+
+  .menu-item-description {
+    margin-top: 10px;
+  }
+
+  .menu-item-icons {
+    display: flex;
+    margin-top: 10px;
+  }
+
+  .menu-item-icons img {
+    width: 20px;
+    margin-right: 5px;
+  }
+
+  .menu-item-img {
+
+    max-width: 150px;
+    /* ajustar el tamaño de la imagen según sea necesario */
+  }
+
+  .menu-item-column {
+    flex-direction: column-reverse;
+  }
+
+  .menu-item-description {
+    font-size: 0.9rem;
+  }
+
+  .menu-item-icons {
+    flex-wrap: wrap;
+  }
+
+  .menu-item-icons img {
+    margin-bottom: 5px;
+  }
+
+  .image-column {
+    flex: 0 0 120px;
+    height: 160px;
+  }
+
+  .tabs-content {
+    display: block;
+  }
+  .navigation-tabs {
+    display: flex;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    gap: 20px;
+    font-size: 20px;
 }
 }
