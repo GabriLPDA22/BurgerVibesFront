@@ -41,6 +41,67 @@ function addToCart(productName, productPrice, quantity) {
     updateLocalStorage();
 }
 
+function updateQuantity(button, change, productPrice) {
+    // Obtener el input de cantidad asociado al botón
+    var input = button.parentNode.querySelector('input[type="number"]');
+    
+    // Obtener el valor actual de la cantidad
+    var currentQuantity = parseInt(input.value);
+    
+    // Actualizar la cantidad con el cambio especificado
+    var newQuantity = currentQuantity + change;
+    
+    // Verificar si la nueva cantidad es válida (mayor que 0)
+    if (newQuantity >= 0) {
+        // Actualizar el valor del input de cantidad
+        input.value = newQuantity;
+
+        // Calcular el cambio en el precio total del producto
+        var priceDifference = productPrice * change;
+
+        // Obtener el elemento que muestra el precio total del producto
+        var productPriceElement = button.parentNode.nextElementSibling;
+
+        // Obtener el precio total actual del producto
+        var currentProductPrice = parseFloat(productPriceElement.textContent);
+
+        // Calcular el nuevo precio total del producto
+        var newProductPrice = currentProductPrice + priceDifference;
+
+        // Actualizar el precio total del producto mostrado
+        productPriceElement.textContent = newProductPrice.toFixed(2) + ' €';
+
+        // Actualizar el precio total del carrito
+        updateTotal(priceDifference);
+    } else {
+        // Si la nueva cantidad es menor que 0, no hacer nada
+        // o mostrar un mensaje de error si es necesario
+        console.log('No se puede reducir la cantidad por debajo de 0.');
+    }
+}
+
+
+function removeItem(button) {
+    // Obtener el elemento del producto asociado al botón
+    var productItem = button.parentNode;
+    
+    // Obtener el precio total del producto a eliminar
+    var productPrice = parseFloat(productItem.querySelector('.product-price').textContent);
+    
+    // Eliminar el elemento del producto del DOM
+    productItem.parentNode.removeChild(productItem);
+    
+    // Calcular el cambio en el precio total del carrito
+    var priceDifference = -productPrice;
+
+    // Actualizar el precio total del carrito
+    updateTotal(priceDifference);
+
+    // Actualizar el estado del carrito en localStorage para que persista entre páginas
+    updateLocalStorage();
+}
+
+
 function updateTotal(change) {
     var totalAmountElement = document.querySelector('.total-amount');
     var currentTotal = parseFloat(totalAmountElement.textContent.replace('€', '').trim());
@@ -53,22 +114,19 @@ function updateTotal(change) {
 }
 
 function updateLocalStorage() {
+    // Recolectar todos los items del carrito desde el DOM
     var items = Array.from(document.querySelectorAll('.order-item')).map(item => ({
         name: item.querySelector('.product-name').textContent,
         quantity: parseInt(item.querySelector('.product-quantity input[type=number]').value),
         price: parseFloat(item.querySelector('.product-price').textContent.replace('€', '').trim())
     }));
 
-    var total = parseFloat(document.querySelector('.total-amount').textContent.replace('€', '').trim());
+    // Calcular el total del carrito basado en los precios y cantidades
+    var total = items.reduce((acc, item) => acc + (item.price * item.quantity), 0);
 
-    localStorage.setItem('carrito', JSON.stringify({
-        items: items,
-        total: total
-    }));
+    // Guardar en localStorage el estado actual del carrito
+    localStorage.setItem('carrito', JSON.stringify({items: items, total: total.toFixed(2)}));
 }
-
-
-
 
 
 function updateCartInterface() {
@@ -130,7 +188,3 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
-
-
-
-
