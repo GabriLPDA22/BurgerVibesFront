@@ -58,6 +58,8 @@
   margin: 0;
   padding: 4px;
   font-family: 'Urbanist', cursive;
+  text-align: center;
+  color: #000;
 }
 
 .location-section {
@@ -74,7 +76,13 @@
   font-size: 1.5em; /* Tamaño del texto para la localidad */
   color: #fff; /* Color del texto */
   margin-top: 5px;
+  text-align: center;
 
+}
+
+#descargarBtn{
+  text-align: center;
+  color: #000;
 }
 
 .modal-button {

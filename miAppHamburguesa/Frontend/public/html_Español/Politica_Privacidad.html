@@ -18,26 +18,70 @@
                 <a href="/miAppHamburguesa/Frontend/public/html_Español/es_index.html" class="navbar-brand">
                     <!-- Asegúrate de tener tu imagen de logo disponible en la ruta especificada -->
                     <img src="/miAppHamburguesa/Frontend/src/assets/img/Home/BurgerVibes.svg" alt="Logotipo" id="logo">
-                    
+
                 </a>
                 <button class="navbar-toggler" type="button">&#9776;</button>
                 <ul class="navbar-nav">
-                    <li></li><img src="/miAppHamburguesa/Frontend/src/assets/img/Home/BurgerVibes.svg" alt="Logotipo" id="logo" class="logo-responsive">
-                    <li><a href="#concepto" class="nav-link">Concepto</a></li>
+                    <li></li><img src="/miAppHamburguesa/Frontend/src/assets/img/Home/BurgerVibes.svg" alt="Logotipo"
+                        id="logo" class="logo-responsive">
+                    <li><a href="/miAppHamburguesa/Frontend/public/html_Español/es_index.html#concepto" class="nav-link">Concepto</a></li>
                     <li><a href="es_alergenos.html" class="nav-link">Alergenos</a></li>
-                    <li><a href="#opiniones" class="nav-link">Opiniones</a></li>
-                    <li><a href="#galeria" class="nav-link">Galería</a></li>
+                    <li><a href="/miAppHamburguesa/Frontend/public/html_Español/es_index.html#opiniones" class="nav-link">Opiniones</a></li>
+                    <li><a href="/miAppHamburguesa/Frontend/public/html_Español/es_index.html#galeria" class="nav-link">Galería</a></li>
                     <li><a href="#Contacto" class="nav-link">Contacto</a></li>
-                    <li><a href="es_carta.html" class="nav-link">Carta</a></li>
+                    <li><a href="#carta" class="nav-link">Carta</a></li>
                     <span id="customModalClose" class="custom-close-responsive">&times;</span>
-                    <a href="javascript:void(0);" class="pedido-online-responsive" id="navbarOrderButton2">Pide online</a>
-                    <a href="#" class="reserva-online-responsive" id="reservaMesaButton">Reserva
+                    <a href="javascript:void(0);" class="pedido-online-responsive" id="navbarOrderButton2">Pide
+                        online</a>
+                    <a href="javascript:void(0);" class="reserva-online-responsive" id="reservaMesaButton">Reserva
                         mesa</a>
                 </ul>
                 <a href="javascript:void(0);" class="pedido-online" id="navbarOrderButton">Pide online</a>
             </div>
         </nav>
     </header>
+
+    <!--Carta-->
+
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <div class="custom-modal-header">
+                <span id="customModalCloseCarta" class="custom-close">&times;</span>
+                <img src="/miAppHamburguesa/Frontend/src/assets/img/Home/BurgerVibes.svg" alt="Vibes Logo"
+                    class="modal-logo">
+            </div>
+            <div class="custom-modal-body">
+
+                <div class="carta-location">
+                    <p>Zaragoza</p>
+                    <div class="verCartaBtn">
+                        <a href="/miAppHamburguesa/Frontend/public/html_Español/Carta/es_cartazgznobuy_.html"
+                            class="ver-carta" style="text-decoration: none; color: #000;">
+                            <p id="VerCarta">Ver Carta</p>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="carta-location">
+                    <p>Valencia</p>
+                    <div class="verCartaBtn">
+                        <a href="/miAppHamburguesa/Frontend/public/html_Español/Carta/es_cartavalenobuy.html"
+                            class="ver-carta" style="text-decoration: none; color: #000;">
+                            <p id="VerCarta">Ver Carta</p>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="descargarCartaBtn">
+                    <a href="/miAppHamburguesa/MENU/BurgerVibes.pdf" download="BurgerVibes.pdf" class="descargar-carta"
+                        style="text-decoration: none; color: #000;">
+                        <p id="descargarBtn">Descargar Carta</p>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </div>
 
     <!--Modal (Formulario de pedido)-->
 
@@ -195,7 +239,7 @@
                     </div>
                     <div class="footer-section">
                         <h4>Legal</h4>
-                        <a href="#">Configuración de cookies</a>
+                        <a href="/miAppHamburguesa/Frontend/public/html_Español/ConfigCookies.html">Configuración de cookies</a>
                         <a href="/miAppHamburguesa/Frontend/public/html_Español/Terminos_Condiciones.html">Términos y condiciones</a>
                         <a href="#">Política de privacidad</a>
                     </div>
