@@ -1119,23 +1119,6 @@
             </div>
         </div>
 
-
-
-        <!-- Columna del pedido a la derecha -->
-        <!-- Botón para mostrar el carrito con estilos de Bootstrap -->
-        <div class="order-toggle-button">
-            <a href="/miAppHamburguesa/Frontend/public/html_Español/CarritoResposive/CarritoZGZ.html" style="text-decoration: none; color: black;"
-                class="btn btn-primary w-100 d-flex flex-column align-items-center">
-                <div class="d-flex flex-row justify-content-center align-items-center">
-                    <i class="bi bi-eye-fill fs-3 me-2"></i>
-                    Revisar pedido - <span class="total-amount">0,00 €</span>
-                </div>
-                <small>pedido mínimo 16,00&nbsp;€</small>
-            </a>
-        </div>
-
-
-
         <div class="order-column">
             <div class="order-header">
                 <i class="bi bi-receipt-cutoff me-2"></i><span class="order-title">Tu pedido</span>
@@ -1234,25 +1217,6 @@
     <script src="/miAppHamburguesa/Frontend/src/js/LogicaMenu/Carrito.js"></script>
 
 
-    <!--
-    <script>
-        /*FUNCIONALIDAD PARA EL BOTON DE DESPLIEGUE DEL CARRITO EN RESPONSIVE*/
-        function toggleCart() {
-            var orderColumn = document.querySelector('.order-column');
-            var toggleButton = document.querySelector('.order-toggle-button'); // Referencia al contenedor del botón
-
-            if (orderColumn.style.display === 'block' || orderColumn.style.display === '') {
-                orderColumn.style.display = 'none';
-                toggleButton.style.display = 'flex'; // Asegúrate de que el estilo de display coincida con lo que usas en tu CSS para mostrarlo
-            } else {
-                orderColumn.style.display = 'block';
-                toggleButton.style.display = 'none'; // Esto ocultará el botón cuando el carrito esté visible
-            }
-        }
-
-
-    </script>
-        -->
 </body>
 
 </html>

@@ -1168,53 +1168,53 @@
         </div>
       </div>
     </div>
+  </div>
 
 
-
-    <!-- Columna del pedido a la derecha -->
-    <div class="order-column">
-      <div class="order-header">
-        <i class="bi bi-receipt-cutoff me-2"></i><span class="order-title">Tu pedido</span>
+  <!-- Columna del pedido a la derecha -->
+  <div class="order-column">
+    <div class="order-header">
+      <i class="bi bi-receipt-cutoff me-2"></i><span class="order-title">Tu pedido</span>
+    </div>
+    <div class="order-content">
+      <div id="minimum-order-notice" class="order-minimum alert alert-warning fs-6 p-2 px-3" role="alert">
+        <i class="bi bi-exclamation-triangle-fill me-2"></i>
+        <span>Pedido mínimo: <b>16,00&nbsp;€</b></span>
       </div>
-      <div class="order-content">
-        <div id="minimum-order-notice" class="order-minimum alert alert-warning fs-6 p-2 px-3" role="alert">
-          <i class="bi bi-exclamation-triangle-fill me-2"></i>
-          <span>Pedido mínimo: <b>16,00&nbsp;€</b></span>
-        </div>
-        <div class="order-logo">
-          <img src="/miAppHamburguesa/Frontend/src/assets/img/Home/BurgerVibes.svg" alt="Brand Logo"
-            class="order-brand-logo">
-        </div>
-        <div class="order-empty">
-          <span>Tu pedido está vacío, añade algún producto para continuar</span>
-        </div>
-
-
-        <div class="order-items">
-          <!-- Los elementos del pedido se agregarán aquí dinámicamente -->
-        </div>
+      <div class="order-logo">
+        <img src="/miAppHamburguesa/Frontend/src/assets/img/Home/BurgerVibes.svg" alt="Brand Logo"
+          class="order-brand-logo">
       </div>
-      <div class="order-footer">
-        <div class="order-total">
-          <span>Total:</span>
-          <span class="total-amount">0,00 €</span>
-        </div>
-        <div class="btnConf">
-          <button id="confirm-order-btn" class="confirm-order" disabled>Confirmar pedido</button>
-        </div>
+      <div class="order-empty">
+        <span>Tu pedido está vacío, añade algún producto para continuar</span>
+      </div>
+      <div class="order-items">
+        <!-- Los elementos del pedido se agregarán aquí dinámicamente -->
       </div>
     </div>
-
-    <script>
-      document.getElementById('confirm-order-btn').addEventListener('click', function () {
-        if (!this.disabled) {
-          window.location.href =
-            '/miAppHamburguesa/Frontend/public/html_Español/CarritoResponsive/CarritoZGZ.html'; // La ruta a la que quieres que el botón lleve
-        }
-      });
-    </script>
-
+    <div class="order-footer">
+      <div class="order-total">
+        <span>Total:</span>
+        <span class="total-amount">0,00 €</span>
+      </div>
+      <div class="btnConf">
+        <button id="confirm-order-btn" class="confirm-order" disabled>Confirmar pedido</button>
+      </div>
+    </div>
   </div>
+
+
+
+  <script>
+    document.getElementById('confirm-order-btn').addEventListener('click', function () {
+      if (!this.disabled) {
+        window.location.href =
+          '/miAppHamburguesa/Frontend/public/html_Español/CarritoResponsive/CarritoZGZ.html'; // La ruta a la que quieres que el botón lleve
+      }
+    });
+  </script>
+
+
 
 
   <!--MODALES DE CADA PRODUCTO-->
@@ -1271,8 +1271,10 @@
     <div class="footer-links">
       <a href="/legal-notice" target="_blank">Aviso legal</a>
       <a href="/miAppHamburguesa/Frontend/public/html_Español/CookiesZaragozaShop.html">Configuración de cookies</a>
-      <a href="/miAppHamburguesa/Frontend/public/html_Español/Politica_Privacidad.html" target="_blank">Política de privacidad</a>
-      <a href="/miAppHamburguesa/Frontend/public/html_Español/Terminos_Condiciones.html" target="_blank">Términos y condiciones</a>
+      <a href="/miAppHamburguesa/Frontend/public/html_Español/Politica_Privacidad.html" target="_blank">Política de
+        privacidad</a>
+      <a href="/miAppHamburguesa/Frontend/public/html_Español/Terminos_Condiciones.html" target="_blank">Términos y
+        condiciones</a>
     </div>
     <hr>
     <div class="last-part">
@@ -1290,6 +1292,19 @@
   </footer>
 
 
+  <!-- Botón para mostrar el carrito con estilos de Bootstrap -->
+  <div class="order-toggle-button">
+    <a href="/miAppHamburguesa/Frontend/public/html_Español/CarritoResponsive/CarritoVAL.html"
+      style="text-decoration: none; color: black;" class="btn btn-primary w-100 d-flex flex-column align-items-center">
+      <div class="d-flex flex-row justify-content-center align-items-center">
+        <i class="bi bi-eye-fill fs-3 me-2"></i>
+        Revisar pedido - <span class="total-amount">0,00 €</span>
+      </div>
+      <small>pedido mínimo 16,00&nbsp;€</small>
+    </a>
+  </div>
+
+  
 
 
 

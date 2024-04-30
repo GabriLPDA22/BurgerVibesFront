@@ -1,4 +1,5 @@
 const modal = document.getElementById('productModal');
+const orderToggleButton = document.querySelector('.order-toggle-button'); // Asegúrate de que el selector sea correcto
 let carrito = [];
 let currentProductPrice = 0; // Variable global para almacenar el precio del producto actual
 
@@ -45,14 +46,39 @@ document.addEventListener('DOMContentLoaded', function () {
         }
       });
 
+      // Ocultar el botón de revisar pedido
+      orderToggleButton.style.display = 'none';
+
       modal.style.display = 'block';
     });
   });
 
-  // Función para cerrar el modal
+  modal.querySelector('.add-to-cart-btn').addEventListener('click', () => {
+    const cantidad = parseInt(document.getElementById('quantity').value);
+    carrito.push({
+      nombre: modal.querySelector('h2').textContent,
+      cantidad: cantidad,
+      precioUnitario: currentProductPrice,
+      precioTotal: (cantidad * currentProductPrice).toFixed(2)
+    });
+    console.log(carrito);
+    closeModal(); // Llamada a la función que cierra el modal y muestra el botón
+  });
+
   function closeModal() {
     modal.style.display = 'none';
-  }
+    
+    // Verifica si el ancho de la pantalla es de 430px o menos
+    if (window.matchMedia("(max-width: 430px)").matches) {
+        orderToggleButton.style.display = 'flex';
+        orderToggleButton.style.justifyContent = 'center'; // Asegura centrado horizontal
+        orderToggleButton.style.alignItems = 'center'; // Asegura centrado vertical
+    } else {
+        // Para pantallas más grandes, ajusta según sea necesario
+        orderToggleButton.style.display = 'none'; // O cualquier otro estilo necesario para pantallas grandes
+    }
+}
+
 
 
   // Event listener para el botón de cierre del modal
@@ -88,7 +114,3 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 });
-
-
-
-

@@ -44,13 +44,13 @@ function addToCart(productName, productPrice, quantity) {
 function updateQuantity(button, change, productPrice) {
     // Obtener el input de cantidad asociado al botón
     var input = button.parentNode.querySelector('input[type="number"]');
-    
+
     // Obtener el valor actual de la cantidad
     var currentQuantity = parseInt(input.value);
-    
+
     // Actualizar la cantidad con el cambio especificado
     var newQuantity = currentQuantity + change;
-    
+
     // Verificar si la nueva cantidad es válida (mayor que 0)
     if (newQuantity >= 0) {
         // Actualizar el valor del input de cantidad
@@ -84,13 +84,13 @@ function updateQuantity(button, change, productPrice) {
 function removeItem(button) {
     // Obtener el elemento del producto asociado al botón
     var productItem = button.parentNode;
-    
+
     // Obtener el precio total del producto a eliminar
     var productPrice = parseFloat(productItem.querySelector('.product-price').textContent);
-    
+
     // Eliminar el elemento del producto del DOM
     productItem.parentNode.removeChild(productItem);
-    
+
     // Calcular el cambio en el precio total del carrito
     var priceDifference = -productPrice;
 
@@ -109,9 +109,9 @@ function updateTotal(change) {
     totalAmountElement.textContent = newTotal.toFixed(2) + ' €';
 
     updateLocalStorage(); // Actualiza el localStorage al modificar el total del carrito
-
-    updateCartInterface();
+    updateCartInterface(); // Asegúrate de llamar a esta función para actualizar la interfaz
 }
+
 
 function updateLocalStorage() {
     // Recolectar todos los items del carrito desde el DOM
@@ -125,24 +125,49 @@ function updateLocalStorage() {
     var total = items.reduce((acc, item) => acc + (item.price * item.quantity), 0);
 
     // Guardar en localStorage el estado actual del carrito
-    localStorage.setItem('carrito', JSON.stringify({items: items, total: total.toFixed(2)}));
+    localStorage.setItem('carrito', JSON.stringify({
+        items: items,
+        total: total.toFixed(2)
+    }));
 }
 
 
 function updateCartInterface() {
-    var totalAmountElement = document.querySelector('.total-amount');
+var totalAmountElement = document.querySelector('.total-amount');
     var currentTotal = parseFloat(totalAmountElement.textContent.replace('€', '').replace(',', '.'));
-    var minimumNotice = document.querySelector('#minimum-order-notice');
-    var confirmOrderButton = document.querySelector('#confirm-order-btn');
 
-    if (currentTotal >= 16) {
-        confirmOrderButton.disabled = false;
-        minimumNotice.style.display = 'none';
-    } else {
-        confirmOrderButton.disabled = true;
-        minimumNotice.style.display = 'block';
+    // Actualizar el texto del botón "Revisar pedido"
+    var reviewOrderButton = document.querySelector('.order-toggle-button .total-amount');
+    if (reviewOrderButton) {
+        reviewOrderButton.textContent = currentTotal.toFixed(2) + ' €'; // Actualiza con el formato correcto
     }
 
+    var minimumNotice = document.querySelector('.order-toggle-button small');
+    var confirmOrderButton = document.querySelector('#confirm-order-btn');
+    var orderButton = document.querySelector('.order-toggle-button a');
+
+    // Ajustar el botón de confirmación y el aviso basándose en el total
+    if (currentTotal >= 16) {
+        confirmOrderButton.disabled = false;
+        minimumNotice.style.display = 'none'; // Esconde el mensaje de pedido mínimo
+    } else {
+        confirmOrderButton.disabled = true;
+        minimumNotice.style.display = 'block'; // Muestra el mensaje de pedido mínimo
+    }
+
+    if (currentTotal >= 16) {
+        minimumNotice.style.display = 'none'; // Esconde el mensaje de pedido mínimo
+        orderButton.classList.remove('disabled'); // Remueve la clase 'disabled' si estás usando CSS para deshabilitar
+        orderButton.removeAttribute('disabled'); // Asegúrate de que el enlace se pueda utilizar
+        orderButton.href = "/miAppHamburguesa/Frontend/public/html_Español/CarritoResponsive/CarritoVAL.html"; // Establece el enlace correcto
+    } else {
+        minimumNotice.style.display = 'block'; // Muestra el mensaje de pedido mínimo
+        orderButton.classList.add('disabled'); // Agrega la clase 'disabled' para indicar visualmente que está deshabilitado
+        orderButton.setAttribute('disabled', 'disabled'); // Deshabilita el enlace
+        orderButton.href = "javascript:void(0);"; // Previene que el enlace funcione
+    }
+
+    // Manejar la visibilidad de las secciones de carrito vacío y total
     if (currentTotal > 0) {
         document.querySelector('.order-empty').style.display = 'none';
         document.querySelector('.order-total').style.display = 'block';
@@ -153,11 +178,14 @@ function updateCartInterface() {
 }
 
 
-document.addEventListener('DOMContentLoaded', function() {
+
+
+
+document.addEventListener('DOMContentLoaded', function () {
     // Código para cargar la información en el modal y actualizar el precio en el botón
     var productCards = document.querySelectorAll('.menu-item');
-    productCards.forEach(function(card) {
-        card.addEventListener('click', function() {
+    productCards.forEach(function (card) {
+        card.addEventListener('click', function () {
             var productName = this.getAttribute('data-product-name');
             var productPrice = this.getAttribute('data-product-price');
             // Actualiza la información del modal aquí
@@ -170,8 +198,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Código para manejar el evento de añadir al carrito
     var addToCartButtons = document.querySelectorAll('.add-to-cart-btn');
-    addToCartButtons.forEach(function(button) {
-        button.addEventListener('click', function() {
+    addToCartButtons.forEach(function (button) {
+        button.addEventListener('click', function () {
             var modal = this.closest('.modal-content');
             var productName = modal.querySelector('#productModalTitle').textContent;
             var productPriceText = modal.querySelector('.price-span').textContent;

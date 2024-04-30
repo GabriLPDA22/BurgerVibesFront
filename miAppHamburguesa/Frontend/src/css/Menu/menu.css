@@ -123,6 +123,7 @@ nav {
   padding: 0;
   margin: 0;
   gap: 20px;
+
 }
 
 /*COLUMNA IZQUIERDA*/
@@ -273,6 +274,8 @@ nav {
 
 }
 
+
+
 .order-header {
   display: flex;
   align-items: center;
@@ -293,24 +296,17 @@ nav {
 
 .alert {
   background-color: #fff3cd;
-  /* Color de fondo */
   color: #856404;
-  /* Color del texto */
   border-color: #ffeeba;
-  /* Color del borde */
   border-radius: 0.5rem;
-  /* Borde redondeado */
   padding: 1rem;
-  /* Espaciado interno */
   margin-bottom: 1rem;
-  /* Margen inferior */
   font-size: 1.2rem;
-  /* Tamaño del texto */
+
 }
 
 .alert span {
   font-weight: bold;
-  /* Texto en negrita */
 }
 
 .alert i {
@@ -318,11 +314,14 @@ nav {
   /* Espaciado a la derecha del ícono */
 }
 
-
+.alert,
+.order-empty {
+  text-align: center;
+}
 
 
 .order-content {
-  height: 82vh;
+  height: 81vh;
   /* Limita la altura máxima del contenido */
   flex-direction: column;
   /* Cambia la dirección principal a una columna */
@@ -443,11 +442,11 @@ nav {
   /* Color de fondo del footer */
   color: #fff;
   /* Color del texto del footer */
-  padding: 20px;
+  padding: 25px;
   /* Espaciado interno */
   text-align: center;
   /* Alineación del texto */
-  width: 68%;
+  width: 66.8%;
 }
 
 
@@ -636,15 +635,195 @@ hr {
 
 
 /* Utiliza media queries para hacer la página responsive */
-@media (max-width: 800px) {
+@media (max-width: 1024px) {
+
+
+
+  /* Ajustes para el título del producto */
+  .menu-item-title {
+    font-size: 1.2em;
+  }
+
+  /* Ajustes para el precio */
+  .price {
+    font-size: 1.2em;
+  }
+
+  /* Ajustes para la descripción */
+  .menu-item-description {
+    font-size: 0.9em;
+    margin-left: 0%;
+  }
+
+  /* Ajustes para los iconos de alérgenos */
+  .menu-item-icons img {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+  }
+
+  /* Estilos generales */
+  .menu-item {
+    margin-bottom: 35px;
+  }
+
+  .menu-item-title {
+    font-size: 1.2rem;
+  }
+
+  .menu-item-price-action {
+    display: flex;
+    align-items: center;
+  }
+
+
+
+  .price {
+    font-weight: bold;
+  }
+
+  .menu-item-description {
+    margin-top: 10px;
+  }
+
+  .menu-item-icons {
+    display: flex;
+    margin-top: 10px;
+  }
+
+  .menu-item-icons img {
+    width: 20px;
+    margin-right: 5px;
+  }
+
+  .menu-item-img {
+
+    max-width: 150px;
+    /* ajustar el tamaño de la imagen según sea necesario */
+  }
+
+  .menu-item-column {
+    flex-direction: column-reverse;
+  }
+
+  .menu-item-description {
+    font-size: 0.9rem;
+  }
+
+  .menu-item-icons {
+    flex-wrap: wrap;
+  }
+
+  .menu-item-icons img {
+    margin-bottom: 5px;
+  }
+
+  .image-column {
+    flex: 0 0 120px;
+    height: 160px;
+  }
+
+  .tabs-content {
+    display: block;
+  }
+
+  .navigation-tabs {
+    display: flex;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    gap: 20px;
+    font-size: 20px;
+  }
+}
+
+
+@media (max-width: 834px) {
+
+  .navigation-tabs {
+    display: flex;
+    font-size: 18px;
+  }
+
+  .menu-item-header {
+    display: flex;
+    text-align: left;
+  }
+
+  #siteFooter {
+    width: 63%;
+  }
+
+  .order-content {
+    height: 84vh;
+  }
+
+  .restaurant-info .restaurant-name {
+    padding-left: 20px;
+    font-size: 20px;
+  }
+
+  nav {
+    width: 100%;
+    display: flex;
+  }
+
+}
+
+@media (max-width:800px) {
+  .order-content {
+    height: 85vh;
+  }
+}
+
+@media (max-width: 768px) {
+
+
+  .order-content {
+    height: 84vh;
+  }
+
+}
+
+@media (max-width: 430px) {
+
+  .order-toggle-button{
+    display: flex;
+  }
+
+  .menu-item-header {
+    display: flex;
+    text-align: left;
+  }
 
   .main-wrapper,
   .tabs-content,
   #siteFooter {
+    display: flex;
     flex-direction: column;
     width: 100%;
     padding: 0;
 
+  }
+
+  .navigation-tabs {
+    font-size: 13px;
+    flex-direction: column;
+
+  }
+
+  /* Ajustes para las imágenes */
+  .menu-item-column {
+    .img {
+      height: 100%;
+      width: 100%;
+    }
+  }
+
+  /* Ajustes para las imágenes */
+  .menu-item-img {
+    width: 100%;
+    height: 100%;
   }
 
   .flex-container {
@@ -653,6 +832,9 @@ hr {
 
   }
 
+  .footer-language-selector {
+    margin-right: 10px;
+  }
 
   .order-toggle-button {
     display: block;
@@ -675,246 +857,7 @@ hr {
   .footer-links {
     margin: 0;
     padding-top: 20px;
+    flex-direction: column;
   }
 
-}
-
-/*RESPONSIVE CARTA ZARAGOZA*/
-@media (max-width: 425px) {
-  /* Ajustes para las imágenes */
-  .menu-item-img {
-    width: auto;
-    height: auto;
-  }
-
-  /* Ajustes para el título del producto */
-  .menu-item-title {
-    font-size: 1.2em;
-  }
-
-  /* Ajustes para el precio */
-  .price {
-    font-size: 1.2em;
-  }
-
-  /* Ajustes para la descripción */
-  .menu-item-description {
-    font-size: 0.9em;
-    margin-left: 0%;
-  }
-
-  /* Ajustes para los iconos de alérgenos */
-  .menu-item-icons img {
-    width: 20px;
-    height: 20px;
-    margin-right: 5px;
-  }
-
-  /* Estilos generales */
-  .menu-item {
-    margin-bottom: 35px;
-  }
-
-
-  .menu-item-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  .menu-item-title {
-    font-size: 1.2rem;
-  }
-
-  .menu-item-price-action {
-    display: flex;
-    align-items: center;
-  }
-
-  .menu-item-price-action button {
-    background: none;
-    border: none;
-    cursor: pointer;
-  }
-
-  .price {
-    font-weight: bold;
-  }
-
-  .menu-item-description {
-    margin-top: 10px;
-  }
-
-  .menu-item-icons {
-    display: flex;
-    margin-top: 10px;
-  }
-
-  .menu-item-icons img {
-    width: 20px;
-    margin-right: 5px;
-  }
-
-  .menu-item-img {
-
-    max-width: 150px;
-    /* ajustar el tamaño de la imagen según sea necesario */
-  }
-
-  .menu-item-column {
-    flex-direction: column-reverse;
-  }
-
-  .menu-item-description {
-    font-size: 0.9rem;
-  }
-
-  .menu-item-icons {
-    flex-wrap: wrap;
-  }
-
-  .menu-item-icons img {
-    margin-bottom: 5px;
-  }
-
-  .image-column {
-    flex: 0 0 120px;
-    height: 160px;
-  }
-
-  .tabs-content {
-    display: block;
-  }
-  .navigation-tabs {
-    display: flex;
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-    gap: 20px;
-    font-size: 13px;
-}
-}
-
-@media (max-width: 768px) {
-nav {
-  background-color: #ffffff;
-  padding: 10px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  width: 100%;
-}
-}
-
-@media (max-width: 1024px) {
-  /* Ajustes para las imágenes */
-  .menu-item-img {
-    width: auto;
-    height: auto;
-  }
-
-  /* Ajustes para el título del producto */
-  .menu-item-title {
-    font-size: 1.2em;
-  }
-
-  /* Ajustes para el precio */
-  .price {
-    font-size: 1.2em;
-  }
-
-  /* Ajustes para la descripción */
-  .menu-item-description {
-    font-size: 0.9em;
-    margin-left: 0%;
-  }
-
-  /* Ajustes para los iconos de alérgenos */
-  .menu-item-icons img {
-    width: 20px;
-    height: 20px;
-    margin-right: 5px;
-  }
-
-  /* Estilos generales */
-  .menu-item {
-    margin-bottom: 35px;
-  }
-
-
-  .menu-item-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  .menu-item-title {
-    font-size: 1.2rem;
-  }
-
-  .menu-item-price-action {
-    display: flex;
-    align-items: center;
-  }
-
-  .menu-item-price-action button {
-    background: none;
-    border: none;
-    cursor: pointer;
-  }
-
-  .price {
-    font-weight: bold;
-  }
-
-  .menu-item-description {
-    margin-top: 10px;
-  }
-
-  .menu-item-icons {
-    display: flex;
-    margin-top: 10px;
-  }
-
-  .menu-item-icons img {
-    width: 20px;
-    margin-right: 5px;
-  }
-
-  .menu-item-img {
-
-    max-width: 150px;
-    /* ajustar el tamaño de la imagen según sea necesario */
-  }
-
-  .menu-item-column {
-    flex-direction: column-reverse;
-  }
-
-  .menu-item-description {
-    font-size: 0.9rem;
-  }
-
-  .menu-item-icons {
-    flex-wrap: wrap;
-  }
-
-  .menu-item-icons img {
-    margin-bottom: 5px;
-  }
-
-  .image-column {
-    flex: 0 0 120px;
-    height: 160px;
-  }
-
-  .tabs-content {
-    display: block;
-  }
-  .navigation-tabs {
-    display: flex;
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-    gap: 20px;
-    font-size: 20px;
-}
 }
