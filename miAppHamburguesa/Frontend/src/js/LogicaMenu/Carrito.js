@@ -193,11 +193,6 @@ function updateCartInterface() {
 }
 
 
-
-
-
-
-
 document.addEventListener('DOMContentLoaded', function () {
     // Código para cargar la información en el modal y actualizar el precio en el botón
     var productCards = document.querySelectorAll('.menu-item');
