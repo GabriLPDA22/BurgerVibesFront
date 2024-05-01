@@ -92,17 +92,6 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 
-  modal.querySelector('.add-to-cart-btn').addEventListener('click', () => {
-    const cantidad = parseInt(document.getElementById('quantity').value);
-    carrito.push({
-      nombre: modal.querySelector('h2').textContent,
-      cantidad: cantidad,
-      precioUnitario: currentProductPrice,
-      precioTotal: (cantidad * currentProductPrice).toFixed(2)
-    });
-    console.log(carrito);
-    modal.style.display = 'none';
-  });
 
   document.querySelectorAll('.quantity-control button').forEach(button => {
     button.addEventListener('click', () => {

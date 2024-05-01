@@ -4,31 +4,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+    <link rel="icon" type="image/x-icon" href="/miAppHamburguesa/Frontend/src/assets/img/Home/BurgerVibes.svg">
     <link href="https://fonts.googleapis.com/css2?family=Sedgwick+Ave&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/miAppHamburguesa/Frontend/src/css/Bootstrap/icons.css">
     <link rel="stylesheet" href="/miAppHamburguesa/Frontend/src/css/Menu/menu.css">
+    <link rel="stylesheet" href="/miAppHamburguesa/Frontend/src/css/Bootstrap/icons.css">
+    <link rel="stylesheet" href="/miAppHamburguesa/Frontend/src/css/Menu/ModalLogin.css">
+    <link rel="stylesheet" href="/miAppHamburguesa/Frontend/src/css/Menu/modals.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css">
+    <link href="https://fonts.googleapis.com/css2?family=Sedgwick+Ave&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="/miAppHamburguesa/Frontend/src/css/Menu/Modals.css">
 
-    <title>MenuBurgerVibes</title>
+    <title>BurgerVibesZaragoza</title>
 </head>
 
 <body>
-
     <nav>
         <div class="nav-content">
-            <a href="/miAppHamburguesa/Frontend/public/html_Español/Carta/es_carta_Zaragoza.html" class="ruta">
-                <div class="logo">
+            <div class="logo">
+                <a href="/miAppHamburguesa/Frontend/public/html_Español/Carta/es_carta_Zaragoza.html" style="display: flex;
+                align-items: center;
+                text-decoration: none;">
                     <img src="/miAppHamburguesa/Frontend/src/assets/img/Home/BurgerVibes.svg" alt="Logo">
-                </div>
-                <div class="restaurant-info">
-                    <h1 class="restaurant-name" style="text-decoration: none;">BURGERVIBES ZARAGOZA</h1>
-                </div>
-            </a>
+
+                    <div class="restaurant-info" style="margin-left: 30px;">
+                        <h1 class="restaurant-name" style="text-decoration: none;">BURGERVIBES ZARAGOZA</h1>
+                    </div>
+                </a>
+            </div>
         </div>
     </nav>
-
 
     <div class="main-wrapper">
         <div class="flex-container">
@@ -527,6 +531,44 @@
                                 <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/gluten.svg" alt="gluten">
                                 <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/huevos.svg" alt="huevo">
                                 <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/sulphur.svg" alt="sulfuro">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="menu-item" id="product11" data-product-name="BURGER KIDS" data-product-price="11.50"
+                        data-product-description="¡Para los más peques! Carne de 100g, cheddar x2 y una pequeña ración de patatas. (La Burger Kids únicamente se servirá a niños)"
+                        data-product-allergens="Alergenos: Láctosa, mostaza, gluten, huevo, y sulfitos."
+                        data-product-image1=" /miAppHamburguesa/Frontend/src/assets/img/Menu/HamburguesaKids.png"
+                        data-product-image2="/miAppHamburguesa/Frontend/src/assets/img/Menu/leche.svg"
+                        data-product-image3="/miAppHamburguesa/Frontend/src/assets/img/Menu/huevos.svg"
+                        data-product-image4="/miAppHamburguesa/Frontend/src/assets/img/Menu/gluten.svg">
+
+                        <!-- Columna de imagen -->
+                        <div class="menu-item-column image-column">
+                            <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/HamburguesaKids.png"
+                                alt="BURGER KIDS" class="menu-item-img">
+                        </div>
+                        <!-- Columna de texto e información -->
+                        <div class="menu-item-column info-column">
+                            <div class="menu-item-header">
+                                <h3 class="menu-item-title">BURGER KIDS</h3>
+                                <div class="menu-item-price-action">
+                                    <button class="add-button">
+                                        <i class="bi bi-plus-circle"></i>
+                                        <!-- Asumiendo que quieres usar un ícono de 'plus' -->
+                                    </button>
+                                    <span class="price">11.50 €</span>
+                                </div>
+                            </div>
+                            <p class="menu-item-description">
+                                ¡Para los más peques! Carne de 100g, cheddar x2 y una pequeña ración de patatas. (La
+                                Burger Kids
+                                únicamente se servirá a niños)
+
+                            </p>
+                            <div class="menu-item-icons">
+                                <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/leche.svg" alt="leche">
+                                <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/huevos.svg" alt="huevo">
+                                <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/gluten.svg" alt="gluten">
                             </div>
                         </div>
                     </div>
@@ -1118,39 +1160,36 @@
                 </div>
             </div>
         </div>
+    </div>
 
-        <div class="order-column">
-            <div class="order-header">
-                <i class="bi bi-receipt-cutoff me-2"></i><span class="order-title">Tu pedido</span>
+
+    <!-- Columna del pedido a la derecha -->
+    <div class="order-column">
+        <div class="order-header">
+            <i class="bi bi-receipt-cutoff me-2"></i><span class="order-title">Tu pedido</span>
+        </div>
+        <div class="order-content">
+            <div id="minimum-order-notice" class="order-minimum alert alert-warning fs-6 p-2 px-3" role="alert">
+                <i class="bi bi-exclamation-triangle-fill me-2"></i>
+                <span>Pedido mínimo: <b>16,00&nbsp;€</b></span>
             </div>
-            <div class="order-content">
-                <div id="minimum-order-notice" class="order-minimum alert alert-warning fs-6 p-2 px-3" role="alert">
-                    <i class="bi bi-exclamation-triangle-fill me-2"></i>
-                    <span>Pedido mínimo: <b>16,00&nbsp;€</b></span>
-                </div>
-                <div class="order-logo">
-                    <img src="/miAppHamburguesa/Frontend/src/assets/img/Home/BurgerVibes.svg" alt="Brand Logo"
-                        class="order-brand-logo">
-                </div>
-                <div class="order-empty">
-                    <span>Tu pedido está vacío, añade algún producto para continuar</span>
-                </div>
-
-
-                <div class="order-items">
-                    <!-- Los elementos del pedido se agregarán aquí dinámicamente -->
-                </div>
+            <div class="order-logo">
+                <img src="/miAppHamburguesa/Frontend/src/assets/img/Home/BurgerVibes.svg" alt="Brand Logo"
+                    class="order-brand-logo">
             </div>
-            <div class="order-footer">
-                <div class="order-total">
-                    <span>Total:</span>
-                    <span class="total-amount">0,00 €</span>
-                </div>
+            <div class="order-empty">
+                <span>Tu pedido está vacío, añade algún producto para continuar</span>
+            </div>
+            <div class="order-items">
+                <!-- Los elementos del pedido se agregarán aquí dinámicamente -->
             </div>
         </div>
-
-
-
+        <div class="order-footer">
+            <div class="order-total">
+                <span>Total:</span>
+                <span class="total-amount">0,00 €</span>
+            </div>
+        </div>
     </div>
 
 
@@ -1187,12 +1226,34 @@
     </div>
 
 
+    <!--MODAL DEL LOGIN-->
+
+    <div id="modalLogin" class="modal2">
+        <div class="modal2-content">
+            <span class="close">&times;</span>
+            <h5>Inicio de sesión</h5>
+            <form id="loginForm">
+                <label for="username">Nombre de usuario:</label>
+                <input type="text" id="username" required>
+                <label for="password">Contraseña:</label>
+                <input type="password" id="password" required>
+                <button type="submit">Iniciar sesión</button>
+            </form>
+        </div>
+    </div>
+
+
     <footer id="siteFooter">
         <div class="footer-links">
             <a href="/legal-notice" target="_blank">Aviso legal</a>
-            <a href="/miAppHamburguesa/Frontend/public/html_Español/CookiesZaragozaShop.html">Configuración de cookies</a>
-            <a href="/miAppHamburguesa/Frontend/public/html_Español/Politica_Privacidad.html" target="_blank">Política de privacidad</a>
-            <a href="/miAppHamburguesa/Frontend/public/html_Español/Terminos_Condiciones.html" target="_blank">Términos y condiciones</a>
+            <a href="/miAppHamburguesa/Frontend/public/html_Español/CookiesZaragozaShop.html">Configuración de
+                cookies</a>
+            <a href="/miAppHamburguesa/Frontend/public/html_Español/Politica_Privacidad.html" target="_blank">Política
+                de
+                privacidad</a>
+            <a href="/miAppHamburguesa/Frontend/public/html_Español/Terminos_Condiciones.html" target="_blank">Términos
+                y
+                condiciones</a>
         </div>
         <hr>
         <div class="last-part">
@@ -1209,13 +1270,11 @@
         </div>
     </footer>
 
-
-
-
     <!--SCRIPT LOGICA DEL MENU-->
     <script src="/miAppHamburguesa/Frontend/src/js/LogicaMenu/ModalsProductosDinamico.js"></script>
     <script src="/miAppHamburguesa/Frontend/src/js/LogicaMenu/Carrito.js"></script>
-
+    <script src="/miAppHamburguesa/Frontend/src/js/LogicaMenu/Login/login.js"></script>
+    <script src="/miAppHamburguesa/Frontend/src/js/LogicaMenu/Pago.js"></script>
 
 </body>
 

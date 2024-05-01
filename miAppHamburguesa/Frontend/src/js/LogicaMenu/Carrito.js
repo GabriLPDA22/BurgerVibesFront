@@ -51,7 +51,7 @@ function updateQuantity(button, change, productPrice) {
     // Actualizar la cantidad con el cambio especificado
     var newQuantity = currentQuantity + change;
 
-    // Verificar si la nueva cantidad es válida (mayor que 0)
+    // Verificar si la nueva cantidad es válida (mayor o igual a 0)
     if (newQuantity >= 0) {
         // Actualizar el valor del input de cantidad
         input.value = newQuantity;
@@ -68,17 +68,34 @@ function updateQuantity(button, change, productPrice) {
         // Calcular el nuevo precio total del producto
         var newProductPrice = currentProductPrice + priceDifference;
 
-        // Actualizar el precio total del producto mostrado
-        productPriceElement.textContent = newProductPrice.toFixed(2) + ' €';
+        // Si la nueva cantidad es 0, eliminar el producto del carrito
+        if (newQuantity === 0) {
+            // Eliminar el elemento del producto del DOM
+            var productItem = button.parentNode.parentNode;
+            productItem.parentNode.removeChild(productItem);
 
-        // Actualizar el precio total del carrito
-        updateTotal(priceDifference);
+            // Calcular el cambio en el precio total del carrito
+            var priceDifference = -currentProductPrice;
+
+            // Actualizar el precio total del carrito
+            updateTotal(priceDifference);
+
+            // Actualizar el estado del carrito en localStorage para que persista entre páginas
+            updateLocalStorage();
+        } else {
+            // Actualizar el precio total del producto mostrado
+            productPriceElement.textContent = newProductPrice.toFixed(2) + ' €';
+
+            // Actualizar el precio total del carrito
+            updateTotal(priceDifference);
+        }
     } else {
-        // Si la nueva cantidad es menor que 0, no hacer nada
-        // o mostrar un mensaje de error si es necesario
         console.log('No se puede reducir la cantidad por debajo de 0.');
     }
 }
+
+
+
 
 
 function removeItem(button) {
@@ -133,7 +150,7 @@ function updateLocalStorage() {
 
 
 function updateCartInterface() {
-var totalAmountElement = document.querySelector('.total-amount');
+    var totalAmountElement = document.querySelector('.total-amount');
     var currentTotal = parseFloat(totalAmountElement.textContent.replace('€', '').replace(',', '.'));
 
     // Actualizar el texto del botón "Revisar pedido"
@@ -142,24 +159,22 @@ var totalAmountElement = document.querySelector('.total-amount');
         reviewOrderButton.textContent = currentTotal.toFixed(2) + ' €'; // Actualiza con el formato correcto
     }
 
-    var minimumNotice = document.querySelector('.order-toggle-button small');
+    var minimumNotice = document.getElementById('minimum-order-notice'); // Cambiado a ID en lugar de clase
     var confirmOrderButton = document.querySelector('#confirm-order-btn');
     var orderButton = document.querySelector('.order-toggle-button a');
 
-    // Ajustar el botón de confirmación y el aviso basándose en el total
+    // Ajustar el botón de confirmación basándose en el total
     if (currentTotal >= 16) {
         confirmOrderButton.disabled = false;
-        minimumNotice.style.display = 'none'; // Esconde el mensaje de pedido mínimo
     } else {
         confirmOrderButton.disabled = true;
-        minimumNotice.style.display = 'block'; // Muestra el mensaje de pedido mínimo
     }
 
+    // Ajustar la visibilidad del mensaje de pedido mínimo
     if (currentTotal >= 16) {
-        minimumNotice.style.display = 'none'; // Esconde el mensaje de pedido mínimo
+        minimumNotice.style.display = 'none'; // Oculta el mensaje de pedido mínimo
         orderButton.classList.remove('disabled'); // Remueve la clase 'disabled' si estás usando CSS para deshabilitar
         orderButton.removeAttribute('disabled'); // Asegúrate de que el enlace se pueda utilizar
-        orderButton.href = "/miAppHamburguesa/Frontend/public/html_Español/CarritoResponsive/CarritoVAL.html"; // Establece el enlace correcto
     } else {
         minimumNotice.style.display = 'block'; // Muestra el mensaje de pedido mínimo
         orderButton.classList.add('disabled'); // Agrega la clase 'disabled' para indicar visualmente que está deshabilitado
@@ -176,6 +191,8 @@ var totalAmountElement = document.querySelector('.total-amount');
         document.querySelector('.order-total').style.display = 'none';
     }
 }
+
+
 
 
 
@@ -216,3 +233,5 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 });
+
+
