@@ -119,6 +119,7 @@
   
   .modal-content h2{
     font-family: 'Sedgwick Ave', cursive;
+    margin-left: 50px;
   }
 
   .modal-content p{
@@ -170,7 +171,6 @@
 
 @media (max-width:430px) {
     .modal-content{
-        position: fixed;
         width: 100%;
         height: auto;
         padding: 10px;
@@ -180,4 +180,11 @@
     .close{
         margin-right: 5px;
     }
+
+    #productModal {
+      overflow-y: auto;  /* Permite el desplazamiento vertical si el contenido excede la altura del modal */
+      max-height: 70vh;  /* Limita la altura máxima del modal para asegurar que no cubra toda la pantalla verticalmente */
+    }
 }   
+
+
