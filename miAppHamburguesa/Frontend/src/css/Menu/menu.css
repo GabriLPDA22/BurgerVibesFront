@@ -354,8 +354,14 @@ nav {
   max-height: 300px;
   /* Ajusta la altura máxima según sea necesario */
   overflow-y: auto;
-
+  display: flex; /* Habilita Flexbox */
+  flex-direction: column; /* Organiza los elementos hijos en una columna */
 }
+
+.order-item {
+  flex: 1; /* Asigna a cada elemento hijo el mismo espacio disponible */
+}
+
 
 .order-footer {
   padding: 10px;
@@ -635,9 +641,28 @@ hr {
 
 
 /* Utiliza media queries para hacer la página responsive */
+
+@media (max-width: 1400px) {
+  .order-item {
+     border: none; 
+     padding: 0px;
+
+  }
+
+  .order-item {
+    margin-left: 0px;
+    font-size: 14px;
+  }
+
+  .product-quantity{
+    margin-left: 8px;
+  }
+
+}
+
+
+
 @media (max-width: 1024px) {
-
-
 
   /* Ajustes para el título del producto */
   .menu-item-title {
@@ -783,15 +808,15 @@ hr {
 
 @media (max-width: 430px) {
 
-  .order-toggle-button{
+  .order-toggle-button {
     display: flex;
   }
-  
-  .logo img{
+
+  .logo img {
     width: 100px;
   }
 
-  nav{
+  nav {
     width: 100%;
   }
 

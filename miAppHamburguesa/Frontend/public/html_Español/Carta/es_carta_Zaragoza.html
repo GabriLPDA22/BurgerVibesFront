@@ -1202,7 +1202,7 @@
         <span class="total-amount">0,00 €</span>
       </div>
       <div class="btnConf">
-        <button id="confirm-order-btn" class="confirm-order" disabled>Confirmar pedido</button>
+        <button id="confirm-order-btn" onclick="confirmOrder()">Confirmar pedido</button>
       </div>
     </div>
   </div>
@@ -1216,6 +1216,13 @@
           '/miAppHamburguesa/Frontend/public/html_Español/CarritoResponsive/CarritoZGZ.html'; // La ruta a la que quieres que el botón lleve
       }
     });
+
+    function confirmOrder() {
+    // Implementa la lógica de confirmación del pedido aquí
+    console.log('Pedido confirmado con éxito!');
+}
+
+
   </script>
 
 
