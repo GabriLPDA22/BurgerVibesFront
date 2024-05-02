@@ -2,151 +2,179 @@
 
 /* Estilo del modal */
 .modal2 {
-    display: none;
-    position: fixed;
-    z-index: 1000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-  }
-  
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal2-content {
+  background-color: #fefefe;
+  margin: 10% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 50%;
+  /* Hazlo más estrecho */
+  max-width: 500px;
+  /* Un ancho máximo para dispositivos más grandes */
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  height: auto;
+  font-size: 20px;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  cursor: pointer;
+}
+
+/* Estilos para los inputs y botones dentro del modal */
+.modal2 input[type="text"],
+.modal2 input[type="password"] {
+  width: calc(100% - 20px);
+  padding: 10px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  color: #000000;
+}
+
+.modal2 button {
+  background-color: #F67906;
+  /* Color naranja para los botones */
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  border-radius: 4px;
+  font-family: 'Sedgwick Ave', cursive;
+  /* Fuente personalizada */
+  font-size: 20px;
+}
+
+.modal2 button:hover {
+  background-color: #d56704;
+  /* Un tono más oscuro de naranja en hover */
+}
+
+/* Aplica la fuente y el color a todo el contenido del modal */
+.modal2-content {
+  font-family: 'Sedgwick Ave', cursive;
+  color: #F67906;
+}
+
+.modal2 h5 {
+  margin: 0 0 15px 0;
+  text-align: center;
+  font-family: 'Sedgwick Ave', cursive;
+  color: #000000;
+}
+
+
+.modal2 label {
+  color: #000000;
+}
+
+/* Estilos para el menú de usuario */
+#userMenu {
+  position: relative;
+  /* Para la posición del menú desplegable */
+}
+
+#userMenu,
+#dropdownMenuButton,
+.dropdown-menu a {
+  font-family: 'Sedgwick Ave', cursive;
+  font-size: 17px;
+}
+
+
+
+/* Estilo para los elementos del menú desplegable */
+.dropdown-menu {
+  display: none;
+  /* Inicialmente oculto */
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  left: 100%;
+  /* Alineación al extremo derecho del botón */
+  transform: translateX(-100%);
+  /* Ajusta hacia la izquierda */
+}
+
+/* Estilo para el botón que desencadena el menú desplegable */
+#dropdownMenuButton {
+  background-color: transparent;
+  color: #333;
+  /* Color del texto */
+  padding: 10px;
+  border: none;
+  /* Quitar el borde si existe uno */
+  cursor: pointer;
+  position: relative;
+  /* Necesario para la posición absoluta del menú desplegable */
+}
+
+/* Al pasar el ratón sobre el nombre de usuario, cambia el fondo */
+#dropdownMenuButton:hover {
+  background-color: #F67906;
+  /* Color naranja al pasar el ratón */
+  border-radius: 5%;
+
+}
+
+#dropdownMenuButton .fas {
+  margin-right: 8px;
+  /* Espacio entre el ícono y el texto */
+}
+
+/* Asegúrate de que los enlaces tengan la apariencia deseada */
+.dropdown-menu a {
+  color: #333;
+  /* Color del texto */
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  border: none;
+  /* Quitar el borde si existe uno */
+}
+
+
+
+/* Hacer que el menú desplegable aparezca al pasar el ratón sobre el nombre de usuario */
+#userMenu:hover .dropdown-menu {
+  display: block;
+  /* Mostrar el menú al pasar el ratón */
+}
+
+
+@media (max-width: 430px) {
   .modal2-content {
-    background-color: #fefefe;
-    margin: 10% auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 50%; /* Hazlo más estrecho */
-    max-width: 500px; /* Un ancho máximo para dispositivos más grandes */
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-    border-radius: 5px;
-    height: auto;
-    font-size: 20px;
+    width: 90%;
+    height: 75%;
   }
-  
-  .close {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-    cursor: pointer;
+
+  #login {
+    margin-top: 40px
   }
-  
-  .close:hover,
-  .close:focus {
-    color: black;
-    cursor: pointer;
-  }
-  
-  /* Estilos para los inputs y botones dentro del modal */
-  .modal2 input[type="text"],
-  .modal2 input[type="password"] {
-    width: calc(100% - 20px);
-    padding: 10px;
-    margin: 8px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-    color: #000000;
-  }
-  
-  .modal2 button {
-    background-color: #F67906; /* Color naranja para los botones */
-    color: white;
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
-    cursor: pointer;
-    width: 100%;
-    border-radius: 4px;
-    font-family: 'Sedgwick Ave', cursive; /* Fuente personalizada */
-    font-size: 20px;
-  }
-  
-  .modal2 button:hover {
-    background-color: #d56704; /* Un tono más oscuro de naranja en hover */
-  }
-  
-  /* Aplica la fuente y el color a todo el contenido del modal */
-  .modal2-content {
-    font-family: 'Sedgwick Ave', cursive;
-    color: #F67906;
-  }
-  
-  .modal2 h5 {
-    margin: 0 0 15px 0;
-    text-align: center;
-    font-family: 'Sedgwick Ave', cursive;
-    color: #000000;
-  }
-  
-  
-  .modal2 label{
-    color: #000000;
-  }
-  
-  /* Estilos para el menú de usuario */
-  #userMenu {
-    position: relative; /* Para la posición del menú desplegable */
-  }
-  
-  #userMenu,
-  #dropdownMenuButton,
-  .dropdown-menu a {
-      font-family: 'Sedgwick Ave', cursive;
-      font-size: 17px;
-  }
-  
-  
-  
-  /* Estilo para los elementos del menú desplegable */
-  .dropdown-menu {
-    display: none; /* Inicialmente oculto */
-    position: absolute;
-    background-color: #f9f9f9;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-    left: 100%; /* Alineación al extremo derecho del botón */
-    transform: translateX(-100%); /* Ajusta hacia la izquierda */
-  }
-  
-  /* Estilo para el botón que desencadena el menú desplegable */
-  #dropdownMenuButton {
-    background-color: transparent;
-    color: #333; /* Color del texto */
-    padding: 10px;
-    border: none; /* Quitar el borde si existe uno */
-    cursor: pointer;
-    position: relative; /* Necesario para la posición absoluta del menú desplegable */
-  }
-  
-  /* Al pasar el ratón sobre el nombre de usuario, cambia el fondo */
-  #dropdownMenuButton:hover {
-    background-color: #F67906; /* Color naranja al pasar el ratón */
-    border-radius: 5%;
-  
-  }
-  
-  #dropdownMenuButton .fas {
-    margin-right: 8px; /* Espacio entre el ícono y el texto */
-  }
-  
-  /* Asegúrate de que los enlaces tengan la apariencia deseada */
-  .dropdown-menu a {
-    color: #333; /* Color del texto */
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-    border: none; /* Quitar el borde si existe uno */
-  }
-  
-  
-  
-  /* Hacer que el menú desplegable aparezca al pasar el ratón sobre el nombre de usuario */
-  #userMenu:hover .dropdown-menu {
-    display: block; /* Mostrar el menú al pasar el ratón */
-  }
-  
+}

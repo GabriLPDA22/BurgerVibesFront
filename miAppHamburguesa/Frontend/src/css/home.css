@@ -933,16 +933,15 @@ body.fade-in {
         display: flex;
         max-width: 90%;
         flex-wrap: nowrap;
+    }
 
-        img {
-            height: 350px;
-        }
-
-
+    #FotoHome{
+        height: 350px;
     }
 
     .hero-column {
         margin-left: 30px;
+
     }
 
     .hero-title {
@@ -968,6 +967,7 @@ body.fade-in {
     .hero-subtitle {
         display: none;
     }
+
 
 
 }

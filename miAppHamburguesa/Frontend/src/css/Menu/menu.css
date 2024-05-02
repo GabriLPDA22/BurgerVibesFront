@@ -892,3 +892,20 @@ hr {
   }
 
 }
+
+@media (max-width: 430px) {
+  .logo img {
+    display: none;
+  }
+
+  .nav-content{
+    padding: 0;
+  }
+
+  h1.restaurant-name{
+    margin: 0;
+    margin-right: 30px;
+    padding-left: 0;
+  }
+
+}
