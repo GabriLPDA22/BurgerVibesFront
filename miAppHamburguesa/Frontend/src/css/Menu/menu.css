@@ -1006,4 +1006,19 @@ hr {
   #loginBtn {
     margin-right: 5px;
   }
+
+  nav {
+    width: 160%;
+  }
+
+}
+
+@media (max-width:375px) {
+  nav {
+    width: 166%;
+  }
+
+  .navigation-tabs {
+    font-size: 11px;
+  }
 }

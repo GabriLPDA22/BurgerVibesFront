@@ -1220,6 +1220,10 @@ body.fade-in {
         margin-left: 25px;
         margin-right:0 ;
     }
+
+    .container-clientes{
+        box-shadow: none;
+    }
 }
 
 /*GALERIA*/
