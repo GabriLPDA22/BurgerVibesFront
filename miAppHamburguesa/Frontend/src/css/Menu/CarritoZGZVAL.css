@@ -187,5 +187,7 @@ hr {
 
   .nav-content{
     padding: 0;
+    display: flex;
+    flex-direction: row-reverse;
   }
 } 

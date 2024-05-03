@@ -171,10 +171,18 @@
 @media (max-width: 430px) {
   .modal2-content {
     width: 90%;
-    height: 75%;
+    height: 50%;
   }
 
   #login {
     margin-top: 40px
   }
+
+  .dropdown-menu{
+    transform: translate(-70px);
+    left: 60%;
+  }
+
+
+
 }

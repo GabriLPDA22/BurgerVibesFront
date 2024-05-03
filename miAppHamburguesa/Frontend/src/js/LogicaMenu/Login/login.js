@@ -1,68 +1,54 @@
 document.addEventListener('DOMContentLoaded', () => {
     // Elementos del DOM
     const modal = document.getElementById('modalLogin');
-    const userMenu = document.getElementById('userMenu');
     const loginBtn = document.getElementById('loginBtn');
+    const closeButton = document.querySelector('#modalLogin .close');
+    const signOutLink = document.getElementById('signOutLink');
+    const userMenu = document.getElementById('userMenu');
     const usernameDisplay = document.getElementById('usernameDisplay');
     const paymentFormContainer = document.getElementById('paymentFormContainer');
     const loginMessageContainer = document.getElementById('loginMessageContainer');
-    const signOutLink = document.getElementById('signOutLink');
-    const loginPromptButton = document.getElementById('loginPromptButton'); // Botón para acceder
 
-    // Funciones de ayuda
-    function showElement(element) {
-        if (element) element.style.display = 'block';
-    }
-
-    function hideElement(element) {
-        if (element) element.style.display = 'none';
+    // Funciones de ayuda para mostrar/ocultar elementos
+    function toggleDisplay(element, show) {
+        if (element) {
+            element.style.display = show ? 'block' : 'none';
+        }
     }
 
     function toggleModal(show) {
-        if (show) showElement(modal);
-        else hideElement(modal);
+        toggleDisplay(modal, show);
     }
 
     function updateUI(isAuthenticated) {
         if (isAuthenticated) {
             const username = localStorage.getItem('username');
-            hideElement(loginBtn);
-            showElement(userMenu);
             usernameDisplay.textContent = username;
-            showElement(paymentFormContainer);
-            hideElement(loginMessageContainer);
+            toggleDisplay(loginBtn, false);
+            toggleDisplay(userMenu, true);
+            toggleDisplay(paymentFormContainer, true);
+            toggleDisplay(loginMessageContainer, false);
         } else {
-            showElement(loginBtn);
-            hideElement(userMenu);
             usernameDisplay.textContent = '';
-            hideElement(paymentFormContainer);
-            showElement(loginMessageContainer);
+            toggleDisplay(loginBtn, true);
+            toggleDisplay(userMenu, false);
+            toggleDisplay(paymentFormContainer, false);
+            toggleDisplay(loginMessageContainer, true);
         }
     }
 
-    // Eventos de UI
-    if (loginBtn) {
-        loginBtn.addEventListener('click', () => toggleModal(true));
-    }
-
-    if (loginPromptButton) {
-        loginPromptButton.addEventListener('click', () => toggleModal(true)); // Muestra el modal cuando se hace clic en Acceder
-    } else {
-        console.error('El botón para acceder no se encontró en el DOM.');
-    }
-
-    if (signOutLink) {
-        signOutLink.addEventListener('click', (event) => {
-            event.preventDefault();
-            localStorage.removeItem('authenticated');
-            localStorage.removeItem('username');
-            updateUI(false);
-        });
-    }
+    // Eventos de la interfaz de usuario
+    loginBtn && loginBtn.addEventListener('click', () => toggleModal(true));
+    closeButton && closeButton.addEventListener('click', () => toggleModal(false));
+    signOutLink && signOutLink.addEventListener('click', (event) => {
+        event.preventDefault();
+        localStorage.removeItem('authenticated');
+        localStorage.removeItem('username');
+        updateUI(false);
+    });
 
     document.getElementById('loginForm').addEventListener('submit', (event) => {
         event.preventDefault();
-        // Aquí deberías validar las credenciales antes de establecer el estado de autenticación.
         const username = document.getElementById('username').value;
         localStorage.setItem('username', username);
         localStorage.setItem('authenticated', 'true');
@@ -71,13 +57,24 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     window.addEventListener('click', (event) => {
-        if (event.target === modal) toggleModal(false);
+        if (event.target === modal) {
+            toggleModal(false);
+        }
     });
 
-    // Cerrar modal con el botón X
-    document.querySelector('.close').addEventListener('click', () => toggleModal(false));
+    // Inicializar la UI basada en el estado de autenticación
+    updateUI(localStorage.getItem('authenticated') === 'true');
 
-    // Actualizar la UI al cargar
-    const isAuthenticated = localStorage.getItem('authenticated') === 'true';
-    updateUI(isAuthenticated);
+    document.addEventListener('DOMContentLoaded', () => {
+        const closeButton = document.querySelector('.close');
+        if (closeButton) {
+            closeButton.addEventListener('click', () => {
+                console.log('Cerrando modal');
+                document.getElementById('modalLogin').style.display = 'none';
+            });
+        } else {
+            console.error('El botón de cerrar no se encontró en el DOM.');
+        }
+    });
+
 });
