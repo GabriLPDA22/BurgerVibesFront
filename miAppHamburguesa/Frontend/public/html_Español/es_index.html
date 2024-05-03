@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
+    <link rel="icon" type="image/x-icon" href="/miAppHamburguesa/Frontend/src/assets/img/Home/BurgerVibes.svg">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/miAppHamburguesa/Frontend/src/css/home.css">
     <link rel="stylesheet" href="/miAppHamburguesa/Frontend/src/css/scrollbar.css">
@@ -13,9 +14,6 @@
     <link rel="stylesheet" href="/miAppHamburguesa/Frontend/src/css/cookie.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
     <link href="https://fonts.googleapis.com/css2?family=Sedgwick+Ave&display=swap" rel="stylesheet">
-
-
-
     <title>BurgerVibes</title>
 </head>
 
@@ -30,31 +28,32 @@
     <header>
         <nav id="container-xxl" class="container-xxl">
             <div class="navbar">
-                <a href="#home" class="navbar-brand">
+                <a href="#" class="navbar-brand">
                     <!-- Asegúrate de tener tu imagen de logo disponible en la ruta especificada -->
-                    <img src="/miAppHamburguesa/Frontend/src/assets/img/BurgerVibes.svg" alt="Logotipo" id="logo">
-                    
+                    <img src="/miAppHamburguesa/Frontend/src/assets/img/Home/BurgerVibes.svg" alt="Logotipo" id="logo">
+
                 </a>
                 <button class="navbar-toggler" type="button">&#9776;</button>
                 <ul class="navbar-nav">
-                    <li></li><img src="/miAppHamburguesa/Frontend/src/assets/img/BurgerVibes.svg" alt="Logotipo" id="logo" class="logo-responsive">
-                    <li><a href="#concepto" class="nav-link">Concepto</a></li>
+                    <li></li><img src="/miAppHamburguesa/Frontend/src/assets/img/Home/BurgerVibes.svg" alt="Logotipo"
+                        id="logo" class="logo-responsive">
+                    <li><a href="#concepto" class="nav-link">Historia</a></li>
                     <li><a href="es_alergenos.html" class="nav-link">Alergenos</a></li>
                     <li><a href="#opiniones" class="nav-link">Opiniones</a></li>
                     <li><a href="#galeria" class="nav-link">Galería</a></li>
                     <li><a href="#Contacto" class="nav-link">Contacto</a></li>
                     <li><a href="#carta" class="nav-link">Carta</a></li>
                     <span id="customModalClose" class="custom-close-responsive">&times;</span>
-                    <a href="javascript:void(0);" class="pedido-online-responsive" id="navbarOrderButton">Pide online</a>
-                    <a href="#" class="reserva-online-responsive" id="reservaMesaButton">Reserva
+                    <a href="javascript:void(0);" class="pedido-online-responsive" id="navbarOrderButton2">Pide
+                        online</a>
+                    <a href="javascript:void(0);" class="reserva-online-responsive" id="reservaMesaButton">Reserva
                         mesa</a>
                 </ul>
                 <a href="javascript:void(0);" class="pedido-online" id="navbarOrderButton">Pide online</a>
             </div>
         </nav>
-
         <!--HERO-CARRUSEL-->
-        <div class="container-hero" >
+        <div class="container-hero">
             <div id="hero" class="hero carousel">
                 <div class="carousel-inner">
                     <!-- Slide 1 -->
@@ -70,7 +69,8 @@
                                     <div class="hero-buttons">
                                         <a href="javascript:void(0);" class="hero-button primary-button"
                                             id="heroOrderButton">Pide online</a>
-                                        <a href="#" class="hero-button light-button" id="reservaMesaButton">Reserva
+                                        <a href="javascript:void(0);" class="hero-button light-button"
+                                            id="reservaMesaButtonInicio">Reserva
                                             mesa</a>
                                     </div>
                                 </div>
@@ -79,8 +79,8 @@
                                         <p class="hero-subtitle">
                                             ¡Dale un mordisco a la vida <br> con Burger Vibes! 🍔
                                         </p>
-                                        <img src="/miAppHamburguesa/Frontend/src/assets/img/Hero_hamburguesa.png"
-                                            alt="Imagen de fondo" style="object-fit: contain; max-height: 500px;">
+                                        <img src="/miAppHamburguesa/Frontend/src/assets/img/Home/Hero_hamburguesa.png"
+                                            alt="Imagen de fondo" style="object-fit: contain; max-height: 500px;" id="FotoHome">
                                     </div>
                                 </div>
                             </div>
@@ -88,26 +88,13 @@
                     </div>
                     <!-- Slide 2 con la nueva imagen promocional -->
                     <div class="carousel-item" id="GranBurger">
-                        <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu_Hamburguesa.png" 
+                        <img src="/miAppHamburguesa/Frontend/src/assets/img/Home/Menu_Hamburguesa.png"
                             alt="Promoción La Gran Burger" class="Foto2">
                     </div>
                     <!-- Slide 3 -->
                     <div class="carousel-item" id="Slide3">
-                        <div class="hero-content">
-                            <div class="hero-row">
-                                <div class="hero-column">
-                                    <p class="hero-subtitle2" style="margin-top: 70px;">
-                                        ¡Aprovecha ya! 🎉 2x1 en todos los combos de domingo a jueves.
-                                        ¡No esperes más para disfrutar de tus hamburguesas favoritas!
-                                    </p>
-                                </div>
-                                <div class="hero-column">
-                                    <img src="/miAppHamburguesa/Frontend/src/assets/img/2x1_Español.png"
-                                        alt="Nueva Hamburguesa" id="2x1"
-                                        class="Foto3">
-                                </div>
-                            </div>
-                        </div>
+                        <img src="/miAppHamburguesa/Frontend/src/assets/img/Home/2x1_Español.png"
+                            alt="Nueva Hamburguesa" id="2x1" class="Foto3">
                     </div>
                     <!-- Continuar con los demás slides si es necesario -->
 
@@ -140,33 +127,60 @@
 
     <!--SLOGAN-->
     <div class="slogan-section">
-        <p class="slogan">¡Más que Sabor, es una Sensación 😋 - BurgerVibes!</p>
+        <p class="slogan">¡Más que Sabor, es una experiencia 😋 - BurgerVibes!</p>
     </div>
 
 
-     <!--Modal carta-->
+    <!--Modal carta-->
     <div id="myModal" class="modal">
         <div class="modal-content">
-            <span class="close">&times;</span>
-            <img src="/miAppHamburguesa/Frontend/src/assets/img/BurgerVibes.svg" alt="Vibes Logo" class="modal-logo">
-            <h2>Carta</h2>
-            <div class="verCartaBtn">
-                <p class="ver-carta">Ver Carta</p>
+            <div class="custom-modal-header">
+                <span id="customModalCloseCarta" class="custom-close">&times;</span>
+                <img src="/miAppHamburguesa/Frontend/src/assets/img/Home/BurgerVibes.svg" alt="Vibes Logo"
+                    class="modal-logo">
             </div>
-            <div class="descargarCartaBtn">
-                <p class="descargar-carta">Descargar Carta</p>
+            <div class="custom-modal-body">
+
+                <div class="carta-location">
+                    <p>Zaragoza</p>
+                    <div class="verCartaBtn">
+                        <a href="/miAppHamburguesa/Frontend/public/html_Español/Carta/es_cartazgznobuy_.html"
+                            class="ver-carta" style="text-decoration: none; color: #000;">
+                            <p id="VerCarta">Ver Carta</p>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="carta-location">
+                    <p>Valencia</p>
+                    <div class="verCartaBtn">
+                        <a href="/miAppHamburguesa/Frontend/public/html_Español/Carta/es_cartavalenobuy.html"
+                            class="ver-carta" style="text-decoration: none; color: #000;">
+                            <p id="VerCarta">Ver Carta</p>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="descargarCartaBtn">
+                    <a href="/miAppHamburguesa/MENU/BurgerVibes.pdf" download="BurgerVibes.pdf" class="descargar-carta"
+                        style="text-decoration: none; color: #000;">
+                        <p id="descargarBtn">Descargar Carta</p>
+                    </a>
+                </div>
+
             </div>
         </div>
     </div>
 
 
-    <!-- Modal Personalizado -->
+
+    <!-- Modal PEDIDO -->
     <div id="customOrderModal" class="custom-modal">
         <div class="custom-modal-dialog">
             <div class="custom-modal-content">
                 <div class="custom-modal-header">
                     <span id="customModalClose" class="custom-close">&times;</span>
-                    <img src="/miAppHamburguesa/Frontend/src/assets/img/BurgerVibes.svg" alt="Vibes Logo"
+                    <img src="/miAppHamburguesa/Frontend/src/assets/img/Home/BurgerVibes.svg" alt="Vibes Logo"
                         class="modal-logo">
                 </div>
                 <div class="custom-modal-body">
@@ -177,30 +191,34 @@
                         <p>¡Agradecemos tu comprensión! 🍔</p>
                     </div>
                     <div class="location-section">
-                        <img src="/miAppHamburguesa/Frontend/src/assets/img/Bandera_de_Aragón.svg.png"
+                        <img src="/miAppHamburguesa/Frontend/src/assets/img/Home/Bandera_de_Aragón.svg.png"
                             alt="Bandera de Zaragoza" class="location-flag" />
                         <p class="location-name">Zaragoza</p>
                     </div>
-                    <a href="#" target="_blank" class="modal-button delivery-button">
+                    <a href="https://www.ubereats.com/es?utm_source=AdWords_Brand&utm_campaign=CM2225035-search-google-brand_162_-99_ES-National_e_web_acq_cpc_es-ES_T1_Generic_BM_uber%20eats_kwd-111378724137_639006252462_150940917024_b_c&campaign_id=19130929568&adg_id=150940917024&fi_id=&match=b&net=g&dev=c&dev_m=&ad_id=639006252462&cre=639006252462&kwid=kwd-111378724137&kw=uber%20eats&placement=&tar=&gclsrc=aw.ds&gad_source=1&gclid=Cj0KCQjw0MexBhD3ARIsAEI3WHIjG3NHH-_fACyPC1PfeIrqmWHC1GF6QEjvLgu-uXk_JapCMiufVXEaAi3rEALw_wcB"
+                        target="_blank" class="modal-button delivery-button">
                         Pide a domicilio con
-                        <img src="/miAppHamburguesa/Frontend/src/assets/img/Uber_Eats.png" width="80px"
+                        <img src="/miAppHamburguesa/Frontend/src/assets/img/Home/Uber_Eats.png" width="80px"
                             style="margin-bottom: -1px; margin-right: 5px;">
                     </a>
-                    <a href="#" target="_blank" class="modal-button pickup-button">
+                    <a href="/miAppHamburguesa/Frontend/public/html_Español/Carta/es_carta_Zaragoza.html"
+                        target="_blank" class="modal-button pickup-button">
                         Pide para recoger Zaragoza
                     </a>
                     <hr class="divider">
                     <div class="location-section">
-                        <img src="/miAppHamburguesa/Frontend/src/assets/img/Bandera_de_Valencia.svg.png"
+                        <img src="/miAppHamburguesa/Frontend/src/assets/img/Home/Bandera_de_Valencia.svg.png"
                             alt="Bandera de Zaragoza" class="location-flag" />
                         <p class="location-name">Valencia</p>
                     </div>
-                    <a href="#" target="_blank" class="modal-button delivery-button">
+                    <a href="https://www.ubereats.com/es?utm_source=AdWords_Brand&utm_campaign=CM2225035-search-google-brand_162_-99_ES-National_e_web_acq_cpc_es-ES_T1_Generic_BM_uber%20eats_kwd-111378724137_639006252462_150940917024_b_c&campaign_id=19130929568&adg_id=150940917024&fi_id=&match=b&net=g&dev=c&dev_m=&ad_id=639006252462&cre=639006252462&kwid=kwd-111378724137&kw=uber%20eats&placement=&tar=&gclsrc=aw.ds&gad_source=1&gclid=Cj0KCQjw0MexBhD3ARIsAEI3WHIjG3NHH-_fACyPC1PfeIrqmWHC1GF6QEjvLgu-uXk_JapCMiufVXEaAi3rEALw_wcB"
+                        target="_blank" class="modal-button delivery-button">
                         Pide a domicilio con
-                        <img src="/miAppHamburguesa/Frontend/src/assets/img/Uber_Eats.png" width="80px"
+                        <img src="/miAppHamburguesa/Frontend/src/assets/img/Home/Uber_Eats.png" width="80px"
                             style="margin-bottom: -1px; margin-right: 5px;">
                     </a>
-                    <a href="#" target="_blank" class="modal-button pickup-button">
+                    <a href="/miAppHamburguesa/Frontend/public/html_Español/Carta/es_carta_Valencia.html"
+                        target="_blank" class="modal-button pickup-button">
                         Pide para recoger Valencia
                     </a>
 
@@ -214,25 +232,27 @@
             <div class="custom-modal-content">
                 <div class="custom-modal-header">
                     <span id="reservaMesaClose" class="custom-close">&times;</span>
-                    <img src="/miAppHamburguesa/Frontend/src/assets/img/BurgerVibes.svg" alt="Vibes Logo"
+                    <img src="/miAppHamburguesa/Frontend/src/assets/img/Home/BurgerVibes.svg" alt="Vibes Logo"
                         class="modal-logo">
                 </div>
                 <div class="location-section">
-                    <img src="/miAppHamburguesa/Frontend/src/assets/img/Bandera_de_Aragón.svg.png"
+                    <img src="/miAppHamburguesa/Frontend/src/assets/img/Home/Bandera_de_Aragón.svg.png"
                         alt="Bandera de Zaragoza" class="location-flag" />
                     <p class="location-name">Zaragoza</p>
                     <div class="custom-modal-body">
-                        <a href="#" target="_blank" class="modal-button pickup-button">
+                        <a href="/miAppHamburguesa/Frontend/public/html_Español/Reservas/ReservaZgz.html"
+                            target="_blank" class="modal-button pickup-button">
                             Reserva mesa
                         </a>
                     </div>
                     <hr class="divider">
-                    <img src="/miAppHamburguesa/Frontend/src/assets/img/Bandera_de_Valencia.svg.png"
+                    <img src="/miAppHamburguesa/Frontend/src/assets/img/Home/Bandera_de_Valencia.svg.png"
                         alt="Bandera de Zaragoza" class="location-flag" />
                     <p class="location-name">Valencia</p>
                 </div>
                 <div class="custom-modal-body">
-                    <a href="#" target="_blank" class="modal-button pickup-button">
+                    <a href="/miAppHamburguesa/Frontend/public/html_Español/Reservas/ReservaVal.html" target="_blank"
+                        class="modal-button pickup-button">
                         Reserva mesa
                     </a>
                 </div>
@@ -248,8 +268,8 @@
                 <div class="columna-izquierda">
                     <div class="contenido">
                         <div class="titulo">
-                            <h2>El Concepto
-                                <img src="/miAppHamburguesa/Frontend/src/assets/img/BurgerVibes.svg"
+                            <h2>Nuestra historia
+                                <img src="/miAppHamburguesa/Frontend/src/assets/img/Home/BurgerVibes.svg"
                                     alt="Logo de BurgerVibes" title="Logo de BurgerVibes" style="width: 40%;" />
                             </h2>
                         </div>
@@ -259,13 +279,12 @@
                         <p>En BurgerVibes, cada hamburguesa cuenta una historia única. Inspirados por su amor compartido
                             por la comida, Alfonso y Gabriel han creado un espacio donde los clientes pueden disfrutar
                             de sabores auténticos y momentos inolvidables.</p>
-                        <p>La decoración del local refleja la personalidad y el espíritu emprendedor de los fundadores,
-                            con detalles que hacen que cada visita sea especial.</p>
-                        <p>Sin duda, BurgerVibes es el lugar donde las hamburguesas cobran vida y las amistades se
-                            fortalecen.</p>
+                        <p>BurgerVibes es más que hamburguesas; es un punto de encuentro para hacer amigos. Disfruta de
+                            nuestras mesas comunitarias en la zona 'Meet & Eat', diseñadas para compartir y conectar,
+                            porque creemos que las mejores conversaciones nacen alrededor de una buena comida.</p>
                         <div class="botones">
                             <a href="javascript:void(0);" class="BotonPedido btn-order">Haz tu Pedido</a>
-                            <a href="javascript:void(0);" class="BotonReserva btn-reserva">Reserva una Mesa</a>
+                            <a href="javascript:void(0);" class="BotonReserva btn-reserva ">Reserva una Mesa</a>
                         </div>
 
 
@@ -273,10 +292,9 @@
                 </div>
                 <!-- Columna derecha: Imagen o video -->
                 <div class="columna-derecha">
-                    <video src="/miAppHamburguesa/Frontend/src/assets/Videos/ConceptoBueno.mp4"
-                        style=" margin-top: 25%; margin-right:auto; width: 100%;" class="img-fluid mb-3"
-                        title="Fundadores de BurgerVibes" alt="Alfonso y Gabriel, los fundadores de BurgerVibes"
-                        playsinline autoplay muted loop></video>
+                    <video src="/miAppHamburguesa/Frontend/src/assets/Videos/ConceptoBueno.mp4" class="img-fluid mb-3"
+                        id="Video" title="Fundadores de BurgerVibes"
+                        alt="Alfonso y Gabriel, los fundadores de BurgerVibes" playsinline autoplay muted loop></video>
                 </div>
 
             </div>
@@ -291,18 +309,25 @@
     </div>
     <section class="gallery-container" id="galeria">
         <div class="gallery">
-            <img src="/miAppHamburguesa/Frontend/src/assets/img/hamburguesa1.jpg" alt="Hamburguesa 1"
+            <a href="/miAppHamburguesa/Frontend/public/html_Español/Carta/es_carta_Zaragoza.html#product6">
+                <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/hmg1.png" alt="Hamburguesa 1"
+                    class="gallery-item"> </a>
+            <a href="/miAppHamburguesa/Frontend/public/html_Español/Carta/es_carta_Zaragoza.html#product7">
+                <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/hmg2.png" alt="Hamburguesa 2"
+                    class="gallery-item" id="Hamburguesa2"></a>
+            <a href="/miAppHamburguesa/Frontend/public/html_Español/Carta/es_carta_Zaragoza.html#product8">
+                <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/hmg3.png" alt="Hamburguesa 3"
+                    class="gallery-item" id="Hamburguesa3"></a>
+            <a href="/miAppHamburguesa/Frontend/public/html_Español/Carta/es_carta_Zaragoza.html#product9">
+                <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/hmg4.png" alt="Hamburguesa 4"
+                    class="gallery-item"></a>
+            <img src="/miAppHamburguesa/Frontend/src/assets/img/Home/BurgerVibes.svg" alt="Hamburguesa 5"
+                class="gallery-item" id="CambioImagen">
+            <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/hmg5.png" alt="CambioImagen" id="Tablet"
                 class="gallery-item">
-            <img src="/miAppHamburguesa/Frontend/src/assets/img/hamburguesa2.jpg" alt="Hamburguesa 2"
-                class="gallery-item">
-            <img src="/miAppHamburguesa/Frontend/src/assets/img/hamburguesa3.jpg" alt="Hamburguesa 3"
-                class="gallery-item">
-            <img src="/miAppHamburguesa/Frontend/src/assets/img/hamburguesa4.jpg" alt="Hamburguesa 4"
-                class="gallery-item">
-            <img src="/miAppHamburguesa/Frontend/src/assets/img/BurgerVibes.svg" alt="Hamburguesa 5"
-                class="gallery-item">
-            <img src="/miAppHamburguesa/Frontend/src/assets/img/hamburguesa5.jpg" alt="Hamburguesa 6"
-                class="gallery-item">
+            <a href="/miAppHamburguesa/Frontend/public/html_Español/Carta/es_carta_Zaragoza.html#product11">
+                <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/hmg6.png" alt="Hamburguesa 6"
+                    class="gallery-item" id="Hamburguesa6"></a>
         </div>
     </section>
 
@@ -319,7 +344,7 @@
     </div>
 
     <!--Nuestros clientes-->
-    <section class="contenedor-opiniones" style="background-image: url(/miAppHamburguesa/Frontend/src/assets/img/Fondo_Hero.svg);     background-repeat: no-repeat;
+    <section class="contenedor-opiniones" style="background-image: url(/miAppHamburguesa/Frontend/src/assets/img/Home/Fondo_Hero.svg);     background-repeat: no-repeat;
     background-size: cover;
     background-position: center">
         <div id="opiniones" class="container-clientes">
@@ -337,7 +362,7 @@
                     ¡Volveré muy pronto!
                 </blockquote>
                 <footer class="footer-card">
-                    Por Mónica Rodea Rodríguez
+                    Por Antón Borraz
                     <time datetime="2023-03" class="text-white-50" title="Source Title">Marzo de 2023</time>
                 </footer>
             </article>
@@ -351,7 +376,7 @@
                     casera es un secreto que necesito en mi vida. ¡Recomendadísimo¡ <br> <br>
                 </blockquote>
                 <footer class="footer-card">
-                    Por Mónica Rodea Rodríguez
+                    Por Alejandro Alagón
                     <time datetime="2023-03" class="text-white-50" title="Source Title">Marzo de 2023</time>
                 </footer>
             </article>
@@ -365,7 +390,7 @@
                     frescos hacen una diferencia notable.
                 </blockquote>
                 <footer class="footer-card">
-                    Por Mónica Rodea Rodríguez
+                    Por Alex Iana
                     <time datetime="2023-03" class="text-white-50" title="Source Title">Marzo de 2023</time>
                 </footer>
             </article>
@@ -441,7 +466,8 @@
                 </div>
                 <div class="footer-section">
                     <h4>Legal</h4>
-                    <a href="#">Configuración de cookies</a>
+                    <a href="/miAppHamburguesa/Frontend/public/html_Español/ConfigCookies.html">Configuración de
+                        cookies</a>
                     <a href="/miAppHamburguesa/Frontend/public/html_Español/Terminos_Condiciones.html">Términos y
                         condiciones</a>
                     <a href="/miAppHamburguesa/Frontend/public/html_Español/Politica_Privacidad.html">Política de
@@ -453,13 +479,13 @@
         <div class="pie-de-pagina-contenedor" id="Contacto">
             <div class="contenido-pie">
                 <a href="#inicio" class="logo-enlace">
-                    <img src="/miAppHamburguesa/Frontend/src/assets/img/BurgerVibes.svg" alt="Logotipo de BurgerVibes"
-                        class="logo-pie">
+                    <img src="/miAppHamburguesa/Frontend/src/assets/img/Home/BurgerVibes.svg"
+                        alt="Logotipo de BurgerVibes" class="logo-pie">
                 </a>
 
                 <span class="hecho-por">@2024 BurgerVibes</span>
                 <a href="#" target="_blank" class="icono-instagram">
-                    <img src="/miAppHamburguesa/Frontend/src/assets/img/instagram-icon.svg"
+                    <img src="/miAppHamburguesa/Frontend/src/assets/img/Home/instagram-icon.svg"
                         alt="Instagram de BurgerVibes" class="imagen-instagram">
                 </a>
             </div>
@@ -472,7 +498,8 @@
 
     <div class="cookies-msg" id="cookies-msg">
         <div class="cookies-header">
-            <img src="/miAppHamburguesa/Frontend/src/assets/img/Cookie.png" alt="Cookie Icon" class="cookie-icon" style="width: 70px;">
+            <img src="/miAppHamburguesa/Frontend/src/assets/img/Home/Cookie.png" alt="Cookie Icon" class="cookie-icon"
+                style="width: 70px;">
             <h2 class="cookies-title">Consentimiento de Cookies</h2>
         </div>
         <div class="cookies-txt">

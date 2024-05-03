@@ -56,3 +56,17 @@ button {
 button:hover {
     background-color: #ffffff;
 }
+
+
+
+.form-group label {
+    color: #ff7504; /* Tu color personalizado */
+    font-weight: bold; /* O la personalización que prefieras */
+}
+
+
+.form-control:focus, .form-control:focus:hover {
+    border-bottom: 1px solid #ff7504; /* Tu color personalizado */
+}
+
+

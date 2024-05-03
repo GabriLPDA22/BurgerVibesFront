@@ -7,7 +7,7 @@ html {
 }
 
 header {
-    background-image: url(/miAppHamburguesa/Frontend/src/assets/img/Fondo_Hero.svg);
+    background-image: url(/miAppHamburguesa/Frontend/src/assets/img/Home/Fondo_Hero.svg);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -19,6 +19,9 @@ body.fade-out {
     opacity: 0;
     transition: opacity 0.5s ease-out;
 }
+
+
+
 
 .logo-responsive {
     display: none;
@@ -40,6 +43,7 @@ body.fade-in {
 .navbar {
     display: flex;
     align-items: center;
+
     justify-content: space-between;
     padding: 1rem;
     background-color: transparent;
@@ -90,7 +94,7 @@ body.fade-in {
 }
 
 .navbar-nav .nav-link {
-    font-family: 'Sedgwick Ave', cursive;
+    font-family: 'monospace', cursive;
     font-size: 20px;
     color: #FFF;
     text-decoration: none;
@@ -114,7 +118,7 @@ body.fade-in {
     padding: 0.5rem 1rem;
     text-decoration: none;
     color: #000;
-    font-family: 'Sedgwick Ave', cursive;
+    font-family: 'monospace', cursive;
     font-size: 20px;
 }
 
@@ -188,7 +192,7 @@ body.fade-in {
 }
 
 .hero-button {
-    font-family: 'Sedgwick Ave', cursive;
+    font-family: 'monospace', cursive;
     font-size: 20px;
     border-radius: 4px;
     padding: 10px 20px;
@@ -219,8 +223,8 @@ body.fade-in {
 }
 
 
-.hero-subtitle, .hero-subtitle2 {
-    font-family: 'Sedgwick Ave', cursive;
+.hero-subtitle{
+    font-family: 'monospace', cursive;
     color: #fff;
     font-size: 39px;
     transform: rotate(-15deg);
@@ -361,14 +365,13 @@ body.fade-in {
     color: #333;
     /* Color del texto */
     font-weight: bold;
-    font-family: 'Sedgwick Ave', cursive;
+    font-family: 'monospace', cursive;
 }
 
 /*CONCEPTO*/
-/* Estilos para la sección de concepto */
-/* Estilos para la sección de concepto */
 .concepto {
     padding: 50px 0;
+    
 }
 
 .container {
@@ -406,13 +409,19 @@ body.fade-in {
     justify-content: flex-end;
 
 }
+#Video{
+    margin-top: 25%; 
+    margin-right:auto; 
+    width: 100%;
+}
+ 
 
 .contenido h2 {
     font-size: 40px;
     margin-bottom: 20px;
     color: #f37805;
     margin-left: 10%;
-    font-family: 'Sedgwick Ave', cursive;
+    font-family: 'monospace', cursive;
 }
 
 .contenido p {
@@ -434,7 +443,7 @@ body.fade-in {
     background-color: #F67906;
     border-color: #F67906;
     color: #fff;
-    font-family: 'Sedgwick Ave', cursive;
+    font-family: 'monospace', cursive;
     font-size: 20px;
     border-radius: 4px;
     padding: 10px 20px;
@@ -452,7 +461,7 @@ body.fade-in {
     background-color: #ffffff;
     border-color: #F67906;
     color: #000;
-    font-family: 'Sedgwick Ave', cursive;
+    font-family: 'monospace', cursive;
     font-size: 20px;
     border-radius: 4px;
     padding: 10px 20px;
@@ -496,7 +505,7 @@ body.fade-in {
     display: flex;
     justify-content: center;
     /* Centra la galería horizontalmente */
-    background-image: linear-gradient(to top, rgba(116, 112, 112, 0), rgb(7, 7, 7)), url(../assets/img/FondoLadrillo.jpg);
+    background-image: linear-gradient(to top, rgba(116, 112, 112, 0), rgb(7, 7, 7)), url(/miAppHamburguesa/Frontend/src/assets/img/Home/FondoLadrillo.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -504,10 +513,10 @@ body.fade-in {
 
 .texto-galeria h2 {
     color: #F67906;
-    font-family: 'Sedgwick Ave', cursive;
-    margin-left: 29%;
+    font-family: 'monospace', cursive;
+    justify-content: center;
+    text-align: center;
     font-size: 90px;
-    transform: rotate(-15deg);
 }
 
 .gallery {
@@ -526,7 +535,11 @@ body.fade-in {
 
 }
 
-.gallery-item {
+#Tablet, #Tablet_ingles{
+    display: none;
+}
+
+.gallery-item{
     width: 100%;
     height: auto;
     aspect-ratio: 1 / 1;
@@ -544,7 +557,7 @@ body.fade-in {
     margin: auto;
     padding: 20px;
     box-sizing: border-box;
-    background-image: linear-gradient(to top, rgba(116, 112, 112, 0), rgb(7, 7, 7)), url(/miAppHamburguesa/Frontend/src/assets/img/FondoLadrillo.jpg);
+    background-image: linear-gradient(to top, rgba(116, 112, 112, 0), rgb(7, 7, 7)), url(/miAppHamburguesa/Frontend/src/assets/img/Home/FondoLadrillo.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -560,7 +573,7 @@ body.fade-in {
 }
 
 .titulo-principal {
-    font-family: 'Sedgwick Ave', cursive;
+    font-family: 'monospace', cursive;
     color: #F67906;
     font-size: 3em;
     margin-bottom: 50px;
@@ -573,7 +586,7 @@ body.fade-in {
     display: inline-block;
     vertical-align: top;
     width: calc(33% - 30px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: inset 0 0 7px 7px #fda604;
     position: relative;
 }
 
@@ -625,7 +638,7 @@ body.fade-in {
     color: #F67906;
     margin-bottom: 15px;
     text-align: center;
-    font-family: 'Sedgwick Ave', cursive;
+    font-family: 'monospace', cursive;
     font-size: 20px;
 
 }
@@ -646,7 +659,7 @@ body.fade-in {
 }
 
 #TrabajaConNostros {
-    font-family: 'Sedgwick Ave', cursive;
+    font-family: 'monospace', cursive;
     color: #ff9100;
     font-size: 20px;
 }
@@ -751,7 +764,7 @@ body.fade-in {
     margin-left: 20px;
     /* Espacio a la izquierda para separar del texto de derechos */
     transform: translateX(-50%);
-    font-family: 'Sedgwick Ave', cursive;
+    font-family: 'monospace', cursive;
     color: #f37805;
 }
 
@@ -774,18 +787,7 @@ body.fade-in {
 
 /*RESPONSIVE NAVBAR*/
 
-@media (max-width: 1395px) {
-    .carousel-control prev, .carousel-control.next{
-        display: none;
-    }
-}
 
-@media (max-width: 1120px) {
-    .pedido-online {
-        padding: auto;
-        text-align: center;
-    }
-}
 
 @media (max-width: 1400px){
 
@@ -812,13 +814,6 @@ body.fade-in {
         margin: 0;
     }
 
-    .columna{
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        font-size: 50px;
-    }
-
     .titulo h2{
         display: flex;
         flex-direction: column-reverse;
@@ -827,7 +822,6 @@ body.fade-in {
 
     .texto-galeria h2{
         font-size: 60px;
-        margin-left: 25%;
     }
 
     .concepto p{
@@ -835,9 +829,31 @@ body.fade-in {
         text-align: center;
     }
 
+    #Video{
+        margin-top: 50%;
+    }
+
 }
 
-@media (max-width: 1095px) {
+@media (max-width: 1395px),(max-width: 3000px) {
+
+    .Foto3{
+        margin-left: 25%;
+    }
+
+    .carousel-item.active{
+        height: 685px;
+    }
+}
+
+@media (max-width: 1120px) {
+    .pedido-online {
+        padding: auto;
+        text-align: center;
+    }
+}
+
+@media (max-width: 1024px) {
     .pedido-online {
         display: none;
     }
@@ -854,9 +870,9 @@ body.fade-in {
     .navbar-nav {
         position: fixed;
         top: 0;
-        right: -100%;
-        height: 100vh;
-        width: 350px;
+        right: -1000px;
+        height: 100%;
+        width: 400px;
         background-color: #000;
         display: flex;
         flex-direction: column;
@@ -864,9 +880,9 @@ body.fade-in {
         transition: right 0.3s;
         z-index: 999;
         padding-top: 3rem;
-        overflow: scroll;
+        overflow-y: auto; /* Usar 'auto' para que el scroll solo aparezca cuando es necesario */
     }
-
+    
 
     .navbar-nav.open {
         display: flex;
@@ -910,33 +926,28 @@ body.fade-in {
 
 @media(max-width:768px), (max-width: 884px) {
 
-
+    .carousel-item.active{
+        height: 350px;
+    }
 
     .hero-row {
         display: flex;
         max-width: 90%;
         flex-wrap: nowrap;
+    }
 
-        img {
-            height: 350px;
-        }
-
-
+    #FotoHome{
+        height: 350px;
     }
 
     .hero-column {
         margin-left: 30px;
+
     }
 
     .hero-title {
         font-size: 30px;
     }
-
-    .carousel-control prev,
-    .carousel-control.next {
-        display: none;
-    }
-
 
     .carousel-indicators {
         display: flex;
@@ -947,18 +958,17 @@ body.fade-in {
     .Foto2, .Foto3{
         width: 50%;
         height: 354px;
-        margin-left: 25%;
 
     }
 
+    .Foto3{
+        margin-left: 25%;
+    }
     
     .hero-subtitle {
         display: none;
     }
 
-    .hero-subtitle2{
-        display: flex;
-    }
 
 
 }
@@ -973,16 +983,33 @@ body.fade-in {
     .contenido h2{
         display: flex;
         flex-direction: column-reverse;
+        margin: 0;
     }
 
 
     .concepto .botones {
         margin-top: 30px;
-        margin-left: 30px;
     }
 
     .contenido p{
         text-align: center;
+        margin: 0;
+        padding: 10px;
+    }
+
+    .columna{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        font-size: 50px;
+    }
+
+    #Video{
+        margin-top: 10px;
+    }
+
+    .BotonReserva, .BotonPedido{
+        margin: 10px;
     }
 }
 
@@ -991,6 +1018,19 @@ body.fade-in {
 /*RESPONSIVE GALERIA*/
 
 @media (max-width: 768px), (max-width: 884px) {
+
+    .gallery{
+        display: grid;
+        grid-template-columns: repeat(2, 2fr);
+    }
+
+    #CambioImagen, #CambioImagen_ingles{
+        display: none;
+    }
+
+    #Tablet, #Tablet_ingles{
+        display: block;
+    }
 
     .texto-galeria h2 {
         font-size: 40px;
@@ -1052,7 +1092,7 @@ body.fade-in {
         font-size: 18px;
         order: 3;
         /* Orden de aparición */
-        font-family: 'Sedgwick Ave', cursive;
+        font-family: 'monospace', cursive;
         color: #f37805;
         margin-left: 150px;
         margin-bottom: 20px;
@@ -1061,22 +1101,39 @@ body.fade-in {
     .icono-instagram {
         margin-right: 20px;
     }
+
 }
 
-
-@media (max-width:680px) {
-
-    .hero-subtitle2{
-        display: none;
-    }
-    
-}
 
 /*RESPONSIVE 430*/
 
+/*NAVBVAR*/
+
+@media (max-width:430px) {
+    .navbar-nav{
+        width: 100%;
+    }
+
+    .carousel-item.active{
+        position: relative;
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+    }
+
+    #language-button{
+        margin-left: 50%;
+    }
+
+    .carousel-control.next,.carousel-control-prev-icon{
+        display: none;
+    }
+
+}
+
 /*HERO*/
 
-@media (max-width: 430px),((max-width: 390px)) {
+@media (max-width: 430px),(max-width: 390px) {
 
     .hero-button{
         display: flex;
@@ -1091,9 +1148,6 @@ body.fade-in {
 
     .carousel-indicators{
         margin-top: 10px;
-    }
-    .concepto .botones {
-        margin-left: 0%;
     }
 
     .carousel-item.active{
@@ -1134,12 +1188,51 @@ body.fade-in {
     .contenido p{
         text-align: center;
     }
-    .botones{
+
+    .concepto .botones {
+        margin-left: 0%;
         display: flex;
         flex-direction: column;
-     }
+        margin: 0;
+    }
+
+    .BotonReserva, .BotonPedido{
+        margin: 0;
+    }
+
 }
 
+
+/*OPINIONES*/
+
+@media (max-width:430px) {
+    .opinion-card{
+        text-align: left;
+    }
+
+    .card-text{
+        padding-bottom: 25px;
+        margin-left: 0;
+        
+    }
+
+    .footer-card{
+        text-align: left;
+        margin-left: 25px;
+        margin-right:0 ;
+    }
+}
+
+/*GALERIA*/
+
+@media (max-width:430px) {
+    .gallery{
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    
+}
 
 /*FOOTER*/
 
@@ -1221,4 +1314,7 @@ body.fade-in {
     }
 
 }   
+
+
+
 

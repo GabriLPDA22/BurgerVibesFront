@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="/miAppHamburguesa/Frontend/src/assets/img/Home/BurgerVibes.svg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <title>Document</title>
+</head>
+<style>
+    .cookie-settings-container {
+        max-width: 800px;
+        margin: 2rem auto;
+        padding: 3rem;
+        background-color: #fff;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .back-button {
+        display: inline-block;
+        /* Hace que el enlace se comporte como un botón */
+        text-decoration: none;
+        /* Quita el subrayado del enlace */
+        padding: 8px 15px;
+        /* Espaciado interno */
+        background-color: #f0f0f0;
+        /* Color de fondo del botón */
+        color: #000;
+        /* Color del texto */
+        border: 1px solid #dcdcdc;
+        /* Borde del botón */
+        border-radius: 20px;
+        /* Esquinas redondeadas */
+        box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+        /* Sombra suave */
+        font-size: 14px;
+        /* Tamaño del texto */
+        margin: 10px;
+        /* Margen externo */
+        cursor: pointer;
+        /* Cambia el cursor al pasar sobre el botón */
+    }
+
+    .back-button:hover {
+        background-color: #e0e0e0;
+        /* Cambia el fondo al pasar el cursor */
+    }
+
+    .back-button:active {
+        background-color: #d0d0d0;
+        /* Cambia el fondo al hacer clic */
+        box-shadow: inset 0 2px 2px rgba(0, 0, 0, 0.2);
+        /* Sombra interna para efecto de presión */
+    }
+
+    .cookie-settings-container h1 {
+        margin-bottom: 0.5rem;
+        color: #000;
+    }
+
+    .cookie-settings-container p {
+        color: #666;
+        margin-bottom: 1rem;
+    }
+
+    .cookie-section {
+        border: 1px solid #ccc;
+        padding: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    .cookie-section h2 {
+        color: #000;
+    }
+
+    .badge-required {
+        background-color: #0056b3;
+        color: #ffffff;
+        padding: 0.2rem 0.4rem;
+        border-radius: 0.2rem;
+        font-size: 0.8rem;
+        vertical-align: middle;
+        margin-left: 0.5rem;
+    }
+
+    .cookie-analysis-toggle {
+        margin: 1rem 0;
+    }
+
+    .cookie-analysis-toggle input[type="checkbox"] {
+        margin-right: 0.5rem;
+    }
+
+    .cookie-analysis-toggle input[type="checkbox"] {
+        accent-color: #007bff;
+        /* Color del checkbox (funciona en algunos navegadores modernos) */
+    }
+
+    .back-button {
+        display: inline-block;
+        /* Para aplicar margen y padding */
+        margin-right: 1rem;
+        /* Espacio a la derecha del botón */
+        text-decoration: none;
+        /* Quitar subrayado */
+        color: #212529;
+        /* Color del texto del botón */
+    }
+
+    .cookie-table-wrapper {
+        overflow-x: auto;
+        margin: 2rem 0;
+    }
+
+    .cookie-table {
+        width: 100%;
+        border-collapse: collapse;
+        text-align: left;
+        font-family: Arial, sans-serif;
+    }
+
+    .cookie-table thead {
+        background-color: #f2f2f2;
+    }
+
+    .cookie-table th,
+    .cookie-table td {
+        padding: 0.5rem 1rem;
+        border-bottom: 1px solid #e0e0e0;
+    }
+
+    /* Agregar estilos para íconos si estás usando FontAwesome */
+    .fas.fa-info-circle {
+        margin-left: 5px;
+        color: #6c757d;
+        /* Un gris para que no sea muy llamativo */
+    }
+
+    /* Hover styles for the info icons */
+    .fas.fa-info-circle:hover {
+        color: #495057;
+        /* Un gris más oscuro al pasar el cursor */
+    }
+
+    /* Para hacer que los íconos de información sean menos prominentes y sólo aparezcan al pasar el cursor */
+    .cookie-table td i.fas {
+        opacity: 0.5;
+        cursor: pointer;
+    }
+
+    .cookie-table td:hover i.fas {
+        opacity: 1;
+    }
+
+    /*FOOTER*/
+    /* Estilos para el pie de página */
+    #siteFooter {
+        background-color: #333;
+        color: #fff;
+        padding: 20px 0;
+        text-align: center;
+    }
+
+    .footer-links {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        padding-bottom: 20px;
+    }
+
+    .footer-links a {
+        color: #fff;
+        text-decoration: none;
+        transition: color 0.3s;
+    }
+
+    .footer-links a:hover {
+        color: #f79e02;
+    }
+
+    hr {
+        border: none;
+        height: 1px;
+        background-color: #777;
+        margin: 20px 0;
+    }
+
+    .last-part {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .footer-branding {
+        display: flex;
+        /* Ajusta para alinear el logo apropiadamente */
+        align-items: center;
+    }
+
+    .footer-language-selector {
+        display: flex;
+        /* Ajusta para alinear el selector de idioma apropiadamente */
+        align-items: center;
+    }
+
+    #language-select {
+        background: transparent;
+        color: black;
+        /* Para hacer el texto negro */
+        border: 1px solid #fff;
+        padding: 5px;
+        border-radius: 5px;
+        margin-right: 20px;
+        /* Asegúrate de que hay espacio alrededor del selector */
+    }
+
+    #language-select option {
+        color: black;
+        /* Texto negro dentro del desplegable */
+        background: white;
+    }
+
+    /* Agregar estilos adicionales para la tabla de cookies como desees */
+</style>
+
+<body>
+    <main class="cookie-settings-container">
+        <a class="back-button" href="/miAppHamburguesa/Frontend/public/html_Español/es_index.html">← Guardar</a>
+        <h1>CONFIGURACIÓN DE COOKIES</h1>
+        <p>Este sitio utiliza cookies para mejorar la experiencia de uso. Puedes revisar y administrar la configuración
+            de las cookies a continuación.</p>
+
+        <section class="cookie-section">
+            <h2>Funcionalidad <span class="badge-required">Obligatorio</span></h2>
+            <p>Las cookies de funcionalidad se usan para mantener el funcionamiento correcto de nuestro sitio y los
+                servicios como, por ejemplo, mostrarte la información adecuada para la ubicación que seleccionaste.</p>
+            <div class="cookie-table-wrapper">
+                <table class="cookie-table">
+                    <thead>
+                        <tr>
+                            <th>Cookie</th>
+                            <th>Dominio</th>
+                            <th>Tipo</th>
+                            <th>Duración</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>i18n-locale <i class="fas fa-info-circle"></i></td>
+                            <td>pedidos.burgervibes.shop</td>
+                            <td>Almacenamiento local</td>
+                            <td>N/D</td>
+                        </tr>
+                        <tr>
+                            <td>current-location <i class="fas fa-info-circle"></i></td>
+                            <td>pedidos.burgervibes.shop</td>
+                            <td>Almacenamiento local</td>
+                            <td>N/D</td>
+                        </tr>
+                        <tr>
+                            <td>cookies <i class="fas fa-info-circle"></i></td>
+                            <td>pedidos.burgervibes.shop</td>
+                            <td>Almacenamiento local</td>
+                            <td>N/D</td>
+                        </tr>
+                        <tr>
+                            <td>_stripe_mid <i class="fas fa-info-circle"></i></td>
+                            <td>pedidos.burgervibes.shop</td>
+                            <td>De terceros</td>
+                            <td>30 mins</td>
+                        </tr>
+                        <tr>
+                            <td>_stripe_sid <i class="fas fa-info-circle"></i></td>
+                            <td>pedidos.burgervibes.shop</td>
+                            <td>De terceros</td>
+                            <td>30 mins</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="cookie-section">
+            <h2>Análisis</h2>
+            <div class="cookie-analysis-toggle">
+                <input type="checkbox" id="analysis-toggle" name="analysis">
+                <label for="analysis-toggle">Toggle análisis</label>
+            </div>
+            <p>Las cookies de análisis nos ayudan a comprender cómo interactúan los visitantes con nuestros servicios, y
+                esto nos permite analizar y mejorar nuestro producto y servicio.</p>
+            <div class="cookie-table-wrapper">
+                <table class="cookie-table">
+                    <thead>
+                        <tr>
+                            <th>Cookie</th>
+                            <th>Dominio</th>
+                            <th>Tipo</th>
+                            <th>Duración</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>AMP_* <i class="fas fa-info-circle"></i></td>
+                            <td>pedidos.burgervibes.shop</td>
+                            <td>De terceros</td>
+                            <td>1h/td>
+                        </tr>
+                        <tr>
+                            <td>AMP_MKTG_* <i class="fas fa-info-circle"></i></td>
+                            <td>pedidos.burgervibes.shop</td>
+                            <td>De terceros</td>
+                            <td>1h</td>
+                        </tr>
+                        <tr>
+                            <td>AMP_unsent_* <i class="fas fa-info-circle"></i></td>
+                            <td>pedidos.burgervibes.shop</td>
+                            <td>Almacenamiento local</td>
+                            <td>N/D</td>
+                        </tr>
+                        <tr>
+                            <td>_ga* <i class="fas fa-info-circle"></i></td>
+                            <td>pedidos.burgervibes.shop</td>
+                            <td>De terceros</td>
+                            <td>60 mins</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </section>
+    </main>
+
+
+
+
+    <footer id="siteFooter">
+        <div class="footer-links">
+            <a href="/legal-notice" target="_blank">Aviso legal</a>
+            <a href="#">Configuración de cookies</a>
+            <a href="/miAppHamburguesa/Frontend/public/html_Español/Politica_Privacidad.html" target="_blank">Política de privacidad</a>
+            <a href="/miAppHamburguesa/Frontend/public/html_Español/Terminos_Condiciones.html" target="_blank">Términos y condiciones</a>
+        </div>
+        <hr>
+        <div class="last-part">
+            <div class="footer-branding">
+                <img width="120" src="/miAppHamburguesa/Frontend/src/assets/img/Home/BurgerVibes.svg" alt="Logo">
+            </div>
+            <div class="footer-language-selector">
+                <label for="language-select">Idioma</label>
+                <select id="language-select">
+                    <option value="en">EN</option>
+                    <option value="es" selected>ES</option>
+                </select>
+            </div>
+        </div>
+    </footer>
+
+</body>
+<script>
+    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+    var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl);
+    });
+</script>
+
+</html>

@@ -8,6 +8,7 @@
   height: 100%;
   background-color: rgba(0, 0, 0, 0.6);
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  overflow-y: auto;
 }
 
 .custom-modal-dialog {
@@ -15,14 +16,17 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 40%; /* Ajusta el ancho como sea necesario */
+  width: 40%;
+  /* Ajusta el ancho como sea necesario */
   max-width: 600px;
 }
 
 .custom-modal-content {
   position: relative;
-  background-color: #000000; /* Fondo oscuro para el modal */
-  color: white; /* Texto blanco para contraste */
+  background-color: #000000;
+  /* Fondo oscuro para el modal */
+  color: white;
+  /* Texto blanco para contraste */
   padding: 20px;
   border-radius: 5px;
 }
@@ -41,15 +45,9 @@
   cursor: pointer;
 }
 
-.modal-logo {
-  display: block;
-  margin: 0 auto;
-  width: 240px; /* Logo width */
-  margin-top: -30px; /* Adjust this to position your logo */
-}
-
 .modal-warning {
-  background-color: #e9e9e9; /* Background color for warning area */
+  background-color: #e9e9e9;
+  /* Background color for warning area */
   color: #000;
   text-align: center;
   padding: 15px;
@@ -64,6 +62,8 @@
   margin: 0;
   padding: 4px;
   font-family: 'Urbanist', cursive;
+  text-align: center;
+  color: #000;
 }
 
 .location-section {
@@ -72,50 +72,71 @@
 }
 
 .location-flag {
-  width: 50px; /* O el tamaño que prefieras para la bandera */
+  width: 50px;
+  /* O el tamaño que prefieras para la bandera */
   height: auto;
 }
 
 .location-name {
-  font-size: 1.5em; /* Tamaño del texto para la localidad */
-  color: #fff; /* Color del texto */
+  font-size: 1.5em;
+  /* Tamaño del texto para la localidad */
+  color: #fff;
+  /* Color del texto */
   margin-top: 5px;
+  text-align: center;
 
+}
+
+#descargarBtn {
+  text-align: center;
+  color: #000;
 }
 
 .modal-button {
   display: block;
-  width: 60%; /* Ajusta al ancho deseado */
-  margin: 10px auto; /* Centrado con margen arriba y abajo */
+  width: 60%;
+  /* Ajusta al ancho deseado */
+  margin: 10px auto;
+  /* Centrado con margen arriba y abajo */
   padding: 10px;
   text-align: center;
-  background-color: #ffffff; /* Fondo blanco para los botones */
-  color: #000; /* Texto negro */
-  border-radius: 20px; /* Bordes redondeados para los botones */
-  text-decoration: none; /* Sin subrayado en los enlaces */
-  font-size: 1em; /* Tamaño de fuente de los botones */
+  background-color: #ffffff;
+  /* Fondo blanco para los botones */
+  color: #000;
+  /* Texto negro */
+  border-radius: 20px;
+  /* Bordes redondeados para los botones */
+  text-decoration: none;
+  /* Sin subrayado en los enlaces */
+  font-size: 1em;
+  /* Tamaño de fuente de los botones */
 }
 
 .delivery-button {
-  background-color: #ffffff; /* Color de fondo para el botón de Glovo */
-  font-family:Arial, Helvetica, sans-serif;
+  background-color: #ffffff;
+  /* Color de fondo para el botón de Glovo */
+  font-family: Arial, Helvetica, sans-serif;
   font-weight: bold;
 }
 
 .pickup-button {
-  font-family:Arial, Helvetica, sans-serif; 
+  font-family: Arial, Helvetica, sans-serif;
   font-weight: bold;
 }
 
 /* Añade los estilos para hover y active si es necesario */
 .modal-button:hover {
-  background-color: #e6e6e6; /* Ejemplo de color al pasar el mouse */
+  background-color: #e6e6e6;
+  /* Ejemplo de color al pasar el mouse */
 }
 
 .divider {
-  border-top: 0.5px solid #ffffff; /* Color y estilo de la línea */
-  margin: 20px 0; /* Espacio superior e inferior para la línea */
+  border-top: 0.5px solid #ffffff;
+  /* Color y estilo de la línea */
+  margin: 20px 0;
+  /* Espacio superior e inferior para la línea */
 }
+
 
 /*MODAL CARTA*/
 .custom-modal {
@@ -135,14 +156,17 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 40%; /* Ajusta el ancho como sea necesario */
+  width: 40%;
+  /* Ajusta el ancho como sea necesario */
   max-width: 600px;
 }
 
 .custom-modal-content {
   position: relative;
-  background-color: #000000; /* Fondo oscuro para el modal */
-  color: white; /* Texto blanco para contraste */
+  background-color: #000000;
+  /* Fondo oscuro para el modal */
+  color: white;
+  /* Texto blanco para contraste */
   padding: 20px;
   border-radius: 5px;
 }
@@ -163,13 +187,14 @@
 
 .modal-logo {
   display: block;
+  width: 240px;
   margin: 0 auto;
-  width: 240px; /* Logo width */
-  margin-top: -30px; /* Adjust this to position your logo */
+
 }
 
 .modal-warning {
-  background-color: #e9e9e9; /* Background color for warning area */
+  background-color: #e9e9e9;
+  /* Background color for warning area */
   color: #000;
   text-align: center;
   padding: 15px;
@@ -192,49 +217,63 @@
 }
 
 .location-flag {
-  width: 50px; /* O el tamaño que prefieras para la bandera */
+  width: 50px;
+  /* O el tamaño que prefieras para la bandera */
   height: auto;
 }
 
 .location-name {
-  font-size: 1.5em; /* Tamaño del texto para la localidad */
-  color: #fff; /* Color del texto */
+  font-size: 1.5em;
+  /* Tamaño del texto para la localidad */
+  color: #fff;
+  /* Color del texto */
   margin-top: 5px;
 
 }
 
 .modal-button {
   display: block;
-  width: 60%; /* Ajusta al ancho deseado */
-  margin: 10px auto; /* Centrado con margen arriba y abajo */
+  width: 60%;
+  /* Ajusta al ancho deseado */
+  margin: 10px auto;
+  /* Centrado con margen arriba y abajo */
   padding: 10px;
   text-align: center;
-  background-color: #ffffff; /* Fondo blanco para los botones */
-  color: #000; /* Texto negro */
-  border-radius: 20px; /* Bordes redondeados para los botones */
-  text-decoration: none; /* Sin subrayado en los enlaces */
-  font-size: 1em; /* Tamaño de fuente de los botones */
+  background-color: #ffffff;
+  /* Fondo blanco para los botones */
+  color: #000;
+  /* Texto negro */
+  border-radius: 20px;
+  /* Bordes redondeados para los botones */
+  text-decoration: none;
+  /* Sin subrayado en los enlaces */
+  font-size: 1em;
+  /* Tamaño de fuente de los botones */
 }
 
 .delivery-button {
-  background-color: #ffffff; /* Color de fondo para el botón de Glovo */
-  font-family:Arial, Helvetica, sans-serif;
+  background-color: #ffffff;
+  /* Color de fondo para el botón de Glovo */
+  font-family: Arial, Helvetica, sans-serif;
   font-weight: bold;
 }
 
 .pickup-button {
-  font-family:Arial, Helvetica, sans-serif; 
+  font-family: Arial, Helvetica, sans-serif;
   font-weight: bold;
 }
 
 /* Añade los estilos para hover y active si es necesario */
 .modal-button:hover {
-  background-color: #e6e6e6; /* Ejemplo de color al pasar el mouse */
+  background-color: #e6e6e6;
+  /* Ejemplo de color al pasar el mouse */
 }
 
 .divider {
-  border-top: 0.5px solid #ffffff; /* Color y estilo de la línea */
-  margin: 20px 0; /* Espacio superior e inferior para la línea */
+  border-top: 0.5px solid #ffffff;
+  /* Color y estilo de la línea */
+  margin: 20px 0;
+  /* Espacio superior e inferior para la línea */
 }
 
 /* Estilo para el modal de la carta */
@@ -255,8 +294,8 @@
   position: fixed;
   top: 50%;
   left: 50%;
+  width: 100%;
   transform: translate(-50%, -50%);
-  width: 40%; /* Ajusta el ancho como sea necesario */
   max-width: 600px;
   background-color: #000000;
   padding: 20px;
@@ -292,13 +331,30 @@
   color: #000000;
   border-radius: 20px;
   text-decoration: none;
-  font-size: 1em;
-  margin-bottom: 15%;
+  margin-bottom: 5%;
+  border: 1px solid #000000;
 }
 
 /* Estilo adicional para el botón de "Ver Carta" */
-.verCartaBtn {
-  margin-bottom: 10px;
+#VerCarta {
+  color: #000;
+  font-size: 1em;
+}
+
+.p.VerCarta {
+  font-size: 1em;
+  color: #000;
+  padding: 0;
+}
+
+.carta-location p {
+  color: white;
+  text-align: center;
+  font-size: 30px;
+}
+
+.descargarCartaBtn {
+  margin-top: 30px;
 }
 
 /* Estilos adicionales para los botones cuando se pasa el cursor sobre ellos */
@@ -311,58 +367,117 @@
 
 
 /*MODAL*/
-@media (max-width: 768px),(max-width: 884px) {
+@media (max-width: 768px),
+(max-width: 884px) {
 
-  .modal-warning p{
-      font-size: 20px;
+  .modal-warning p {
+    font-size: 20px;
   }
 
-  .custom-modal-dialog{
+  .custom-modal-dialog {
     width: 80%;
   }
 
+  .custom-modal-content {
+    margin-right: 8px;
+  }
+
 }
 
 /*MODAL*/
+@media (max-width: 768px),
+(max-width: 884px) {
 
-@media (max-width: 428px) {
+@media (max-width: 430px) {
 
-  .modal-warning p{
-      font-size: 12px;
+  .modal-warning p {
+    font-size: 12px;
   }
 
-  .custom-modal-dialog{
-    width: 70%;
+  .custom-modal-dialog {
+    width: 100%;
   }
 
-  .location-flag{
+  .location-flag {
     display: none;
   }
 
+  .modal-logo {
+    margin: 0;
+  }
+
+  .custom-modal-content {
+    margin-right: 73px;
+    margin-left: 80px;
+  }
+
+  .modal-warning p {
+    font-size: 20px;
+  }
+
+  .custom-modal-dialog {
+    width: 80%;
+  }
+
+  .custom-modal-content {
+    margin-right: 8px;
+  }
+
 }
 
 /*MODAL*/
 
-@media (max-width: 375px),((max-width: 390px)) {
+@media (max-width: 375px),
+((max-width: 390px)) {
+@media (max-width: 430px) {
 
-  .modal-warning p{
-      font-size: 12px;
+  .modal-warning p {
+    font-size: 12px;
   }
 
-  .custom-modal-dialog{
+  .custom-modal-dialog {
+    width: 100%;
+  }
+
+  .location-flag {
+    display: none;
+  }
+
+  .modal-logo {
+    margin: 0;
+  }
+
+  .custom-modal-content {
+    margin-right: 73px;
+    margin-left: 80px;
+  }
+
+}
+
+/*MODAL*/
+
+@media (max-width: 375px),
+((max-width: 390px)) {
+
+  .modal-warning p {
+    font-size: 12px;
+  }
+
+  .custom-modal-dialog {
     width: 100%;
     height: auto;
   }
 
-  .pickup-button{
+  .pickup-button {
     margin-bottom: 20px;
   }
 
-  .location-name, .location-section{
+  .location-name,
+  .location-section {
     margin-bottom: 0;
   }
-  
-  .modal-logo{
+
+  .modal-logo {
     margin-top: 0;
   }
 
