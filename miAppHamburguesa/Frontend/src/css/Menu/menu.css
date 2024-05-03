@@ -771,47 +771,38 @@ hr {
 @media (max-width: 884px) {
 
   .navigation-tabs {
-    display: flex;
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-    gap: 20px;
-    font-size: 15px;
+    font-size: 20px;
   }
 
-  .flex-container {
+  .main-wrapper,
+  .tabs-content,
+  #siteFooter {
     display: flex;
     flex-direction: column;
-    max-width: 80%;
-    flex: 1;
-    padding-right: 20px;
-    overflow-y: auto;
+    width: 85%;
+    padding: 0;
+
   }
 
   .order-column {
-    width: 42%;
-    background: #fff;
-    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
-    max-height: 100%;
-    position: fixed;
-    right: 0;
-    top: 0;
+    width: 49%;
+  }
+
+  .order-content {
+    height: 83.5vh;
   }
 
   .logo img {
-    width: 100px;
-    height: auto;
-    background-color: #000000;
-    border-radius: 5%;
-    border: 5px solid rgb(255, 153, 0);
+    display: none;
+  }
+
+  .restaurant-info .restaurant-name {
+    font-size: 22px;
   }
 
   .nav-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-right: 30px;
-    width: 79%;
+    width: 62%;
+    flex-direction: row-reverse;
   }
 
   .remove-btn {
@@ -819,222 +810,200 @@ hr {
   }
 
   #siteFooter {
-    background-color: #333;
-    color: #fff;
-    padding: 25px;
-    text-align: center;
-    width: 51.8%;
+    width: 51%;
+  }
+
+  .footer-links {
+    margin-top: 15px;
+    padding-bottom: 13px;
   }
 }
 
-  @media (max-width: 834px) {
 
-    .navigation-tabs {
-      display: flex;
-      font-size: 14px;
-    }
+@media (max-width: 834px) {
 
-    .menu-item-header {
-      display: flex;
-      text-align: left;
-    }
-
-    #siteFooter {
-      width: 63%;
-    }
-
-    .order-content {
-      height: 84vh;
-    }
-
-    .restaurant-info .restaurant-name {
-      padding-left: 20px;
-      font-size: 20px;
-    }
-
-    .logo img {
-      width: 80px
-    }
-
-    #siteFooter {
-      width: 52%;
-    }
+  .navigation-tabs {
+    display: flex;
+    font-size: 18px;
   }
 
-  @media (max-width:800px) {
-    .order-content {
-      height: 85vh;
-    }
+  .menu-item-header {
+    display: flex;
+    text-align: left;
   }
 
-  @media (max-width: 768px) {
+  #siteFooter {
+    width: 63%;
+  }
 
-    nav {
-      background-color: #ffffff;
-      padding: 10px;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-      width: 69%;
-    }
+  .order-content {
+    height: 84vh;
+  }
 
-    .logo img {
-      width: 65px;
-    }
+  .restaurant-info .restaurant-name {
+    padding-left: 20px;
+    font-size: 20px;
+  }
 
-    .navigation-tabs {
-      display: flex;
-      font-size: 20px;
-      flex-direction: row;
-    }
+  .logo img {
+    width: 80px
+  }
 
-    .order-content {
-      height: 84vh;
-    }
+}
 
-    .order-item {
-      margin-left: 0px;
-      font-size: 11px;
-    }
+@media (max-width:800px) {
+  .order-content {
+    height: 85vh;
+  }
+}
+
+@media (max-width: 768px) {
+
+
+  .order-content {
+    height: 84vh;
+  }
+
+}
+
+@media (max-width: 430px) {
+
+  .order-toggle-button {
+    display: flex;
+  }
+
+
+  .nav-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 30px;
+    flex-direction: row-reverse;
+  }
+
+  .logo img {
+    width: 100px;
+  }
+
+  nav {
+    width: 144%;
+  }
+
+  .menu-item-header {
+    display: flex;
+    text-align: left;
+  }
+
+  .main-wrapper,
+  .tabs-content,
+  #siteFooter {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 0;
 
   }
 
-  @media (max-width: 430px) {
+  .navigation-tabs {
+    font-size: 13px;
+    /* display: flex; */
+    flex-direction: column;
+    align-items: center;
 
-    .order-toggle-button {
-      display: flex;
-    }
+  }
 
-
-    .nav-content {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding-right: 30px;
-      flex-direction: row-reverse;
-    }
-
-    .logo img {
-      width: 100px;
-    }
-
-    nav {
-      width: 100%;
-    }
-
-    .menu-item-header {
-      display: flex;
-      text-align: left;
-    }
-
-    .main-wrapper,
-    .tabs-content,
-    #siteFooter {
-      display: flex;
-      flex-direction: column;
-      width: 100%;
-      padding: 0;
-
-    }
-
-    .navigation-tabs {
-      font-size: 13px;
-      /* display: flex; */
-      flex-direction: column;
-      align-items: center;
-
-    }
-
-    /* Ajustes para las imágenes */
-    .menu-item-column {
-      .img {
-        height: 100%;
-        width: 100%;
-      }
-    }
-
-    /* Ajustes para las imágenes */
-    .menu-item-img {
-      width: 100%;
+  /* Ajustes para las imágenes */
+  .menu-item-column {
+    .img {
       height: 100%;
-    }
-
-    .flex-container {
-      width: 100%;
-      padding: 0;
-
-    }
-
-    .footer-language-selector {
-      margin-right: 10px;
-    }
-
-    .order-toggle-button {
-      display: block;
-      /* hacer visible el botón */
-    }
-
-    .order-column {
-      display: none;
-      /* ocultar el carrito inicialmente */
-    }
-
-    .order-column {
       width: 100%;
     }
+  }
 
-    .tabs-list {
-      display: flex;
-    }
+  /* Ajustes para las imágenes */
+  .menu-item-img {
+    width: 100%;
+    height: 100%;
+  }
 
-    .footer-links {
-      margin: 0;
-      padding-top: 20px;
-      flex-direction: column;
-    }
+  .flex-container {
+    width: 100%;
+    padding: 0;
 
   }
 
-  @media (max-width: 430px) {
-    .logo img {
-      display: none;
-    }
-
-    .logo {
-      padding: 0;
-    }
-
-    .nav-content {
-      padding: 0;
-    }
-
-    .restaurant-info {
-      padding: 0;
-      margin-right: 20px;
-    }
-
-    #loginBtn {
-      margin-right: 30px;
-    }
+  .footer-language-selector {
+    margin-right: 10px;
   }
 
-  @media (max-width: 390px) {
-    .logo img {
-      display: none;
-    }
-
-    .logo {
-      padding: 0;
-    }
-
-    .nav-content {
-      padding: 0;
-    }
-
-    .restaurant-info {
-      padding: 0;
-      margin-right: 20px;
-    }
-
-    #loginBtn {
-      margin-right: 5px;
-    }
+  .order-toggle-button {
+    display: block;
+    /* hacer visible el botón */
   }
+
+  .order-column {
+    display: none;
+    /* ocultar el carrito inicialmente */
+  }
+
+  .order-column {
+    width: 100%;
+  }
+
+  .tabs-list {
+    display: flex;
+  }
+
+  .footer-links {
+    margin: 0;
+    padding-top: 20px;
+    flex-direction: column;
+  }
+
+}
+
+@media (max-width: 430px) {
+  .logo img {
+    display: none;
+  }
+
+  .logo {
+    padding: 0;
+  }
+
+  .nav-content {
+    padding: 0;
+  }
+
+  .restaurant-info {
+    padding: 0;
+    margin-right: 20px;
+  }
+
+  #loginBtn {
+    margin-right: 30px;
+  }
+}
+
+@media (max-width: 390px) {
+  .logo img {
+    display: none;
+  }
+
+  .logo {
+    padding: 0;
+  }
+
+  .nav-content {
+    padding: 0;
+  }
+
+  .restaurant-info {
+    padding: 0;
+    margin-right: 20px;
+  }
+
+  #loginBtn {
+    margin-right: 5px;
+  }
+}
