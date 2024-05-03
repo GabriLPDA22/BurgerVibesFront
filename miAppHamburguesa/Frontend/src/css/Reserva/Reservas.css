@@ -43,3 +43,12 @@ button {
 button:hover {
     background-color: #c5811b;
 }
+
+
+@media (max-width: 430px) {
+    .reservation-container{
+        width: 70%;
+    }
+}
+
+
