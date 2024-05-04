@@ -43,8 +43,7 @@
                     <li><a href="#opiniones" class="nav-link">Opinions</a></li>
                     <li><a href="#galeria" class="nav-link">Galery</a></li>
                     <li><a href="#contacto" class="nav-link">Contact</a></li>
-                    <li><a href="/miAppHamburguesa/Frontend/public/html_Español/es_carta_.html"
-                            class="nav-link">Menu</a></li>
+                    <li><a href="#carta" class="nav-link">Menu</a></li>
                     <span id="customModalClose" class="custom-close-responsive">&times;</span>
                     <a href="javascript:void(0);" class="pedido-online-responsive"
                         id="navbarOrderButton">Order-online</a>
@@ -54,6 +53,49 @@
                 <a href="javascript:void(0);" class="pedido-online" id="navbarOrderButtonIngles">Order</a>
             </div>
         </nav>
+
+
+        <!--Modal carta-->
+        <div id="myModal" class="modal">
+            <div class="modal-content">
+                <div class="custom-modal-header">
+                    <span id="customModalCloseCarta" class="custom-close">&times;</span>
+                    <img src="/miAppHamburguesa/Frontend/src/assets/img/Home/BurgerVibes.svg" alt="Vibes Logo"
+                        class="modal-logo">
+                </div>
+                <div class="custom-modal-body">
+
+                    <div class="carta-location">
+                        <p>Zaragoza</p>
+                        <div class="verCartaBtn">
+                            <a href="/miAppHamburguesa/Frontend/public/html_Ingles/en_carta_ZaragozaNoBuy.html"
+                                class="ver-carta" style="text-decoration: none; color: #000;">
+                                <p id="VerCarta">See menu</p>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="carta-location">
+                        <p>Valencia</p>
+                        <div class="verCartaBtn">
+                            <a href="/miAppHamburguesa/Frontend/public/html_Ingles/en_carta_ValenciaNoBuy.html"
+                                class="ver-carta" style="text-decoration: none; color: #000;">
+                                <p id="VerCarta">See menu</p>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="descargarCartaBtn">
+                        <a href="/miAppHamburguesa/MENU/BurgerVibes.pdf" download="BurgerVibes.pdf"
+                            class="descargar-carta" style="text-decoration: none; color: #000;">
+                            <p id="descargarBtn">Download menu</p>
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
         <!--HERO-->
         <div class="container-hero">
             <div id="hero" class="hero carousel">
@@ -71,7 +113,7 @@
                                     <div class="hero-buttons">
                                         <a href="javascript:void(0);" class="hero-button primary-button"
                                             id="heroOrderButton">order</a>
-                                        <a href="#" class="hero-button light-button" id="reservaMesaButton">Book a
+                                        <a href="/miAppHamburguesa/Frontend/public/html_Ingles/Reservas/en_ReservaVal.html" class="hero-button light-button" id="reservaMesaButton">Book a
                                             table</a>
                                     </div>
                                 </div>
@@ -81,7 +123,8 @@
                                             Take a bite out of life <br> with Burger Vibes! 🍔
                                         </p>
                                         <img src="/miAppHamburguesa/Frontend/src/assets/img/Home/Hero_hamburguesa.png"
-                                            alt="Imagen de fondo" style="object-fit: contain; max-height: 500px;" id="FotoHome">
+                                            alt="Imagen de fondo" style="object-fit: contain; max-height: 500px;"
+                                            id="FotoHome">
                                     </div>
                                 </div>
                             </div>
@@ -207,7 +250,7 @@
                         alt="Bandera de Zaragoza" class="location-flag" />
                     <p class="location-name">Zaragoza</p>
                     <div class="custom-modal-body">
-                        <a href="#" target="_blank" class="modal-button pickup-button">
+                        <a href="/miAppHamburguesa/Frontend/public/html_Ingles/Reservas/en_ReservaVal.html" target="_blank" class="modal-button pickup-button">
                             Book a table
                         </a>
                     </div>
@@ -217,7 +260,7 @@
                     <p class="location-name">Valencia</p>
                 </div>
                 <div class="custom-modal-body">
-                    <a href="#" target="_blank" class="modal-button pickup-button">
+                    <a href="/miAppHamburguesa/Frontend/public/html_Ingles/Reservas/en_ReservaVal.html" target="_blank" class="modal-button pickup-button">
                         Book a table
                     </a>
                 </div>
@@ -408,17 +451,19 @@
             <div class="footer-column">
                 <div class="footer-section">
                     <h4>Contact</h4>
-                    <a href="#" id="TrabajaConNostros">Join our team today!</a>
+                    <a href="/miAppHamburguesa/Frontend/public/html_Ingles/en_TrabajaNostros.html"
+                        id="TrabajaConNostros">Join our team today!</a>
                     <p id="texto-correo-footer">📧 reservasBurgerVibes@gmail.com</p>
                     <p>For any changes to your reservation, please contact us via email or Instagram.
                     </p>
                 </div>
                 <div class="footer-section">
                     <h4>Legal</h4>
-                    <a href="#">Cookie settings</a>
-                    <a href="/miAppHamburguesa/Frontend/public/html_Ingles/Terminos_Condiciones.html">Terms and
+                    <a href="/miAppHamburguesa/Frontend/public/html_Ingles/en_ConfigCookies.html">Cookie settings</a>
+                    <a href="/miAppHamburguesa/Frontend/public/html_Ingles/En_Terminos_Condiciones.html">Terms and
                         conditions of use</a>
-                    <a href="/miAppHamburguesa/Frontend/public/html_Ingles/Politica_Privacidad.html">Privacy policy</a>
+                    <a href="/miAppHamburguesa/Frontend/public/html_Ingles/en_Politica_Privacidad.html">Privacy
+                        policy</a>
                 </div>
             </div>
         </div>
