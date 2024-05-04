@@ -27,6 +27,17 @@
   font-size: 20px;
 }
 
+/* Estilos específicos para los inputs y botones dentro del modal */
+.modal2 input[type="email"],
+.modal2 input[type="password"] {
+  width: 100%; /* Asegura que ocupe el ancho completo del modal */
+  padding: 12px; /* Mayor padding para mejorar la interacción */
+  margin: 8px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box; /* Asegura que el padding no afecte el ancho */
+}
+
 .close {
   color: #aaa;
   float: right;

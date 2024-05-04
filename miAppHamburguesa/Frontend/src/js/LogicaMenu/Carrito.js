@@ -194,7 +194,19 @@ function updateCartInterface() {
 
 
 document.addEventListener('DOMContentLoaded', function () {
-    // Código para cargar la información en el modal y actualizar el precio en el botón
+    // Restaurar el estado del carrito desde localStorage al cargar la página
+    var storedCart = localStorage.getItem('carrito');
+    if (storedCart) {
+        var cart = JSON.parse(storedCart);
+        // Si hay items almacenados, los agregamos uno por uno al carrito
+        if (cart.items && cart.items.length > 0) {
+            cart.items.forEach(item => {
+                addToCart(item.name, item.price / item.quantity, item.quantity);
+            });
+        }
+    }
+
+    // Código para manejar interacciones en la página
     var productCards = document.querySelectorAll('.menu-item');
     productCards.forEach(function (card) {
         card.addEventListener('click', function () {
@@ -204,11 +216,9 @@ document.addEventListener('DOMContentLoaded', function () {
             var modal = document.getElementById('productModal');
             modal.querySelector('#productModalTitle').textContent = productName;
             modal.querySelector('.price-span').textContent = productPrice + ' €';
-            // Más actualizaciones al modal según sea necesario
         });
     });
 
-    // Código para manejar el evento de añadir al carrito
     var addToCartButtons = document.querySelectorAll('.add-to-cart-btn');
     addToCartButtons.forEach(function (button) {
         button.addEventListener('click', function () {
@@ -218,7 +228,6 @@ document.addEventListener('DOMContentLoaded', function () {
             var priceMatches = productPriceText.match(/(\d+([.,]\d+)?)\s*€/);
 
             if (priceMatches && priceMatches.length > 1) {
-                // Extraemos el precio y reemplazamos las comas por puntos en caso de que haya decimales.
                 var productPrice = parseFloat(priceMatches[1].replace(',', '.'));
                 var quantity = parseInt(modal.querySelector('#quantity').value);
                 addToCart(productName, productPrice, quantity);
@@ -227,6 +236,10 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
     });
+
+    // Asegúrarnos de que el resto de la lógica de interacción del usuario también se maneja aquí
+    // Por ejemplo, si tienemos otros botones o eventos específicos en nuestra aplicación, deberían ser configurados aquí
 });
+
 
 

@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Elementos del DOM
     const modal = document.getElementById('modalLogin');
     const loginBtn = document.getElementById('loginBtn');
     const closeButton = document.querySelector('#modalLogin .close');
@@ -8,22 +7,21 @@ document.addEventListener('DOMContentLoaded', () => {
     const usernameDisplay = document.getElementById('usernameDisplay');
     const paymentFormContainer = document.getElementById('paymentFormContainer');
     const loginMessageContainer = document.getElementById('loginMessageContainer');
+    const loginPromptButton = document.getElementById('loginPromptButton');
 
-    // Funciones de ayuda para mostrar/ocultar elementos
     function toggleDisplay(element, show) {
-        if (element) {
-            element.style.display = show ? 'block' : 'none';
-        }
+        element.style.display = show ? 'block' : 'none';
     }
 
     function toggleModal(show) {
         toggleDisplay(modal, show);
     }
 
-    function updateUI(isAuthenticated) {
+    function updateUI() {
+        const isAuthenticated = localStorage.getItem('authenticated') === 'true';
         if (isAuthenticated) {
-            const username = localStorage.getItem('username');
-            usernameDisplay.textContent = username;
+            const username = localStorage.getItem('username'); // Suponiendo que este valor se guarda durante el registro o inicio de sesión
+            usernameDisplay.textContent = username; // Mostrar el nombre de usuario
             toggleDisplay(loginBtn, false);
             toggleDisplay(userMenu, true);
             toggleDisplay(paymentFormContainer, true);
@@ -37,24 +35,27 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Eventos de la interfaz de usuario
     loginBtn && loginBtn.addEventListener('click', () => toggleModal(true));
     closeButton && closeButton.addEventListener('click', () => toggleModal(false));
     signOutLink && signOutLink.addEventListener('click', (event) => {
         event.preventDefault();
         localStorage.removeItem('authenticated');
         localStorage.removeItem('username');
-        updateUI(false);
+        updateUI();
     });
 
     document.getElementById('loginForm').addEventListener('submit', (event) => {
         event.preventDefault();
-        const username = document.getElementById('username').value;
+        console.log("Form submitted");  // Agregar para depurar
+        const email = document.getElementById('email').value;
+        const username = email.split('@')[0];
         localStorage.setItem('username', username);
         localStorage.setItem('authenticated', 'true');
-        updateUI(true);
+        updateUI();
+        console.log("Should close modal now");  // Agregar para depurar
         toggleModal(false);
     });
+    
 
     window.addEventListener('click', (event) => {
         if (event.target === modal) {
@@ -62,19 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Inicializar la UI basada en el estado de autenticación
-    updateUI(localStorage.getItem('authenticated') === 'true');
+    loginPromptButton.addEventListener('click', () => toggleModal(true));
 
-    document.addEventListener('DOMContentLoaded', () => {
-        const closeButton = document.querySelector('.close');
-        if (closeButton) {
-            closeButton.addEventListener('click', () => {
-                console.log('Cerrando modal');
-                document.getElementById('modalLogin').style.display = 'none';
-            });
-        } else {
-            console.error('El botón de cerrar no se encontró en el DOM.');
-        }
-    });
-
+    updateUI(); // Llamar a updateUI directamente al cargar la página
 });
