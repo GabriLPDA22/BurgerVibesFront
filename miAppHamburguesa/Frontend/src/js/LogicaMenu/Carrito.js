@@ -2,6 +2,9 @@ function addToCart(productName, productPrice, quantity) {
     // Depuración para verificar la cantidad y el precio recibidos
     console.log('Añadiendo al carrito:', productName, 'Precio unitario:', productPrice, 'Cantidad:', quantity);
 
+    // Obtener el nombre del cliente desde localStorage
+    const customerName = localStorage.getItem('username');
+
     var existingItem = Array.from(document.querySelectorAll('.order-item'))
         .find(item => item.querySelector('.product-name').textContent === productName);
 
@@ -31,6 +34,7 @@ function addToCart(productName, productPrice, quantity) {
                 <button class="plus-btn" onclick="updateQuantity(this, 1, ${productPrice})">+</button>
             </div>
             <span class="product-price">${(productPrice * quantity).toFixed(2)} €</span>
+            <span class="customer-name" style="display: none;">${customerName}</span> <!-- Nuevo: Guarda el nombre del cliente en el localStorage pero no lo muestra -->
             <button class="remove-btn" onclick="removeItem(this)">Eliminar</button>
         `;
         document.querySelector('.order-items').appendChild(orderItem);
@@ -40,6 +44,7 @@ function addToCart(productName, productPrice, quantity) {
     // Almacena el estado del carrito en localStorage para que persista entre páginas
     updateLocalStorage();
 }
+
 
 function updateQuantity(button, change, productPrice) {
     // Obtener el input de cantidad asociado al botón
@@ -198,6 +203,15 @@ document.addEventListener('DOMContentLoaded', function () {
     var storedCart = localStorage.getItem('carrito');
     if (storedCart) {
         var cart = JSON.parse(storedCart);
+
+        // Actualizar el nombre de usuario en la interfaz, si está disponible
+        if (cart.customerName) {
+            var usernameDisplay = document.getElementById('usernameDisplay'); // Asegúrate de tener este elemento en tu HTML
+            if (usernameDisplay) {
+                usernameDisplay.textContent = cart.customerName;
+            }
+        }
+
         // Si hay items almacenados, los agregamos uno por uno al carrito
         if (cart.items && cart.items.length > 0) {
             cart.items.forEach(item => {
@@ -237,9 +251,6 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // Asegúrarnos de que el resto de la lógica de interacción del usuario también se maneja aquí
+    // Asegurarnos de que el resto de la lógica de interacción del usuario también se maneja aquí
     // Por ejemplo, si tienemos otros botones o eventos específicos en nuestra aplicación, deberían ser configurados aquí
 });
-
-
-

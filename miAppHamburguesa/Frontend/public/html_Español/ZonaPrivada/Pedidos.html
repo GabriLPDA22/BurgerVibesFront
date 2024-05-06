@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ver Pedidos - Zona Privada</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> <!-- Bootstrap CSS -->
+    <style>
+        /* Estilos CSS adicionales para los pedidos */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .order-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .order-header {
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        .order-header h1 {
+            color: #007bff;
+        }
+
+        .order-block {
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+            background-color: #fff;
+            margin-bottom: 15px;
+            padding: 15px;
+        }
+
+        .product-name {
+            font-weight: bold;
+        }
+
+        .customer-name {
+            font-style: italic;
+        }
+
+        .product-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 10px; /* Espaciado entre productos */
+        }
+
+        .order-empty {
+            text-align: center;
+            color: #6c757d;
+        }
+    </style>
+</head>
+<body>
+    <div class="order-container">
+        <div class="order-header">
+            <h1>Pedidos Realizados</h1>
+        </div>
+
+        <div id="orders-container">
+            <!-- Los pedidos se cargarán dinámicamente aquí -->
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            loadOrders();
+        });
+
+        function loadOrders() {
+            const ordersData = localStorage.getItem('carrito');
+            const orders = JSON.parse(ordersData) || {items: []}; // Asegurarse de que siempre hay un objeto a procesar
+
+            const ordersContainer = document.getElementById('orders-container');
+
+            if (orders.items.length > 0) {
+                const groupedOrders = {}; // Objeto para agrupar pedidos por nombre de cliente
+                orders.items.forEach(item => {
+                    const customerName = item.customerName || 'Cliente Anónimo';
+                    if (!groupedOrders[customerName]) {
+                        groupedOrders[customerName] = [];
+                    }
+                    groupedOrders[customerName].push(item);
+                });
+
+                Object.keys(groupedOrders).forEach(customerName => {
+                    const orderBlock = document.createElement('div');
+                    orderBlock.classList.add('order-block');
+                    let productsHtml = '';
+                    groupedOrders[customerName].forEach(item => {
+                        productsHtml += `
+                            <div class="product-info">
+                                <div><h4 class="product-name">${item.name}</h4><p>Cantidad: ${item.quantity}</p></div>
+                                <div><p class="text-muted">Precio: ${item.price.toFixed(2)} €</p></div>
+                            </div>
+                        `;
+                    });
+                    orderBlock.innerHTML = `<h3>Pedido de ${customerName}</h3>${productsHtml}`;
+                    ordersContainer.appendChild(orderBlock);
+                });
+            } else {
+                const emptyMessage = document.createElement('div');
+                emptyMessage.classList.add('order-empty');
+                emptyMessage.innerHTML = '<span>No se ha realizado ningún pedido aún</span>';
+                ordersContainer.appendChild(emptyMessage);
+            }
+        }
+    </script>
+
+    <!-- Bootstrap JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    
+    
