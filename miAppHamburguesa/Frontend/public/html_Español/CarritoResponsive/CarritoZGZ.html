@@ -315,17 +315,19 @@
 
     <div id="modalLogin" class="modal2">
         <div class="modal2-content">
-            <span class="close">&times;</span>
-            <h5>Inicio de sesión</h5>
-            <form id="loginForm">
-                <label for="username">Nombre de usuario:</label>
-                <input type="text" id="username" required>
-                <label for="password">Contraseña:</label>
-                <input type="password" id="password" required>
-                <button type="submit">Iniciar sesión</button>
-            </form>
+          <span class="close">&times;</span>
+          <h5>Inicio de sesión</h5>
+          <form id="loginForm">
+            <label for="email">Correo electrónico:</label>
+            <input type="email" id="email" autocomplete="email" required>
+    
+            <label for="password">Contraseña:</label>
+            <input type="password" id="password" autocomplete="current-password" required>
+    
+            <button type="submit">Iniciar sesión</button>
+          </form>
         </div>
-    </div>
+      </div>
 
 
 </body>

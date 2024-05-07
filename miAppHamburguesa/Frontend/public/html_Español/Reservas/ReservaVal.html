@@ -154,39 +154,39 @@
             <h1>Reservando mesa para BurgerVibes Valencia</h1>
         </div>
         <div class="reservation-container">
-            <form>
-                <!-- Campo para el nombre -->
-                <label for="name">Nombre:</label>
-                <input type="text" id="name" name="name" required placeholder="Escribe tu nombre">
-        
-                <label for="people">Personas:</label>
-                <select id="people" name="people">
-                    <option value="1">1 persona</option>
-                    <option value="2">2 personas</option>
-                    <option value="3">3 personas</option>
-                    <option value="4">4 personas</option>
-                    <option value="5">5 personas</option>
-                    <option value="6">6 personas</option>
-                    <option value="7">7 personas</option>
-                    <option value="8">8 personas</option>
-                </select>
-        
-                <label for="zone">Zona:</label>
-                <select id="zone" name="zone">
-                    <option value="">Seleccione la zona</option>
-                    <option value="interior">Interior</option>
-                    <option value="terraza">Terraza</option>
-                </select>
-        
-                <label for="date">Fecha:</label>
-                <input type="date" id="date" name="date">
-        
-                <label for="time">Hora:</label>
-                <select id="time" name="time">
-                    <!-- Las opciones se actualizarán dinámicamente -->
-                </select>
-        
-                <button type="submit">Reservar</button>
+            <form id="reservation-form" data-local="Valencia">
+            <!-- Campo para el nombre -->
+            <label for="name">Nombre:</label>
+            <input type="text" id="name" name="name" required placeholder="Escribe tu nombre">
+
+            <label for="people">Personas:</label>
+            <select id="people" name="people">
+                <option value="1">1 persona</option>
+                <option value="2">2 personas</option>
+                <option value="3">3 personas</option>
+                <option value="4">4 personas</option>
+                <option value="5">5 personas</option>
+                <option value="6">6 personas</option>
+                <option value="7">7 personas</option>
+                <option value="8">8 personas</option>
+            </select>
+
+            <label for="zone">Zona:</label>
+            <select id="zone" name="zone">
+                <option value="">Seleccione la zona</option>
+                <option value="interior">Interior</option>
+                <option value="terraza">Terraza</option>
+            </select>
+
+            <label for="date">Fecha:</label>
+            <input type="date" id="date" name="date">
+
+            <label for="time">Hora:</label>
+            <select id="time" name="time">
+                <!-- Las opciones se actualizarán dinámicamente -->
+            </select>
+
+            <button type="submit">Reservar</button>
             </form>
         </div>
 
@@ -325,17 +325,39 @@
     document.getElementById('date').addEventListener('change', updateHours);
 
 
-    function handleSubmit(event) {
-    event.preventDefault();
-    const formData = {
-        people: document.getElementById('people').value,
-        zone: document.getElementById('zone').value,
-        date: document.getElementById('date').value,
-        time: document.getElementById('time').value
-    };
-    console.log('Datos de la reserva:', formData);
-    alert('Reserva enviada! Revisa la consola para ver los datos.');
-}
+    document.getElementById('reservation-form').addEventListener('submit', function (event) {
+        event.preventDefault();
+
+        const formData = {
+            local: this.getAttribute('data-local'), // Obtener el valor del atributo data-local
+            name: document.getElementById('name').value,
+            people: document.getElementById('people').value,
+            zone: document.getElementById('zone').value,
+            date: document.getElementById('date').value,
+            time: document.getElementById('time').value
+        };
+
+
+        // Obtener las reservas existentes del localStorage (si las hay)
+        let reservations = JSON.parse(localStorage.getItem('reservations')) || [];
+
+        // Agregar la nueva reserva a la lista
+        reservations.push(formData);
+
+        // Guardar la lista actualizada en el localStorage
+        localStorage.setItem('reservations', JSON.stringify(reservations));
+
+        // Limpiar el formulario después de enviar la reserva
+        document.getElementById('name').value = '';
+        document.getElementById('people').value = '1';
+        document.getElementById('zone').value = '';
+        document.getElementById('date').value = '';
+        document.getElementById('time').innerHTML = '';
+
+        alert('Reserva enviada!');
+
+        // Aquí puedes agregar cualquier otra lógica que desees, como mostrar un mensaje de confirmación en la misma página.
+    });
 
 </script>
 

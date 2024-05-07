@@ -1,6 +1,6 @@
 function addToCart(productName, productPrice, quantity) {
     // Depuración para verificar la cantidad y el precio recibidos
-    console.log('Añadiendo al carrito:', productName, 'Precio unitario:', productPrice, 'Cantidad:', quantity);
+    console.log('Añadiendo al carrito:', productName, quantity, '@', productPrice);
 
     // Obtener el nombre del cliente desde localStorage
     const customerName = localStorage.getItem('username');
@@ -143,14 +143,8 @@ function updateLocalStorage() {
         price: parseFloat(item.querySelector('.product-price').textContent.replace('€', '').trim())
     }));
 
-    // Calcular el total del carrito basado en los precios y cantidades
-    var total = items.reduce((acc, item) => acc + (item.price * item.quantity), 0);
-
     // Guardar en localStorage el estado actual del carrito
-    localStorage.setItem('carrito', JSON.stringify({
-        items: items,
-        total: total.toFixed(2)
-    }));
+    localStorage.setItem('carrito', JSON.stringify({items: items}));
 }
 
 
@@ -226,7 +220,6 @@ document.addEventListener('DOMContentLoaded', function () {
         card.addEventListener('click', function () {
             var productName = this.getAttribute('data-product-name');
             var productPrice = this.getAttribute('data-product-price');
-            // Actualiza la información del modal aquí
             var modal = document.getElementById('productModal');
             modal.querySelector('#productModalTitle').textContent = productName;
             modal.querySelector('.price-span').textContent = productPrice + ' €';
@@ -251,6 +244,29 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // Asegurarnos de que el resto de la lógica de interacción del usuario también se maneja aquí
-    // Por ejemplo, si tienemos otros botones o eventos específicos en nuestra aplicación, deberían ser configurados aquí
+    // Confirmar pedido y guardar en localStorage
+    const confirmOrderButton = document.querySelector('#confirm-order-btn'); // Selector correcto para el botón de confirmar pedido
+    if (confirmOrderButton) {
+        confirmOrderButton.addEventListener('click', function() {
+            saveOrder(); // Llama a la función que guarda el pedido.
+            alert('Pedido confirmado con éxito.'); // Muestra un mensaje de confirmación.
+            // Aquí puedes añadir una redirección o actualizar la interfaz para mostrar el pedido confirmado.
+        });
+    }
 });
+
+// Función para guardar el pedido en localStorage
+function saveOrder() {
+    const username = localStorage.getItem('username');
+    const cart = JSON.parse(localStorage.getItem('carrito'));
+    const order = {
+        username: username,
+        timestamp: new Date().getTime(),
+        items: cart.items
+    };
+
+    const orders = JSON.parse(localStorage.getItem('orders') || '[]');
+    orders.push(order);
+    localStorage.setItem('orders', JSON.stringify(orders));
+}
+

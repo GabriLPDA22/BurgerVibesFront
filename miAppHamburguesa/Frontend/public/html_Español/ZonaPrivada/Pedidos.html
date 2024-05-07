@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <title>Ver Pedidos - Zona Privada</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Bootstrap CSS -->
     <style>
         /* Estilos CSS adicionales para los pedidos */
         body {
@@ -52,7 +54,8 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding-bottom: 10px; /* Espaciado entre productos */
+            padding-bottom: 10px;
+            /* Espaciado entre productos */
         }
 
         .order-empty {
@@ -61,6 +64,7 @@
         }
     </style>
 </head>
+
 <body>
     <div class="order-container">
         <div class="order-header">
@@ -74,38 +78,30 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            loadOrders();
+            loadOrders(); // Aseguramos que la función se llama al cargar la página
         });
 
         function loadOrders() {
-            const ordersData = localStorage.getItem('carrito');
-            const orders = JSON.parse(ordersData) || {items: []}; // Asegurarse de que siempre hay un objeto a procesar
+            console.log("Cargando pedidos...");
+            const ordersData = localStorage.getItem('orders');
+            const orders = JSON.parse(ordersData) || [];
 
             const ordersContainer = document.getElementById('orders-container');
+            ordersContainer.innerHTML = ''; // Limpiar contenidos anteriores
 
-            if (orders.items.length > 0) {
-                const groupedOrders = {}; // Objeto para agrupar pedidos por nombre de cliente
-                orders.items.forEach(item => {
-                    const customerName = item.customerName || 'Cliente Anónimo';
-                    if (!groupedOrders[customerName]) {
-                        groupedOrders[customerName] = [];
-                    }
-                    groupedOrders[customerName].push(item);
-                });
-
-                Object.keys(groupedOrders).forEach(customerName => {
+            if (orders.length > 0) {
+                orders.forEach(order => {
                     const orderBlock = document.createElement('div');
                     orderBlock.classList.add('order-block');
-                    let productsHtml = '';
-                    groupedOrders[customerName].forEach(item => {
-                        productsHtml += `
-                            <div class="product-info">
-                                <div><h4 class="product-name">${item.name}</h4><p>Cantidad: ${item.quantity}</p></div>
-                                <div><p class="text-muted">Precio: ${item.price.toFixed(2)} €</p></div>
-                            </div>
-                        `;
-                    });
-                    orderBlock.innerHTML = `<h3>Pedido de ${customerName}</h3>${productsHtml}`;
+
+                    let productsHtml = order.items.map(item => `
+                        <div class="product-info">
+                            <div><h4 class="product-name">${item.name}</h4><p>Cantidad: ${item.quantity}</p></div>
+                            <div><p class="text-muted">Precio: ${item.price.toFixed(2)} €</p></div>
+                        </div>
+                    `).join('');
+
+                    orderBlock.innerHTML = `<h3>Pedido de ${order.username} realizado el ${new Date(order.timestamp).toLocaleString()}</h3>${productsHtml}`;
                     ordersContainer.appendChild(orderBlock);
                 });
             } else {
@@ -117,9 +113,8 @@
         }
     </script>
 
+
     <!-- Bootstrap JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    
-    

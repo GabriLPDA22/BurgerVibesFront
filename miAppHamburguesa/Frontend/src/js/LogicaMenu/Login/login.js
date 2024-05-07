@@ -24,6 +24,44 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    function clearCart() {
+        const username = localStorage.getItem('username');
+        if (username) {
+            localStorage.removeItem('carrito_' + username); // Asegura que el carrito se limpie por usuario
+        }
+        updateCartInterface(); // Limpia la interfaz del carrito después de limpiar el carrito
+    }
+
+    function updateCartInterface() {
+        // Encuentra el contenedor del carrito y vacíalo
+        const cartItemsContainer = document.querySelector('.order-items');
+        if (cartItemsContainer) {
+            cartItemsContainer.innerHTML = '';
+        }
+        // Actualiza el total a 0
+        const totalAmountElement = document.querySelector('.total-amount');
+        if (totalAmountElement) {
+            totalAmountElement.textContent = '0.00 €';
+        }
+    }
+
+    function loadCart() {
+        const username = localStorage.getItem('username');
+        console.log('Cargando carrito para:', username); // Depuración para ver qué usuario carga el carrito
+        if (username) {
+            const storedCart = localStorage.getItem('carrito_' + username);
+            console.log('Datos del carrito encontrados:', storedCart); // Verificar qué se encuentra
+            if (storedCart) {
+                const cartItems = JSON.parse(storedCart);
+                cartItems.forEach(item => {
+                    addToCart(item.name, item.price, item.quantity);
+                });
+            } else {
+                console.log('No se encontraron datos del carrito para:', username); // Indicar si no se encontró nada
+            }
+        }
+    }
+
     function updateUI() {
         const isAuthenticated = localStorage.getItem('authenticated') === 'true';
         if (isAuthenticated && usernameDisplay) {
@@ -33,8 +71,11 @@ document.addEventListener('DOMContentLoaded', () => {
             toggleDisplay(userMenu, true);
             toggleDisplay(paymentFormContainer, true);
             toggleDisplay(loginMessageContainer, false);
-        } else if (usernameDisplay) {
-            usernameDisplay.textContent = '';
+            loadCart(); // Carga el carrito aquí para asegurarte de que el nombre de usuario ya está disponible
+        } else {
+            if (usernameDisplay) {
+                usernameDisplay.textContent = '';
+            }
             toggleDisplay(loginBtn, true);
             toggleDisplay(userMenu, false);
             toggleDisplay(paymentFormContainer, false);
@@ -53,6 +94,7 @@ document.addEventListener('DOMContentLoaded', () => {
             event.preventDefault();
             localStorage.removeItem('authenticated');
             localStorage.removeItem('username');
+            clearCart(); // Limpia el carrito al desconectar
             updateUI();
         });
     }
@@ -60,11 +102,13 @@ document.addEventListener('DOMContentLoaded', () => {
     if (document.getElementById('loginForm')) {
         document.getElementById('loginForm').addEventListener('submit', (event) => {
             event.preventDefault();
-            const email = document.getElementById('email').value;
-            const username = email.split('@')[0];
-            localStorage.setItem('username', username);
+            const usernameEmail = document.getElementById('usernameEmail').value;
+            localStorage.setItem('username', usernameEmail);
             localStorage.setItem('authenticated', 'true');
+            console.log('Usuario autenticado:', usernameEmail); // Confirmar usuario autenticado
+            clearCart();
             updateUI();
+            loadCart();
             toggleModal(false);
         });
     }
