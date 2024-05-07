@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Reservations - Administrator Panel</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<style>
+    /* panel_admin.css */
+
+    /* Estilos generales */
+    body {
+        font-family: Arial, sans-serif;
+        background-image: url(/miAppHamburguesa/Frontend/src/assets/img/Home/FondoLadrillo.jpg);
+        margin: 0;
+        padding: 0;
+    }
+
+    .container {
+        max-width: 800px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+        text-align: center;
+        margin-bottom: 20px;
+        color: #fff;
+    }
+
+    .reservations-column {
+        width: 45%;
+        float: left;
+        margin: 0 2.5%;
+        padding: 20px;
+        background-color:rgba(255, 145, 0, 0.829);
+        border-radius: 5px;
+        box-sizing: border-box;
+    }
+
+    .reservations-column h2 {
+        margin-top: 0;
+        font-size: 20px;
+        color: #333;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    /* Estilos para las reservas */
+    .reservation-item {
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        padding: 10px;
+        margin-bottom: 20px;
+    }
+
+    .reservation-item h2 {
+        margin-top: 0;
+        font-size: 20px;
+        color: #333;
+    }
+
+    .reservation-item p {
+        margin: 5px 0;
+    }
+
+    /* Estilos para el formulario */
+    .form-container {
+        background-color: #f9f9f9;
+        padding: 20px;
+        border-radius: 5px;
+        margin-bottom: 20px;
+    }
+
+    .form-container label {
+        display: block;
+        font-weight: bold;
+    }
+
+    .form-container input,
+    .form-container select {
+        width: 100%;
+        padding: 8px;
+        margin: 5px 0 10px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+    }
+
+    .form-container button {
+        width: 100%;
+        padding: 10px;
+        background-color: #4caf50;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    .form-container button:hover {
+        background-color: #45a049;
+    }
+</style>
+
+<body>
+    <header>
+        <h1>View Reservations - Administrator Panel</h1>
+    </header>
+    <main>
+        <div id="valencia-reservations" class="reservations-column">
+            <h2>Reservations in Valencia</h2>
+        </div>
+        <div id="zaragoza-reservations" class="reservations-column">
+            <h2>Reservations in Zaragoza</h2>
+        </div>
+
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Obtener las reservas del localStorage
+            const reservations = JSON.parse(localStorage.getItem('reservations')) || [];
+
+            // Contadores individuales de reservas para cada local
+            let valenciaCounter = 0;
+            let zaragozaCounter = 0;
+
+            // Mostrar las reservas en la página
+            reservations.forEach(function (reservation) {
+                const reservationItem = document.createElement('div');
+                reservationItem.classList.add('reservation-item');
+
+                // Decidir en qué columna mostrar la reserva
+                const columnId = reservation.local === 'Valencia' ? 'valencia-reservations' : 'zaragoza-reservations';
+                const column = document.getElementById(columnId);
+
+                // Incrementar el contador adecuado para el local correspondiente
+                if (reservation.local === 'Valencia') {
+                    valenciaCounter++;
+                } else {
+                    zaragozaCounter++;
+                }
+
+                // Determinar el número de reserva adecuado para cada local
+                const reservationNumber = reservation.local === 'Valencia' ? valenciaCounter : zaragozaCounter;
+
+                // Agregar la reserva al HTML
+                reservationItem.innerHTML = `
+            <h3>Reserva ${reservationNumber}</h3>
+            <p><strong>Nombre:</strong> ${reservation.name}</p>
+            <p><strong>Personas:</strong> ${reservation.people}</p>
+            <p><strong>Zona:</strong> ${reservation.zone}</p>
+            <p><strong>Fecha:</strong> ${reservation.date}</p>
+            <p><strong>Hora:</strong> ${reservation.time}</p>
+        `;
+
+                // Agregar la reserva al contenedor correspondiente
+                column.appendChild(reservationItem);
+            });
+        });
+
+
+    </script>
+
+</body>
+
+</html>
