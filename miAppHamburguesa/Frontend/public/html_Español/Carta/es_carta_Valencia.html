@@ -1217,6 +1217,20 @@
     });
   </script>
 
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      // Establece la ubicación basada en el atributo data-nombredelsitio del contenedor del carrito
+      const valenciaContainer = document.getElementById('valencia-orders-container');
+      if (valenciaContainer) {
+        document.body.dataset.location = valenciaContainer.getAttribute('data-nombredelsitio');
+        console.log("Ubicación del carrito configurada automáticamente a:", document.body.dataset.location);
+      } else {
+        console.error("No se encontró el contenedor de pedidos de Valencia.");
+      }
+    });
+  </script>
+
+
 
   <!--MODALES DE CADA PRODUCTO-->
 

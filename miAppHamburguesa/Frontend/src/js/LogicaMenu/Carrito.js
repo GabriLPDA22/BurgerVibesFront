@@ -257,27 +257,37 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function determineLocation() {
-        // Suponemos que hay un elemento en la página que identifica la ubicación
-        // Esto podría ser un elemento oculto, un atributo de datos, o cualquier otra lógica aplicable
-        return document.body.dataset.location; // Supongamos que el <body> tiene un atributo 'data-location'
+        // Obtiene la ubicación desde el atributo data-location del cuerpo del documento
+        const location = document.body.dataset.location;
+        if (!location || location.trim() === "") {
+            console.error("Ubicación no definida o vacía en el atributo data-location.");
+            return null; // Retorna null si no hay una ubicación válida
+        }
+        return location;
     }
 
-    function saveOrder(location) {
-        console.log("Guardando el pedido para la ubicación:", location);
+
+    function saveOrder() {
+        const location = determineLocation();
+        console.log("Intentando guardar el pedido en la ubicación:", location);
+    
+        if (!location) {
+            console.error("No se puede guardar el pedido sin una ubicación válida.");
+            return;
+        }
 
         const username = localStorage.getItem('username') || 'Usuario Anónimo';
         const cartData = localStorage.getItem('carrito');
         const cart = cartData ? JSON.parse(cartData) : [];
-        const timestamp = new Date().getTime();
 
-        if (!cart.length) {
+        if (cart.length === 0) {
             console.error("Intento de guardar un pedido vacío.");
-            return; // No permitir guardar un pedido vacío
+            return; // No permite guardar un pedido vacío
         }
 
         const order = {
             username: username,
-            timestamp: timestamp,
+            timestamp: new Date().getTime(),
             items: cart,
             location: location
         };
@@ -294,9 +304,23 @@ document.addEventListener('DOMContentLoaded', function () {
         updateCartDisplay(); // Asegúrate de que esta función limpia adecuadamente la interfaz
     }
 
+
     function updateCartDisplay() {
-        console.log("Actualizando la visualización del carrito...");
-        // Aquí iría la lógica para actualizar la UI del carrito
-        // Por ejemplo, vaciar visualmente el carrito, desactivar botones, etc.
+        const cartItemsContainer = document.querySelector('.order-items');
+        const totalAmountElement = document.querySelector('.total-amount');
+    
+        if (cartItemsContainer) {
+            cartItemsContainer.innerHTML = ''; // Asegura que el contenedor existe
+        } else {
+            console.error("No se encontró el contenedor de artículos del carrito.");
+        }
+    
+        if (totalAmountElement) {
+            totalAmountElement.textContent = '0.00 €'; // Asegura que el elemento existe
+        } else {
+            console.error("No se encontró el elemento para mostrar el total del carrito.");
+        }
     }
+    
+
 });
