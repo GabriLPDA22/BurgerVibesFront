@@ -10,18 +10,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const loginPromptButton = document.getElementById('loginPromptButton');
 
     function toggleDisplay(element, show) {
-        if (!element) {
-            console.error("Attempted to toggle display on undefined element:", element);
-            return; // Prevenir error si el elemento no existe
+        if (element) {
+            element.style.display = show ? 'block' : 'none';
         }
-        element.style.display = show ? 'block' : 'none';
     }
     
-
     function toggleModal(show) {
-        if (modal) {
-            toggleDisplay(modal, show);
-        }
+        toggleDisplay(modal, show);
     }
 
     function clearCart() {
@@ -34,13 +29,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function updateCartInterface() {
         const cartItemsContainer = document.querySelector('.order-items');
-        if (cartItemsContainer) {
-            cartItemsContainer.innerHTML = '';
-        }
+        cartItemsContainer.innerHTML = '';
         const totalAmountElement = document.querySelector('.total-amount');
-        if (totalAmountElement) {
-            totalAmountElement.textContent = '0.00 €';
-        }
+        totalAmountElement.textContent = '0.00 €';
     }
 
     function loadCart() {
@@ -52,60 +43,44 @@ document.addEventListener('DOMContentLoaded', () => {
                 cartItems.forEach(item => {
                     addToCart(item.name, item.price, item.quantity);
                 });
-            } else {
-                console.log('No se encontraron datos del carrito para:', username);
             }
         }
     }
 
     function updateUI() {
         const isAuthenticated = localStorage.getItem('authenticated') === 'true';
-        if (isAuthenticated && usernameDisplay) {
+        toggleDisplay(loginBtn, !isAuthenticated);
+        toggleDisplay(userMenu, isAuthenticated);
+        toggleDisplay(paymentFormContainer, isAuthenticated);
+        toggleDisplay(loginMessageContainer, !isAuthenticated);
+        if (isAuthenticated) {
             const username = localStorage.getItem('username');
             usernameDisplay.textContent = username;
-            toggleDisplay(loginBtn, false);
-            toggleDisplay(userMenu, true);
-            toggleDisplay(paymentFormContainer, true);
-            toggleDisplay(loginMessageContainer, false);
-            loadCart(); // Cargar el carrito al iniciar sesión
+            loadCart();
         } else {
-            if (usernameDisplay) {
-                usernameDisplay.textContent = '';
-            }
-            toggleDisplay(loginBtn, true);
-            toggleDisplay(userMenu, false);
-            toggleDisplay(paymentFormContainer, false);
-            toggleDisplay(loginMessageContainer, true);
+            usernameDisplay.textContent = '';
         }
     }
 
-    if (loginBtn) {
-        loginBtn.addEventListener('click', () => toggleModal(true));
-    }
-    if (closeButton) {
-        closeButton.addEventListener('click', () => toggleModal(false));
-    }
-    if (signOutLink) {
-        signOutLink.addEventListener('click', (event) => {
-            event.preventDefault();
-            localStorage.removeItem('authenticated');
-            localStorage.removeItem('username');
-            clearCart();
-            updateUI();
-        });
-    }
+    loginBtn?.addEventListener('click', () => toggleModal(true));
+    closeButton?.addEventListener('click', () => toggleModal(false));
+    signOutLink?.addEventListener('click', (event) => {
+        event.preventDefault();
+        localStorage.removeItem('authenticated');
+        localStorage.removeItem('username');
+        clearCart();
+        updateUI();
+    });
 
-    if (document.getElementById('loginForm')) {
-        document.getElementById('loginForm').addEventListener('submit', (event) => {
-            event.preventDefault();
-            const usernameEmail = document.getElementById('usernameEmail').value;
-            localStorage.setItem('username', usernameEmail);
-            localStorage.setItem('authenticated', 'true');
-            clearCart();
-            updateUI();
-            toggleModal(false);
-        });
-    }
+    document.getElementById('loginForm')?.addEventListener('submit', (event) => {
+        event.preventDefault();
+        const usernameEmail = document.getElementById('usernameEmail').value;
+        localStorage.setItem('username', usernameEmail);
+        localStorage.setItem('authenticated', 'true');
+        clearCart();
+        updateUI();
+        toggleModal(false);
+    });
 
     window.addEventListener('click', (event) => {
         if (event.target === modal) {
@@ -113,9 +88,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    if (loginPromptButton) {
-        loginPromptButton.addEventListener('click', () => toggleModal(true));
-    }
+    loginPromptButton?.addEventListener('click', () => toggleModal(true));
 
     updateUI();
 });

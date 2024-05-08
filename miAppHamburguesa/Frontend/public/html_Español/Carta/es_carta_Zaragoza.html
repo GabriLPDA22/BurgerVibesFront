@@ -1225,8 +1225,17 @@
       // Implementa la lógica de confirmación del pedido aquí
       console.log('Pedido confirmado con éxito!');
     }
+  </script>
 
-
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      // Establece la ubicación basada en el atributo data-nombredelsitio del contenedor del carrito
+      const zaragozaContainer = document.getElementById('zaragoza-orders-container');
+      if (zaragozaContainer) {
+        document.body.dataset.location = zaragozaContainer.getAttribute('data-nombredelsitio');
+        console.log("Ubicación del carrito configurada automáticamente a:", document.body.dataset.location);
+      }
+    });
   </script>
 
 
