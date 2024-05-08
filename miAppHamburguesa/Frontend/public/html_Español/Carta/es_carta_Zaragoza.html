@@ -1178,8 +1178,8 @@
   </div>
 
 
-  <!-- Columna del pedido a la derecha -->
-  <div class="order-column" id="orders-container">
+  <!-- Columna del pedido a la derecha zaragoza-->
+  <div class="order-column" id="zaragoza-orders-container" data-nombredelsitio="Zaragoza">
     <div class="order-header">
       <i class="bi bi-receipt-cutoff me-2"></i><span class="order-title">Tu pedido</span>
     </div>
@@ -1205,10 +1205,11 @@
         <span class="total-amount">0,00 €</span>
       </div>
       <div class="btnConf">
-        <button id="confirm-order-btn" onclick="confirmOrder()">Confirmar pedido</button>
+        <button id="confirm-order-btn" class="confirm-order" disabled>Confirmar pedido</button>
       </div>
     </div>
   </div>
+
 
 
 
@@ -1271,8 +1272,8 @@
       <span class="close">&times;</span>
       <h5>Inicio de sesión</h5>
       <form id="loginForm">
-        <label for="email">Correo electrónico:</label>
-        <input type="email" id="email" autocomplete="email" required>
+        <label for="usernameEmail">Nombre de usuario o correo electrónico:</label>
+        <input type="text" id="usernameEmail" autocomplete="username" required placeholder="Usuario o email">
 
         <label for="password">Contraseña:</label>
         <input type="password" id="password" autocomplete="current-password" required>
@@ -1281,6 +1282,7 @@
       </form>
     </div>
   </div>
+
 
 
   <footer id="siteFooter">

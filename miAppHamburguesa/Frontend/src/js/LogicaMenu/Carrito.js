@@ -144,7 +144,9 @@ function updateLocalStorage() {
     }));
 
     // Guardar en localStorage el estado actual del carrito
-    localStorage.setItem('carrito', JSON.stringify({items: items}));
+    localStorage.setItem('carrito', JSON.stringify({
+        items: items
+    }));
 }
 
 
@@ -247,26 +249,54 @@ document.addEventListener('DOMContentLoaded', function () {
     // Confirmar pedido y guardar en localStorage
     const confirmOrderButton = document.querySelector('#confirm-order-btn'); // Selector correcto para el botón de confirmar pedido
     if (confirmOrderButton) {
-        confirmOrderButton.addEventListener('click', function() {
-            saveOrder(); // Llama a la función que guarda el pedido.
+        confirmOrderButton.addEventListener('click', function () {
+            saveOrder(determineLocation()); // Llama a la función que guarda el pedido y pasa la ubicación
             alert('Pedido confirmado con éxito.'); // Muestra un mensaje de confirmación.
             // Aquí puedes añadir una redirección o actualizar la interfaz para mostrar el pedido confirmado.
         });
     }
+
+    function determineLocation() {
+        // Suponemos que hay un elemento en la página que identifica la ubicación
+        // Esto podría ser un elemento oculto, un atributo de datos, o cualquier otra lógica aplicable
+        return document.body.dataset.location; // Supongamos que el <body> tiene un atributo 'data-location'
+    }
+
+    function saveOrder(location) {
+        console.log("Guardando el pedido para la ubicación:", location);
+
+        const username = localStorage.getItem('username') || 'Usuario Anónimo';
+        const cartData = localStorage.getItem('carrito');
+        const cart = cartData ? JSON.parse(cartData) : [];
+        const timestamp = new Date().getTime();
+
+        if (!cart.length) {
+            console.error("Intento de guardar un pedido vacío.");
+            return; // No permitir guardar un pedido vacío
+        }
+
+        const order = {
+            username: username,
+            timestamp: timestamp,
+            items: cart,
+            location: location
+        };
+
+        const ordersData = localStorage.getItem('orders');
+        const orders = ordersData ? JSON.parse(ordersData) : [];
+        orders.push(order);
+        localStorage.setItem('orders', JSON.stringify(orders));
+
+        console.log("Pedido guardado:", order);
+
+        // Limpiar el carrito después de confirmar el pedido
+        localStorage.setItem('carrito', JSON.stringify([]));
+        updateCartDisplay(); // Asegúrate de que esta función limpia adecuadamente la interfaz
+    }
+
+    function updateCartDisplay() {
+        console.log("Actualizando la visualización del carrito...");
+        // Aquí iría la lógica para actualizar la UI del carrito
+        // Por ejemplo, vaciar visualmente el carrito, desactivar botones, etc.
+    }
 });
-
-// Función para guardar el pedido en localStorage
-function saveOrder() {
-    const username = localStorage.getItem('username');
-    const cart = JSON.parse(localStorage.getItem('carrito'));
-    const order = {
-        username: username,
-        timestamp: new Date().getTime(),
-        items: cart.items
-    };
-
-    const orders = JSON.parse(localStorage.getItem('orders') || '[]');
-    orders.push(order);
-    localStorage.setItem('orders', JSON.stringify(orders));
-}
-
