@@ -25,7 +25,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Asigna eventos a los botones
     btnNavbar.onclick = showModal;
-    btnNavbarEspañol.onclick = showModal;
     btnHero.onclick = showModal;
     btnNavbarIngles.onclick=showModal;
     btnClose.onclick = closeModal;
@@ -61,7 +60,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // Agrega evento de clic al botón de Reserva mesa original para mostrar el modal
-    reservaMesaButtonInicio.onclick = showReservaMesaModal;
+  //  reservaMesaButtonInicio.onclick = showReservaMesaModal;//
 
     // Agrega evento de clic al botón de Reserva mesa en inglés para mostrar el modal
     reservaMesaButtonIngles.onclick = showReservaMesaModal;
