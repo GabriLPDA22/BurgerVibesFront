@@ -1,61 +1,75 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <title>Private zone</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
+            background: url('/miAppHamburguesa/Frontend/src/assets/img/FondoRestaurante.jpg') no-repeat center center fixed;
+            background-size: cover;
+
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
             margin: 0;
         }
+
         .popup-login {
             background-color: #ffffff;
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             width: 300px;
-            display: block; /* Inicialmente visible para el login */
+            display: block;
+            /* Inicialmente visible para el login */
         }
+
         h5 {
             text-align: center;
             color: #333;
         }
+
         form {
             display: grid;
             gap: 10px;
             margin-top: 20px;
         }
-        input[type="email"], input[type="password"] {
+
+        input[type="email"],
+        input[type="password"] {
             padding: 10px;
             border: 1px solid #ccc;
             border-radius: 4px;
         }
+
         button {
-            background-color: #0056b3;
+            background-color:#F67906;
             color: white;
             padding: 10px;
             border: none;
             border-radius: 4px;
             cursor: pointer;
         }
+
         button:hover {
             background-color: #004494;
         }
+
         .close-btn {
             float: right;
             cursor: pointer;
             color: #aaa;
         }
+
         .close-btn:hover {
             color: #777;
         }
     </style>
 </head>
+
 <body>
     <div class="popup-login" id="loginPopup">
         <span class="close-btn">&times;</span>
@@ -71,12 +85,12 @@
 
     <script>
         const closeButton = document.getElementsByClassName('close-btn')[0];
-        
-        closeButton.onclick = function() {
+
+        closeButton.onclick = function () {
             window.location.href = '/miAppHamburguesa/Frontend/public/html_Ingles/en_index.html'; // Redirige al usuario a la página principal o donde desees
         }
 
-        document.getElementById('formAcceso').onsubmit = function(event) {
+        document.getElementById('formAcceso').onsubmit = function (event) {
             event.preventDefault();
             const email = document.getElementById('userEmail').value;
             const password = document.getElementById('userPassword').value;
@@ -84,16 +98,17 @@
             const correctPasswordAdmin = 'admin123'; // Contraseña del administrador
             const correctEmailEmpleado = 'empleadoBV@gmail.com'; // Correo del empleado
             const correctPasswordEmpleado = '1234'; // Contraseña del empleado
-        
+
             if (email === correctEmailAdmin && password === correctPasswordAdmin) {
                 window.location.href = 'zona_privada.html'; // Redirige a la página de administrador
             } else if (email === correctEmailEmpleado && password === correctPasswordEmpleado) {
-                window.location.href = 'empleado.html'; // Redirige a la página de empleado
+                window.location.href = 'zona_privada_empleados.html'; // Redirige a la página de empleado
             } else {
                 alert('Acceso denegado.');
             }
         }
-        
+
     </script>
 </body>
+
 </html>
