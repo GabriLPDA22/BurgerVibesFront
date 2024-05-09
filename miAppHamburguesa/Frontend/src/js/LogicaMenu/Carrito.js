@@ -35,7 +35,7 @@ function addToCart(productName, productPrice, quantity) {
             </div>
             <span class="product-price">${(productPrice * quantity).toFixed(2)} €</span>
             <span class="customer-name" style="display: none;">${customerName}</span> <!-- Nuevo: Guarda el nombre del cliente en el localStorage pero no lo muestra -->
-            <button class="remove-btn" onclick="removeItem(this)">Eliminar</button>
+            <button class="remove-btn" onclick="removeItem(this)">Delete</button>
         `;
         document.querySelector('.order-items').appendChild(orderItem);
         updateTotal(productPrice * quantity);

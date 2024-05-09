@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/x-icon" href="/miAppHamburguesa/Frontend/src/assets/img/Home/BurgerVibes.svg">
+    <link rel="stylesheet" href="/miAppHamburguesa/Frontend/src/css/Terminos-Politica.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Sedgwick+Ave&display=swap" rel="stylesheet">
+    <title>Prevention of occupational hazards</title>
+    <style>
+        body,
+        html {
+            background-image: url(/miAppHamburguesa/Frontend/src/assets/img/Home/Fondo_Hero.svg);
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            scroll-behavior: smooth;
+
+        }
+
+        .navigation-bar {
+            background-color: #000000;
+            /* Color de fondo de la barra de navegación */
+            overflow: hidden;
+        }
+
+        /* Estilos para los elementos de la barra de navegación */
+        .navigation-bar a {
+            float: left;
+            /* Para alinear los elementos a la izquierda */
+            display: block;
+            /* Para que los elementos sean bloques */
+            color: white;
+            /* Color de texto */
+            text-align: center;
+            /* Alineación del texto */
+            padding: 14px 16px;
+            /* Espaciado interior de los elementos */
+            text-decoration: none;
+            /* Quita el subrayado de los enlaces */
+        }
+
+        h1 {
+            color: #F67906;
+            font-family: 'Sedgwick Ave', cursive;
+        }
+
+        ul {
+            color: white;
+            font-size: 20px;
+            line-height: 50px;
+        }
+
+        /* Estilos para el logo */
+        .logo {
+            float: left;
+            /* Alinear a la izquierda */
+            padding: 10px;
+            /* Espaciado interior */
+            width: 170px;
+            margin-top: 65px;
+        }
+
+        .tabs-list {
+            display: flex;
+            list-style-type: none;
+            padding: 0;
+            margin-left: 5%;
+            gap: 20px;
+            font-size: 15px;
+            margin-top: 5%;
+            margin-right: 2%;
+            font-size: 17px;
+        }
+
+        .tab-element {
+            border-right: solid 2px white;
+            border-left: solid 2px white;
+            padding-left: 5px;
+            padding-right: 5px;
+            margin: 3px;
+        }
+
+        /*IMAGENES*/
+
+        .gallery-container {
+            display: flex;
+            justify-content: center;
+            /* Centra la galería horizontalmente */
+            background-image: linear-gradient(to top, rgba(116, 112, 112, 0), rgb(7, 7, 7)), url(/miAppHamburguesa/Frontend/src/assets/img/Home/FondoLadrillo.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .texto-galeria h2 {
+            color: #F67906;
+            font-family: 'Sedgwick Ave', cursive;
+            justify-content: center;
+            text-align: center;
+            font-size: 90px;
+            margin-top: 10%;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 2fr);
+            /* Tres columnas */
+            grid-gap: 10px;
+            /* Espacio entre imágenes */
+            max-width: 80%;
+            /* Limita el ancho máximo de la galería */
+            margin: auto;
+            /* Centra la galería horizontalmente si es menor que el ancho máximo */
+            margin-top: 10%;
+            margin-bottom: 10%;
+
+
+        }
+
+        #Tablet,
+        #Tablet_ingles {
+            display: none;
+        }
+
+        .gallery-item {
+            width: 100%;
+            height: auto;
+            aspect-ratio: 1 / 1;
+            object-fit: cover;
+
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Barra de navegación -->
+    <div class="navigation-bar">
+        <!-- Logo -->
+        <a href="/miAppHamburguesa/Frontend/public/html_Ingles/ZonaPrivada/zona_privada_empleados.html">
+            <img src="/miAppHamburguesa/Frontend/src/assets/img/Home/BurgerVibes.svg" alt="Logo" class="logo">
+        </a>
+        <!-- Elementos de la barra de navegación -->
+        <div class="navigation-tabs">
+            <ul class="tabs-list">
+                <li class="tab-element"><a href="#1">Collective Bargaining</a></li>
+                <li class="tab-element"><a href="#2">Worker Representation</a></li>
+                <li class="tab-element"><a href="#3">Occupational Health and Safety</a></li>
+                <li class="tab-element"><a href="#4">Mediation and Conflict Resolution</a></li>
+                <li class="tab-element"><a href="#5">Participation in Management</a></li>
+                <li class="tab-element"><a href="#6">Information and Consultation</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <main>
+        <section>
+            <div class="titulo-seccion" id="1">
+                <h2>Collective Bargaining</h2>
+            </div>
+            <p> The Works Council can negotiate collective agreements with the restaurant management on behalf of the
+                workers. This includes agreements on wages, working hours, working conditions, benefits, and other
+                employment-related aspects.</p>
+        </section>
+        <section>
+            <div class="titulo-seccion" id="2">
+                <h2>Worker Representation</h2>
+            </div>
+            <p>The Council acts as a representative of the workers' interests to the restaurant management. They can
+                communicate employees' concerns, complaints, or suggestions and seek solutions to labor issues.</p>
+        </section>
+        <section>
+            <div class="titulo-seccion" id="3">
+                <h2>Occupational Health and Safety</h2>
+            </div>
+            <p>The Works Council can collaborate in implementing occupational health and safety measures in the
+                hamburger
+                restaurant. This involves identifying workplace hazards, proposing preventive actions, and monitoring
+                compliance with safety regulations.</p>
+        </section>
+        <section>
+            <div class="titulo-seccion" id="4">
+                <h2>Mediation and Conflict Resolution</h2>
+            </div>
+            <p>In case of labor disputes, the Works Council can mediate between workers and management to find a
+                satisfactory solution for both parties. This may include resolving disputes over working conditions,
+                discrimination, harassment, among others.</p>
+        </section>
+        <section>
+            <div class="titulo-seccion" id="5">
+                <h2>Participation in Management</h2>
+            </div>
+            <p>Depending on labor legislation and the restaurant's internal policy, the Works Council may have the right
+                to
+                participate in the company's decision-making on matters affecting workers, such as changes in work
+                organization, hirings, dismissals, among others.</p>
+        </section>
+        <section>
+            <div class="titulo-seccion" id="6">
+                <h2>Information and Consultation</h2>
+            </div>
+            <p>The Council may demand relevant information from the restaurant management on issues affecting workers,
+                such
+                as changes in company policies, strategic decisions, or economic situations.</p>
+        </section>
+        <section>
+            <h1>Identification of the Applicable Collective Agreement</h1>
+            <p>When discussing the identification of the applicable collective agreement in a hamburger restaurant, it's
+                essential to highlight some important points:</p>
+            <ul>
+                <li><strong>Scope:</strong> Determine the scope of the collective agreement, including the categories of
+                    workers covered, the geographic area, and the industries or sectors included.</li>
+                <li><strong>Duration:</strong> Specify the duration of the agreement, including the start and end dates,
+                    as
+                    well as any provisions for renewal or renegotiation.</li>
+                <li><strong>Wages and Benefits:</strong> Outline the provisions related to wages, including minimum wage
+                    rates, wage increases, bonuses, and other benefits such as meal allowances, health insurance, and
+                    retirement plans.</li>
+                <li><strong>Working Hours:</strong> Detail the regulations regarding working hours, including normal
+                    working
+                    hours, overtime, rest breaks, and provisions for night or weekend shifts.</li>
+                <li><strong>Working Conditions:</strong> Address working conditions such as leave entitlements (e.g.,
+                    annual
+                    leave, sick leave, parental leave), workplace safety measures, and provisions for workplace
+                    accommodations.</li>
+                <li><strong>Dispute Resolution:</strong> Describe the procedures for resolving disputes arising from the
+                    interpretation or application of the collective agreement, including grievance procedures,
+                    mediation,
+                    and arbitration.</li>
+                <li><strong>Other Provisions:</strong> Highlight any other relevant provisions of the collective
+                    agreement,
+                    such as training and development opportunities, career advancement, non-discrimination policies, and
+                    any
+                    special arrangements for specific job roles or employee categories.</li>
+            </ul>
+            <p>Identifying the applicable collective agreement and understanding its key points is crucial for ensuring
+                compliance with labor regulations and maintaining harmonious labor relations within the hamburger
+                restaurant.</p>
+        </section>
+
+        <div class="texto-galeria">
+            <h2>Members</h2>
+        </div>
+        <section class="gallery-container" id="galeria">
+            <div class="gallery">
+                <a href="#" style="text-decoration: none;">
+                    <img src="/miAppHamburguesa/Frontend/src/assets/img/FotoEscarcheto.jpg" alt="Hamburguesa 1"
+                    class="gallery-item"> 
+                    <h1>President</h1>
+                </a>
+                <a href="#">
+                    <img src="/miAppHamburguesa/Frontend/src/assets/img/FotoVictor.jpg"
+                        class="gallery-item" id="Hamburguesa2"></a>
+                <a href="#">
+                    <img src="/miAppHamburguesa/Frontend/src/assets/img/FotoLuis.jpg"
+                        class="gallery-item" id="Hamburguesa3"></a>
+                <a href="#">
+                    <img src="/miAppHamburguesa/Frontend/src/assets/img/fotoMarcos.jpg"
+                        class="gallery-item"></a>
+                <img src="/miAppHamburguesa/Frontend/src/assets/img/Home/BurgerVibes.svg" alt="Hamburguesa 5"
+                    class="gallery-item" id="CambioImagen">
+
+                <a href="#">
+                    <img src="/miAppHamburguesa/Frontend/src/assets/img/Fotogabs.jpg"
+                        class="gallery-item" id="Hamburguesa6"></a>
+            </div>
+        </section>
+    </main>
+</body>
+
+
+</html>

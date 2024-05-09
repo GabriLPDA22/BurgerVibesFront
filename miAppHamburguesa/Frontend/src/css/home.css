@@ -6,6 +6,12 @@ html {
     scroll-behavior: smooth
 }
 
+    .body-no-scroll {
+        overflow: hidden;
+        position: fixed;
+        width: 100%;
+    }
+
 header {
     background-image: url(/miAppHamburguesa/Frontend/src/assets/img/Home/Fondo_Hero.svg);
     background-repeat: no-repeat;
