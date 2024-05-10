@@ -978,8 +978,6 @@ body.fade-in {
         display: none;
     }
 
-
-
 }
 
 
@@ -1181,6 +1179,17 @@ body.fade-in {
         overflow: scroll;
     }
 
+    .Foto2, .Foto3{
+        margin: 0;
+        height: auto;
+    }
+
+    .Foto3{
+        object-fit: contain;
+        align-items: center;
+        width: 100%;
+        
+    }
 
 }
 
