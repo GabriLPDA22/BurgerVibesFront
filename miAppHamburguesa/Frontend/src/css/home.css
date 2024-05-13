@@ -939,6 +939,10 @@ body.fade-in {
         height: 350px;
     }
 
+    .carousel-control-prev-icon,.carousel-control-next-icon{
+        display: none;
+    }
+
     .hero-row {
         display: flex;
         max-width: 90%;
