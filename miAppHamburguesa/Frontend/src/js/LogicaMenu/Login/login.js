@@ -29,9 +29,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function updateCartInterface() {
         const cartItemsContainer = document.querySelector('.order-items');
-        cartItemsContainer.innerHTML = '';
+        if (cartItemsContainer) {
+            cartItemsContainer.innerHTML = '';
+        } else {
+            console.error('El contenedor de artículos del carrito no se encontró.');
+        }
         const totalAmountElement = document.querySelector('.total-amount');
-        totalAmountElement.textContent = '0.00 €';
+        if (totalAmountElement) {
+            totalAmountElement.textContent = '0.00 €';
+        } else {
+            console.error('El elemento para mostrar el total del carrito no se encontró.');
+        }
     }
 
     function loadCart() {
@@ -55,32 +63,49 @@ document.addEventListener('DOMContentLoaded', () => {
         toggleDisplay(loginMessageContainer, !isAuthenticated);
         if (isAuthenticated) {
             const username = localStorage.getItem('username');
-            usernameDisplay.textContent = username;
+            if (usernameDisplay) {
+                usernameDisplay.textContent = username;
+            }
             loadCart();
         } else {
-            usernameDisplay.textContent = '';
+            if (usernameDisplay) {
+                usernameDisplay.textContent = '';
+            }
         }
     }
 
-    loginBtn?.addEventListener('click', () => toggleModal(true));
-    closeButton?.addEventListener('click', () => toggleModal(false));
-    signOutLink?.addEventListener('click', (event) => {
-        event.preventDefault();
-        localStorage.removeItem('authenticated');
-        localStorage.removeItem('username');
-        clearCart();
-        updateUI();
-    });
+    if (loginBtn) {
+        loginBtn.addEventListener('click', () => toggleModal(true));
+    }
+    if (closeButton) {
+        closeButton.addEventListener('click', () => toggleModal(false));
+    }
+    if (signOutLink) {
+        signOutLink.addEventListener('click', (event) => {
+            event.preventDefault();
+            localStorage.removeItem('authenticated');
+            localStorage.removeItem('username');
+            clearCart();
+            updateUI();
+        });
+    }
 
-    document.getElementById('loginForm')?.addEventListener('submit', (event) => {
-        event.preventDefault();
-        const usernameEmail = document.getElementById('usernameEmail').value;
-        localStorage.setItem('username', usernameEmail);
-        localStorage.setItem('authenticated', 'true');
-        clearCart();
-        updateUI();
-        toggleModal(false);
-    });
+    const loginForm = document.getElementById('loginForm');
+    if (loginForm) {
+        loginForm.addEventListener('submit', (event) => {
+            event.preventDefault();
+            const usernameEmail = document.getElementById('usernameEmail');
+            if (usernameEmail) {
+                localStorage.setItem('username', usernameEmail.value);
+                localStorage.setItem('authenticated', 'true');
+                clearCart();
+                updateUI();
+                toggleModal(false);
+            } else {
+                console.error('El campo de email no se encontró.');
+            }
+        });
+    }
 
     window.addEventListener('click', (event) => {
         if (event.target === modal) {
@@ -88,7 +113,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    loginPromptButton?.addEventListener('click', () => toggleModal(true));
+    if (loginPromptButton) {
+        loginPromptButton.addEventListener('click', () => toggleModal(true));
+    }
 
     updateUI();
 });

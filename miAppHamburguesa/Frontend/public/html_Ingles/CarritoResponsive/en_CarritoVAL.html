@@ -183,12 +183,12 @@
         <div class="bg-white p-4 shadow rounded-3">
             <!-- Botón para volver atrás -->
             <div class="mb-3">
-                <a href="/miAppHamburguesa/Frontend/public/html_Ingles/Carta/en_carta_ValenciaNoBuy.html"
+                <a href="/miAppHamburguesa/Frontend/public/html_Ingles/Carta/en_carta_Valencia.html"
                     class="btn btn-outline-secondary">
                     <i class="bi bi-arrow-left-circle-fill"></i>
                 </a>
             </div>
-
+    
             <h2 class="text-center mb-3" style="font-size: 25px;">Total Order - <span id="total-price"></span></h2>
             <div class="my-3">
                 <h5 style="font-family: 'Sedgwick Ave', cursive;">
@@ -207,7 +207,7 @@
                     <span> €</span>
                 </div>
             </div>
-            <form>
+            <form id="paymentForm">
                 <div class="mb-4">
                     <h4 style="font-family: 'Sedgwick Ave', cursive;">
                         <i class="bi bi-person-fill me-2 text-orange"></i>Personal information
@@ -215,7 +215,7 @@
                     <label for="full-name" class="form-label">Full name</label>
                     <input id="full-name" type="text" class="form-control" required>
                 </div>
-
+    
                 <div class="row mb-4">
                     <div class="col">
                         <label for="phone-number" class="form-label">Phone number</label>
@@ -226,7 +226,7 @@
                         <input id="email" type="email" class="form-control">
                     </div>
                 </div>
-
+    
                 <div class="mb-4">
                     <h4 style="font-family: 'Sedgwick Ave', cursive;">
                         <i class="bi bi-sticky-fill me-2 text-orange"></i>Information collected
@@ -234,7 +234,7 @@
                     <p class="border p-3 rounded">Avenida de los Alfares, 50, 16002 Cuenca</p>
                     <a href="#" class="btn btn-outline-secondary btn-sm">How to get</a>
                 </div>
-
+    
                 <div class="mb-4">
                     <h4 style="font-family: 'Sedgwick Ave', cursive;">
                         <i class="bi bi-clock-fill me-2 text-orange"></i>Pick up time
@@ -254,15 +254,15 @@
                         <option value="23:00">23:00</option>
                     </select>
                 </div>
-
+    
                 <div class="mb-4">
                     <h4 style="font-family: 'Sedgwick Ave', cursive;">
                         <i class="bi bi-ticket-perforated-fill me-2 text-orange"></i>Note for the restaurant
                     </h4>
                     <textarea id="restaurant-note" class="form-control" rows="3"
-                        placeholder="Indica alergias o instrucciones especiales"></textarea>
+                        placeholder="Indicate allergies or special instructions"></textarea>
                 </div>
-
+    
                 <div class="mb-4">
                     <h4 style="font-family: 'Sedgwick Ave', cursive;">
                         <i class="bi bi-gift-fill me-2 text-orange"></i>Promotional code
@@ -272,7 +272,7 @@
                         <button class="btn btn-outline-orange" type="button">Apply</button>
                     </div>
                 </div>
-
+    
                 <div class="mb-4">
                     <h4 style="font-family: 'Sedgwick Ave', cursive;">
                         <i class="bi bi-credit-card-fill me-2 text-orange"></i>Payment details
@@ -287,7 +287,7 @@
                         <div class="row g-3">
                             <div class="col-6">
                                 <label for="card-expiry" class="form-label">Expiration</label>
-                                <input type="text" id="card-expiry" class="form-control" placeholder="MM / AA" required>
+                                <input type="text" id="card-expiry" class="form-control" placeholder="MM / YY" required>
                             </div>
                             <div class="col-6">
                                 <label for="card-cvc" class="form-label">CVC</label>
@@ -302,69 +302,64 @@
                         </div>
                     </div>
                 </div>
-
+    
                 <div class="text-center">
-                    <button type="submit" class="btn btn-orange btn-lg w-75" id="boton-pago">
+                    <button type="submit" class="btn btn-orange btn-lg w-75" id="payButton">
                         <i class="bi bi-bag-check-fill me-2"></i>Pay
                     </button>
                 </div>
             </form>
         </div>
     </main>
+    
 
 
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const paymentForm = document.querySelector('form');
-            const paymentFormContainer = document.getElementById('paymentFormContainer');
-
-            // Asegúrate de mostrar el formulario si el usuario está logueado
-            if (usuarioLogueado()) {  // Asegúrate de tener una función que cheque esto
-                paymentFormContainer.style.display = '';
+        function validateForm() {
+            // Seleccionar los campos del formulario por ID
+            const fullName = document.getElementById("full-name");
+            const phoneNumber = document.getElementById("phone-number");
+            const email = document.getElementById("email");
+            const pickupTime = document.getElementById("pickup-time");
+            const cardNumber = document.getElementById("card-number");
+            const cardExpiry = document.getElementById("card-expiry");
+            const cardCvc = document.getElementById("card-cvc");
+            const country = document.getElementById("country");
+    
+            // Verificar que todos los campos requeridos no estén vacíos
+            if (
+                fullName.value.trim() === "" || 
+                phoneNumber.value.trim() === "" || 
+                email.value.trim() === "" || 
+                pickupTime.value.trim() === "" || 
+                cardNumber.value.trim() === "" || 
+                cardExpiry.value.trim() === "" || 
+                cardCvc.value.trim() === "" || 
+                country.value.trim() === ""
+            ) {
+                return false;
             }
-
-            paymentForm.addEventListener('submit', function (event) {
-                event.preventDefault();  // Previene la recarga de la página
-
-                if (validarFormulario()) {  // Asegúrate de que todos los campos necesarios estén llenos
-                    // Ocultar el formulario
-                    paymentFormContainer.style.display = 'none';
-
-                    // Guardar los datos del formulario localmente o donde necesites
-                    guardarDatosFormulario();
-
-                    // Muestra el SweetAlert
-                    Swal.fire({
-                        position: 'top-end',
-                        icon: 'success',
-                        title: 'Your order has been saved',
-                        showConfirmButton: false,
-                        timer: 1500
-                    });
-                } else {
-                    // Si el formulario no es válido, muestra un mensaje de error
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Oops...',
-                        text: 'Please fill all the required fields correctly!',
-                    });
-                }
-            });
-
-            function validarFormulario() {
-                // Implementa tus validaciones aquí, ejemplo:
-                const fullName = document.getElementById('full-name').value.trim();
-                const phoneNumber = document.getElementById('phone-number').value.trim();
-                return fullName !== '' && phoneNumber !== '';
-            }
-
-            function guardarDatosFormulario() {
-                // Aquí puedes agregar el código para guardar los datos del formulario
-            }
-
-            function usuarioLogueado() {
-                // Implementa la lógica para verificar si el usuario está logueado
-                return true; // Modifica según tu lógica de autenticación
+    
+            return true;
+        }
+    
+        document.getElementById("payButton").addEventListener("click", function() {
+            if (validateForm()) {
+                Swal.fire({
+                    icon: "success",
+                    title: "Your payment has been processed",
+                    showConfirmButton: false,
+                    timer: 1500
+                }).then(() => {
+                    // Resetea el formulario después de mostrar el SweetAlert
+                    document.querySelector("form").reset();
+                });
+            } else {
+                Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: "Please fill out all required fields!"
+                });
             }
         });
     </script>
@@ -377,15 +372,15 @@
     <div id="modalLogin" class="modal2">
         <div class="modal2-content">
             <span class="close">&times;</span>
-            <h5>Login</h5>
+            <h5>Inicio de sesión</h5>
             <form id="loginForm">
-                <label for="email">Email:</label>
-                <input type="email" id="email" autocomplete="email" required>
+                <label for="usernameEmail">Username or email:</label>
+                <input type="text" id="usernameEmail" autocomplete="username" required placeholder="Usuario o email">
 
-                <label for="password">Password:</label>
+                <label for="password">password:</label>
                 <input type="password" id="password" autocomplete="current-password" required>
 
-                <button type="submit">Log in</button>
+                <button type="submit">log in</button>
             </form>
         </div>
     </div>
