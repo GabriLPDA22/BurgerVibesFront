@@ -29,9 +29,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function updateCartInterface() {
         const cartItemsContainer = document.querySelector('.order-items');
-        cartItemsContainer.innerHTML = '';
         const totalAmountElement = document.querySelector('.total-amount');
-        totalAmountElement.textContent = '0.00 €';
+        
+        if (cartItemsContainer) {
+            cartItemsContainer.innerHTML = '';
+        } else {
+            console.error("cartItemsContainer no se encuentra");
+        }
+
+        if (totalAmountElement) {
+            totalAmountElement.textContent = '0.00 €';
+        } else {
+            console.error("totalAmountElement no se encuentra");
+        }
     }
 
     function loadCart() {
