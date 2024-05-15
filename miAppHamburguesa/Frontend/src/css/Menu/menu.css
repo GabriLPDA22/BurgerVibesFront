@@ -415,16 +415,13 @@ nav {
 
 /*BOTON MENU PARA EL RESPONSIVE*/
 
-/* Estilos para el botón de mostrar el carrito */
 .order-toggle-button {
-  display: none;
-  /* inicialmente no visible */
+  display: none; /* inicialmente no visible */
   position: fixed;
   bottom: 0;
   left: 0;
   width: 100%;
-  background-color: #ffc107;
-  /* elige el color que prefieras */
+  background-color: #ffc107; /* elige el color que prefieras */
   text-align: center;
   padding: 6px 12px;
   box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
@@ -438,8 +435,39 @@ nav {
   background: none;
   border: none;
   font-size: 1.2em;
-  color: #333;
-  /* o el color que desees */
+  color: #333; /* o el color que desees */
+}
+
+.order-toggle-button a {
+  position: relative;
+  display: inline-block;
+  text-decoration: none;
+  color: black;
+}
+
+.order-toggle-button a::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: inherit;
+  z-index: -1;
+  transition: opacity 0.3s ease;
+}
+
+.order-toggle-button a:hover::before {
+  opacity: 0.8; /* Efecto de transparencia solo en el fondo */
+}
+
+.pedido-valido {
+  display: block; /* mostrar cuando el pedido es válido */
+}
+
+.bi-eye-fill, .bi-credit-card-fill {
+  font-size: 1.5em;
+  margin-right: 0.5em;
 }
 
 
