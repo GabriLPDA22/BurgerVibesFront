@@ -310,57 +310,6 @@
         </div>
     </main>
     
-    <script>
-        function validateForm() {
-            // Seleccionar los campos del formulario por ID
-            const fullName = document.getElementById("full-name");
-            const phoneNumber = document.getElementById("phone-number");
-            const email = document.getElementById("email2");
-            const pickupTime = document.getElementById("pickup-time2");
-            const cardNumber = document.getElementById("card-number2");
-            const cardExpiry = document.getElementById("card-expiry2");
-            const cardCvc = document.getElementById("card-cvc2");
-            const country = document.getElementById("country2");
-    
-            // Verificar que todos los campos requeridos no estén vacíos
-            if (
-                fullName.value.trim() === "" || 
-                phoneNumber.value.trim() === "" || 
-                email.value.trim() === "" || 
-                pickupTime.value.trim() === "" || 
-                cardNumber.value.trim() === "" || 
-                cardExpiry.value.trim() === "" || 
-                cardCvc.value.trim() === "" || 
-                country.value.trim() === ""
-            ) {
-                return false;
-            }
-    
-            return true;
-        }
-    
-        document.getElementById("payButton2").addEventListener("click", function(event) {
-            event.preventDefault(); // Previene el envío del formulario
-            if (validateForm()) {
-                Swal.fire({
-                    icon: "success",
-                    title: "Your payment has been processed",
-                    showConfirmButton: false,
-                    timer: 1500
-                }).then(() => {
-                    // Resetea el formulario después de mostrar el SweetAlert
-                    document.getElementById("paymentForm").reset();
-                });
-            } else {
-                Swal.fire({
-                    icon: "error",
-                    title: "Oops...",
-                    text: "Please fill out all required fields!"
-                });
-            }
-        });
-    </script>
-    
 
     <script>
         function validateForm() {

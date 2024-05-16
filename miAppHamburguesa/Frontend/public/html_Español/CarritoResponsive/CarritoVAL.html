@@ -308,7 +308,7 @@
                 </div>
 
                 <div class="text-center">
-                    <button type="submit" class="btn btn-orange btn-lg w-75">
+                    <button type="button" id="payButton_VAl" class="btn btn-orange btn-lg w-75">
                         <i class="bi bi-bag-check-fill me-2"></i>Pagar
                     </button>
 
@@ -317,6 +317,56 @@
         </div>
     </main>
 
+
+    <script>
+        function validateForm() {
+            // Seleccionar los campos del formulario por ID
+            const fullName = document.getElementById("full-name");
+            const phoneNumber = document.getElementById("phone-number");
+            const email = document.getElementById("email");
+            const pickupTime = document.getElementById("pickup-time");
+            const cardNumber = document.getElementById("card-number");
+            const cardExpiry = document.getElementById("card-expiry");
+            const cardCvc = document.getElementById("card-cvc");
+            const country = document.getElementById("country");
+
+            // Verificar que todos los campos requeridos no estén vacíos
+            if (
+                fullName.value.trim() === "" ||
+                phoneNumber.value.trim() === "" ||
+                email.value.trim() === "" ||
+                pickupTime.value.trim() === "" ||
+                cardNumber.value.trim() === "" ||
+                cardExpiry.value.trim() === "" ||
+                cardCvc.value.trim() === "" ||
+                country.value.trim() === ""
+            ) {
+                return false;
+            }
+
+            return true;
+        }
+
+        document.getElementById("payButton_VAL").addEventListener("click", function () {
+            if (validateForm()) {
+                Swal.fire({
+                    icon: "success",
+                    title: "Your payment has been processed",
+                    showConfirmButton: false,
+                    timer: 1500
+                }).then(() => {
+                    // Resetea el formulario después de mostrar el SweetAlert
+                    document.getElementById("paymentForm").reset();
+                });
+            } else {
+                Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: "Please fill out all required fields!"
+                });
+            }
+        });
+    </script>
 
     <!--MODAL DEL LOGIN-->
 
