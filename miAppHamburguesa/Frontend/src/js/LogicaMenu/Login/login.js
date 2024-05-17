@@ -29,16 +29,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function updateCartInterface() {
         const cartItemsContainer = document.querySelector('.order-items');
+        const totalAmountElement = document.querySelector('.total-amount');
+        
         if (cartItemsContainer) {
             cartItemsContainer.innerHTML = '';
         } else {
-            console.error('El contenedor de artículos del carrito no se encontró.');
+            console.error("cartItemsContainer no se encuentra");
         }
-        const totalAmountElement = document.querySelector('.total-amount');
+
         if (totalAmountElement) {
             totalAmountElement.textContent = '0.00 €';
         } else {
-            console.error('El elemento para mostrar el total del carrito no se encontró.');
+            console.error("totalAmountElement no se encuentra");
         }
     }
 
