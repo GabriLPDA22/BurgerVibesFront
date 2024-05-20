@@ -53,17 +53,48 @@ document.addEventListener('DOMContentLoaded', () => {
                     body: JSON.stringify({ usernameEmail, password })
                 });
 
-                const responseText = await response.json();
-                if (response.ok) {
-                    alert('Inicio de sesión exitoso');
-                    localStorage.setItem('authenticated', 'true');
-                    localStorage.setItem('username', responseText.username);
-                    localStorage.setItem('email', responseText.email);
-                    toggleModal(modalLogin, false);
-                    updateUI();
-                } else {
-                    alert('Credenciales incorrectas');
+                if (!response.ok) {
+                    throw new Error('Error en la respuesta del servidor');
                 }
+
+                const responseText = await response.json();
+                alert('Inicio de sesión exitoso');
+                localStorage.setItem('authenticated', 'true');
+                localStorage.setItem('username', responseText.username);
+                localStorage.setItem('email', responseText.email);
+                modalLogin.style.display = 'none';
+                updateUI();
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Error al conectar con el servidor');
+            }
+        });
+    }
+
+    if (registerForm) {
+        registerForm.addEventListener('submit', async (event) => {
+            event.preventDefault();
+            const formData = new FormData(registerForm);
+            const data = Object.fromEntries(formData.entries());
+
+            console.log('Datos enviados al servidor:', data);
+
+            try {
+                const response = await fetch('http://localhost:8080/register', {  // Asegúrate de que el puerto es 8080
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                });
+
+                if (!response.ok) {
+                    throw new Error('Error en la respuesta del servidor');
+                }
+
+                const responseData = await response.json();
+                alert('Registro exitoso');
+                modalRegister.style.display = 'none';
             } catch (error) {
                 console.error('Error:', error);
                 alert('Error al conectar con el servidor');
@@ -94,6 +125,51 @@ document.addEventListener('DOMContentLoaded', () => {
             document.querySelector('.login').style.display = 'inline-block';
             document.querySelector('.register').style.display = 'inline-block';
         }
+    }
+
+    // Evento de clic en el botón de pago
+    const payButton = document.getElementById('payButton_VAL');
+    if (payButton) {
+        payButton.addEventListener('click', async (event) => {
+            event.preventDefault();
+            if (localStorage.getItem('authenticated') === 'true') {
+                const paymentDetails = {
+                    fullName: fullNameInput.value,
+                    phoneNumber: document.getElementById('phone-number').value,
+                    email: emailInput.value,
+                    pickupTime: document.getElementById('pickup-time').value,
+                    restaurantNote: document.getElementById('restaurant-note').value,
+                    promoCode: document.getElementById('promo-code').value,
+                    cardNumber: document.getElementById('card-number').value,
+                    cardExpiry: document.getElementById('card-expiry').value,
+                    cardCvc: document.getElementById('card-cvc').value,
+                    country: document.getElementById('country').value,
+                };
+
+                try {
+                    const response = await fetch('http://localhost:8080/pay', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(paymentDetails)
+                    });
+
+                    const responseText = await response.json();
+                    if (response.ok) {
+                        alert('Pago exitoso');
+                    } else {
+                        alert('Error en el pago: ' + responseText.message);
+                    }
+                } catch (error) {
+                    console.error('Error:', error);
+                    alert('Error al conectar con el servidor');
+                }
+            } else {
+                paymentFormContainer.style.display = 'none';
+                loginMessageContainer.style.display = 'block';
+            }
+        });
     }
 
     // Actualizar la interfaz de usuario al cargar la página

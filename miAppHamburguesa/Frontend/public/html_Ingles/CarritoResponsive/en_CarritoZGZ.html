@@ -140,10 +140,18 @@
             </div>
 
             <!-- Botón de inicio de sesión -->
-            <div class="login">
-                <a href="#" id="loginBtn">
-                    <i class="fas fa-user"></i> Log in
-                </a>
+            <div class="usuario">
+                <div class="login">
+                    <a href="#" id="loginBtn">
+                        <i class="fas fa-user"></i> Log in
+                    </a>
+                </div>
+
+                <div class="register">
+                    <a href="#" id="registerBtn">
+                        <i class="fas fa-user-plus"></i> Register
+                    </a>
+                </div>
             </div>
 
             <!-- Menú de usuario -->
@@ -188,7 +196,7 @@
                     <i class="bi bi-arrow-left-circle-fill"></i>
                 </a>
             </div>
-    
+
             <h2 class="text-center mb-3" style="font-size: 25px;">Total Order - <span id="total-price"></span></h2>
             <div class="my-3">
                 <h5 style="font-family: 'Sedgwick Ave', cursive;">
@@ -215,7 +223,7 @@
                     <label for="full-name" class="form-label">Full name</label>
                     <input id="full-name" type="text" class="form-control" required>
                 </div>
-    
+
                 <div class="row mb-4">
                     <div class="col">
                         <label for="phone-number" class="form-label">Phone number</label>
@@ -226,7 +234,7 @@
                         <input id="email2" type="email" class="form-control">
                     </div>
                 </div>
-    
+
                 <div class="mb-4">
                     <h4 style="font-family: 'Sedgwick Ave', cursive;">
                         <i class="bi bi-sticky-fill me-2 text-orange"></i>Information collected
@@ -234,7 +242,7 @@
                     <p class="border p-3 rounded">Avenida de los Alfares, 50, 16002 Cuenca</p>
                     <a href="#" class="btn btn-outline-secondary btn-sm">How to get</a>
                 </div>
-    
+
                 <div class="mb-4">
                     <h4 style="font-family: 'Sedgwick Ave', cursive;">
                         <i class="bi bi-clock-fill me-2 text-orange"></i>Pick up time
@@ -254,14 +262,16 @@
                         <option value="23:00">23:00</option>
                     </select>
                 </div>
-    
+
                 <div class="mb-4">
                     <h4 style="font-family: 'Sedgwick Ave', cursive;">
                         <i class="bi bi-ticket-perforated-fill me-2 text-orange"></i>Note for the restaurant
                     </h4>
-                    <textarea id="restaurant-note2" class="form-control" rows="3" placeholder="Indicate allergies or special instructions"></textarea> <!-- Cambiado id a 'restaurant-note2' -->
+                    <textarea id="restaurant-note2" class="form-control" rows="3"
+                        placeholder="Indicate allergies or special instructions"></textarea>
+                    <!-- Cambiado id a 'restaurant-note2' -->
                 </div>
-    
+
                 <div class="mb-4">
                     <h4 style="font-family: 'Sedgwick Ave', cursive;">
                         <i class="bi bi-gift-fill me-2 text-orange"></i>Promotional code
@@ -271,7 +281,7 @@
                         <button class="btn btn-outline-orange" type="button">Apply</button>
                     </div>
                 </div>
-    
+
                 <div class="mb-4">
                     <h4 style="font-family: 'Sedgwick Ave', cursive;">
                         <i class="bi bi-credit-card-fill me-2 text-orange"></i>Payment details
@@ -279,13 +289,17 @@
                     <div class="p-3 border rounded">
                         <button class="btn btn-outline-primary mb-3">New card</button>
                         <div class="mb-3">
-                            <label for="card-number2" class="form-label">Card number</label> <!-- Cambiado id a 'card-number2' -->
-                            <input type="text" id="card-number2" class="form-control" placeholder="1234 1234 1234 1234" required>
+                            <label for="card-number2" class="form-label">Card number</label>
+                            <!-- Cambiado id a 'card-number2' -->
+                            <input type="text" id="card-number2" class="form-control" placeholder="1234 1234 1234 1234"
+                                required>
                         </div>
                         <div class="row g-3">
                             <div class="col-6">
-                                <label for="card-expiry2" class="form-label">Expiration</label> <!-- Cambiado id a 'card-expiry2' -->
-                                <input type="text" id="card-expiry2" class="form-control" placeholder="MM / YY" required>
+                                <label for="card-expiry2" class="form-label">Expiration</label>
+                                <!-- Cambiado id a 'card-expiry2' -->
+                                <input type="text" id="card-expiry2" class="form-control" placeholder="MM / YY"
+                                    required>
                             </div>
                             <div class="col-6">
                                 <label for="card-cvc2" class="form-label">CVC</label> <!-- Cambiado id a 'card-cvc2' -->
@@ -300,7 +314,7 @@
                         </div>
                     </div>
                 </div>
-    
+
                 <div class="text-center">
                     <button type="button" id="payButton_ZGZ" class="btn btn-orange btn-lg w-75">
                         <i class="bi bi-bag-check-fill me-2"></i>Pagar
@@ -309,7 +323,7 @@
             </form>
         </div>
     </main>
-    
+
 
     <script>
         function validateForm() {
@@ -363,21 +377,58 @@
 
     <!--MODAL DEL LOGIN-->
 
-    <div id="modalLogin" class="modal2">
+    <!-- Modal de login -->
+    <div id="modalLogin" class="modal2" style="display:none;">
         <div class="modal2-content">
             <span class="close">&times;</span>
-            <h5>Login</h5>
+            <h5>Inicio de sesión</h5>
             <form id="loginForm">
-                <label for="email">Email:</label>
-                <input type="email" id="email" autocomplete="email" required>
+                <label for="loginUsernameEmail">Nombre de usuario o correo electrónico:</label>
+                <input type="text" id="loginUsernameEmail" required
+                    placeholder="Nombre de usuario o correo electrónico">
 
-                <label for="password">Password:</label>
-                <input type="password" id="password" autocomplete="current-password" required>
+                <label for="loginPassword">Contraseña:</label>
+                <input type="password" id="loginPassword" required placeholder="Contraseña">
 
-                <button type="submit">Log in</button>
+                <button type="submit">Iniciar sesión</button>
             </form>
         </div>
     </div>
+
+
+    <!-- Modal de registro -->
+    <div id="modalRegister" class="modal2" style="display:none;">
+        <div class="modal2-content">
+            <span class="close">&times;</span>
+            <h5>Registro</h5>
+            <form id="registerForm" method="POST" action="http://localhost:8080/register">
+                <label for="registerUsername">Nombre de usuario:</label>
+                <input type="text" id="registerUsername" name="username" autocomplete="username" required
+                    placeholder="Nombre de usuario">
+
+                <label for="registerEmail">Correo electrónico:</label>
+                <input type="email" id="registerEmail" name="email" autocomplete="email" required
+                    placeholder="Correo electrónico">
+
+                <label for="registerPassword">Contraseña:</label>
+                <input type="password" id="registerPassword" name="password" autocomplete="new-password" required>
+
+                <!-- Campos adicionales -->
+                <label for="registerName">Nombre:</label>
+                <input type="text" id="registerName" name="name" required placeholder="Nombre">
+
+                <label for="registerAddress">Dirección:</label>
+                <input type="text" id="registerAddress" name="address" required placeholder="Dirección">
+
+                <label for="registerPhone">Teléfono:</label>
+                <input type="tel" id="registerPhone" name="phone" required placeholder="Teléfono">
+
+                <button type="submit">Registrar</button>
+            </form>
+        </div>
+    </div>
+
+
 
 
 </body>
@@ -389,6 +440,7 @@
 <!--SCRIPT LOGICA DEL MENU-->
 <script src="/miAppHamburguesa/Frontend/src/js/LogicaMenu/Pago.js"></script>
 <script src="/miAppHamburguesa/Frontend/src/js/LogicaMenu/Login/login.js"></script>
+<script src="/miAppHamburguesa/Frontend/src/js/server.js"></script>
 
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
