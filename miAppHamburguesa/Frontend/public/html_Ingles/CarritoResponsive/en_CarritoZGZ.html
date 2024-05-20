@@ -363,21 +363,54 @@
 
     <!--MODAL DEL LOGIN-->
 
-    <div id="modalLogin" class="modal2">
+    <!-- Modal de login -->
+    <div id="modalLogin" class="modal2" style="display:none;">
         <div class="modal2-content">
             <span class="close">&times;</span>
-            <h5>Login</h5>
+            <h5>Inicio de sesión</h5>
             <form id="loginForm">
-                <label for="email">Email:</label>
-                <input type="email" id="email" autocomplete="email" required>
+                <label for="loginUsernameEmail">Nombre de usuario o correo electrónico:</label>
+                <input type="text" id="loginUsernameEmail" autocomplete="username" required
+                    placeholder="Usuario o email">
 
-                <label for="password">Password:</label>
-                <input type="password" id="password" autocomplete="current-password" required>
+                <label for="loginPassword">Contraseña:</label>
+                <input type="password" id="loginPassword" autocomplete="current-password" required>
 
-                <button type="submit">Log in</button>
+                <button type="submit">Iniciar sesión</button>
             </form>
         </div>
     </div>
+
+    <!-- Modal de registro -->
+    <div id="modalRegister" class="modal2" style="display:none;">
+        <div class="modal2-content">
+            <span class="close">&times;</span>
+            <h5>Registro</h5>
+            <form id="registerForm">
+                <label for="registerUsername">Nombre de usuario:</label>
+                <input type="text" id="registerUsername" autocomplete="username" required placeholder="Nombre de usuario">
+      
+                <label for="registerEmail">Correo electrónico:</label>
+                <input type="email" id="registerEmail" autocomplete="email" required placeholder="Correo electrónico">
+      
+                <label for="registerPassword">Contraseña:</label>
+                <input type="password" id="registerPassword" autocomplete="new-password" required placeholder="Contraseña">
+      
+                <!-- Campos adicionales -->
+                <label for="registerName">Nombre:</label>
+                <input type="text" id="registerName" required placeholder="Nombre">
+      
+                <label for="registerAddress">Dirección:</label>
+                <input type="text" id="registerAddress" required placeholder="Dirección">
+      
+                <label for="registerPhone">Teléfono:</label>
+                <input type="tel" id="registerPhone" required placeholder="Teléfono">
+      
+                <button type="submit">Registrar</button>
+            </form>
+        </div>
+      </div>
+      
 
 
 </body>
