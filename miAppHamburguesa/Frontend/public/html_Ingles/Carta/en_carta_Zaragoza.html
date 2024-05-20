@@ -33,10 +33,18 @@
       </div>
 
       <!-- Botón de inicio de sesión -->
-      <div class="login">
-        <a href="#" id="loginBtn">
-          <i class="fas fa-user"></i> Log in
-        </a>
+      <div class="usuario">
+        <div class="login">
+          <a href="#" id="loginBtn">
+            <i class="fas fa-user"></i> Log in
+          </a>
+        </div>
+  
+        <div class="register">
+          <a href="#" id="registerBtn">
+            <i class="fas fa-user-plus"></i> Register
+          </a>
+        </div>
       </div>
 
       <!-- Menú de usuario -->
@@ -1276,20 +1284,73 @@
 
   <!--MODAL DEL LOGIN-->
 
-  <!-- Modal de login -->
-  <div id="modalLogin" class="modal2" style="display:none;">
-    <div class="modal2-content">
+ <!-- Modal de login -->
+ <div id="modalLogin" class="modal2" style="display:none;">
+  <div class="modal2-content">
+    <span class="close">&times;</span>
+    <h5>Inicio de sesión</h5>
+    <form id="loginForm">
+      <label for="loginUsernameEmail">Nombre de usuario o correo electrónico:</label>
+      <input type="text" id="loginUsernameEmail" autocomplete="username" required placeholder="Usuario o email">
+
+      <label for="loginPassword">Contraseña:</label>
+      <input type="password" id="loginPassword" autocomplete="current-password" required>
+
+      <button type="submit">Iniciar sesión</button>
+    </form>
+  </div>
+</div>
+
+<!-- Modal de registro -->
+<div id="modalRegister" class="modal2" style="display:none;">
+  <div class="modal2-content">
       <span class="close">&times;</span>
-      <h5>Inicio de sesión</h5>
-      <form id="loginForm">
-        <label for="loginUsernameEmail">Nombre de usuario o correo electrónico:</label>
-        <input type="text" id="loginUsernameEmail" required placeholder="Nombre de usuario o correo electrónico">
+      <h5>Registro</h5>
+      <form id="registerForm">
+          <label for="registerUsername">Nombre de usuario:</label>
+          <input type="text" id="registerUsername" autocomplete="username" required placeholder="Nombre de usuario">
 
-        <label for="loginPassword">Contraseña:</label>
-        <input type="password" id="loginPassword" required placeholder="Contraseña">
+          <label for="registerEmail">Correo electrónico:</label>
+          <input type="email" id="registerEmail" autocomplete="email" required placeholder="Correo electrónico">
 
-        <button type="submit">Iniciar sesión</button>
+          <label for="registerPassword">Contraseña:</label>
+          <input type="password" id="registerPassword" autocomplete="new-password" required>
+
+          <!-- Campos adicionales -->
+          <label for="registerName">Nombre:</label>
+          <input type="text" id="registerName" required placeholder="Nombre">
+
+          <label for="registerAddress">Dirección:</label>
+          <input type="text" id="registerAddress" required placeholder="Dirección">
+
+          <label for="registerPhone">Teléfono:</label>
+          <input type="tel" id="registerPhone" required placeholder="Teléfono">
+
+          <button type="submit">Registrar</button>
       </form>
+  </div>
+</div>
+
+
+<footer id="siteFooter">
+  <div class="footer-links">
+    <a href="/miAppHamburguesa/Frontend/public/html_Español/CookiesValenciaShop.html">Cookie settings</a>
+    <a href="/miAppHamburguesa/Frontend/public/html_Ingles/en_Politica_Privacidad.html" target="_blank">Politics of
+      privacy</a>
+    <a href="/miAppHamburguesa/Frontend/public/html_Ingles/En_Terminos_Condiciones.html" target="_blank">Terms and
+      conditions</a>
+  </div>
+  <hr>
+  <div class="last-part">
+    <div class="footer-branding">
+      <img width="120" src="/miAppHamburguesa/Frontend/src/assets/img/Home/BurgerVibes.svg" alt="Logo">
+    </div>
+    <div class="footer-language-selector">
+      <label for="language-select">Language</label>
+      <select id="language-select">
+        <option value="en">EN</option>
+        <option value="es" selected>ES</option>
+      </select>
     </div>
   </div>
 

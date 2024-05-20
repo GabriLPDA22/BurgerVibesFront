@@ -383,52 +383,16 @@
             <span class="close">&times;</span>
             <h5>Inicio de sesión</h5>
             <form id="loginForm">
-                <label for="loginUsernameEmail">Nombre de usuario o correo electrónico:</label>
-                <input type="text" id="loginUsernameEmail" required
-                    placeholder="Nombre de usuario o correo electrónico">
+                <label for="email">Email:</label>
+                <input type="email" id="email" autocomplete="email" required>
 
-                <label for="loginPassword">Contraseña:</label>
-                <input type="password" id="loginPassword" required placeholder="Contraseña">
+                <label for="password">Password:</label>
+                <input type="password" id="password" autocomplete="current-password" required>
 
-                <button type="submit">Iniciar sesión</button>
+                <button type="submit">Log in</button>
             </form>
         </div>
     </div>
-
-
-    <!-- Modal de registro -->
-    <div id="modalRegister" class="modal2" style="display:none;">
-        <div class="modal2-content">
-            <span class="close">&times;</span>
-            <h5>Registro</h5>
-            <form id="registerForm" method="POST" action="http://localhost:8080/register">
-                <label for="registerUsername">Nombre de usuario:</label>
-                <input type="text" id="registerUsername" name="username" autocomplete="username" required
-                    placeholder="Nombre de usuario">
-
-                <label for="registerEmail">Correo electrónico:</label>
-                <input type="email" id="registerEmail" name="email" autocomplete="email" required
-                    placeholder="Correo electrónico">
-
-                <label for="registerPassword">Contraseña:</label>
-                <input type="password" id="registerPassword" name="password" autocomplete="new-password" required>
-
-                <!-- Campos adicionales -->
-                <label for="registerName">Nombre:</label>
-                <input type="text" id="registerName" name="name" required placeholder="Nombre">
-
-                <label for="registerAddress">Dirección:</label>
-                <input type="text" id="registerAddress" name="address" required placeholder="Dirección">
-
-                <label for="registerPhone">Teléfono:</label>
-                <input type="tel" id="registerPhone" name="phone" required placeholder="Teléfono">
-
-                <button type="submit">Registrar</button>
-            </form>
-        </div>
-    </div>
-
-
 
 
 </body>
