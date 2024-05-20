@@ -27,6 +27,22 @@
   font-size: 20px;
 }
 
+.usuario {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+}
+
+.login a, .register a {
+  text-decoration: none;
+  color: black;
+}
+
+.login a:hover, .register a:hover {
+  color: orange;
+}
+
 /* Estilos específicos para los inputs y botones dentro del modal */
 .modal2 input[type="email"],
 .modal2 input[type="password"] {
@@ -98,7 +114,6 @@
   color: #000000;
 }
 
-
 .modal2 label {
   color: #000000;
 }
@@ -115,8 +130,6 @@
   font-family: 'Sedgwick Ave', cursive;
   font-size: 17px;
 }
-
-
 
 /* Estilo para los elementos del menú desplegable */
 .dropdown-menu {
@@ -151,7 +164,6 @@
   background-color: #F67906;
   /* Color naranja al pasar el ratón */
   border-radius: 5%;
-
 }
 
 #dropdownMenuButton .fas {
@@ -170,14 +182,11 @@
   /* Quitar el borde si existe uno */
 }
 
-
-
 /* Hacer que el menú desplegable aparezca al pasar el ratón sobre el nombre de usuario */
 #userMenu:hover .dropdown-menu {
   display: block;
   /* Mostrar el menú al pasar el ratón */
 }
-
 
 @media (max-width: 430px) {
   .modal2-content {
@@ -186,14 +195,11 @@
   }
 
   #login {
-    margin-top: 40px
+    margin-top: 40px;
   }
 
-  .dropdown-menu{
+  .dropdown-menu {
     transform: translate(-70px);
     left: 60%;
   }
-
-
-
 }

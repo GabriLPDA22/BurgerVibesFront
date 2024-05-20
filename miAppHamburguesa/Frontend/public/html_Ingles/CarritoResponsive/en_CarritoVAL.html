@@ -140,10 +140,18 @@
             </div>
 
             <!-- Botón de inicio de sesión -->
-            <div class="login">
-                <a href="#" id="loginBtn">
-                    <i class="fas fa-user"></i> Log in
-                </a>
+            <div class="usuario">
+                <div class="login">
+                    <a href="#" id="loginBtn">
+                        <i class="fas fa-user"></i> Log in
+                    </a>
+                </div>
+
+                <div class="register">
+                    <a href="#" id="registerBtn">
+                        <i class="fas fa-user-plus"></i> Register
+                    </a>
+                </div>
             </div>
 
             <!-- Menú de usuario -->
@@ -178,7 +186,6 @@
         </div>
     </div>
 
-
     <main class="container my-5" id="paymentFormContainer" style="display: none;">
         <div class="bg-white p-4 shadow rounded-3">
             <!-- Botón para volver atrás -->
@@ -188,7 +195,7 @@
                     <i class="bi bi-arrow-left-circle-fill"></i>
                 </a>
             </div>
-    
+
             <h2 class="text-center mb-3" style="font-size: 25px;">Total Order - <span id="total-price"></span></h2>
             <div class="my-3">
                 <h5 style="font-family: 'Sedgwick Ave', cursive;">
@@ -215,7 +222,7 @@
                     <label for="full-name" class="form-label">Full name</label>
                     <input id="full-name" type="text" class="form-control" required>
                 </div>
-    
+
                 <div class="row mb-4">
                     <div class="col">
                         <label for="phone-number" class="form-label">Phone number</label>
@@ -226,7 +233,7 @@
                         <input id="email" type="email" class="form-control">
                     </div>
                 </div>
-    
+
                 <div class="mb-4">
                     <h4 style="font-family: 'Sedgwick Ave', cursive;">
                         <i class="bi bi-sticky-fill me-2 text-orange"></i>Information collected
@@ -234,7 +241,7 @@
                     <p class="border p-3 rounded">Avenida de los Alfares, 50, 16002 Cuenca</p>
                     <a href="#" class="btn btn-outline-secondary btn-sm">How to get</a>
                 </div>
-    
+
                 <div class="mb-4">
                     <h4 style="font-family: 'Sedgwick Ave', cursive;">
                         <i class="bi bi-clock-fill me-2 text-orange"></i>Pick up time
@@ -254,7 +261,7 @@
                         <option value="23:00">23:00</option>
                     </select>
                 </div>
-    
+
                 <div class="mb-4">
                     <h4 style="font-family: 'Sedgwick Ave', cursive;">
                         <i class="bi bi-ticket-perforated-fill me-2 text-orange"></i>Note for the restaurant
@@ -262,7 +269,7 @@
                     <textarea id="restaurant-note" class="form-control" rows="3"
                         placeholder="Indicate allergies or special instructions"></textarea>
                 </div>
-    
+
                 <div class="mb-4">
                     <h4 style="font-family: 'Sedgwick Ave', cursive;">
                         <i class="bi bi-gift-fill me-2 text-orange"></i>Promotional code
@@ -272,7 +279,7 @@
                         <button class="btn btn-outline-orange" type="button">Apply</button>
                     </div>
                 </div>
-    
+
                 <div class="mb-4">
                     <h4 style="font-family: 'Sedgwick Ave', cursive;">
                         <i class="bi bi-credit-card-fill me-2 text-orange"></i>Payment details
@@ -302,7 +309,7 @@
                         </div>
                     </div>
                 </div>
-    
+
                 <div class="text-center">
                     <button type="button" id="payButton_VAL" class="btn btn-orange btn-lg w-75">
                         <i class="bi bi-bag-check-fill me-2"></i>Pagar
@@ -311,7 +318,7 @@
             </form>
         </div>
     </main>
-    
+
 
 
     <script>
@@ -327,13 +334,13 @@
             const country = document.getElementById("country");
             // Verificar que todos los campos requeridos no estén vacíos
             if (
-                fullName.value.trim() === "" || 
-                phoneNumber.value.trim() === "" || 
-                email.value.trim() === "" || 
-                pickupTime.value.trim() === "" || 
-                cardNumber.value.trim() === "" || 
-                cardExpiry.value.trim() === "" || 
-                cardCvc.value.trim() === "" || 
+                fullName.value.trim() === "" ||
+                phoneNumber.value.trim() === "" ||
+                email.value.trim() === "" ||
+                pickupTime.value.trim() === "" ||
+                cardNumber.value.trim() === "" ||
+                cardExpiry.value.trim() === "" ||
+                cardCvc.value.trim() === "" ||
                 country.value.trim() === ""
             ) {
                 return false;
@@ -342,7 +349,7 @@
             return true;
         }
 
-        document.getElementById("payButton_VAL").addEventListener("click", function() {
+        document.getElementById("payButton_VAL").addEventListener("click", function () {
             if (validateForm()) {
                 Swal.fire({
                     icon: "success",
@@ -368,19 +375,57 @@
 
     <!--MODAL DEL LOGIN-->
 
-    <div id="modalLogin" class="modal2">
+    <!-- Modal de login -->
+    <div id="modalLogin" class="modal2" style="display:none;">
         <div class="modal2-content">
             <span class="close">&times;</span>
             <h5>Inicio de sesión</h5>
             <form id="loginForm">
-                <label for="usernameEmail">Username or email:</label>
-                <input type="text" id="usernameEmail" autocomplete="username" required placeholder="Usuario o email">
+                <label for="loginUsernameEmail">Nombre de usuario o correo electrónico:</label>
+                <input type="text" id="loginUsernameEmail" autocomplete="username" required
+                    placeholder="Usuario o email">
 
-                <label for="password">password:</label>
-                <input type="password" id="password" autocomplete="current-password" required>
+                <label for="loginPassword">Contraseña:</label>
+                <input type="password" id="loginPassword" autocomplete="current-password" required>
 
-                <button type="submit">log in</button>
+                <button type="submit">Iniciar sesión</button>
             </form>
+        </div>
+    </div>
+
+    <!-- Modal de registro -->
+    <div id="modalRegister" class="modal2" style="display:none;">
+        <div class="modal2-content">
+            <span class="close">&times;</span>
+            <h5>Registro</h5>
+            <form id="registerForm">
+                <label for="registerUsername">Nombre de usuario:</label>
+                <input type="text" id="registerUsername" autocomplete="username" required
+                    placeholder="Nombre de usuario">
+
+                <label for="registerEmail">Correo electrónico:</label>
+                <input type="email" id="registerEmail" autocomplete="email" required placeholder="Correo electrónico">
+
+                <label for="registerPassword">Contraseña:</label>
+                <input type="password" id="registerPassword" autocomplete="new-password" required>
+
+                <button type="submit">Registrar</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Menú del usuario con el nombre de usuario y opción de cerrar sesión -->
+    <div id="userMenu" style="display:none;">
+        <span id="usernameDisplay"></span>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item"
+                href="/miAppHamburguesa/Frontend/public/html_Ingles/Carta/en_carta_Valencia.html"><i
+                    class="fas fa-shopping-cart"></i> Nuevo pedido</a>
+            <a class="dropdown-item"
+                href="/miAppHamburguesa/Frontend/public/html_Ingles/CarritoResponsive/en_CarritoVAL.html"><i
+                    class="fas fa-clipboard-list"></i> Mis pedidos</a>
+            <!-- Agrega un ID aquí para el enlace de desconexión -->
+            <a class="dropdown-item" href="#" id="signOutLink"><i class="fas fa-sign-out-alt"></i> Desconectar</a>
         </div>
     </div>
 
