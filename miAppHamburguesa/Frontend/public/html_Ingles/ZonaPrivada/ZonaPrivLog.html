@@ -87,24 +87,43 @@
         const closeButton = document.getElementsByClassName('close-btn')[0];
 
         closeButton.onclick = function () {
-            window.location.href = '/miAppHamburguesa/Frontend/public/html_Ingles/en_index.html'; // Redirige al usuario a la página principal o donde desees
+            window.location.href = '/miAppHamburguesa/Frontend/public/html_Español/es_index.html';
         }
 
-        document.getElementById('formAcceso').onsubmit = function (event) {
+        document.getElementById('formAcceso').onsubmit = async function (event) {
             event.preventDefault();
             const email = document.getElementById('userEmail').value;
             const password = document.getElementById('userPassword').value;
-            const correctEmailAdmin = 'admin@gmail.com'; // Correo del administrador
-            const correctPasswordAdmin = 'admin123'; // Contraseña del administrador
-            const correctEmailEmpleado = 'empleadoBV@gmail.com'; // Correo del empleado
-            const correctPasswordEmpleado = '1234'; // Contraseña del empleado
 
-            if (email === correctEmailAdmin && password === correctPasswordAdmin) {
-                window.location.href = 'zona_privada.html'; // Redirige a la página de administrador
-            } else if (email === correctEmailEmpleado && password === correctPasswordEmpleado) {
-                window.location.href = 'zona_privada_empleados.html'; // Redirige a la página de empleado
-            } else {
-                alert('Acceso denegado.');
+            try {
+                const response = await fetch('http://localhost:8080/loginAdminEmpleado', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ email, password })
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    console.log('Successful login', data);
+
+                    // Guardar el email en localStorage
+                    localStorage.setItem('employeeEmail', email);
+
+                    // Redirigir a la página correspondiente
+                    if (data.role === 'admin') {
+                        window.location.href = 'zona_privada_admin.html';
+                    } else if (data.role === 'employee') {
+                        window.location.href = 'zona_privada_empleados.html';
+                    }
+                } else {
+                    alert('Access denied.');
+                }
+            } catch (error) {
+                console.error('Login error:', error);
+                alert('Login error.');
             }
         }
 

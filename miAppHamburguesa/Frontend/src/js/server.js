@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const oracledb = require('oracledb');
 const cors = require('cors');
 
+
 // Crea una instancia de la aplicación Express
 const app = express();
 
@@ -19,6 +20,7 @@ const dbConfig = {
   password: '123456789',
   connectString: 'burgervibesbbdd.ceotvomboedr.us-east-1.rds.amazonaws.com:1521/orcl'
 };
+
 
 // Ruta principal que verifica si el servidor está funcionando
 app.get('/', (req, res) => {
@@ -165,6 +167,76 @@ app.post('/login', async (req, res) => {
     }
   }
 });
+
+
+/* LOGIN EMPLEADOS Y ADMINISTRADORES */
+
+// Ruta para iniciar sesión de empleados y administradores
+app.post('/loginAdminEmpleado', (req, res) => {
+  const { email, password } = req.body;
+
+  console.log(`Verificando credenciales para ${email}`);
+
+  // Verifica las credenciales del usuario
+  const query = 'SELECT EMAIL, ID_ZONAPRIVADA_EMP, CARGO FROM EMPLEADO WHERE EMAIL = ? AND CONTRASEÑA = ?';
+  connection.query(query, [email, password], (error, results) => {
+    if (error) {
+      console.error('Error al intentar iniciar sesión:', error);
+      res.status(500).json({ message: `Error al iniciar sesión: ${error.message}` });
+      return;
+    }
+
+    console.log('Resultado de la consulta:', results);
+
+    if (results.length > 0) {
+      const user = results[0];
+      const zoneId = user.ID_ZONAPRIVADA_EMP;
+      const cargo = user.CARGO;
+
+      if (zoneId === 'A001') {
+        res.send({ message: 'Inicio de sesión exitoso', email: user.EMAIL, role: 'admin' });
+      } else if (zoneId === 'E001') {
+        res.send({ message: 'Inicio de sesión exitoso', email: user.EMAIL, role: 'employee', cargo });
+      } else {
+        res.status(401).json({ message: 'Credenciales incorrectas' });
+      }
+    } else {
+      res.status(401).json({ message: 'Credenciales incorrectas' });
+    }
+  });
+});
+
+// Nueva ruta para obtener la información del empleado
+app.get('/employeeInfo', (req, res) => {
+  const email = req.query.email;
+
+  console.log(`Obteniendo información para el email: ${email}`);
+
+  if (!email) {
+    console.error('Email no proporcionado en la solicitud');
+    res.status(400).json({ message: 'Email no proporcionado' });
+    return;
+  }
+
+  const query = 'SELECT * FROM EMPLEADO WHERE EMAIL = ?';
+  connection.query(query, [email], (error, results) => {
+    if (error) {
+      console.error('Error al obtener la información del empleado:', error);
+      res.status(500).json({ message: `Error al obtener la información del empleado: ${error.message}` });
+      return;
+    }
+
+    console.log('Resultado de la consulta para obtener información del empleado:', results);
+
+    if (results.length > 0) {
+      res.send(results[0]);
+    } else {
+      res.status(404).json({ message: 'Empleado no encontrado' });
+    }
+  });
+});
+
+
 
 /* PAGO DEL CLIENTE */
 
