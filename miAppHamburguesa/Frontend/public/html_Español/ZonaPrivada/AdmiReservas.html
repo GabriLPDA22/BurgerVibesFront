@@ -8,12 +8,10 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <style>
-    /* panel_admin.css */
-
     /* Estilos generales */
     body {
         font-family: Arial, sans-serif;
-        background-color: #f4f4f4;
+        background-image: url(/miAppHamburguesa/Frontend/src/assets/img/Home/FondoLadrillo.jpg);
         margin: 0;
         padding: 0;
     }
@@ -30,6 +28,7 @@
     h1 {
         text-align: center;
         margin-bottom: 20px;
+        color: #fff;
     }
 
     .reservations-column {
@@ -37,7 +36,7 @@
         float: left;
         margin: 0 2.5%;
         padding: 20px;
-        background-color: #f9f9f9;
+        background-color: rgba(255, 145, 0, 0.829);
         border-radius: 5px;
         box-sizing: border-box;
     }
@@ -104,11 +103,45 @@
     .form-container button:hover {
         background-color: #45a049;
     }
+
+    .edit-button {
+        background-color: #4caf50;
+        /* Verde */
+        color: #fff;
+        /* Texto blanco */
+        border: none;
+        border-radius: 5px;
+        padding: 8px 12px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    .edit-button:hover {
+        background-color: #45a049;
+        /* Verde más oscuro al pasar el ratón */
+    }
+
+    .delete-button {
+        background-color: #f44336;
+        /* Rojo */
+        color: #fff;
+        /* Texto blanco */
+        border: none;
+        border-radius: 5px;
+        padding: 8px 12px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    .delete-button:hover {
+        background-color: #d32f2f;
+        /* Rojo más oscuro al pasar el ratón */
+    }
 </style>
 
 <body>
     <header>
-        <h1>Panel de Administrador - Reservas</h1>
+        <h1>Ver Reservas - Panel de Administrador</h1>
     </header>
     <main>
         <div id="valencia-reservations" class="reservations-column">
@@ -117,54 +150,131 @@
         <div id="zaragoza-reservations" class="reservations-column">
             <h2>Reservas en Zaragoza</h2>
         </div>
-
     </main>
 
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            // Obtener las reservas del localStorage
             const reservations = JSON.parse(localStorage.getItem('reservations')) || [];
 
-            // Contadores individuales de reservas para cada local
             let valenciaCounter = 0;
             let zaragozaCounter = 0;
 
-            // Mostrar las reservas en la página
-            reservations.forEach(function (reservation) {
+            reservations.forEach(function (reservation, index) {
                 const reservationItem = document.createElement('div');
                 reservationItem.classList.add('reservation-item');
-
-                // Decidir en qué columna mostrar la reserva
                 const columnId = reservation.local === 'Valencia' ? 'valencia-reservations' : 'zaragoza-reservations';
                 const column = document.getElementById(columnId);
 
-                // Incrementar el contador adecuado para el local correspondiente
                 if (reservation.local === 'Valencia') {
                     valenciaCounter++;
                 } else {
                     zaragozaCounter++;
                 }
 
-                // Determinar el número de reserva adecuado para cada local
                 const reservationNumber = reservation.local === 'Valencia' ? valenciaCounter : zaragozaCounter;
 
-                // Agregar la reserva al HTML
-                reservationItem.innerHTML = `
-            <h3>Reserva ${reservationNumber}</h3>
-            <p><strong>Nombre:</strong> ${reservation.name}</p>
-            <p><strong>Personas:</strong> ${reservation.people}</p>
-            <p><strong>Zona:</strong> ${reservation.zone}</p>
-            <p><strong>Fecha:</strong> ${reservation.date}</p>
-            <p><strong>Hora:</strong> ${reservation.time}</p>
-        `;
+                // Formatear la fecha al formato español
+                const formattedDate = new Date(reservation.date).toLocaleDateString('es-ES', {
+                    day: '2-digit',
+                    month: '2-digit',
+                    year: 'numeric'
+                });
 
-                // Agregar la reserva al contenedor correspondiente
+                reservationItem.innerHTML = `
+                    <h3>Reserva ${reservationNumber}</h3>
+                    <p><strong>Nombre:</strong> ${reservation.name}</p>
+                    <p><strong>Personas:</strong> ${reservation.people}</p>
+                    <p><strong>Zona:</strong> ${reservation.zone}</p>
+                    <p><strong>Fecha:</strong> ${formattedDate}</p>
+                    <p><strong>Hora:</strong> ${reservation.time}</p>
+                    <button class="edit-button" onclick="editReservation(${index})">Editar</button>
+                    <button class="delete-button" onclick="deleteReservation(${index})">Eliminar</button>
+                `;
+
                 column.appendChild(reservationItem);
             });
+
+            // Función para manejar la edición de reservas
+            window.editReservation = function (index) {
+                const reservation = reservations[index];
+                Swal.fire({
+                    title: 'Editar Reserva',
+                    html:
+                        `<input id="swal-name" class="swal2-input" placeholder="Nombre" value="${reservation.name}">` +
+                        `<input id="swal-people" class="swal2-input" placeholder="Número de personas" value="${reservation.people}">` +
+                        `<input id="swal-zone" class="swal2-input" placeholder="Zona" value="${reservation.zone}">` +
+                        `<input id="swal-date" class="swal2-input" placeholder="Fecha" value="${reservation.date}">` +
+                        `<input id="swal-time" class="swal2-input" placeholder="Hora" value="${reservation.time}">`,
+                    showCancelButton: true,
+                    confirmButtonText: 'Guardar',
+                    cancelButtonText: 'Cancelar',
+                    preConfirm: () => {
+                        const newName = Swal.getPopup().querySelector('#swal-name').value;
+                        const newPeople = Swal.getPopup().querySelector('#swal-people').value;
+                        const newZone = Swal.getPopup().querySelector('#swal-zone').value;
+                        const newDate = Swal.getPopup().querySelector('#swal-date').value;
+                        const newTime = Swal.getPopup().querySelector('#swal-time').value;
+                        if (!newName || !newPeople || !newZone || !newDate || !newTime) {
+                            Swal.showValidationMessage('Todos los campos son obligatorios');
+                        }
+                        return { newName, newPeople, newZone, newDate, newTime };
+                    }
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        const { newName, newPeople, newZone, newDate, newTime } = result.value;
+
+                        // Verificar si ya existe una reserva en la nueva fecha y hora
+                        const exists = reservations.some((res, idx) =>
+                            idx !== index && res.date === newDate && res.time === newTime && res.local === reservation.local
+                        );
+
+                        if (exists) {
+                            Swal.fire({
+                                title: 'Error',
+                                text: 'Ya existe una reserva a esta hora para esta fecha.',
+                                icon: 'error',
+                                confirmButtonText: 'OK'
+                            });
+                            return;
+                        }
+
+                        // Actualizar la reserva
+                        reservations[index] = {
+                            name: newName,
+                            people: newPeople,
+                            zone: newZone,
+                            date: newDate,
+                            time: newTime,
+                            local: reservation.local
+                        };
+                        localStorage.setItem('reservations', JSON.stringify(reservations));
+                        location.reload(); // Actualizar la página para reflejar los cambios
+                    }
+                });
+            };
+
+            // Función para manejar la eliminación de reservas
+            window.deleteReservation = function (index) {
+                Swal.fire({
+                    title: '¿Estás seguro?',
+                    text: '¡No podrás revertir esto!',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#d33',
+                    cancelButtonColor: '#3085d6',
+                    confirmButtonText: 'Sí, eliminar'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        reservations.splice(index, 1);
+                        localStorage.setItem('reservations', JSON.stringify(reservations));
+                        location.reload(); // Actualizar la página para reflejar los cambios
+                    }
+                });
+            };
         });
-
-
     </script>
+
 
 </body>
 

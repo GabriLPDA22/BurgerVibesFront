@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="/miAppHamburguesa/Frontend/src/css/Reserva/Reservas.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
     <link href="https://fonts.googleapis.com/css2?family=Sedgwick+Ave&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <title>ReservaValencia</title>
 </head>
 
@@ -155,10 +156,9 @@
     </div>
 
     <div class="reservation-container">
-        <form id="reservation-form" data-local="Valencia">
-            <!-- Campo para el nombre -->
+        <form id="reservation-form" method="post">
             <label for="name">Nombre:</label>
-            <input type="text" id="name" name="name" required placeholder="Escribe tu nombre">
+            <input type="text" id="name" name="name" required placeholder="escribe tu nombre">
 
             <label for="people">Personas:</label>
             <select id="people" name="people">
@@ -174,9 +174,9 @@
 
             <label for="zone">Zona:</label>
             <select id="zone" name="zone">
-                <option value="">Seleccione la zona</option>
-                <option value="interior">Interior</option>
-                <option value="terraza">Terraza</option>
+                <option value="">Selecciona la zona</option>
+                <option value="Interior">Interior</option>
+                <option value="Terraza">Terraza</option>
             </select>
 
             <label for="date">Fecha:</label>
@@ -295,75 +295,93 @@
 <!--SCRIPT PARA EL HORARIO-->
 
 <script>
-    // script.js
-    function updateHours() {
-        const dateInput = document.getElementById('date');
-        const timeSelect = document.getElementById('time');
-        const date = new Date(dateInput.value);
-        const dayOfWeek = date.getDay();
+    document.addEventListener('DOMContentLoaded', function () {
+        // Función para actualizar las horas disponibles según el día de la semana seleccionado
+        function updateHours() {
+            const dateInput = document.getElementById('date');
+            const timeSelect = document.getElementById('time');
+            if (!dateInput || !timeSelect) return;
 
-        // Limpia opciones actuales
-        timeSelect.innerHTML = '';
+            const date = new Date(dateInput.value);
+            const dayOfWeek = date.getDay();
 
-        // Define horarios según el día de la semana (0 = Domingo, 1 = Lunes, ..., 6 = Sábado)
-        if ([1, 2, 3, 4].includes(dayOfWeek)) { // Lunes a Jueves
-            for (let hour = 12; hour <= 21; hour++) {
-                let option = document.createElement('option');
-                option.value = `${hour}:00`;
-                option.textContent = `${hour}:00`;
-                timeSelect.appendChild(option);
-            }
-        } else if ([5, 6, 0].includes(dayOfWeek)) { // Viernes a Domingo
-            for (let hour = 12; hour <= 24; hour++) {
-                let option = document.createElement('option');
-                option.value = `${hour}:00`;
-                option.textContent = `${hour}:00`;
-                timeSelect.appendChild(option);
+            // Limpiar opciones actuales
+            timeSelect.innerHTML = '';
+
+            // Definir horarios según el día de la semana (0 = Domingo, 1 = Lunes, ..., 6 = Sábado)
+            if ([1, 2, 3, 4].includes(dayOfWeek)) { // Lunes a Jueves
+                for (let hour = 12; hour <= 21; hour++) {
+                    let option = document.createElement('option');
+                    option.value = `${hour}:00`;
+                    option.textContent = `${hour}:00`;
+                    timeSelect.appendChild(option);
+                }
+            } else if ([5, 6, 0].includes(dayOfWeek)) { // Viernes a Domingo
+                for (let hour = 12; hour <= 24; hour++) {
+                    let option = document.createElement('option');
+                    option.value = `${hour}:00`;
+                    option.textContent = `${hour}:00`;
+                    timeSelect.appendChild(option);
+                }
             }
         }
-    }
 
-    document.getElementById('date').addEventListener('change', updateHours);
+        // Añadir evento para actualizar las horas cuando se cambia la fecha
+        const dateInput = document.getElementById('date');
+        if (dateInput) {
+            dateInput.addEventListener('change', updateHours);
+        }
 
+        // Función para manejar el envío del formulario
+        function handleSubmit(event) {
+            event.preventDefault();
 
-    document.getElementById('reservation-form').addEventListener('submit', function (event) {
-        event.preventDefault();
+            const formData = {
+                name: document.getElementById('name').value,
+                people: document.getElementById('people').value,
+                zone: document.getElementById('zone').value,
+                date: document.getElementById('date').value,
+                time: document.getElementById('time').value,
+                local: 'Valencia' // Cambia a 'Zaragoza' según corresponda
+            };
 
-        const formData = {
-            local: this.getAttribute('data-local'), // Obtener el valor del atributo data-local
-            name: document.getElementById('name').value,
-            people: document.getElementById('people').value,
-            zone: document.getElementById('zone').value,
-            date: document.getElementById('date').value,
-            time: document.getElementById('time').value
-        };
+            // Obtener las reservas existentes del localStorage
+            let reservations = JSON.parse(localStorage.getItem('reservations')) || [];
 
-        // Obtener las reservas existentes del localStorage (si las hay)
-        let reservations = JSON.parse(localStorage.getItem('reservations')) || [];
+            // Verificar si ya existe una reserva en la misma fecha y hora
+            const exists = reservations.some(reservation =>
+                reservation.date === formData.date && reservation.time === formData.time && reservation.local === formData.local
+            );
 
-        // Agregar la nueva reserva a la lista
-        reservations.push(formData);
+            if (exists) {
+                Swal.fire({
+                    title: 'Error',
+                    text: 'Ya existe una reserva a esta hora para esta fecha.',
+                    icon: 'error',
+                    confirmButtonText: 'OK'
+                });
+                return; // Salir de la función si existe una reserva
+            }
 
-        // Guardar la lista actualizada en el localStorage
-        localStorage.setItem('reservations', JSON.stringify(reservations));
+            // Agregar la nueva reserva a la lista
+            reservations.push(formData);
+            localStorage.setItem('reservations', JSON.stringify(reservations));
 
-        // Limpiar el formulario después de enviar la reserva
-        document.getElementById('name').value = '';
-        document.getElementById('people').value = '1';
-        document.getElementById('zone').value = '';
-        document.getElementById('date').value = '';
-        document.getElementById('time').value = '';
+            Swal.fire({
+                title: '¡Reserva exitosa!',
+                text: 'Tu reserva ha sido registrada.',
+                icon: 'success',
+                confirmButtonText: 'OK'
+            }).then(() => {
+                location.reload();
+            });
+        }
 
-        // Mostrar mensaje de confirmación con SweetAlert
-        Swal.fire({
-            position: "top-end",
-            icon: "success",
-            title: "Reserva enviada!",
-            showConfirmButton: false,
-            timer: 1500
-        });
-
-        // Aquí puedes agregar cualquier otra lógica que desees, como mostrar un mensaje de confirmación en la misma página.
+        // Añadir evento para manejar el envío del formulario
+        const reservationForm = document.getElementById('reservation-form');
+        if (reservationForm) {
+            reservationForm.addEventListener('submit', handleSubmit);
+        }
     });
 
 </script>

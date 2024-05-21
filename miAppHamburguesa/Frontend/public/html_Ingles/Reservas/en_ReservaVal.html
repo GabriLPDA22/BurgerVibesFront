@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="/miAppHamburguesa/Frontend/src/css/Reserva/Reservas.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
     <link href="https://fonts.googleapis.com/css2?family=Sedgwick+Ave&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <title>Valencia Reserve</title>
 </head>
 
@@ -148,12 +149,11 @@
         <h1>Reserving a table for BurgerVibes Valencia</h1>
     </div>
     <div class="reservation-container">
-        <form>
-            <!-- Campo para el nombre -->
+        <form id="reservation-form" method="post">
             <label for="name">Name:</label>
             <input type="text" id="name" name="name" required placeholder="write your name">
 
-            <label for="people">Personas:</label>
+            <label for="people">People:</label>
             <select id="people" name="people">
                 <option value="1">1 person</option>
                 <option value="2">2 people</option>
@@ -168,8 +168,8 @@
             <label for="zone">Zone:</label>
             <select id="zone" name="zone">
                 <option value="">Select the area</option>
-                <option value="interior">Inside</option>
-                <option value="terraza">Terrace</option>
+                <option value="Inside">Inside</option>
+                <option value="Terrace">Terrace</option>
             </select>
 
             <label for="date">Date:</label>
@@ -177,7 +177,7 @@
 
             <label for="time">Hour:</label>
             <select id="time" name="time">
-                <!-- Las opciones se actualizarán dinámicamente -->
+                <!-- The options will be updated dynamically -->
             </select>
 
             <button type="submit">Reserve</button>
@@ -290,49 +290,96 @@
 <!--SCRIPT PARA EL HORARIO-->
 
 <script>
-    // script.js
-    function updateHours() {
-        const dateInput = document.getElementById('date');
-        const timeSelect = document.getElementById('time');
-        const date = new Date(dateInput.value);
-        const dayOfWeek = date.getDay();
+    document.addEventListener('DOMContentLoaded', function () {
+        // Función para actualizar las horas disponibles según el día de la semana seleccionado
+        function updateHours() {
+            const dateInput = document.getElementById('date');
+            const timeSelect = document.getElementById('time');
+            if (!dateInput || !timeSelect) return;
 
-        // Limpia opciones actuales
-        timeSelect.innerHTML = '';
+            const date = new Date(dateInput.value);
+            const dayOfWeek = date.getDay();
 
-        // Define horarios según el día de la semana (0 = Domingo, 1 = Lunes, ..., 6 = Sábado)
-        if ([1, 2, 3, 4].includes(dayOfWeek)) { // Lunes a Jueves
-            for (let hour = 12; hour <= 21; hour++) {
-                let option = document.createElement('option');
-                option.value = `${hour}:00`;
-                option.textContent = `${hour}:00`;
-                timeSelect.appendChild(option);
-            }
-        } else if ([5, 6, 0].includes(dayOfWeek)) { // Viernes a Domingo
-            for (let hour = 12; hour <= 24; hour++) {
-                let option = document.createElement('option');
-                option.value = `${hour}:00`;
-                option.textContent = `${hour}:00`;
-                timeSelect.appendChild(option);
+            // Limpiar opciones actuales
+            timeSelect.innerHTML = '';
+
+            // Definir horarios según el día de la semana (0 = Domingo, 1 = Lunes, ..., 6 = Sábado)
+            if ([1, 2, 3, 4].includes(dayOfWeek)) { // Lunes a Jueves
+                for (let hour = 12; hour <= 21; hour++) {
+                    let option = document.createElement('option');
+                    option.value = `${hour}:00`;
+                    option.textContent = `${hour}:00`;
+                    timeSelect.appendChild(option);
+                }
+            } else if ([5, 6, 0].includes(dayOfWeek)) { // Viernes a Domingo
+                for (let hour = 12; hour <= 24; hour++) {
+                    let option = document.createElement('option');
+                    option.value = `${hour}:00`;
+                    option.textContent = `${hour}:00`;
+                    timeSelect.appendChild(option);
+                }
             }
         }
-    }
 
-    document.getElementById('date').addEventListener('change', updateHours);
+        // Añadir evento para actualizar las horas cuando se cambia la fecha
+        const dateInput = document.getElementById('date');
+        if (dateInput) {
+            dateInput.addEventListener('change', updateHours);
+        }
 
+        // Función para manejar el envío del formulario
+        function handleSubmit(event) {
+            event.preventDefault();
 
-    function handleSubmit(event) {
-        event.preventDefault();
-        const formData = {
-            people: document.getElementById('people').value,
-            zone: document.getElementById('zone').value,
-            date: document.getElementById('date').value,
-            time: document.getElementById('time').value
-        };
-        console.log('Datos de la reserva:', formData);
-        alert('Reserva enviada! Revisa la consola para ver los datos.');
-    }
+            const formData = {
+                name: document.getElementById('name').value,
+                people: document.getElementById('people').value,
+                zone: document.getElementById('zone').value,
+                date: document.getElementById('date').value,
+                time: document.getElementById('time').value,
+                local: 'Valencia' // Cambia a 'Zaragoza' según corresponda
+            };
+
+            // Obtener las reservas existentes del localStorage
+            let reservations = JSON.parse(localStorage.getItem('reservations')) || [];
+
+            // Verificar si ya existe una reserva en la misma fecha y hora
+            const exists = reservations.some(reservation =>
+                reservation.date === formData.date && reservation.time === formData.time && reservation.local === formData.local
+            );
+
+            if (exists) {
+                Swal.fire({
+                    title: 'Error',
+                    text: 'There is already a reservation at this time for this date.',
+                    icon: 'error',
+                    confirmButtonText: 'OK'
+                });
+                return; // Salir de la función si existe una reserva
+            }
+
+            // Agregar la nueva reserva a la lista
+            reservations.push(formData);
+            localStorage.setItem('reservations', JSON.stringify(reservations));
+
+            Swal.fire({
+                title: 'Reservation Successful!',
+                text: 'Your reservation has been recorded.',
+                icon: 'success',
+                confirmButtonText: 'OK'
+            }).then(() => {
+                location.reload();
+            });
+        }
+
+        // Añadir evento para manejar el envío del formulario
+        const reservationForm = document.getElementById('reservation-form');
+        if (reservationForm) {
+            reservationForm.addEventListener('submit', handleSubmit);
+        }
+    });
 
 </script>
+</body>
 
 </html>
