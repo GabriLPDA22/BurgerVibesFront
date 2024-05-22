@@ -85,16 +85,16 @@
 
     <script>
         const closeButton = document.getElementsByClassName('close-btn')[0];
-
+    
         closeButton.onclick = function () {
             window.location.href = '/miAppHamburguesa/Frontend/public/html_Español/es_index.html';
         }
-
+    
         document.getElementById('formAcceso').onsubmit = async function (event) {
             event.preventDefault();
             const email = document.getElementById('userEmail').value;
             const password = document.getElementById('userPassword').value;
-
+    
             try {
                 const response = await fetch('http://localhost:8080/loginAdminEmpleado', {
                     method: 'POST',
@@ -103,31 +103,33 @@
                     },
                     body: JSON.stringify({ email, password })
                 });
-
+    
+                if (!response.ok) {
+                    const errorText = await response.text();
+                    throw new Error(`HTTP error! status: ${response.status}, message: ${errorText}`);
+                }
+    
                 const data = await response.json();
-
-                if (response.ok) {
-                    console.log('Successful login', data);
-
-                    // Guardar el email en localStorage
-                    localStorage.setItem('employeeEmail', email);
-
-                    // Redirigir a la página correspondiente
-                    if (data.role === 'admin') {
-                        window.location.href = 'zona_privada_admin.html';
-                    } else if (data.role === 'employee') {
-                        window.location.href = 'zona_privada_empleados.html';
-                    }
-                } else {
-                    alert('Access denied.');
+    
+                console.log('Successful login', data);
+    
+                // Guardar el email en localStorage
+                localStorage.setItem('employeeEmail', email);
+    
+                // Redirigir a la página correspondiente
+                if (data.role === 'admin') {
+                    window.location.href = 'zona_privada_admin.html';
+                } else if (data.role === 'employee') {
+                    window.location.href = 'zona_privada_empleados.html';
                 }
             } catch (error) {
                 console.error('Login error:', error);
                 alert('Login error.');
             }
         }
-
     </script>
+    
+    
 </body>
 
 </html>

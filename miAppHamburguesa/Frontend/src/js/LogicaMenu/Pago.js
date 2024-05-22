@@ -68,7 +68,7 @@ function renderCartItems(items) {
 
 // Manejar el proceso de pago cuando se hace clic en un botón de pago
 document.addEventListener('DOMContentLoaded', () => {
-    // Función para obtener un empleado aleatorio (cocineros) SELECT ID_EMPLEADO, CARGO FROM EMPLEADO WHERE CARGO = 'Cocinero'
+    // Función para obtener un empleado aleatorio (cocineros)
     function getRandomEmpleado() {
         const empleados = ['EMP001', 'EMP004', 'EMP007', 'EMP010', 'EMP013', 'EMP016', 'EMP019', 'EMP022', 'EMP025', 'EMP028', 'EMP031', 'EMP034', 'EMP037', 'EMP040', 'EMP043', 'EMP046', 'EMP049'];
         const randomIndex = Math.floor(Math.random() * empleados.length);
@@ -144,12 +144,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
                         // Mostrar mensaje de pago exitoso si la respuesta es exitosa
                         const responseText = await response.json();
-                        if (response.ok) {
-                            alert('Pago exitoso');
-                            localStorage.removeItem('carrito'); // Limpiar el carrito después del pago exitoso
-                        } else {
-                            alert('Error en el pago: ' + responseText.message);
-                        }
+                        alert('Pago exitoso');
+                        localStorage.removeItem('carrito'); // Limpiar el carrito después del pago exitoso
                     } catch (error) {
                         // Manejar errores de conexión con el servidor
                         console.error('Error:', error);
@@ -157,8 +153,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                 } else {
                     // Mostrar mensaje de inicio de sesión si el usuario no está autenticado
-                    paymentFormContainer.style.display = 'none';
-                    loginMessageContainer.style.display = 'block';
+                    document.getElementById('paymentFormContainer').style.display = 'none';
+                    document.getElementById('loginMessageContainer').style.display = 'block';
                 }
             });
         }

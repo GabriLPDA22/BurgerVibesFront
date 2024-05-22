@@ -55,9 +55,9 @@ app.post('/register', async (req, res) => {
     // Verifica si el usuario o el email ya existen
     const result = await connection.execute(
       `SELECT COUNT(*) AS COUNT FROM CLIENTE WHERE EMAIL = :email OR NOMBRE_USUARIO = :username`, {
-        email,
-        username
-      }
+      email,
+      username
+    }
     );
 
     const userExists = result.rows[0][0] > 0;
@@ -132,9 +132,9 @@ app.post('/login', async (req, res) => {
     // Verifica las credenciales del usuario
     const result = await connection.execute(
       `SELECT ID_CLIENTE, NOMBRE_USUARIO, EMAIL FROM CLIENTE WHERE (EMAIL = :usernameEmail OR NOMBRE_USUARIO = :usernameEmail) AND CONTRASEÑA = :password`, {
-        usernameEmail,
-        password
-      }
+      usernameEmail,
+      password
+    }
     );
 
     if (result.rows.length > 0) {
@@ -170,15 +170,12 @@ app.post('/login', async (req, res) => {
 
 
 /* LOGIN EMPLEADOS Y ADMINISTRADORES */
-
-// Ruta para iniciar sesión de empleados y administradores
 app.post('/loginAdminEmpleado', (req, res) => {
   const { email, password } = req.body;
 
   console.log(`Verificando credenciales para ${email}`);
 
-  // Verifica las credenciales del usuario
-  const query = 'SELECT EMAIL, ID_ZONAPRIVADA_EMP, CARGO FROM EMPLEADO WHERE EMAIL = ? AND CONTRASEÑA = ?';
+  const query = 'SELECT EMAIL, ID_ZONAPRIVADA_EMP, CARGO FROM EMPLEADO WHERE EMAIL = ? AND CONTRASENA = ?';
   connection.query(query, [email, password], (error, results) => {
     if (error) {
       console.error('Error al intentar iniciar sesión:', error);
@@ -194,9 +191,9 @@ app.post('/loginAdminEmpleado', (req, res) => {
       const cargo = user.CARGO;
 
       if (zoneId === 'A001') {
-        res.send({ message: 'Inicio de sesión exitoso', email: user.EMAIL, role: 'admin' });
+        res.json({ message: 'Inicio de sesión exitoso', email: user.EMAIL, role: 'admin' });
       } else if (zoneId === 'E001') {
-        res.send({ message: 'Inicio de sesión exitoso', email: user.EMAIL, role: 'employee', cargo });
+        res.json({ message: 'Inicio de sesión exitoso', email: user.EMAIL, role: 'employee', cargo });
       } else {
         res.status(401).json({ message: 'Credenciales incorrectas' });
       }
@@ -206,7 +203,7 @@ app.post('/loginAdminEmpleado', (req, res) => {
   });
 });
 
-// Nueva ruta para obtener la información del empleado
+/* INFORMACIÓN DEL EMPLEADO */
 app.get('/employeeInfo', (req, res) => {
   const email = req.query.email;
 
@@ -229,7 +226,7 @@ app.get('/employeeInfo', (req, res) => {
     console.log('Resultado de la consulta para obtener información del empleado:', results);
 
     if (results.length > 0) {
-      res.send(results[0]);
+      res.json(results[0]);
     } else {
       res.status(404).json({ message: 'Empleado no encontrado' });
     }
@@ -243,6 +240,7 @@ app.get('/employeeInfo', (req, res) => {
 // Ruta para procesar el pedido del cliente
 app.post('/procesar-pedido', async (req, res) => {
   console.log("Solicitud recibida en /procesar-pedido con datos:", req.body);
+
   const {
     nombre,
     telefono,
@@ -262,9 +260,11 @@ app.post('/procesar-pedido', async (req, res) => {
   } = req.body;
 
   if (!idCliente || !idEmpleado) {
-    return res.status(400).send({
-      message: 'idCliente y idEmpleado son requeridos'
-    });
+    return res.status(400).json({ message: 'idCliente y idEmpleado son requeridos' });
+  }
+
+  if (!items || items.length === 0) {
+    return res.status(400).json({ message: 'El carrito está vacío.' });
   }
 
   const notaCompleta = nota ? "Sí" : "No";
@@ -279,57 +279,48 @@ app.post('/procesar-pedido', async (req, res) => {
     connection = await oracledb.getConnection(dbConfig);
     console.log("Conexión a la base de datos exitosa");
 
-    // Inicia una transacción
-    await connection.execute('BEGIN');
-
-    // Inserta el pago en la base de datos
+    // Insertar pago en la base de datos
     const pagoResult = await connection.execute(
       `INSERT INTO PAGO (ID_PAGO, METODOPAGO, NUM_TARJETA, EXPIRACION, PAIS)
-       VALUES (:id_pago, :metodoPago, :numTarjeta, TO_DATE(:expiracion, 'DD/MM/YYYY'), :pais) 
-       RETURNING ID_PAGO INTO :id_pago_out`, {
-        id_pago: {
-          type: oracledb.STRING,
-          dir: oracledb.BIND_OUT
-        },
+       VALUES (PAGO_SEQ.NEXTVAL, metodoPago, numTarjeta, TO_DATE(expiracion, 'DD/MM/YYYY'), :pais) 
+       RETURNING ID_PAGO INTO id_pago_out`,
+      {
         metodoPago,
         numTarjeta,
         expiracion: formattedExpiracion,
-        pais
-      }, {
-        autoCommit: false
-      }
+        pais,
+        id_pago_out: { type: oracledb.NUMBER, dir: oracledb.BIND_OUT }
+      },
+      { autoCommit: false }
     );
 
-    const pagoId = pagoResult.outBinds.id_pago[0];
+    const pagoId = pagoResult.outBinds.id_pago_out[0];
     console.log("ID del pago insertado:", pagoId);
 
-    // Inserta el pedido en la base de datos y obtiene el ID del pedido
+    // Insertar pedido en la base de datos
     const pedidoResult = await connection.execute(
       `INSERT INTO PEDIDO (ID_PEDIDO, FECHA, TIPOENTREGA, ID_CLIENTE_PED, ID_EMPLEADO_PED, CANTIDAD) 
-       VALUES (:id_pedido, SYSDATE, 'Domicilio', :idCliente, :idEmpleado, :cantidad) 
-       RETURNING ID_PEDIDO INTO :id_pedido_out`, {
+       VALUES (id_pedido, SYSDATE, 'Domicilio', idCliente, idEmpleado, cantidad) 
+       RETURNING ID_PEDIDO INTO id_pedido_out`,
+      {
         id_pedido: pagoId, // Usa el ID de pago como ID del pedido
         idCliente,
         idEmpleado,
         cantidad: totalPedido,
-        id_pedido_out: {
-          type: oracledb.STRING,
-          dir: oracledb.BIND_OUT
-        }
-      }, {
-        autoCommit: false
-      }
+        id_pedido_out: { type: oracledb.NUMBER, dir: oracledb.BIND_OUT }
+      },
+      { autoCommit: false }
     );
 
     const pedidoId = pedidoResult.outBinds.id_pedido_out[0];
     console.log("ID del pedido insertado:", pedidoId);
 
-
-    // Insertar detalles del pedido
+    // Insertar detalles del pedido en la base de datos
     for (const item of items) {
       await connection.execute(
         `INSERT INTO DETALLESPEDIDO (ID_DETALLES, TOTALPEDIDO, ID_PEDIDO_DET, ID_PRODUCTO_DET, NOMBRE, TELEFONO, EMAIL, DIRECCION, HORA_ENTREGA, NOTA, COD_PROMOCIONAL)
-         VALUES (:id_detalles, :totalPedido, :pedidoId, :productoId, :nombre, :telefono, :email, :direccion, TO_DATE(:horaEntrega, 'HH24:MI'), :notaCompleta, :codPromocionalCompleto)`, {
+         VALUES (id_detalles, totalPedido, pedidoId, productoId, nombre, telefono, email, direccion, TO_DATE(horaEntrega, 'HH24:MI'), notaCompleta, codPromocionalCompleto)`,
+        {
           id_detalles: `${pedidoId}-${item.name}`, // Usando `item.name` para construir el id_detalles
           totalPedido,
           pedidoId,
@@ -341,33 +332,24 @@ app.post('/procesar-pedido', async (req, res) => {
           horaEntrega: formattedHoraEntrega,
           notaCompleta,
           codPromocionalCompleto
-        }, {
-          autoCommit: false
-        }
+        },
+        { autoCommit: false }
       );
+      console.log(`Detalle del pedido insertado para el item ${item.name}`);
     }
 
-    // Relaciona el pago con el pedido en la base de datos
+    // Actualizar la tabla PAGO con el ID del pedido
     await connection.execute(
-      `UPDATE PAGO SET ID_PEDIDO_PAG = :pedidoId WHERE ID_PAGO = :pagoId`, {
-        pedidoId,
-        pagoId
-      }, {
-        autoCommit: false
-      }
+      `UPDATE PAGO SET ID_PEDIDO_PAG = :pedidoId WHERE ID_PAGO = :pagoId`,
+      { pedidoId, pagoId },
+      { autoCommit: false }
     );
 
-    // Confirma la transacción
     await connection.commit();
     console.log("Transacción completada exitosamente");
 
-    // Envía una respuesta de éxito
-    res.send({
-      message: 'Pedido y pago procesados exitosamente',
-      pedidoId
-    });
+    res.json({ message: 'Pedido y pago procesados exitosamente', pedidoId });
   } catch (err) {
-    // Manejo de errores
     console.error("Error al procesar el pedido y pago:", err);
     if (connection) {
       try {
@@ -377,9 +359,8 @@ app.post('/procesar-pedido', async (req, res) => {
         console.error("Error al hacer rollback:", rollbackErr);
       }
     }
-    res.status(500).send(`Error al procesar el pedido y pago: ${err.message}`);
+    res.status(500).json({ error: 'Internal Server Error', details: err.message });
   } finally {
-    // Cierra la conexión a la base de datos
     if (connection) {
       try {
         await connection.close();
@@ -395,8 +376,6 @@ app.post('/procesar-pedido', async (req, res) => {
 app.listen(8080, () => {
   console.log('Server is running on port 8080');
 });
-
-// Funciones auxiliares (Para la tarjeta de credito)
 
 // Función para convertir la fecha de vencimiento del formato 'MM/YY' a 'DD/MM/YYYY'
 function convertExpirationDate(expiration) {
