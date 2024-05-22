@@ -3,16 +3,16 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>View Orders - Private Area</title>
+    <title>Ver Pedidos - Zona Privada</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <!-- Bootstrap CSS -->
     <style>
-        /* Estilos CSS adicionales para los pedidos */
         body {
             font-family: Arial, sans-serif;
             background-color: #f8f9fa;
             margin: 0;
             padding: 20px;
+            background: url('/miAppHamburguesa/Frontend/src/assets/img/FondoRestaurante.jpg') no-repeat center center fixed;
+            background-size: cover;
         }
 
         .order-container {
@@ -25,13 +25,13 @@
         }
 
         .order-header {
-            border-bottom: 2px solid #007bff;
+            border-bottom: 2px solid #f18509;
             padding-bottom: 10px;
             margin-bottom: 20px;
         }
 
         .order-header h1 {
-            color: #007bff;
+            color: #f89007;
         }
 
         .order-block {
@@ -46,21 +46,23 @@
             font-weight: bold;
         }
 
-        .customer-name {
-            font-style: italic;
-        }
-
         .product-info {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding-bottom: 10px;
-            /* Espaciado entre productos */
         }
 
         .order-empty {
             text-align: center;
             color: #6c757d;
+        }
+
+        select {
+            margin-top: 10px;
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ced4da;
         }
     </style>
 </head>
@@ -68,48 +70,85 @@
 <body>
     <div class="order-container">
         <div class="order-header">
-            <h1>Orders Placed</h1>
+            <h1>Pedidos Realizados</h1>
         </div>
-
-        <div id="orders-container">
-            <!-- Los pedidos se cargarán dinámicamente aquí -->
+        <!-- Selector de ubicación para demostración -->
+        <select id="locationSelect">
+            <option value="Valencia">Valencia</option>
+            <option value="Zaragoza">Zaragoza</option>
+            <option value="Zaragoza">Todos</option>
+        </select>
+        <div class="order-column" id="valencia-orders-container" data-nombredelsitio="Valencia">
+            <div class="order-header">
+                <h2>Pedidos para Valencia</h2>
+            </div>
+            <div id="valencia-orders" class="orders-container"></div>
+        </div>
+        <div class="order-column" id="zaragoza-orders-container" data-nombredelsitio="Zaragoza">
+            <div class="order-header">
+                <h2>Pedidos para Zaragoza</h2>
+            </div>
+            <div id="zaragoza-orders" class="orders-container"></div>
         </div>
     </div>
-
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            loadOrders(); // Aseguramos que la función se llama al cargar la página
+            const locationSelect = document.getElementById('locationSelect');
+
+            // Intenta obtener una ubicación guardada previamente o establece 'Zaragoza' como predeterminado si no hay ninguna guardada
+            const defaultLocation = localStorage.getItem('lastLocationUsed') || 'Zaragoza';
+            locationSelect.value = defaultLocation; // Establece la ubicación guardada o por defecto
+            loadOrders(); // Carga los pedidos para la ubicación seleccionada al cargar la página
+
+            locationSelect.addEventListener('change', function () {
+                localStorage.setItem('lastLocationUsed', this.value); // Guarda la ubicación seleccionada
+                loadOrders(); // Carga los pedidos cuando se cambia la ubicación
+            });
         });
 
         function loadOrders() {
-            console.log("Cargando pedidos...");
+            const currentLocation = determineLocation();
+            if (!currentLocation) {
+                hideAllOrderContainers();
+                return;
+            }
+
+            hideAllOrderContainers();
             const ordersData = localStorage.getItem('orders');
             const orders = JSON.parse(ordersData) || [];
+            const ordersContainer = document.getElementById(currentLocation.toLowerCase() + '-orders-container');
 
-            const ordersContainer = document.getElementById('orders-container');
-            ordersContainer.innerHTML = ''; // Limpiar contenidos anteriores
+            ordersContainer.innerHTML = ''; // Limpia el contenedor antes de añadir nuevos elementos
 
-            if (orders.length > 0) {
-                orders.forEach(order => {
+            orders.forEach(order => {
+                if (order.location === currentLocation) {
                     const orderBlock = document.createElement('div');
                     orderBlock.classList.add('order-block');
-
                     let productsHtml = order.items.map(item => `
                         <div class="product-info">
                             <div><h4 class="product-name">${item.name}</h4><p>Cantidad: ${item.quantity}</p></div>
                             <div><p class="text-muted">Precio: ${item.price.toFixed(2)} €</p></div>
                         </div>
                     `).join('');
-
                     orderBlock.innerHTML = `<h3>Pedido de ${order.username} realizado el ${new Date(order.timestamp).toLocaleString()}</h3>${productsHtml}`;
                     ordersContainer.appendChild(orderBlock);
-                });
-            } else {
-                const emptyMessage = document.createElement('div');
-                emptyMessage.classList.add('order-empty');
-                emptyMessage.innerHTML = '<span>No se ha realizado ningún pedido aún</span>';
-                ordersContainer.appendChild(emptyMessage);
+                }
+            });
+
+            if (!ordersContainer.children.length) {
+                ordersContainer.innerHTML = '<div class="order-empty"><span>No se ha realizado ningún pedido en ' + currentLocation + ' aún</span></div>';
             }
+
+            ordersContainer.style.display = 'block';
+        }
+
+        function determineLocation() {
+            return document.getElementById('locationSelect').value;
+        }
+
+        function hideAllOrderContainers() {
+            document.getElementById('valencia-orders-container').style.display = 'none';
+            document.getElementById('zaragoza-orders-container').style.display = 'none';
         }
     </script>
 
@@ -118,3 +157,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>

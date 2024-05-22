@@ -70,7 +70,7 @@
       </div>
   </nav>
 
-  <div class="main-wrapper">
+  <div class="main-wrapper" >
     <div class="flex-container">
       <div class="content-section">
         <div class="navigation-tabs">
@@ -83,37 +83,31 @@
           </ul>
         </div>
       </div>
-      <div class="column left-column">
+
+
+      <div class="column left-column" >
         <div class="titulo-seccion" id="tabOne">
           <h2 style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Entrantes</h2>
         </div>
         <div class="tabs-content">
-          <!-- Item del menú -->
-
-          <!--PRIMER ENTRANTE-->
-
+          <!-- Items del menú -->
           <div class="menu-item" id="product1" data-product-name="Rainforest Nachos" data-product-price="12.50"
-            data-product-description=" Inspired by Chicago rainforest coffee. Corn chips, cheddar cream, guacamole,
-            shredded beef, pico de gallo and sour cream."
+            data-product-description="Inspired by Chicago rainforest coffee. Corn chips, cheddar cream, guacamole, shredded beef, pico de gallo and sour cream."
             data-product-allergens="Allergens: Gluten, lactose and Sulfites."
             data-product-image1="/miAppHamburguesa/Frontend/src/assets/img/Menu/Nachos.jpg"
             data-product-image2="/miAppHamburguesa/Frontend/src/assets/img/Menu/gluten.svg"
             data-product-image3="/miAppHamburguesa/Frontend/src/assets/img/Menu/sulphur.svg"
             data-product-image4="/miAppHamburguesa/Frontend/src/assets/img/Menu/leche.svg">
-
-            <!-- Columna de imagen -->
             <div class="menu-item-column image-column">
               <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/Nachos.jpg" alt="Rainforest Nachos"
                 class="menu-item-img" id="Cabezera">
             </div>
-            <!-- Columna de texto e información -->
             <div class="menu-item-column info-column">
               <div class="menu-item-header">
                 <h3 class="menu-item-title">Rainforest Nachos</h3>
                 <div class="menu-item-price-action">
                   <button class="add-button">
                     <i class="bi bi-plus-circle"></i>
-                    <!-- Asumiendo que quieres usar un ícono de 'plus' -->
                   </button>
                   <span class="price">12,50 €</span>
                 </div>
@@ -129,6 +123,7 @@
               </div>
             </div>
           </div>
+
 
 
           <!--SEGUNDO ENTRANTE-->
@@ -1302,32 +1297,34 @@
   <!-- Modal de registro -->
   <div id="modalRegister" class="modal2" style="display:none;">
     <div class="modal2-content">
-        <span class="close">&times;</span>
-        <h5>Registro</h5>
-        <form id="registerForm" method="POST" action="register.php">
-            <label for="registerUsername">Nombre de usuario:</label>
-            <input type="text" id="registerUsername" name="username" autocomplete="username" required placeholder="Nombre de usuario">
+      <span class="close">&times;</span>
+      <h5>Registro</h5>
+      <form id="registerForm" method="POST" action="register.php">
+        <label for="registerUsername">Nombre de usuario:</label>
+        <input type="text" id="registerUsername" name="username" autocomplete="username" required
+          placeholder="Nombre de usuario">
 
-            <label for="registerEmail">Correo electrónico:</label>
-            <input type="email" id="registerEmail" name="email" autocomplete="email" required placeholder="Correo electrónico">
+        <label for="registerEmail">Correo electrónico:</label>
+        <input type="email" id="registerEmail" name="email" autocomplete="email" required
+          placeholder="Correo electrónico">
 
-            <label for="registerPassword">Contraseña:</label>
-            <input type="password" id="registerPassword" name="password" autocomplete="new-password" required>
+        <label for="registerPassword">Contraseña:</label>
+        <input type="password" id="registerPassword" name="password" autocomplete="new-password" required>
 
-            <!-- Campos adicionales -->
-            <label for="registerName">Nombre:</label>
-            <input type="text" id="registerName" name="name" required placeholder="Nombre">
+        <!-- Campos adicionales -->
+        <label for="registerName">Nombre:</label>
+        <input type="text" id="registerName" name="name" required placeholder="Nombre">
 
-            <label for="registerAddress">Dirección:</label>
-            <input type="text" id="registerAddress" name="address" required placeholder="Dirección">
+        <label for="registerAddress">Dirección:</label>
+        <input type="text" id="registerAddress" name="address" required placeholder="Dirección">
 
-            <label for="registerPhone">Teléfono:</label>
-            <input type="tel" id="registerPhone" name="phone" required placeholder="Teléfono">
+        <label for="registerPhone">Teléfono:</label>
+        <input type="tel" id="registerPhone" name="phone" required placeholder="Teléfono">
 
-            <button type="submit">Registrar</button>
-        </form>
+        <button type="submit">Registrar</button>
+      </form>
     </div>
-</div>
+  </div>
 
   <!-- Menú del usuario con el nombre de usuario y opción de cerrar sesión -->
   <div id="userMenu" style="display:none;">
@@ -1388,6 +1385,63 @@
   <script src="/miAppHamburguesa/Frontend/src/js/LogicaMenu/Carrito.js"></script>
   <script src="/miAppHamburguesa/Frontend/src/js/LogicaMenu/Login/login.js"></script>
 
+  <script>
+    function loadMenu() {
+      const data = localStorage.getItem('productsJson');
+      if (!data) return;
+      const productsJson = JSON.parse(data);
+
+      const categories = Object.keys(productsJson.productos);
+      const containerMap = {
+        "Entrantes": "starters-content",
+        "Burgers": "burgers-content",
+        "Postres": "desserts-content",
+        "Ensaladas": "salads-content",
+        "Bebidas": "drinks-content"
+      };
+
+      categories.forEach(category => {
+        const containerId = containerMap[category];
+        const container = document.getElementById(containerId);
+        container.innerHTML = ''; // Clear previous content
+
+        productsJson.productos[category].forEach(product => {
+          if (product.disponible) {
+            const item = document.createElement('div');
+            item.className = 'menu-item';
+            item.innerHTML = `
+                            <div class="menu-item-column image-column">
+                                <img src="${product.imagen}" alt="${product.nombre}" class="menu-item-img">
+                            </div>
+                            <div class="menu-item-column info-column">
+                                <div class="menu-item-header">
+                                    <h3 class="menu-item-title">${product.nombre}</h3>
+                                    <div class="menu-item-price-action">
+                                        <button class="add-button">
+                                            <i class="bi bi-plus-circle"></i>
+                                        </button>
+                                        <span class="price">${product.precio} €</span>
+                                    </div>
+                                </div>
+                                <p class="menu-item-description">
+                                    ${product.descripcion}
+                                </p>
+                                <div class="menu-item-icons">
+                                    ${product.alergenos?.map(alergeno => `<img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/${alergeno}.svg" alt="${alergeno}">`).join('')}
+                                </div>
+                            </div>
+                        `;
+            container.appendChild(item);
+          }
+        });
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+      loadMenu();
+    });
+  </script>
+  <script src="/miAppHamburguesa/Frontend/src/js/Productos_zona_piv.js"></script>
 </body>
 
 </html>
