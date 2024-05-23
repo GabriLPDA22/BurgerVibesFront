@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Información de Empleados</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>Información de Empleados</h1>
+    <table id="tablaEmpleados">
+        <thead>
+            <tr>
+                <th>ID Empleado</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Email</th>
+                <th>Teléfono</th>
+                <th>Fecha Contrato</th>
+                <th>Salario</th>
+                <th>Estado</th>
+                <th>ID Puesto</th>
+                <th>ID Usuario</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- La información de los empleados se cargará aquí -->
+        </tbody>
+    </table>
+
+    <script>
+        //Fetch de empleados de la BBDD
+        const urlEmployees = 'http://localhost:8080/Nakama/Controller?ACTION=EMPLEADOS.FIND_ALL';
+
+        const fetchEmployees = async () => {
+            try {
+                const result = await fetch(urlEmployees);
+                const data = await result.json();
+                console.log('Empleados obtenidos de la API:', data);
+                printEmployees(data);
+            } catch (error) {
+                console.error('Error al obtener datos de la API:', error);
+            }
+        };
+
+        const printEmployees = (employees) => {
+            const table = document.getElementById('tablaEmpleados');
+            const tbody = table.querySelector('tbody');
+            table.style.display = 'table';  
+
+            employees.forEach(employee => {
+                const {
+                    ID_EMPLEADO,
+                    NOMBRE,
+                    APELLIDOS,
+                    EMAIL,
+                    TELEFONO,
+                    FECHA_CONTRATO,
+                    SALARIO,
+                    ESTADO,
+                    ID_PUESTO,
+                    ID_USUARIO,
+                } = employee;
+
+                const row = document.createElement('tr');
+
+                row.innerHTML = `
+                    <td>${ID_EMPLEADO}</td>
+                    <td>${NOMBRE}</td>
+                    <td>${APELLIDOS}</td>
+                    <td>${EMAIL}</td>
+                    <td>${TELEFONO}</td>
+                    <td>${FECHA_CONTRATO}</td>
+                    <td>${SALARIO}</td>
+                    <td>${ESTADO}</td>
+                    <td>${ID_PUESTO}</td>
+                    <td>${ID_USUARIO}</td>
+                `;
+
+                tbody.appendChild(row);
+            });
+        };
+
+        fetchEmployees();
+    </script>
+</body>
+</html>

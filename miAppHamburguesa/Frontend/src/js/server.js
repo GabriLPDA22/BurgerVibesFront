@@ -173,10 +173,7 @@ app.post('/login', async (req, res) => {
 /**LOGIN EMPLEADOS Y ADMINISTRADORES */
 
 app.post('/loginAdminEmpleado', async (req, res) => {
-  const {
-    email,
-    password
-  } = req.body;
+  const { email, password } = req.body;
 
   console.log(`Verificando credenciales para ${email}`);
 
@@ -188,9 +185,8 @@ app.post('/loginAdminEmpleado', async (req, res) => {
 
     const result = await connection.execute(
       'SELECT EMAIL, ID_ZONAPRIVADA_EMP, CARGO FROM EMPLEADO WHERE EMAIL = :email AND CONTRASENA = :password',
-      [email, password], {
-        outFormat: oracledb.OUT_FORMAT_OBJECT
-      }
+      [email, password],
+      { outFormat: oracledb.OUT_FORMAT_OBJECT }
     );
 
     console.log('Resultado de la consulta:', result);
@@ -240,29 +236,36 @@ app.post('/loginAdminEmpleado', async (req, res) => {
   }
 });
 
-// Nueva ruta POST para obtener la información del empleado
 app.post('/employeeInfo', async (req, res) => {
-  const {
-    email
-  } = req.body;
+  const { email } = req.body;
 
   console.log(`Obteniendo información para el email: ${email}`);
+
+  if (!email) {
+    console.error('Email no proporcionado en la solicitud');
+    res.status(400).json({ message: 'Email no proporcionado' });
+    return;
+  }
 
   let connection;
 
   try {
     connection = await oracledb.getConnection(dbConfig);
+    console.log('Conexión a la base de datos exitosa');
 
     const result = await connection.execute(
       'SELECT NOMBRE, APELLIDOS, CARGO, EMAIL, TELEFONO, DIRECCION FROM EMPLEADO WHERE EMAIL = :email',
-      [email], {
-        outFormat: oracledb.OUT_FORMAT_OBJECT
-      }
+      [email],
+      { outFormat: oracledb.OUT_FORMAT_OBJECT }
     );
 
+    console.log('Resultado de la consulta:', result);
+
     if (result.rows.length > 0) {
+      console.log('Información del empleado encontrada:', result.rows[0]);
       res.json(result.rows[0]);
     } else {
+      console.log('Empleado no encontrado');
       res.status(404).json({
         message: 'Empleado no encontrado'
       });
@@ -283,6 +286,8 @@ app.post('/employeeInfo', async (req, res) => {
     }
   }
 });
+
+
 
 
 /* PAGO DEL CLIENTE */

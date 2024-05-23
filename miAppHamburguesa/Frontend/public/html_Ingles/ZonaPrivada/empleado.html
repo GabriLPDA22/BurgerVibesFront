@@ -10,10 +10,13 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 20px;
+            background: url('/miAppHamburguesa/Frontend/src/assets/img/FondoRestaurante.jpg') no-repeat center center fixed;
+            background-size: cover;
         }
 
         h1 {
             text-align: center;
+            color: orange;
         }
 
         .info {
@@ -40,39 +43,59 @@
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', async function () {
+        document.addEventListener('DOMContentLoaded', async function() {
             const email = localStorage.getItem('employeeEmail'); // Obtiene el email del almacenamiento local
 
-            console.log('Email retrieved from local storage:', email);
+            console.log('Email retrieved from local storage:', email); // Log para depurar
 
             if (!email) {
                 alert('The employees email address was not found.');
                 return;
             }
 
-            try {
-                console.log(`Realizando solicitud a: http://localhost:8080/employeeInfo?email=${email}`);
-                const response = await fetch(`http://localhost:8080/employeeInfo?email=${email}`);
-                if (!response.ok) {
-                    throw new Error('Error in getting employee information');
-                }
+            const urlEmployeeInfo = 'http://localhost:8080/employeeInfo';
 
-                const employee = await response.json();
+            const fetchEmployeeInfo = async (email) => {
+                try {
+                    const response = await fetch(urlEmployeeInfo, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ email })
+                    });
+
+                    if (!response.ok) {
+                        throw new Error('Error in getting employee information');
+                    }
+
+                    const data = await response.json();
+                    console.log('Información del empleado obtenida de la API:', data);
+                    return data;
+                } catch (error) {
+                    console.error('Error al obtener datos del empleado de la API:', error);
+                    return null;
+                }
+            };
+
+            const printEmployeeInfo = (employee) => {
                 const infoDiv = document.getElementById('employeeInfo');
 
-                console.log('Información del empleado obtenida:', employee);
-
-                infoDiv.innerHTML = `
+                if (employee) {
+                    infoDiv.innerHTML = `
                         <p><strong>Nombre:</strong> ${employee.NOMBRE} ${employee.APELLIDOS}</p>
                         <p><strong>Cargo:</strong> ${employee.CARGO}</p>
                         <p><strong>Email:</strong> ${employee.EMAIL}</p>
                         <p><strong>Teléfono:</strong> ${employee.TELEFONO}</p>
                         <p><strong>Dirección:</strong> ${employee.DIRECCION}</p>
                     `;
-            } catch (error) {
-                console.error(error);
-                alert('An error occurred while loading the employee information.');
-            }
+                } else {
+                    infoDiv.innerHTML = '<p>Error al cargar la información del empleado.</p>';
+                }
+            };
+
+            const employee = await fetchEmployeeInfo(email);
+            printEmployeeInfo(employee);
         });
     </script>
 </body>

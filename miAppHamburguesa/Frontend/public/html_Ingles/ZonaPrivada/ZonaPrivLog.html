@@ -94,6 +94,8 @@
                     const email = document.getElementById('userEmailEmpleados').value;
                     const password = document.getElementById('userPasswordEmpleados').value;
 
+                    console.log('Attempting to login with email:', email); // Log para depurar
+
                     try {
                         const response = await fetch('http://localhost:8080/loginAdminEmpleado', {
                             method: 'POST',
@@ -110,9 +112,13 @@
                         const responseData = await response.json();
                         alert('Inicio de sesión exitoso');
 
+                        console.log('Login response data:', responseData); // Log para depurar
+
                         if (responseData.role === 'admin') {
-                            window.location.href = 'zona_privada.html'; // Actualiza esta línea con el HTML correcto
+                            window.location.href = 'zona_privada.html';
                         } else if (responseData.role === 'employee') {
+                            localStorage.setItem('employeeEmail', responseData.email);  // Guarda el email del empleado en localStorage
+                            console.log('Email guardado en local storage:', responseData.email); // Log para verificar
                             window.location.href = 'zona_privada_empleados.html';
                         } else {
                             alert('Rol no reconocido');
