@@ -55,9 +55,9 @@ app.post('/register', async (req, res) => {
     // Verifica si el usuario o el email ya existen
     const result = await connection.execute(
       `SELECT COUNT(*) AS COUNT FROM CLIENTE WHERE EMAIL = :email OR NOMBRE_USUARIO = :username`, {
-      email,
-      username
-    }
+        email,
+        username
+      }
     );
 
     const userExists = result.rows[0][0] > 0;
@@ -132,9 +132,9 @@ app.post('/login', async (req, res) => {
     // Verifica las credenciales del usuario
     const result = await connection.execute(
       `SELECT ID_CLIENTE, NOMBRE_USUARIO, EMAIL FROM CLIENTE WHERE (EMAIL = :usernameEmail OR NOMBRE_USUARIO = :usernameEmail) AND CONTRASEÑA = :password`, {
-      usernameEmail,
-      password
-    }
+        usernameEmail,
+        password
+      }
     );
 
     if (result.rows.length > 0) {
@@ -169,76 +169,126 @@ app.post('/login', async (req, res) => {
 });
 
 
-/* LOGIN EMPLEADOS Y ADMINISTRADORES */
-app.post('/loginAdminEmpleado', (req, res) => {
-  const { email, password } = req.body;
+
+/**LOGIN EMPLEADOS Y ADMINISTRADORES */
+
+app.post('/loginAdminEmpleado', async (req, res) => {
+  const {
+    email,
+    password
+  } = req.body;
 
   console.log(`Verificando credenciales para ${email}`);
 
-  const query = 'SELECT EMAIL, ID_ZONAPRIVADA_EMP, CARGO FROM EMPLEADO WHERE EMAIL = ? AND CONTRASENA = ?';
-  connection.query(query, [email, password], (error, results) => {
-    if (error) {
-      console.error('Error al intentar iniciar sesión:', error);
-      res.status(500).json({ message: `Error al iniciar sesión: ${error.message}` });
-      return;
-    }
+  let connection;
 
-    console.log('Resultado de la consulta:', results);
+  try {
+    connection = await oracledb.getConnection(dbConfig);
+    console.log('Conexión a la base de datos exitosa');
 
-    if (results.length > 0) {
-      const user = results[0];
+    const result = await connection.execute(
+      'SELECT EMAIL, ID_ZONAPRIVADA_EMP, CARGO FROM EMPLEADO WHERE EMAIL = :email AND CONTRASENA = :password',
+      [email, password], {
+        outFormat: oracledb.OUT_FORMAT_OBJECT
+      }
+    );
+
+    console.log('Resultado de la consulta:', result);
+
+    if (result.rows.length > 0) {
+      const user = result.rows[0];
       const zoneId = user.ID_ZONAPRIVADA_EMP;
       const cargo = user.CARGO;
 
       if (zoneId === 'A001') {
-        res.json({ message: 'Inicio de sesión exitoso', email: user.EMAIL, role: 'admin' });
+        res.json({
+          message: 'Inicio de sesión exitoso',
+          role: 'admin',
+          email: user.EMAIL
+        });
       } else if (zoneId === 'E001') {
-        res.json({ message: 'Inicio de sesión exitoso', email: user.EMAIL, role: 'employee', cargo });
+        res.json({
+          message: 'Inicio de sesión exitoso',
+          role: 'employee',
+          email: user.EMAIL,
+          cargo
+        });
       } else {
-        res.status(401).json({ message: 'Credenciales incorrectas' });
+        res.status(401).json({
+          message: 'Credenciales incorrectas'
+        });
       }
     } else {
-      res.status(401).json({ message: 'Credenciales incorrectas' });
+      res.status(401).json({
+        message: 'Credenciales incorrectas'
+      });
     }
-  });
+  } catch (error) {
+    console.error('Error al intentar iniciar sesión:', error);
+    res.status(500).json({
+      message: `Error al iniciar sesión: ${error.message}`
+    });
+  } finally {
+    if (connection) {
+      try {
+        await connection.close();
+        console.log('Conexión a la base de datos cerrada');
+      } catch (error) {
+        console.error('Error al cerrar la conexión a la base de datos:', error);
+      }
+    }
+  }
 });
 
-/* INFORMACIÓN DEL EMPLEADO */
-app.get('/employeeInfo', (req, res) => {
-  const email = req.query.email;
+// Nueva ruta POST para obtener la información del empleado
+app.post('/employeeInfo', async (req, res) => {
+  const {
+    email
+  } = req.body;
 
   console.log(`Obteniendo información para el email: ${email}`);
 
-  if (!email) {
-    console.error('Email no proporcionado en la solicitud');
-    res.status(400).json({ message: 'Email no proporcionado' });
-    return;
-  }
+  let connection;
 
-  const query = 'SELECT * FROM EMPLEADO WHERE EMAIL = ?';
-  connection.query(query, [email], (error, results) => {
-    if (error) {
-      console.error('Error al obtener la información del empleado:', error);
-      res.status(500).json({ message: `Error al obtener la información del empleado: ${error.message}` });
-      return;
-    }
+  try {
+    connection = await oracledb.getConnection(dbConfig);
 
-    console.log('Resultado de la consulta para obtener información del empleado:', results);
+    const result = await connection.execute(
+      'SELECT NOMBRE, APELLIDOS, CARGO, EMAIL, TELEFONO, DIRECCION FROM EMPLEADO WHERE EMAIL = :email',
+      [email], {
+        outFormat: oracledb.OUT_FORMAT_OBJECT
+      }
+    );
 
-    if (results.length > 0) {
-      res.json(results[0]);
+    if (result.rows.length > 0) {
+      res.json(result.rows[0]);
     } else {
-      res.status(404).json({ message: 'Empleado no encontrado' });
+      res.status(404).json({
+        message: 'Empleado no encontrado'
+      });
     }
-  });
+  } catch (error) {
+    console.error('Error al obtener la información del empleado:', error);
+    res.status(500).json({
+      message: `Error al obtener la información del empleado: ${error.message}`
+    });
+  } finally {
+    if (connection) {
+      try {
+        await connection.close();
+        console.log('Conexión a la base de datos cerrada');
+      } catch (error) {
+        console.error('Error al cerrar la conexión a la base de datos:', error);
+      }
+    }
+  }
 });
-
 
 
 /* PAGO DEL CLIENTE */
 
 // Ruta para procesar el pedido del cliente
-app.post('/procesar-pedido', async (req, res) => {
+/*app.post('/procesar-pedido', async (req, res) => {
   console.log("Solicitud recibida en /procesar-pedido con datos:", req.body);
 
   const {
@@ -370,7 +420,7 @@ app.post('/procesar-pedido', async (req, res) => {
       }
     }
   }
-});
+});*/
 
 // Inicia el servidor y escucha en el puerto 8080
 app.listen(8080, () => {
@@ -378,7 +428,7 @@ app.listen(8080, () => {
 });
 
 // Función para convertir la fecha de vencimiento del formato 'MM/YY' a 'DD/MM/YYYY'
-function convertExpirationDate(expiration) {
+/*function convertExpirationDate(expiration) {
   const [month, year] = expiration.split('/');
   const fullYear = parseInt(year, 10) < 50 ? `20${year}` : `19${year}`;
   return `01/${month}/${fullYear}`;
@@ -387,4 +437,4 @@ function convertExpirationDate(expiration) {
 // Función para formatear la hora de recogida en formato 'HH:MM:SS'
 function formatPickupTime(time) {
   return `${time}:00`;
-}
+}*/

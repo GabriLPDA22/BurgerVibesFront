@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
             event.preventDefault();
             const usernameEmail = document.getElementById('loginUsernameEmail').value;
             const password = document.getElementById('loginPassword').value;
-    
+
             try {
                 // Envía una solicitud POST al servidor para el inicio de sesión
                 const response = await fetch('http://localhost:8080/login', {
@@ -69,12 +69,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     },
                     body: JSON.stringify({ usernameEmail, password })
                 });
-    
+
                 // Si la solicitud no es exitosa, muestra un mensaje de error
                 if (!response.ok) {
                     throw new Error('Error en la respuesta del servidor');
                 }
-    
+
                 // Si la solicitud es exitosa, obtiene los datos de usuario y actualiza la interfaz
                 const responseData = await response.json();
                 alert('Inicio de sesión exitoso');
@@ -90,7 +90,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
-    
+
     // Event listener para el formulario de registro
     if (registerForm) {
         registerForm.addEventListener('submit', async (event) => {
@@ -127,7 +127,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if (logoutBtn) {
         logoutBtn.addEventListener('click', (event) => {
             event.preventDefault();
-            // Elimina los datos de autenticación del almacenamiento local y actualiza la interfaz
             localStorage.removeItem('authenticated');
             localStorage.removeItem('username');
             localStorage.removeItem('email');

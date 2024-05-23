@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,9 +11,11 @@
             margin: 0;
             padding: 20px;
         }
+
         h1 {
             text-align: center;
         }
+
         .info {
             max-width: 600px;
             margin: 0 auto;
@@ -21,54 +24,57 @@
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
+
         .info p {
             margin: 10px 0;
         }
     </style>
 </head>
+
+
+
 <body>
-    
-    <body>
-        <h1>Employee Information</h1>
-        <div class="info" id="employeeInfo">
-            <!-- La información del empleado se cargará aquí -->
-        </div>
-    
-        <script>
-            document.addEventListener('DOMContentLoaded', async function() {
-                const email = localStorage.getItem('employeeEmail'); // Obtiene el email del almacenamiento local
-    
-                console.log('Email retrieved from local storage:', email);
-    
-                if (!email) {
-                    alert('The employees email address was not found.');
-                    return;
+    <h1>Employee Information</h1>
+    <div class="info" id="employeeInfo">
+        <!-- La información del empleado se cargará aquí -->
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', async function () {
+            const email = localStorage.getItem('employeeEmail'); // Obtiene el email del almacenamiento local
+
+            console.log('Email retrieved from local storage:', email);
+
+            if (!email) {
+                alert('The employees email address was not found.');
+                return;
+            }
+
+            try {
+                console.log(`Realizando solicitud a: http://localhost:8080/employeeInfo?email=${email}`);
+                const response = await fetch(`http://localhost:8080/employeeInfo?email=${email}`);
+                if (!response.ok) {
+                    throw new Error('Error in getting employee information');
                 }
-    
-                try {
-                    console.log(`Realizando solicitud a: http://localhost:8080/employeeInfo?email=${email}`);
-                    const response = await fetch(`http://localhost:8080/employeeInfo?email=${email}`);
-                    if (!response.ok) {
-                        throw new Error('Error in getting employee information');
-                    }
-    
-                    const employee = await response.json();
-                    const infoDiv = document.getElementById('employeeInfo');
-    
-                    console.log('Información del empleado obtenida:', employee);
-    
-                    infoDiv.innerHTML = `
+
+                const employee = await response.json();
+                const infoDiv = document.getElementById('employeeInfo');
+
+                console.log('Información del empleado obtenida:', employee);
+
+                infoDiv.innerHTML = `
                         <p><strong>Nombre:</strong> ${employee.NOMBRE} ${employee.APELLIDOS}</p>
                         <p><strong>Cargo:</strong> ${employee.CARGO}</p>
                         <p><strong>Email:</strong> ${employee.EMAIL}</p>
                         <p><strong>Teléfono:</strong> ${employee.TELEFONO}</p>
                         <p><strong>Dirección:</strong> ${employee.DIRECCION}</p>
                     `;
-                } catch (error) {
-                    console.error(error);
-                    alert('An error occurred while loading the employee information.');
-                }
-            });
-        </script>
+            } catch (error) {
+                console.error(error);
+                alert('An error occurred while loading the employee information.');
+            }
+        });
+    </script>
 </body>
+
 </html>

@@ -46,7 +46,7 @@
         }
 
         button {
-            background-color:#F67906;
+            background-color: #F67906;
             color: white;
             padding: 10px;
             border: none;
@@ -71,65 +71,64 @@
 </head>
 
 <body>
-    <div class="popup-login" id="loginPopup">
+    <div class="popup-login" id="loginPopupEmpleados">
         <span class="close-btn">&times;</span>
-        <h5>Access to Private Area</h5>
-        <form id="formAcceso">
-            <label for="userEmail">Mail:</label>
-            <input type="email" id="userEmail" required>
-            <label for="userPassword">Password:</label>
-            <input type="password" id="userPassword" required>
-            <button type="submit">To access</button>
+        <h5>Access to Private Employee Zone</h5>
+        <form id="formAccesoEmpleados">
+            <label for="userEmailEmpleados">Email:</label>
+            <input type="email" id="userEmailEmpleados" required>
+            <label for="userPasswordEmpleados">password:</label>
+            <input type="password" id="userPasswordEmpleados" required>
+            <button type="submit">Access</button>
         </form>
     </div>
 
+
     <script>
-        const closeButton = document.getElementsByClassName('close-btn')[0];
-    
-        closeButton.onclick = function () {
-            window.location.href = '/miAppHamburguesa/Frontend/public/html_Español/es_index.html';
-        }
-    
-        document.getElementById('formAcceso').onsubmit = async function (event) {
-            event.preventDefault();
-            const email = document.getElementById('userEmail').value;
-            const password = document.getElementById('userPassword').value;
-    
-            try {
-                const response = await fetch('http://localhost:8080/loginAdminEmpleado', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({ email, password })
+        document.addEventListener('DOMContentLoaded', () => {
+            const loginFormEmpleados = document.getElementById('formAccesoEmpleados');
+
+            if (loginFormEmpleados) {
+                loginFormEmpleados.addEventListener('submit', async (event) => {
+                    event.preventDefault();
+                    const email = document.getElementById('userEmailEmpleados').value;
+                    const password = document.getElementById('userPasswordEmpleados').value;
+
+                    try {
+                        const response = await fetch('http://localhost:8080/loginAdminEmpleado', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({ email, password })
+                        });
+
+                        if (!response.ok) {
+                            throw new Error('Error en la respuesta del servidor');
+                        }
+
+                        const responseData = await response.json();
+                        alert('Inicio de sesión exitoso');
+
+                        if (responseData.role === 'admin') {
+                            window.location.href = 'zona_privada.html'; // Actualiza esta línea con el HTML correcto
+                        } else if (responseData.role === 'employee') {
+                            window.location.href = 'zona_privada_empleados.html';
+                        } else {
+                            alert('Rol no reconocido');
+                        }
+                    } catch (error) {
+                        console.error('Error:', error);
+                        alert('Error al conectar con el servidor');
+                    }
                 });
-    
-                if (!response.ok) {
-                    const errorText = await response.text();
-                    throw new Error(`HTTP error! status: ${response.status}, message: ${errorText}`);
-                }
-    
-                const data = await response.json();
-    
-                console.log('Successful login', data);
-    
-                // Guardar el email en localStorage
-                localStorage.setItem('employeeEmail', email);
-    
-                // Redirigir a la página correspondiente
-                if (data.role === 'admin') {
-                    window.location.href = 'zona_privada_admin.html';
-                } else if (data.role === 'employee') {
-                    window.location.href = 'zona_privada_empleados.html';
-                }
-            } catch (error) {
-                console.error('Login error:', error);
-                alert('Login error.');
             }
-        }
+        });
+
+
     </script>
-    
-    
+
+
 </body>
 
 </html>
