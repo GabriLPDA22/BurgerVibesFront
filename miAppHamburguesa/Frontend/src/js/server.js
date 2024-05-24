@@ -1,26 +1,37 @@
-// Importa las bibliotecas necesarias
 const express = require('express');
 const bodyParser = require('body-parser');
 const oracledb = require('oracledb');
 const cors = require('cors');
 
 
-// Crea una instancia de la aplicación Express
+oracledb.outFormat = oracledb.OUT_FORMAT_OBJECT;
+
 const app = express();
-
-// Middleware para parsear el cuerpo de las solicitudes como JSON
 app.use(bodyParser.json());
-
-// Middleware para permitir solicitudes desde diferentes orígenes (CORS)
 app.use(cors());
 
-// Configuración de la base de datos Oracle
 const dbConfig = {
   user: 'admin',
   password: '123456789',
   connectString: 'burgervibesbbdd.ceotvomboedr.us-east-1.rds.amazonaws.com:1521/orcl'
 };
 
+let pool;
+
+async function init() {
+  try {
+    pool = await oracledb.createPool(dbConfig);
+    console.log('Pool created');
+
+    app.listen(8080, () => {
+      console.log('Server is running on port 8080');
+    });
+  } catch (err) {
+    console.error('Error creating pool', err);
+  }
+}
+
+init();
 
 // Ruta principal que verifica si el servidor está funcionando
 app.get('/', (req, res) => {
@@ -173,7 +184,10 @@ app.post('/login', async (req, res) => {
 /**LOGIN EMPLEADOS Y ADMINISTRADORES */
 
 app.post('/loginAdminEmpleado', async (req, res) => {
-  const { email, password } = req.body;
+  const {
+    email,
+    password
+  } = req.body;
 
   console.log(`Verificando credenciales para ${email}`);
 
@@ -185,8 +199,9 @@ app.post('/loginAdminEmpleado', async (req, res) => {
 
     const result = await connection.execute(
       'SELECT EMAIL, ID_ZONAPRIVADA_EMP, CARGO FROM EMPLEADO WHERE EMAIL = :email AND CONTRASENA = :password',
-      [email, password],
-      { outFormat: oracledb.OUT_FORMAT_OBJECT }
+      [email, password], {
+        outFormat: oracledb.OUT_FORMAT_OBJECT
+      }
     );
 
     console.log('Resultado de la consulta:', result);
@@ -237,13 +252,17 @@ app.post('/loginAdminEmpleado', async (req, res) => {
 });
 
 app.post('/employeeInfo', async (req, res) => {
-  const { email } = req.body;
+  const {
+    email
+  } = req.body;
 
   console.log(`Obteniendo información para el email: ${email}`);
 
   if (!email) {
     console.error('Email no proporcionado en la solicitud');
-    res.status(400).json({ message: 'Email no proporcionado' });
+    res.status(400).json({
+      message: 'Email no proporcionado'
+    });
     return;
   }
 
@@ -255,8 +274,9 @@ app.post('/employeeInfo', async (req, res) => {
 
     const result = await connection.execute(
       'SELECT NOMBRE, APELLIDOS, CARGO, EMAIL, TELEFONO, DIRECCION FROM EMPLEADO WHERE EMAIL = :email',
-      [email],
-      { outFormat: oracledb.OUT_FORMAT_OBJECT }
+      [email], {
+        outFormat: oracledb.OUT_FORMAT_OBJECT
+      }
     );
 
     console.log('Resultado de la consulta:', result);
@@ -288,9 +308,148 @@ app.post('/employeeInfo', async (req, res) => {
 });
 
 
-
-
 /* PAGO DEL CLIENTE */
+
+
+app.post('/api/pedido', async (req, res) => {
+  const { fullName, phoneNumber, email, address, pickupTime, restaurantNote, promoCode, cardNumber, cardExpiry, country, items, totalPedido, idCliente, idEmpleado } = req.body;
+
+  let connection;
+
+  try {
+    connection = await pool.getConnection();
+    console.log('Conexión a la base de datos exitosa');
+    console.log('Datos recibidos para el pedido:', {
+      idCliente,
+      idEmpleado,
+      fullName,
+      phoneNumber,
+      email,
+      address,
+      pickupTime,
+      restaurantNote,
+      promoCode,
+      cardNumber,
+      cardExpiry,
+      country,
+      totalPedido,
+      items
+    });
+
+    const resultPedido = await connection.execute(
+      `INSERT INTO PEDIDO (FECHA, TIPOENTREGA, ID_CLIENTE_PED, ID_EMPLEADO_PED, CANTIDAD)
+       VALUES (SYSDATE, 'PICKUP', :idCliente, :idEmpleado, :cantidad) RETURNING ID_PEDIDO INTO :idPedido`,
+      { idCliente, idEmpleado, cantidad: items.length, idPedido: { type: oracledb.NUMBER, dir: oracledb.BIND_OUT } }
+    );
+
+    const idPedido = resultPedido.outBinds.idPedido[0];
+    console.log('ID Pedido insertado:', idPedido);
+
+    const resultDetalle = await connection.execute(
+      `INSERT INTO DETALLESPEDIDO (ID_DETALLES, ID_PEDIDO_DET, NOMBRE, TELEFONO, EMAIL, DIRECCION, HORA_ENTREGA, NOTA, COD_PROMOCIONAL, TOTALPEDIDO)
+       VALUES (DETALLESPEDIDO_SEQ.NEXTVAL, :idPedido, :fullName, :phoneNumber, :email, :address, :pickupTime, :restaurantNote, :promoCode, :totalPedido)`,
+      { idPedido, fullName, phoneNumber, email, address, pickupTime, restaurantNote, promoCode, totalPedido }
+    );
+
+    console.log('ID Detalle insertado:', resultDetalle.outBinds);
+
+    await connection.execute(
+      `INSERT INTO PAGO (METODOPAGO, ID_PEDIDO_PAG, NUM_TARJETA, EXPIRACION, PAIS)
+       VALUES ('CARD', :idPedido, :cardNumber, :cardExpiry, :country)`,
+      { idPedido, cardNumber, cardExpiry, country }
+    );
+
+    await connection.commit();
+    res.json({ message: 'Pedido realizado con éxito' });
+  } catch (error) {
+    console.error('Error al realizar el pedido:', error);
+    res.status(500).json({ message: 'Error al realizar el pedido' });
+  } finally {
+    if (connection) {
+      try {
+        await connection.close();
+        console.log('Conexión a la base de datos cerrada');
+      } catch (error) {
+        console.error('Error al cerrar la conexión a la base de datos:', error);
+      }
+    }
+  }
+});
+
+app.get('/api/pedido', async (req, res) => {
+  let connection;
+
+  try {
+    connection = await pool.getConnection();
+    console.log('Conexión a la base de datos exitosa');
+
+    const result = await connection.execute(
+      `SELECT NOMBRE, TO_CHAR(PEDIDO.FECHA, 'DD-MM-YYYY HH24:MI:SS') AS FECHA, DETALLESPEDIDO.HORA_ENTREGA, DETALLESPEDIDO.NOTA 
+       FROM PEDIDO 
+       JOIN DETALLESPEDIDO ON PEDIDO.ID_PEDIDO = DETALLESPEDIDO.ID_PEDIDO_DET
+       ORDER BY PEDIDO.FECHA DESC`,
+      [], {
+        outFormat: oracledb.OUT_FORMAT_OBJECT
+      }
+    );
+
+    res.json(result.rows);
+  } catch (error) {
+    console.error('Error al obtener el pedido:', error);
+    res.status(500).json({
+      message: 'Error al obtener el pedido'
+    });
+  } finally {
+    if (connection) {
+      try {
+        await connection.close();
+        console.log('Conexión a la base de datos cerrada');
+      } catch (error) {
+        console.error('Error al cerrar la conexión a la base de datos:', error);
+      }
+    }
+  }
+});
+
+
+/**PEDIDOS DE LA PERSONA PARA QUE LOS VEA */
+
+/*app.get('/api/pedidos', async (req, res) => {
+  let connection;
+
+  try {
+    connection = await oracledb.getConnection(dbConfig);
+    console.log('Conexión a la base de datos exitosa');
+
+    const result = await connection.execute(
+      'SELECT * FROM PEDIDO',
+      [],
+      { outFormat: oracledb.OUT_FORMAT_OBJECT }
+    );
+
+    if (result.rows.length > 0) {
+      res.json(result.rows);
+    } else {
+      res.status(404).json({
+        message: 'No se encontraron pedidos'
+      });
+    }
+  } catch (error) {
+    console.error('Error al obtener los pedidos:', error);
+    res.status(500).json({ message: 'Error al obtener los pedidos' });
+  } finally {
+    if (connection) {
+      try {
+        await connection.close();
+        console.log('Conexión a la base de datos cerrada');
+      } catch (error) {
+        console.error('Error al cerrar la conexión a la base de datos:', error);
+      }
+    }
+  }
+});*/
+
+
 
 // Ruta para procesar el pedido del cliente
 /*app.post('/procesar-pedido', async (req, res) => {
@@ -427,10 +586,6 @@ app.post('/employeeInfo', async (req, res) => {
   }
 });*/
 
-// Inicia el servidor y escucha en el puerto 8080
-app.listen(8080, () => {
-  console.log('Server is running on port 8080');
-});
 
 // Función para convertir la fecha de vencimiento del formato 'MM/YY' a 'DD/MM/YYYY'
 /*function convertExpirationDate(expiration) {

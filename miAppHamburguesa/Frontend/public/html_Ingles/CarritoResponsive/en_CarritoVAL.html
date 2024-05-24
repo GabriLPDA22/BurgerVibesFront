@@ -165,7 +165,8 @@
                 <!-- Contenido del menú de usuario -->
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                     <a class="dropdown-item" href="#"><i class="fas fa-shopping-cart"></i> New order</a>
-                    <a class="dropdown-item" href="#"><i class="fas fa-clipboard-list"></i> My orders</a>
+                    <a href="/miAppHamburguesa/Frontend/public/html_Ingles/CarritoResponsive/ve_pedidos.html"
+                        class="dropdown-item"><i class="fas fa-clipboard-list"></i> My orders</a>
                     <!-- Agrega un ID aquí para el enlace de desconexión -->
                     <a class="dropdown-item" href="#" id="signOutLink"><i class="fas fa-sign-out-alt"></i>
                         Disconnect</a>
@@ -370,7 +371,34 @@
         });
     </script>
 
+    <script>
+        document.getElementById('paymentForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
 
+            const formData = new FormData(e.target);
+            const data = Object.fromEntries(formData.entries());
+
+            try {
+                const response = await fetch('http://localhost:8080/api/pedido', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                });
+
+                const result = await response.json();
+                if (response.ok) {
+                    alert('Pedido realizado con éxito!');
+                } else {
+                    alert('Error al realizar el pedido: ' + result.message);
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Error al conectar con el servidor');
+            }
+        });
+    </script>
 
 
     <!--MODAL DEL LOGIN-->
@@ -395,7 +423,6 @@
 
 
 
-    <!-- Modal de registro -->
     <!-- Modal de registro -->
     <div id="modalRegister" class="modal2" style="display:none;">
         <div class="modal2-content">
