@@ -1,99 +1,77 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Información de Empleados</title>
-    <style>
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-        th, td {
-            border: 1px solid #ddd;
-            padding: 8px;
-        }
-        th {
-            background-color: #f2f2f2;
-        }
-    </style>
+    <link rel="stylesheet" href="/miAppHamburguesa/Frontend/src/css/ZonaPrivada/TodoZonaPRivada.css">
+    <title>Employees</title>
 </head>
 <body>
-    <h1>Información de Empleados</h1>
-    <table id="tablaEmpleados">
+    <h1>List of employees</h1>
+    <table id="tablaEmpleado">
         <thead>
             <tr>
-                <th>ID Empleado</th>
-                <th>Nombre</th>
-                <th>Apellido</th>
+                <th>Employee ID</th>
+                <th>Name</th>
+                <th>last name</th>
+                <th>Address</th>
+                <th>Position</th>
                 <th>Email</th>
-                <th>Teléfono</th>
-                <th>Fecha Contrato</th>
-                <th>Salario</th>
-                <th>Estado</th>
-                <th>ID Puesto</th>
-                <th>ID Usuario</th>
+                <th>Phone</th>
+                <th>Private Zone ID</th>
+                <th>Password</th>
             </tr>
         </thead>
         <tbody>
-            <!-- La información de los empleados se cargará aquí -->
+            <!-- Los empleados se agregarán aquí mediante JavaScript -->
         </tbody>
     </table>
 
-    <script>
-        //Fetch de empleados de la BBDD
-        const urlEmployees = 'http://localhost:8080/Nakama/Controller?ACTION=EMPLEADOS.FIND_ALL';
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
 
-        const fetchEmployees = async () => {
-            try {
-                const result = await fetch(urlEmployees);
-                const data = await result.json();
-                console.log('Empleados obtenidos de la API:', data);
-                printEmployees(data);
-            } catch (error) {
-                console.error('Error al obtener datos de la API:', error);
-            }
-        };
+        h1 {
+            margin: 20px 0;
+        }
 
-        const printEmployees = (employees) => {
-            const table = document.getElementById('tablaEmpleados');
-            const tbody = table.querySelector('tbody');
-            table.style.display = 'table';  
+        table {
+            width: 80%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            display: none; /* Oculta la tabla hasta que se carguen los datos */
+        }
 
-            employees.forEach(employee => {
-                const {
-                    ID_EMPLEADO,
-                    NOMBRE,
-                    APELLIDOS,
-                    EMAIL,
-                    TELEFONO,
-                    FECHA_CONTRATO,
-                    SALARIO,
-                    ESTADO,
-                    ID_PUESTO,
-                    ID_USUARIO,
-                } = employee;
+        table, th, td {
+            border: 1px solid #ddd;
+        }
 
-                const row = document.createElement('tr');
+        th, td {
+            padding: 12px;
+            text-align: left;
+        }
 
-                row.innerHTML = `
-                    <td>${ID_EMPLEADO}</td>
-                    <td>${NOMBRE}</td>
-                    <td>${APELLIDOS}</td>
-                    <td>${EMAIL}</td>
-                    <td>${TELEFONO}</td>
-                    <td>${FECHA_CONTRATO}</td>
-                    <td>${SALARIO}</td>
-                    <td>${ESTADO}</td>
-                    <td>${ID_PUESTO}</td>
-                    <td>${ID_USUARIO}</td>
-                `;
+        th {
+            background-color: #F67906;
+            color: white;
+        }
 
-                tbody.appendChild(row);
-            });
-        };
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
 
-        fetchEmployees();
-    </script>
+        tr:hover {
+            background-color: #ddd;
+        }
+    </style>
+
+    <script src="/miAppHamburguesa/Frontend/src/js/Empleados_zona_priv.js"></script>
 </body>
 </html>

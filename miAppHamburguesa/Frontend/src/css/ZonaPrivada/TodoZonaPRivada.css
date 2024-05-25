@@ -1,0 +1,9 @@
+/*COMITE DE EMPRESA*/
+@media (max-width:430px) {
+    
+    .navigation-tabs{
+        display: none;
+    }
+
+
+}
