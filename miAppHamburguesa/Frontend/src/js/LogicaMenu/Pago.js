@@ -81,7 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         }
                     }
 
-                    const idCliente = localStorage.getItem('idCliente');
+                    const idCliente = localStorage.getItem('ID_CLIENTE');
                     const idEmpleado = getRandomEmpleado();
 
                     if (!idCliente || !idEmpleado) {
@@ -89,24 +89,22 @@ document.addEventListener('DOMContentLoaded', () => {
                         return;
                     }
 
-                    const cardExpiry = document.getElementById('card-expiry').value;
+                    const pickupTime = document.getElementById('pickup-time').value; // Obtener pickupTime
 
                     const paymentDetails = {
                         fullName: document.getElementById('full-name').value,
                         phoneNumber: document.getElementById('phone-number').value,
                         email: document.getElementById('email').value,
                         address: document.getElementById('address').value,
-                        pickupTime: document.getElementById('pickup-time').value,
+                        pickupTime: pickupTime, // Incluir pickupTime
                         restaurantNote: document.getElementById('restaurant-note').value,
                         promoCode: document.getElementById('promo-code').value,
                         items: cartItems,
-                        totalPedido: parseFloat(document.getElementById('total-price').textContent.replace('€', '').trim()), // Total calculado localmente
+                        totalPedido: parseFloat(document.getElementById('total-price').textContent.replace('€', '').trim()),
                         metodoPago: 'Tarjeta',
-                        cardNumber: document.getElementById('card-number').value,
-                        cardExpiry: cardExpiry,
                         country: document.getElementById('country').value,
-                        idCliente: idCliente, // Obtener idCliente de localStorage
-                        idEmpleado: idEmpleado // Obtener un idEmpleado aleatorio
+                        idCliente: idCliente,
+                        idEmpleado: idEmpleado
                     };
 
                     console.log('Detalles del pago:', paymentDetails);

@@ -1,6 +1,6 @@
 
 
-let productsJson = JSON.parse(localStorage.getItem('productsJson')) || {
+/*let productsJson = JSON.parse(localStorage.getItem('productsJson')) || {
     "productos": {
         "Entrantes": [
             { "id": 1, "nombre": "Nachos Rainforest", "precio": 12.5, "descripcion": "Inspired by Rainforest Cafe in Chicago. Corn chips, cheddar cream, guacamole, shredded meat, pico de gallo, and sour cream.", "disponible": true },
@@ -225,4 +225,4 @@ document.addEventListener('DOMContentLoaded', function() {
     loadFromLocalStorage();
     loadProducts();
     updateMenu(); // Actualiza el menú al cargar la página
-});
+});*/
