@@ -110,7 +110,7 @@
             const tbody = table.querySelector('tbody');
     
             pedido.forEach(detalle => {
-                const { NOMBRE, HORA_ENTREGA, NOTA, IMAGEN_PRODUCTO } = detalle;
+                const { NOMBRE, HORA_ENTREGA, NOTA } = detalle;
     
                 const row = document.createElement('tr');
     
@@ -118,7 +118,6 @@
                     <td>${NOMBRE}</td>
                     <td>${HORA_ENTREGA || 'No hay'}</td>
                     <td>${NOTA || 'No hay'}</td>
-                    <td><img src="${IMAGEN_PRODUCTO || 'ruta/a/imagen/por/defecto.jpg'}" alt="Imagen del Producto" width="50" height="50"></td>
                 `;
     
                 tbody.appendChild(row);
@@ -127,6 +126,7 @@
     
         fetchPedido();
     </script>
+    
     
     
     

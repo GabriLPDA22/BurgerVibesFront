@@ -64,6 +64,18 @@ document.addEventListener('DOMContentLoaded', () => {
         return empleados[randomIndex];
     }
 
+    function getCurrentFormattedDateTime() {
+        const now = new Date();
+        const year = now.getFullYear();
+        const month = String(now.getMonth() + 1).padStart(2, '0'); // Los meses comienzan en 0, así que se suma 1
+        const day = String(now.getDate()).padStart(2, '0');
+        const hours = String(now.getHours()).padStart(2, '0');
+        const minutes = String(now.getMinutes()).padStart(2, '0');
+        const seconds = String(now.getSeconds()).padStart(2, '0');
+
+        return `${year}-${month}-${day}-${hours}-${minutes}-${seconds} `;
+    }
+
     function handlePayment(buttonId) {
         const payButton = document.getElementById(buttonId);
         if (payButton) {
@@ -89,14 +101,16 @@ document.addEventListener('DOMContentLoaded', () => {
                         return;
                     }
 
-                    const pickupTime = document.getElementById('pickup-time').value; // Obtener pickupTime
+                    const pickupTime = document.getElementById('pickup-time').value;
+                    const currentDateTime = getCurrentFormattedDateTime(); // Obtener la fecha y hora actuales
 
                     const paymentDetails = {
                         fullName: document.getElementById('full-name').value,
                         phoneNumber: document.getElementById('phone-number').value,
                         email: document.getElementById('email').value,
                         address: document.getElementById('address').value,
-                        pickupTime: pickupTime, // Incluir pickupTime
+                        pickupTime: pickupTime,
+                        currentDateTime: currentDateTime, // Agregar la fecha y hora actuales
                         restaurantNote: document.getElementById('restaurant-note').value,
                         promoCode: document.getElementById('promo-code').value,
                         items: cartItems,
