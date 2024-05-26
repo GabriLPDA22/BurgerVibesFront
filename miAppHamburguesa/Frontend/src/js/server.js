@@ -299,7 +299,8 @@ app.post('/api/pedido', async (req, res) => {
     phoneNumber,
     email,
     address,
-    pickupTime, // Incluir pickupTime
+    pickupTime,
+    currentDateTime, // Recibir la fecha actual
     restaurantNote,
     promoCode,
     country,
@@ -321,7 +322,8 @@ app.post('/api/pedido', async (req, res) => {
       phoneNumber,
       email,
       address,
-      pickupTime, // Mostrar pickupTime en los logs
+      pickupTime,
+      currentDateTime, // Mostrar la fecha actual
       restaurantNote,
       promoCode,
       country,
@@ -330,11 +332,12 @@ app.post('/api/pedido', async (req, res) => {
     });
 
     const resultPedido = await connection.execute(
-      `INSERT INTO PEDIDO (ID_PEDIDO, TIPOENTREGA, ID_CLIENTE_PED, ID_EMPLEADO_PED, CANTIDAD)
-       VALUES (PEDIDO_SEQ.NEXTVAL, 'PICKUP', :idCliente, :idEmpleado, :cantidad) RETURNING ID_PEDIDO INTO :idPedido`, {
+      `INSERT INTO PEDIDO (ID_PEDIDO, TIPOENTREGA, FECHA, ID_CLIENTE_PED, ID_EMPLEADO_PED, CANTIDAD)
+       VALUES (PEDIDO_SEQ.NEXTVAL, 'PICKUP', TO_DATE(:currentDateTime, 'YYYY-MM-DD'), :idCliente, :idEmpleado, :cantidad) RETURNING ID_PEDIDO INTO :idPedido`, {
         idCliente,
         idEmpleado,
         cantidad: items.length,
+        currentDateTime, // Insertar la fecha actual
         idPedido: {
           type: oracledb.NUMBER,
           dir: oracledb.BIND_OUT
@@ -353,7 +356,7 @@ app.post('/api/pedido', async (req, res) => {
         phoneNumber,
         email,
         address,
-        pickupTime, // Incluir pickupTime
+        pickupTime, // Asegúrate de que HORA_ENTREGA sea un campo VARCHAR en la base de datos
         restaurantNote,
         promoCode,
         totalPedido
@@ -392,9 +395,6 @@ app.post('/api/pedido', async (req, res) => {
 });
 
 
-
-
-
 app.get('/api/pedido', async (req, res) => {
   let connection;
 
@@ -403,7 +403,7 @@ app.get('/api/pedido', async (req, res) => {
     console.log('Conexión a la base de datos exitosa');
 
     const result = await connection.execute(
-      `SELECT NOMBRE, HORA_ENTREGA, NOTA, IMAGEN_PRODUCTO
+      `SELECT NOMBRE, HORA_ENTREGA, NOTA
        FROM DETALLESPEDIDO 
        JOIN PEDIDO ON PEDIDO.ID_PEDIDO = DETALLESPEDIDO.ID_PEDIDO_DET
        ORDER BY PEDIDO.FECHA DESC`,
