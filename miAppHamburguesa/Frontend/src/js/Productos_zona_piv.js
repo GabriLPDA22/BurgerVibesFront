@@ -41,10 +41,9 @@ const printProducts = (products) => {
             <td>${DisponibleEnZgz}</td>
             <td>${ID_Categoria_pro}</td>
             <td class="action-buttons">
-            <button onclick="openEditModal('${ID_Producto}', '${Precio}', '${Nombre}', '${Descripcion}', '${DisponibleEnVlc}', '${DisponibleEnZgz}', '${ID_Categoria_pro}')">Editar</button>
-
-            <button onclick="deleteProduct('${ID_Producto}')">Borrar</button>
-            <button onclick="disableProduct('${ID_Producto}')">Inhabilitar</button>
+            <button onclick="openEditModal('${ID_Producto}', '${Precio}', '${Nombre}', '${Descripcion}', '${DisponibleEnVlc}', '${DisponibleEnZgz}', '${ID_Categoria_pro}')">Update</button>
+            <button onclick="deleteProduct('${ID_Producto}')">Delete</button>
+            
             
             </td>
         `;
@@ -56,7 +55,7 @@ const printProducts = (products) => {
 // Esta función abre el modal de edición con los datos del producto
 const openEditModal = (ID_Producto, Precio, Nombre, Descripcion, DisponibleEnVlc, DisponibleEnZgz, ID_Categoria_pro) => {
     Swal.fire({
-        title: 'Editar Producto',
+        title: 'Edit Product',
         html: `
             <input id="ID_Producto" type="hidden" value="${ID_Producto}">
             <input id="Precio" class="swal2-input" placeholder="Precio" value="${Precio}">
@@ -65,6 +64,7 @@ const openEditModal = (ID_Producto, Precio, Nombre, Descripcion, DisponibleEnVlc
             <input id="DisponibleEnVlc" class="swal2-input" placeholder="Disponible en VLC" value="${DisponibleEnVlc}">
             <input id="DisponibleEnZgz" class="swal2-input" placeholder="Disponible en ZGZ" value="${DisponibleEnZgz}">
             <input id="ID_Categoria_pro" class="swal2-input" placeholder="ID Categoria" value="${ID_Categoria_pro}">
+        
         `,
         focusConfirm: false,
         preConfirm: () => {
@@ -142,15 +142,16 @@ const disableProduct = (ID_Producto) => {
 
 const addProduct = () => {
     Swal.fire({
-        title: 'Añadir Producto',
+        title: 'Add Product',
         html: `
-            <input id="ID_Producto" class="swal2-input" placeholder="ID del producto">
-            <input id="Precio" class="swal2-input" placeholder="Precio">
-            <input id="Nombre" class="swal2-input" placeholder="Nombre">
-            <textarea id="Descripcion" class="swal2-textarea" placeholder="Descripcion"></textarea>
-            <input id="DisponibleEnVlc" class="swal2-input" placeholder="Disponible en VLC">
-            <input id="DisponibleEnZgz" class="swal2-input" placeholder="Disponible en ZGZ">
-            <input id="ID_Categoria_pro" class="swal2-input" placeholder="ID Categoria">
+        <input id="ID_Product" class="swal2-input" placeholder="Product ID">
+        <input id="Price" class="swal2-input" placeholder="Price">
+        <input id="Name" class="swal2-input" placeholder="Name">
+        <textarea id="Description" class="swal2-textarea" placeholder="Description"></textarea>
+        <input id="AvailableInVlc" class="swal2-input" placeholder="Available in VLC">
+        <input id="AvailableInZgz" class="swal2-input" placeholder="Available in ZGZ">
+        <input id="CategoryID" class="swal2-input" placeholder="Category ID">
+        
         `,
         focusConfirm: false,
         preConfirm: () => {
@@ -205,7 +206,10 @@ const createProduct = async (newProduct) => {
     }
 };
 
-
+document.getElementById('updateButton').addEventListener('click', () => {
+    // Recargar la página
+    location.reload();
+});
 
 document.getElementById('updateButton').addEventListener('click', fetchProducts);
 document.getElementById('addButton').addEventListener('click', addProduct);

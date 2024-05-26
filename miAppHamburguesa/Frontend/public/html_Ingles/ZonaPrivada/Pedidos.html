@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Ver Pedidos - Zona Privada</title>
+    <title>View Orders - Private Area</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
         body {
@@ -16,7 +16,7 @@
         }
 
         .order-container {
-            max-width: 800px;
+            max-width: 1150px;
             margin: 0 auto;
             background-color: #fff;
             padding: 20px;
@@ -70,93 +70,81 @@
 <body>
     <div class="order-container">
         <div class="order-header">
-            <h1>Pedidos Realizados</h1>
+            <h1>Orders</h1>
         </div>
-        <!-- Selector de ubicación para demostración -->
-        <select id="locationSelect">
-            <option value="Valencia">Valencia</option>
-            <option value="Zaragoza">Zaragoza</option>
-            <option value="Zaragoza">Todos</option>
-        </select>
-        <div class="order-column" id="valencia-orders-container" data-nombredelsitio="Valencia">
-            <div class="order-header">
-                <h2>Pedidos para Valencia</h2>
-            </div>
-            <div id="valencia-orders" class="orders-container"></div>
-        </div>
-        <div class="order-column" id="zaragoza-orders-container" data-nombredelsitio="Zaragoza">
-            <div class="order-header">
-                <h2>Pedidos para Zaragoza</h2>
-            </div>
-            <div id="zaragoza-orders" class="orders-container"></div>
-        </div>
+        <table id="tablaPedido" class="table">
+            <thead>
+                <tr>
+                    <th>Order ID</th>
+                    <th>Date</th>
+                    <th>Delivery Type</th>
+                    <th>Quantity</th>
+                    <th>Customer ID</th>
+                    <th>Employee ID</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+        <div id="error-msg" class="order-empty" style="display: none;">Error al obtener los pedidos.</div>
     </div>
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const locationSelect = document.getElementById('locationSelect');
-
-            // Intenta obtener una ubicación guardada previamente o establece 'Zaragoza' como predeterminado si no hay ninguna guardada
-            const defaultLocation = localStorage.getItem('lastLocationUsed') || 'Zaragoza';
-            locationSelect.value = defaultLocation; // Establece la ubicación guardada o por defecto
-            loadOrders(); // Carga los pedidos para la ubicación seleccionada al cargar la página
-
-            locationSelect.addEventListener('change', function () {
-                localStorage.setItem('lastLocationUsed', this.value); // Guarda la ubicación seleccionada
-                loadOrders(); // Carga los pedidos cuando se cambia la ubicación
-            });
-        });
-
-        function loadOrders() {
-            const currentLocation = determineLocation();
-            if (!currentLocation) {
-                hideAllOrderContainers();
-                return;
-            }
-
-            hideAllOrderContainers();
-            const ordersData = localStorage.getItem('orders');
-            const orders = JSON.parse(ordersData) || [];
-            const ordersContainer = document.getElementById(currentLocation.toLowerCase() + '-orders-container');
-
-            ordersContainer.innerHTML = ''; // Limpia el contenedor antes de añadir nuevos elementos
-
-            orders.forEach(order => {
-                if (order.location === currentLocation) {
-                    const orderBlock = document.createElement('div');
-                    orderBlock.classList.add('order-block');
-                    let productsHtml = order.items.map(item => `
-                        <div class="product-info">
-                            <div><h4 class="product-name">${item.name}</h4><p>Cantidad: ${item.quantity}</p></div>
-                            <div><p class="text-muted">Precio: ${item.price.toFixed(2)} €</p></div>
-                        </div>
-                    `).join('');
-                    orderBlock.innerHTML = `<h3>Pedido de ${order.username} realizado el ${new Date(order.timestamp).toLocaleString()}</h3>${productsHtml}`;
-                    ordersContainer.appendChild(orderBlock);
-                }
-            });
-
-            if (!ordersContainer.children.length) {
-                ordersContainer.innerHTML = '<div class="order-empty"><span>No se ha realizado ningún pedido en ' + currentLocation + ' aún</span></div>';
-            }
-
-            ordersContainer.style.display = 'block';
-        }
-
-        function determineLocation() {
-            return document.getElementById('locationSelect').value;
-        }
-
-        function hideAllOrderContainers() {
-            document.getElementById('valencia-orders-container').style.display = 'none';
-            document.getElementById('zaragoza-orders-container').style.display = 'none';
-        }
-    </script>
-
 
     <!-- Bootstrap JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        const urlPedidos = 'http://localhost:8080/BuergerVibes/Controller?ACTION=PEDIDO.FIND_ALL';
+
+        const fetchPedidos = async () => {
+            try {
+                const result = await fetch(urlPedidos);
+                if (!result.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                const data = await result.json();
+                console.log('Pedidos obtenidos de la API:', data);
+                printPedidos(data);
+            } catch (error) {
+                console.error('Error al obtener datos de la API:', error);
+                document.getElementById('error-msg').style.display = 'block';
+            }
+        };
+
+        const printPedidos = (pedidos) => {
+            const tbody = document.querySelector('#tablaPedido tbody');
+
+            // Limpiar el tbody antes de agregar nuevas filas
+            tbody.innerHTML = '';
+
+            pedidos.forEach(pedido => {
+                const {
+                    ID_Pedido,
+                    Fecha,
+                    TipoEntrega,
+                    Cantidad,
+                    ID_Cliente_ped,
+                    ID_Empleado_ped
+                } = pedido;
+
+                const row = document.createElement('tr');
+
+                row.innerHTML = `
+                    <td>${ID_Pedido}</td>
+                    <td>${Fecha}</td>
+                    <td>${TipoEntrega}</td>
+                    <td>${Cantidad}</td>
+                    <td>${ID_Cliente_ped}</td>
+                    <td>${ID_Empleado_ped}</td>
+                `;
+
+                tbody.appendChild(row);
+            });
+        };
+
+        fetchPedidos();
+
+    </script>
 </body>
 
 </html>
