@@ -42,9 +42,8 @@ const printProducts = (products) => {
             <td>${ID_Categoria_pro}</td>
             <td class="action-buttons">
             <button onclick="openEditModal('${ID_Producto}', '${Precio}', '${Nombre}', '${Descripcion}', '${DisponibleEnVlc}', '${DisponibleEnZgz}', '${ID_Categoria_pro}')">Editar</button>
-
             <button onclick="deleteProduct('${ID_Producto}')">Borrar</button>
-            <button onclick="disableProduct('${ID_Producto}')">Inhabilitar</button>
+            
             
             </td>
         `;
