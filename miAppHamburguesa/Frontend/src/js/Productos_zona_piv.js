@@ -41,9 +41,11 @@ const printProducts = (products) => {
             <td>${DisponibleEnZgz}</td>
             <td>${ID_Categoria_pro}</td>
             <td class="action-buttons">
-                <button onclick="openEditModal('${ID_Producto}', '${Precio}', '${Nombre}', '${Descripcion}', '${DisponibleEnVlc}', '${DisponibleEnZgz}', '${ID_Categoria_pro}')">Editar</button>
-                <button onclick="deleteProduct('${ID_Producto}')">Borrar</button>
-                <button onclick="disableProduct('${ID_Producto}')">Inhabilitar</button>
+            <button onclick="openEditModal('${ID_Producto}', '${Precio}', '${Nombre}', '${Descripcion}', '${DisponibleEnVlc}', '${DisponibleEnZgz}', '${ID_Categoria_pro}')">Editar</button>
+
+            <button onclick="deleteProduct('${ID_Producto}')">Borrar</button>
+            <button onclick="disableProduct('${ID_Producto}')">Inhabilitar</button>
+            
             </td>
         `;
 
@@ -51,6 +53,7 @@ const printProducts = (products) => {
     });
 };
 
+// Esta función abre el modal de edición con los datos del producto
 const openEditModal = (ID_Producto, Precio, Nombre, Descripcion, DisponibleEnVlc, DisponibleEnZgz, ID_Categoria_pro) => {
     Swal.fire({
         title: 'Editar Producto',
@@ -84,15 +87,16 @@ const openEditModal = (ID_Producto, Precio, Nombre, Descripcion, DisponibleEnVlc
 };
 
 const updateProduct = async (ID_Producto, updatedData) => {
-    console.log('Datos a actualizar:', updatedData); // Añadir este log
-    const url = `http://localhost:8080/BuergerVibes/Controller?ACTION=PRODUCTO.UPDATE&ID_PRODUCTO=${ID_Producto}`;
+    console.log('Datos a actualizar:', updatedData); // Añadir este log para depuración
+
+    const url = `http://localhost:8080/BuergerVibes/Controller?ACTION=PRODUCTO.UPDATE&ID_PRODUCTO=${(updatedData.ID_Producto)}&PRECIO=${(updatedData.Precio)}&NOMBRE=${(updatedData.Nombre)}&DESCRIPCION=${(updatedData.Descripcion)}&DISPONIBLEENVLC=${(updatedData.DisponibleEnVlc)}&DISPONIBLEENZGZ=${(updatedData.DisponibleEnZgz)}&ID_CATEGORIA_PRO=${(updatedData.ID_Categoria_pro)}`;
+
     try {
         const response = await fetch(url, {
             method: 'PUT',
             headers: {
-                'Content-Type': 'application/x-www-form-urlencoded'
-            },
-            body: new URLSearchParams(updatedData)
+                'Content-Type': 'application/json' // Aunque estamos usando parámetros en la URL, mantener este encabezado para evitar problemas
+            }
         });
         if (!response.ok) {
             throw new Error('Error al actualizar el producto.');
@@ -105,7 +109,6 @@ const updateProduct = async (ID_Producto, updatedData) => {
         Swal.fire('Error al actualizar', error.message, 'error');
     }
 };
-
 
 
 
