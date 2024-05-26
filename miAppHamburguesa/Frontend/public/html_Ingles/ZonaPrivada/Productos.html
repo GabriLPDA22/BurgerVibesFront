@@ -1,15 +1,37 @@
-<!DOCTYPE html>
-<html lang="es">
-
 <head>
     <meta charset="UTF-8">
-    <title>Product Management - Burger Vibes</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productos</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+</head>
+
+<body>
+    <h1>Lista de Productos</h1>
+    <button class="button" id="updateButton">Actualizar Tabla</button>
+    <button class="button" id="addButton">Añadir Producto</button>
+    <table id="tablaProducto">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Precio</th>
+                <th>Nombre</th>
+                <th>Descripción</th>
+                <th>Disponible en VLC</th>
+                <th>Disponible en ZGZ</th>
+                <th>ID Categoría</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Aquí se generan dinámicamente las filas de productos -->
+        </tbody>
+    </table>
+
     <style>
         body {
             font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-            background: url('/miAppHamburguesa/Frontend/src/assets/img/FondoRestaurante.jpg') no-repeat center center fixed;
             background-size: cover;
-            color: #ffffff;
+            color: #000000;
             margin: 0;
             padding: 0;
             height: 100vh;
@@ -17,36 +39,11 @@
             justify-content: center;
             align-items: center;
             flex-direction: column;
+            margin-top: 30%;
         }
 
-        header a {
-            font-size: 50px;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            background: rgba(0, 0, 0, 0.7);
-            padding: 10px 20px;
-            border-radius: 10px;
-            margin-bottom: 2%;
-            text-decoration: none;
-            color: orange;
-        }
-
-        header{
-            margin-bottom: 50px;
-        }
-
-        .container {
-            background: rgba(0, 0, 0, 0.8);
-            padding: 20px;
-            border-radius: 12px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
-            overflow-y: auto;
-            text-decoration: none;
-            color: orange;
+        h1 {
+            margin: 20px 0;
         }
 
         .button {
@@ -67,55 +64,36 @@
         }
 
         table {
-            width: 100%;
+            width: 80%;
             border-collapse: collapse;
-            margin-bottom: 20px;
-            text-decoration: none;
+            margin: 20px 0;
+            display: none;
+            /* Oculta la tabla hasta que se carguen los datos */
         }
 
-        th, td {
-            padding: 10px;
+        table,
+        th,
+        td {
+            border: 1px solid #ddd;
+        }
+
+        th,
+        td {
+            padding: 12px;
             text-align: left;
-            border-bottom: 1px solid #ddd;
         }
 
         th {
-            background-color: #333;
+            background-color: #F67906;
             color: white;
         }
 
-        .button {
-            background-color: #ffa500;
-            color: white;
-            border: none;
-            padding: 12px 24px;
-            font-size: 16px;
-            font-weight: bold;
-            border-radius: 8px;
-            margin: 10px 0;
-            cursor: pointer;
-            transition: background 0.3s ease;
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
         }
 
-        .button:hover {
-            background-color: #ff7700;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-bottom: 20px;
-        }
-
-        th, td {
-            padding: 10px;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
-        }
-
-        th {
-            background-color: #333;
-            color: white;
+        tr:hover {
+            background-color: #ddd;
         }
 
         .action-buttons {
@@ -139,32 +117,6 @@
             background-color: #ff7700;
         }
     </style>
-</head>
-
-<body>
-    <header>
-        <a class="titulo-zonapriv" href="/miAppHamburguesa/Frontend/public/html_Ingles/en_index.html">Burger Vibes Private Zone</a>
-    </header>
-    <div class="container">
-        <h1>Product Management</h1>
-        <table id="productTable">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Name</th>
-                    <th>Description</th>
-                    <th>Price</th>
-                    <th>Available</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- Aquí se agregarán las filas de productos dinámicamente -->
-            </tbody>
-        </table>
-        <button class="button" onclick="refreshProducts()">Refresh Products</button>
-    </div>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="/miAppHamburguesa/Frontend/src/js/Productos_zona_piv.js"></script>
 </body>
-</html>
