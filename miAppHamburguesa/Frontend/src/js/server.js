@@ -141,10 +141,12 @@ app.post('/login', async (req, res) => {
       console.log('Datos del usuario desde la base de datos:', user);
       const responsePayload = {
         message: 'Inicio de sesión exitoso',
+        
         idCliente: user['ID_CLIENTE'],  // Usar nombres de campos correctos
         username: user['NOMBRE_USUARIO'],
         email: user['EMAIL']
       };
+      localStorage.setItem('idCliente', data.idCliente); // Almacenar idCliente en localStorage
       console.log('Payload enviado al cliente:', responsePayload);
       res.json(responsePayload);
     } else {
@@ -300,7 +302,7 @@ app.post('/api/pedido', async (req, res) => {
     email,
     address,
     pickupTime,
-    currentDateTime, // Recibir la fecha actual
+    currentDateTime,
     restaurantNote,
     promoCode,
     country,
@@ -323,7 +325,7 @@ app.post('/api/pedido', async (req, res) => {
       email,
       address,
       pickupTime,
-      currentDateTime, // Mostrar la fecha actual
+      currentDateTime,
       restaurantNote,
       promoCode,
       country,
@@ -337,7 +339,7 @@ app.post('/api/pedido', async (req, res) => {
         idCliente,
         idEmpleado,
         cantidad: items.length,
-        currentDateTime, // Insertar la fecha actual
+        currentDateTime,
         idPedido: {
           type: oracledb.NUMBER,
           dir: oracledb.BIND_OUT
@@ -356,7 +358,7 @@ app.post('/api/pedido', async (req, res) => {
         phoneNumber,
         email,
         address,
-        pickupTime, // Asegúrate de que HORA_ENTREGA sea un campo VARCHAR en la base de datos
+        pickupTime,
         restaurantNote,
         promoCode,
         totalPedido
@@ -372,6 +374,16 @@ app.post('/api/pedido', async (req, res) => {
         country
       }
     );
+
+    // Almacenar los items en localStorage
+    let localStorageItems = [];
+    if (typeof window !== 'undefined') {
+      localStorageItems = JSON.parse(localStorage.getItem('orders')) || [];
+    }
+    localStorageItems.push({ idPedido, idCliente, items });
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('orders', JSON.stringify(localStorageItems));
+    }
 
     await connection.commit();
     res.json({
@@ -395,6 +407,7 @@ app.post('/api/pedido', async (req, res) => {
 });
 
 
+
 app.get('/api/pedido', async (req, res) => {
   let connection;
 
@@ -403,10 +416,18 @@ app.get('/api/pedido', async (req, res) => {
     console.log('Conexión a la base de datos exitosa');
 
     const result = await connection.execute(
-      `SELECT NOMBRE, HORA_ENTREGA, NOTA
-       FROM DETALLESPEDIDO 
-       JOIN PEDIDO ON PEDIDO.ID_PEDIDO = DETALLESPEDIDO.ID_PEDIDO_DET
-       ORDER BY PEDIDO.FECHA DESC`,
+      `SELECT 
+          DETALLESPEDIDO.NOMBRE, 
+          DETALLESPEDIDO.HORA_ENTREGA, 
+          DETALLESPEDIDO.NOTA,
+          DETALLESPEDIDO.ID_PEDIDO_DET,
+          PEDIDO.ID_CLIENTE_PED
+       FROM 
+          PEDIDO
+       JOIN 
+          DETALLESPEDIDO ON PEDIDO.ID_PEDIDO = DETALLESPEDIDO.ID_PEDIDO_DET
+       ORDER BY 
+          DETALLESPEDIDO.HORA_ENTREGA DESC`,
       [], {
         outFormat: oracledb.OUT_FORMAT_OBJECT
       }
@@ -429,8 +450,6 @@ app.get('/api/pedido', async (req, res) => {
     }
   }
 });
-
-
 
 /**PEDIDOS DE LA PERSONA PARA QUE LOS VEA */
 
