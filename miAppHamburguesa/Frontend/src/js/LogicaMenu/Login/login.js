@@ -1,9 +1,3 @@
-/**
- * Este script gestiona la funcionalidad de inicio de sesión, registro y cierre de sesión
- * en una aplicación web. También actualiza la interfaz de usuario en función del estado
- * de autenticación del usuario.
- */
-
 document.addEventListener('DOMContentLoaded', () => {
     const modalLogin = document.getElementById('modalLogin');
     const modalRegister = document.getElementById('modalRegister');
@@ -184,4 +178,3 @@ document.addEventListener('DOMContentLoaded', () => {
 
     updateUI();
 });
-

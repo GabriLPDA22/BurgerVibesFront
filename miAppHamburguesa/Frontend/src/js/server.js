@@ -138,12 +138,10 @@ app.post('/login', async (req, res) => {
       console.log('Datos del usuario desde la base de datos:', user);
       const responsePayload = {
         message: 'Inicio de sesión exitoso',
-
         idCliente: user['ID_CLIENTE'],  // Usar nombres de campos correctos
         username: user['NOMBRE_USUARIO'],
         email: user['EMAIL']
       };
-      localStorage.setItem('idCliente', data.idCliente); // Almacenar idCliente en localStorage
       console.log('Payload enviado al cliente:', responsePayload);
       res.json(responsePayload);
     } else {
@@ -302,7 +300,7 @@ app.post('/api/pedido', async (req, res) => {
     restaurantNote,
     promoCode,
     country,
-    items,
+    items, // Asegúrate de que cada item tiene el idProductoDet
     totalPedido,
     idCliente,
     idEmpleado
@@ -346,44 +344,35 @@ app.post('/api/pedido', async (req, res) => {
     const idPedido = resultPedido.outBinds.idPedido[0];
     console.log('ID Pedido insertado:', idPedido);
 
-    
-    const resultDetalle = await connection.execute(
-      `INSERT INTO DETALLESPEDIDO (ID_DETALLES, ID_PEDIDO_DET, NOMBRE, TELEFONO, EMAIL, DIRECCION, HORA_ENTREGA, NOTA, COD_PROMOCIONAL, TOTALPEDIDO)
-       VALUES (DETALLESPEDIDO_SEQ.NEXTVAL, :idPedido, :fullName, :phoneNumber, :email, :address, :pickupTime, :restaurantNote, :promoCode, :totalPedido)
-       RETURNING ID_DETALLES INTO :outNum`
-      , {
-        idPedido,
-        fullName,
-        phoneNumber,
-        email,
-        address,
-        pickupTime,
-        restaurantNote,
-        promoCode,
-        totalPedido,
-        outNum: { type: oracledb.NUMBER, dir: oracledb.BIND_OUT }
-      }
-    );
+    // Insertar cada ítem del pedido en la tabla DETALLESPEDIDO
+    for (const item of items) {
+      const resultDetalle = await connection.execute(
+        `INSERT INTO DETALLESPEDIDO (ID_DETALLES, ID_PEDIDO_DET, NOMBRE, TELEFONO, EMAIL, DIRECCION, HORA_ENTREGA, NOTA, COD_PROMOCIONAL, TOTALPEDIDO, ID_PRODUCTO_DET)
+         VALUES (DETALLESPEDIDO_SEQ.NEXTVAL, :idPedido, :fullName, :phoneNumber, :email, :address, :pickupTime, :restaurantNote, :promoCode, :totalPedido, :idProductoDet)
+         RETURNING ID_DETALLES INTO :outNum`, {
+          idPedido,
+          fullName,
+          phoneNumber,
+          email,
+          address,
+          pickupTime,
+          restaurantNote,
+          promoCode,
+          totalPedido,
+          idProductoDet: item.idProductoDet, // Asegúrate de pasar el ID del producto aquí
+          outNum: { type: oracledb.NUMBER, dir: oracledb.BIND_OUT }
+        }
+      );
 
-    console.log('ID Detalle insertado:', resultDetalle.outBinds);
+      console.log('ID Detalle insertado:', resultDetalle.outBinds);
+    }
 
     await connection.execute(
       `INSERT INTO PAGO (ID_PAGO, METODOPAGO, ID_PEDIDO_PAG, PAIS)
        VALUES (PAGO_SEQ.NEXTVAL, 'CARD', :idPedido, :country)`, {
       idPedido,
       country
-    }
-    );
-
-    // Almacenar los items en localStorage
-    let localStorageItems = [];
-    if (typeof window !== 'undefined') {
-      localStorageItems = JSON.parse(localStorage.getItem('orders')) || [];
-    }
-    localStorageItems.push({ idPedido, idCliente, items });
-    if (typeof window !== 'undefined') {
-      localStorage.setItem('orders', JSON.stringify(localStorageItems));
-    }
+    });
 
     await connection.commit();
     res.json({
@@ -405,6 +394,7 @@ app.post('/api/pedido', async (req, res) => {
     }
   }
 });
+
 
 app.get('/api/pedido', async (req, res) => {
   let connection;

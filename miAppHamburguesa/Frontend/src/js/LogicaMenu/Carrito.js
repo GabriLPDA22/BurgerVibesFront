@@ -90,9 +90,11 @@ function updateTotal(change) {
 }
 
 function updateLocalStorage() {
-    let cart = { items: [] };
+    let cart = {
+        items: []
+    };
 
-    document.querySelectorAll('.order-item').forEach(function(orderItem) {
+    document.querySelectorAll('.order-item').forEach(function (orderItem) {
         let productName = orderItem.querySelector('.product-name').textContent;
         let productQuantity = parseInt(orderItem.querySelector('.product-quantity input[type=number]').value);
         let productPrice = parseFloat(orderItem.querySelector('.product-price').textContent.replace(' €', ''));
@@ -223,17 +225,27 @@ document.addEventListener('DOMContentLoaded', function () {
 
         const username = localStorage.getItem('username') || 'Usuario Anónimo';
         const cartData = localStorage.getItem('carrito');
-        const cart = cartData ? JSON.parse(cartData) : { items: [] };
+        const cart = cartData ? JSON.parse(cartData) : {
+            items: []
+        };
 
         if (cart.items.length === 0) {
             console.error("Intento de guardar un pedido vacío.");
             return;
         }
 
+        // Asegúrate de que cada ítem tiene un ID de producto (idProductoDet)
+        const orderItems = cart.items.map(item => ({
+            idProductoDet: item.idProductoDet || "DEFAULT_ID", // Asegúrate de que este campo existe en el objeto item
+            name: item.name,
+            quantity: item.quantity,
+            price: item.price
+        }));
+
         const order = {
             username: username,
             timestamp: new Date().getTime(),
-            items: cart.items,
+            items: orderItems, // Aquí usamos los ítems asegurándonos de incluir el idProductoDet
             location: location
         };
 
@@ -244,7 +256,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
         console.log("Pedido guardado:", order);
 
-        localStorage.setItem('carrito', JSON.stringify({ items: [] }));
+        localStorage.setItem('carrito', JSON.stringify({
+            items: []
+        }));
         updateCartDisplay();
     }
 
@@ -264,4 +278,6 @@ document.addEventListener('DOMContentLoaded', function () {
             console.error("No se encontró el elemento para mostrar el total del carrito.");
         }
     }
+
+
 });
