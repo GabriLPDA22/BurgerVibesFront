@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Private zone</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: url('/miAppHamburguesa/Frontend/src/assets/img/FondoRestaurante.jpg') no-repeat center center fixed;
+            background-size: cover;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .popup-login {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            display: block;
+            /* Inicialmente visible para el login */
+        }
+
+        h5 {
+            text-align: center;
+            color: #333;
+        }
+
+        form {
+            display: grid;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        input[type="email"],
+        input[type="password"] {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #F67906;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #004494;
+        }
+
+        .close-btn {
+            float: right;
+            cursor: pointer;
+            color: #aaa;
+        }
+
+        .close-btn:hover {
+            color: #777;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="popup-login" id="loginPopupEmpleados">
+        <span class="close-btn">&times;</span>
+        <h5>Access to Private Employee Zone</h5>
+        <form id="formAccesoEmpleados">
+            <label for="userEmailEmpleados">Email:</label>
+            <input type="email" id="userEmailEmpleados" required>
+            <label for="userPasswordEmpleados">password:</label>
+            <input type="password" id="userPasswordEmpleados" required>
+            <button type="submit">Access</button>
+        </form>
+    </div>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const loginFormEmpleados = document.getElementById('formAccesoEmpleados');
+
+            if (loginFormEmpleados) {
+                loginFormEmpleados.addEventListener('submit', async (event) => {
+                    event.preventDefault();
+                    const email = document.getElementById('userEmailEmpleados').value;
+                    const password = document.getElementById('userPasswordEmpleados').value;
+
+                    console.log('Attempting to login with email:', email); // Log para depurar
+
+                    try {
+                        const response = await fetch('http://localhost:8080/loginAdminEmpleado', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({ email, password })
+                        });
+
+                        if (!response.ok) {
+                            throw new Error('Error en la respuesta del servidor');
+                        }
+
+                        const responseData = await response.json();
+                        alert('Inicio de sesión exitoso');
+
+                        console.log('Login response data:', responseData); // Log para depurar
+
+                        if (responseData.role === 'admin') {
+                            window.location.href = 'zona_privada.html';
+                        } else if (responseData.role === 'employee') {
+                            localStorage.setItem('employeeEmail', responseData.email);  // Guarda el email del empleado en localStorage
+                            console.log('Email guardado en local storage:', responseData.email); // Log para verificar
+                            window.location.href = 'zona_privada_empleados.html';
+                        } else {
+                            alert('Rol no reconocido');
+                        }
+                    } catch (error) {
+                        console.error('Error:', error);
+                        alert('Error al conectar con el servidor');
+                    }
+                });
+            }
+        });
+
+
+    </script>
+
+
+</body>
+
+</html>

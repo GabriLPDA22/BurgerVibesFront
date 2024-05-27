@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>View Orders - Private Area</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 20px;
+            background: url('/miAppHamburguesa/Frontend/src/assets/img/FondoRestaurante.jpg') no-repeat center center fixed;
+            background-size: cover;
+        }
+
+        .order-container {
+            max-width: 1150px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .order-header {
+            border-bottom: 2px solid #f18509;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        .order-header h1 {
+            color: #f89007;
+        }
+
+        .order-block {
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+            background-color: #fff;
+            margin-bottom: 15px;
+            padding: 15px;
+        }
+
+        .product-name {
+            font-weight: bold;
+        }
+
+        .product-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 10px;
+        }
+
+        .order-empty {
+            text-align: center;
+            color: #6c757d;
+        }
+
+        select {
+            margin-top: 10px;
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ced4da;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="order-container">
+        <div class="order-header">
+            <h1>Orders</h1>
+        </div>
+        <table id="tablaPedido" class="table">
+            <thead>
+                <tr>
+                    <th>Order ID</th>
+                    <th>Date</th>
+                    <th>Delivery Type</th>
+                    <th>Quantity</th>
+                    <th>Customer ID</th>
+                    <th>Employee ID</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+        <div id="error-msg" class="order-empty" style="display: none;">Error al obtener los pedidos.</div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        const urlPedidos = 'http://localhost:8080/BuergerVibes/Controller?ACTION=PEDIDO.FIND_ALL';
+
+        const fetchPedidos = async () => {
+            try {
+                const result = await fetch(urlPedidos);
+                if (!result.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                const data = await result.json();
+                console.log('Pedidos obtenidos de la API:', data);
+                printPedidos(data);
+            } catch (error) {
+                console.error('Error al obtener datos de la API:', error);
+                document.getElementById('error-msg').style.display = 'block';
+            }
+        };
+
+        const printPedidos = (pedidos) => {
+            const tbody = document.querySelector('#tablaPedido tbody');
+
+            // Limpiar el tbody antes de agregar nuevas filas
+            tbody.innerHTML = '';
+
+            pedidos.forEach(pedido => {
+                const {
+                    ID_Pedido,
+                    Fecha,
+                    TipoEntrega,
+                    Cantidad,
+                    ID_Cliente_ped,
+                    ID_Empleado_ped
+                } = pedido;
+
+                const row = document.createElement('tr');
+
+                row.innerHTML = `
+                    <td>${ID_Pedido}</td>
+                    <td>${Fecha}</td>
+                    <td>${TipoEntrega}</td>
+                    <td>${Cantidad}</td>
+                    <td>${ID_Cliente_ped}</td>
+                    <td>${ID_Empleado_ped}</td>
+                `;
+
+                tbody.appendChild(row);
+            });
+        };
+
+        fetchPedidos();
+
+    </script>
+</body>
+
+</html>

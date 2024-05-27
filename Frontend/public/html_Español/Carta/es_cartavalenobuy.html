@@ -1,0 +1,1265 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="/miAppHamburguesa/Frontend/src/assets/img/Home/BurgerVibes.svg">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+    <link href="https://fonts.googleapis.com/css2?family=Sedgwick+Ave&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/miAppHamburguesa/Frontend/src/css/Bootstrap/icons.css">
+    <link rel="stylesheet" href="/miAppHamburguesa/Frontend/src/css/Menu/menu.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="/miAppHamburguesa/Frontend/src/css/Menu/Modals.css">
+
+    <title>BurgerVibesValencia</title>
+</head>
+
+<body>
+
+    <nav>
+        <div class="logo">
+            <a href="/miAppHamburguesa/Frontend/public/html_Español/Carta/es_carta_Valencia.html" style="display: flex;
+            align-items: center;
+            text-decoration: none;">
+                <img src="/miAppHamburguesa/Frontend/src/assets/img/Home/BurgerVibes.svg" alt="Logo">
+
+                <div class="restaurant-info" style="margin-left: 30px;">
+                    <h1 class="restaurant-name" style="text-decoration: none;">BURGERVIBES VALENCIA</h1>
+                </div>
+            </a>
+        </div>
+    </nav>
+
+
+    <div class="main-wrapper">
+        <div class="flex-container">
+            <div class="content-section">
+                <div class="navigation-tabs">
+                    <ul class="tabs-list">
+                        <li class="tab-element"><a href="#tabOne"
+                                style="text-decoration: none; color: black;">Entrantes</a></li>
+                        <li class="tab-element"><a href="#tabTwo"
+                                style="text-decoration: none; color: black;">Burgers</a></li>
+                        <li class="tab-element"><a href="#tabThree"
+                                style="text-decoration: none; color: black;">Postres</a></li>
+                        <li class="tab-element"><a href="#tabFour"
+                                style="text-decoration: none; color: black;">Ensaladas</a></li>
+                        <li class="tab-element"><a href="#tabFive"
+                                style="text-decoration: none; color: black;">Bebidas</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="column left-column">
+                <div class="titulo-seccion" id="tabOne">
+                    <h2 style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Entrantes</h2>
+                </div>
+                <div class="tabs-content">
+                    <!-- Item del menú -->
+
+                    <!--PRIMER ENTRANTE-->
+
+                    <div class="menu-item" id="product1" data-product-name="Nachos Rainforest"
+                        data-product-price="12.50"
+                        data-product-description="Inspirados en rainforest café de Chicago. Totopos de maíz, cheddar cream, guacamole, carne deshilachada, pico de gallo y crema agria."
+                        data-product-allergens="Alergenos: Gluten, láctosa y Sulfitos."
+                        data-product-image1="/miAppHamburguesa/Frontend/src/assets/img/Menu/Nachos.jpg"
+                        data-product-image2="/miAppHamburguesa/Frontend/src/assets/img/Menu/gluten.svg"
+                        data-product-image3="/miAppHamburguesa/Frontend/src/assets/img/Menu/sulphur.svg"
+                        data-product-image4="/miAppHamburguesa/Frontend/src/assets/img/Menu/leche.svg">
+
+                        <!-- Columna de imagen -->
+                        <div class="menu-item-column image-column">
+                            <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/Nachos.jpg" alt="Nachos Rainforest"
+                                class="menu-item-img" id="Cabezera">
+                        </div>
+                        <!-- Columna de texto e información -->
+                        <div class="menu-item-column info-column">
+                            <div class="menu-item-header">
+                                <h3 class="menu-item-title">Nachos Rainforest</h3>
+                                <div class="menu-item-price-action">
+                                    <button class="add-button">
+                                        <i class="bi bi-plus-circle"></i>
+                                        <!-- Asumiendo que quieres usar un ícono de 'plus' -->
+                                    </button>
+                                    <span class="price">12,50 €</span>
+                                </div>
+                            </div>
+                            <p class="menu-item-description">
+                                Inspirados en rainforest café de Chicago. Totopos de maíz, cheddar cream, guacamole,
+                                carne deshilachada, pico de gallo y crema agria.
+                            </p>
+                            <div class="menu-item-icons">
+                                <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/gluten.svg" alt="gluten">
+                                <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/sulphur.svg" alt="sulfuro">
+                                <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/leche.svg" alt="leche">
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!--SEGUNDO ENTRANTE-->
+
+
+                    <div class="menu-item" id="product2" data-product-name="Alitas Thai" data-product-price="8.00"
+                        data-product-description="Alitas de pollo cocinadas a baja temperatura sumergidas en una salsa agripicante que te hará volar la cabeza."
+                        data-product-allergens="Alergenos: Gluten, trigo y Sulfitos."
+                        data-product-image1="/miAppHamburguesa/Frontend/src/assets/img/Menu/Alitas.jpg"
+                        data-product-image2="/miAppHamburguesa/Frontend/src/assets/img/Menu/gluten.svg"
+                        data-product-image3="/miAppHamburguesa/Frontend/src/assets/img/Menu/sulphur.svg">
+                        <!-- Columna de imagen -->
+                        <div class="menu-item-column image-column">
+                            <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/Alitas.jpg" alt="Nachos Rainforest"
+                                class="menu-item-img">
+                        </div>
+                        <!-- Columna de texto e información -->
+                        <div class="menu-item-column info-column">
+                            <div class="menu-item-header">
+                                <h3 class="menu-item-title">Alitas Thai</h3>
+                                <div class="menu-item-price-action">
+                                    <button class="add-button" data-product-id="product1">
+                                        <i class="bi bi-plus-circle"></i>
+                                        <!-- Asumiendo que quieres usar un ícono de 'plus' -->
+                                    </button>
+                                    <span class="price">8.00 €</span>
+                                </div>
+                            </div>
+                            <p class="menu-item-description">
+                                Alitas de pollo cocinadas a baja temperatura sumergidas en una salsa agripicante que te
+                                hará volar la cabeza.
+                            </p>
+                            <div class="menu-item-icons">
+                                <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/gluten.svg" alt="gluten">
+                                <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/sulphur.svg" alt="sulfuro">
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <!--TERCER ENTRANTE-->
+
+
+                    <div class="menu-item" id="product3" data-product-name="Pollo-Vibes" data-product-price="9.50"
+                        data-product-description="Contramuslo de pollo deshuesado marinado y rebozado crujiente, acompañado de un tarro de nuestra salsa BBQ casera."
+                        data-product-allergens="Alergenos: Soja, trigo, huevo y Sulfitos."
+                        data-product-image1="/miAppHamburguesa/Frontend/src/assets/img/Menu/Entrante3.png"
+                        data-product-image2="/miAppHamburguesa/Frontend/src/assets/img/Menu/gluten.svg"
+                        data-product-image3="/miAppHamburguesa/Frontend/src/assets/img/Menu/sulphur.svg"
+                        data-product-image4="/miAppHamburguesa/Frontend/src/assets/img/Menu/huevos.svg"
+                        data-product-image5 ="/miAppHamburguesa/Frontend/src/assets/img/Menu/soybeans.svg">
+                        <!-- Columna de imagen -->
+                        <div class="menu-item-column image-column">
+                            <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/Entrante3.png" alt="Pollo-Vibes"
+                                class="menu-item-img">
+                        </div>
+                        <!-- Columna de texto e información -->
+                        <div class="menu-item-column info-column">
+                            <div class="menu-item-header">
+                                <h3 class="menu-item-title">Pollo-Vibes</h3>
+                                <div class="menu-item-price-action">
+                                    <button class="add-button">
+                                        <i class="bi bi-plus-circle"></i>
+                                        <!-- Asumiendo que quieres usar un ícono de 'plus' -->
+                                    </button>
+                                    <span class="price">9,50 €</span>
+                                </div>
+                            </div>
+                            <p class="menu-item-description">
+                                Contramuslo de pollo deshuesado marinado y rebozado crujiente, acompañado de un tarro de
+                                nuestra salsa BBQ casera.
+                            </p>
+                            <div class="menu-item-icons">
+                                <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/gluten.svg" alt="gluten">
+                                <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/sulphur.svg" alt="sulfuro">
+                                <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/huevos.svg" alt="leche">
+                                <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/soybeans.svg" alt="Soja">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--CUARTO ENTRANTE-->
+
+                    <div class="menu-item" id="product4" data-product-name="Crunchy Taco 1 ud" data-product-price="3.00"
+                        data-product-description="Tortilla crujiente rellena de pulled pork, achiote, pico de gallo, guacamole y cebolla encurtida (1 uds.)"
+                        data-product-allergens="Alergenos: Soja, trigo, Mostaza y Sulfitos."
+                        data-product-image1="/miAppHamburguesa/Frontend/src/assets/img/Menu/Entrante4.png"
+                        data-product-image2="/miAppHamburguesa/Frontend/src/assets/img/Menu/gluten.svg"
+                        data-product-image3="/miAppHamburguesa/Frontend/src/assets/img/Menu/sulphur.svg"
+                        data-product-image4="/miAppHamburguesa/Frontend/src/assets/img/Menu/soybeans.svg"
+                        data-product-image5="/miAppHamburguesa/Frontend/src/assets/img/Menu/mustard.svg">
+                        <!-- Columna de imagen -->
+                        <div class="menu-item-column image-column">
+                            <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/Entrante4.png"
+                                alt="Crunchy Taco 1 ud" class="menu-item-img">
+                        </div>
+                        <!-- Columna de texto e información -->
+                        <div class="menu-item-column info-column">
+                            <div class="menu-item-header">
+                                <h3 class="menu-item-title">Crunchy Taco 1 ud</h3>
+                                <div class="menu-item-price-action">
+                                    <button class="add-button">
+                                        <i class="bi bi-plus-circle"></i>
+                                        <!-- Asumiendo que quieres usar un ícono de 'plus' -->
+                                    </button>
+                                    <span class="price">3,00 €</span>
+                                </div>
+                            </div>
+                            <p class="menu-item-description">
+                                Tortilla crujiente rellena de pulled pork, achiote, pico de gallo, guacamole y cebolla
+                                encurtida (1 uds.)
+                            </p>
+                            <div class="menu-item-icons">
+                                <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/gluten.svg" alt="gluten">
+                                <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/sulphur.svg" alt="sulfuro">
+                                <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/soybeans.svg" alt="soja">
+                                <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/mustard.svg" alt="mustard">
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!--QUINTO ENTRANTE-->
+
+                    <div class="menu-item" id="product5" data-product-name="Bacon Cheese Fries" data-product-price="9.50"
+                        data-product-description="Bacon cheese fries añadiendo nuestro toque personal, con crema de cheddar con chimichurri."
+                        data-product-allergens="Alergenos: Soja, láctosa y Sulfitos."
+                        data-product-image1="/miAppHamburguesa/Frontend/src/assets/img/Menu/Entrante5.png"
+                        data-product-image2="/miAppHamburguesa/Frontend/src/assets/img/Menu/soybeans.svg"
+                        data-product-image3="/miAppHamburguesa/Frontend/src/assets/img/Menu/sulphur.svg"
+                        data-product-image4="/miAppHamburguesa/Frontend/src/assets/img/Menu/leche.svg">
+                        <!-- Columna de imagen -->
+                        <div class="menu-item-column image-column">
+                            <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/Entrante5.png"
+                                alt="Bacon Cheese Fries" class="menu-item-img">
+                        </div>
+                        <!-- Columna de texto e información -->
+                        <div class="menu-item-column info-column">
+                            <div class="menu-item-header">
+                                <h3 class="menu-item-title">Bacon Cheese Fries</h3>
+                                <div class="menu-item-price-action">
+                                    <button class="add-button">
+                                        <i class="bi bi-plus-circle"></i>
+                                        <!-- Asumiendo que quieres usar un ícono de 'plus' -->
+                                    </button>
+                                    <span class="price">9,50 €</span>
+                                </div>
+                            </div>
+                            <p class="menu-item-description">
+                                Bacon cheese fries añadiendo nuestro toque personal, con crema de cheddar con
+                                chimichurri.
+                            </p>
+                            <div class="menu-item-icons">
+                                <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/soybeans.svg" alt="soja">
+                                <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/sulphur.svg" alt="sulfuro">
+                                <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/leche.svg" alt="leche">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!--BURGERS-->
+
+            <div class="column left-column">
+                <div class="titulo-seccion" id="tabTwo">
+                    <h2 style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Burgers</h2>
+                </div>
+                <div class="tabs-content">
+                    <!-- Item del menú -->
+                    <div class="menu-item" id="product6" data-product-name="Old Mapache" data-product-price="10.50"
+                        data-product-description="Carne de dry aged chuleta, queso gouda ahumado, crema de cheddar estilo argentino, mermelada de bacon caribeña, salsa bbq-asia y fritos texanos."
+                        data-product-allergens="Alergenos: Gluten, Sulfitos, láctosa, soja ,huevo y mostaza."
+                        data-product-image1="/miAppHamburguesa/Frontend/src/assets/img/Menu/hmg1.png"
+                        data-product-image2="/miAppHamburguesa/Frontend/src/assets/img/Menu/gluten.svg"
+                        data-product-image3="/miAppHamburguesa/Frontend/src/assets/img/Menu/sulphur.svg"
+                        data-product-image4="/miAppHamburguesa/Frontend/src/assets/img/Menu/leche.svg"
+                        data-product-image5="/miAppHamburguesa/Frontend/src/assets/img/Menu/huevos.svg"
+                        data-product-image6="/miAppHamburguesa/Frontend/src/assets/img/Menu/soybeans.svg"
+                        data-product-image7="/miAppHamburguesa/Frontend/src/assets/img/Menu/mustard.svg">
+                        <!-- Columna de imagen -->
+                        <div class="menu-item-column image-column">
+                            <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/hmg1.png" alt="Old Mapache"
+                                class="menu-item-img">
+                        </div>
+                        <!-- Columna de texto e información -->
+                        <div class="menu-item-column info-column">
+                            <div class="menu-item-header">
+                                <h3 class="menu-item-title">Old Mapache</h3>
+                                <div class="menu-item-price-action">
+                                    <button class="add-button">
+                                        <i class="bi bi-plus-circle"></i>
+                                        <!-- Asumiendo que quieres usar un ícono de 'plus' -->
+                                    </button>
+                                    <span class="price">10,50 €</span>
+                                </div>
+                            </div>
+                            <p class="menu-item-description">
+                                Carne de dry aged chuleta, queso gouda ahumado, crema de cheddar estilo argentino,
+                                mermelada de bacon caribeña, salsa bbq-asia y fritos texanos.
+                            </p>
+                            <div class="menu-item-icons">
+                                <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/gluten.svg" alt="gluten">
+                                <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/sulphur.svg" alt="sulfuro">
+                                <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/leche.svg" alt="leche">
+                                <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/huevos.svg" alt="huevo">
+                                <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/soybeans.svg" alt="soja">
+                                <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/mustard.svg" alt="mostaza">
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- Segunda Burger -->
+
+
+                    <div class="menu-item" id="product7" data-product-name="Rufflera Hot" data-product-price="16.00"
+                        data-product-description="¡Bomba seria la burger del mes! Colabo con Soul (amor del bueno): 2 donuts artesanos de pastelería Marisol, carne de chuleta madurada, queso ahumado, salsa de queso ahumada, bacon bits y Ruffles flamin' hot! Unidades limitadas cada día."
+                        data-product-allergens="Alergenos: Láctosa, nueces, mostaza, gluten, cacahuetes, soja, huevo y sulfitos."
+                        data-product-image1="/miAppHamburguesa/Frontend/src/assets/img/Menu/hmg2.png"
+                        data-product-image2="/miAppHamburguesa/Frontend/src/assets/img/Menu/leche.svg"
+                        data-product-image3="/miAppHamburguesa/Frontend/src/assets/img/Menu/nuts.svg"
+                        data-product-image4="/miAppHamburguesa/Frontend/src/assets/img/Menu/mustard.svg"
+                        data-product-image5="/miAppHamburguesa/Frontend/src/assets/img/Menu/gluten.svg"
+                        data-product-image6="/miAppHamburguesa/Frontend/src/assets/img/Menu/peanuts.svg"
+                        data-product-image7="/miAppHamburguesa/Frontend/src/assets/img/Menu/soybeans.svg"
+                        data-product-image8="/miAppHamburguesa/Frontend/src/assets/img/Menu/huevos.svg"
+                        data-product-image9="/miAppHamburguesa/Frontend/src/assets/img/Menu/sulphur.svg">
+                        <!-- Columna de imagen -->
+                        <div class="menu-item-column image-column">
+                            <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/hmg2.png" alt="Rufflera Hot"
+                                class="menu-item-img">
+                        </div>
+                        <!-- Columna de texto e información -->
+                        <div class="menu-item-column info-column">
+                            <div class="menu-item-header">
+                                <h3 class="menu-item-title">Rufflera Hot</h3>
+                                <div class="menu-item-price-action">
+                                    <button class="add-button">
+                                        <i class="bi bi-plus-circle"></i>
+                                        <!-- Asumiendo que quieres usar un ícono de 'plus' -->
+                                    </button>
+                                    <span class="price">16.00 €</span>
+                                </div>
+                            </div>
+                            <p class="menu-item-description">
+                                ¡Bomba seria la burger del mes! Colabo con Soul (amor del bueno): 2 donuts artesanos de
+                                pastelería Marisol, carne de chuleta madurada, queso ahumado, salsa de queso ahumada,
+                                bacon bits y Ruffles flamin' hot! Unidades limitadas cada día.
+                            </p>
+                            <div class="menu-item-icons">
+                                <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/leche.svg" alt="leche">
+                                <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/nuts.svg" alt="nuts">
+                                <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/mustard.svg" alt="mustard">
+                                <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/gluten.svg" alt="gluten">
+                                <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/peanuts.svg" alt="peanuts">
+                                <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/soybeans.svg" alt="soja">
+                                <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/huevos.svg" alt="huevo">
+                                <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/sulphur.svg" alt="huevo">
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- Tercera entrante -->
+
+
+                    <div class="menu-item" id="product8" data-product-name="Divito" data-product-price="14.00"
+                        data-product-description="Dry Aged de 200g con 50 días de maduración, crema secreta en la base ligeramente picante, cheddar ahumado y gouda ahumado, panceta ahumada cocinada a baja temperatura y macerada 24h. Todo ello bañado con una salsa BBQ de cerveza."
+                        data-product-allergens="Alergenos: Láctosa, gluten, cacahuetes, soja, huevo, y sulfitos."
+                        data-product-image1="/miAppHamburguesa/Frontend/src/assets/img/Menu/hmg3.png"
+                        data-product-image2="/miAppHamburguesa/Frontend/src/assets/img/Menu/leche.svg"
+                        data-product-image3="/miAppHamburguesa/Frontend/src/assets/img/Menu/gluten.svg"
+                        data-product-image4="/miAppHamburguesa/Frontend/src/assets/img/Menu/peanuts.svg"
+                        data-product-image5="/miAppHamburguesa/Frontend/src/assets/img/Menu/soybeans.svg"
+                        data-product-image6="/miAppHamburguesa/Frontend/src/assets/img/Menu/huevos.svg"
+                        data-product-image7="/miAppHamburguesa/Frontend/src/assets/img/Menu/sulphur.svg">
+                        <!-- Columna de imagen -->
+                        <div class="menu-item-column image-column">
+                            <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/hmg3.png" alt="Divito"
+                                class="menu-item-img">
+                        </div>
+                        <!-- Columna de texto e información -->
+                        <div class="menu-item-column info-column">
+                            <div class="menu-item-header">
+                                <h3 class="menu-item-title">Divito</h3>
+                                <div class="menu-item-price-action">
+                                    <button class="add-button">
+                                        <i class="bi bi-plus-circle"></i>
+                                        <!-- Asumiendo que quieres usar un ícono de 'plus' -->
+                                    </button>
+                                    <span class="price">12,50 €</span>
+                                </div>
+                            </div>
+                            <p class="menu-item-description">
+                                Dry Aged de 200g con 50 días de maduración, crema secreta en la base ligeramente
+                                picante, cheddar ahumado y gouda ahumado, panceta ahumada cocinada a baja temperatura y
+                                macerada 24h. Todo ello bañado con una salsa BBQ de cerveza.
+                            </p>
+                            <div class="menu-item-icons">
+                                <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/leche.svg" alt="leche">
+                                <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/gluten.svg" alt="gluten">
+                                <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/peanuts.svg" alt="peanuts">
+                                <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/soybeans.svg" alt="soja">
+                                <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/huevos.svg" alt="huevo">
+                                <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/sulphur.svg" alt="sulfuro">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--Cuarta Burger-->
+
+                    <div class="menu-item" id="product9" data-product-name="Chanante" data-product-price="12.50"
+                        data-product-description="Carne dry aged de 200g entre 40 y 50 días de maduración., bacon crujiente, cebolla roja encurtida, queso provolone dulce, pepinillo y la salsa gringa de Vibes."
+                        data-product-allergens="Alergenos: Láctosa , gluten, huevos, y Sulfito"
+                        data-product-image1="/miAppHamburguesa/Frontend/src/assets/img/Menu/hmg4.png"
+                        data-product-image2="/miAppHamburguesa/Frontend/src/assets/img/Menu/leche.svg"
+                        data-product-image3="/miAppHamburguesa/Frontend/src/assets/img/Menu/gluten.svg"
+                        data-product-image4="/miAppHamburguesa/Frontend/src/assets/img/Menu/huevos.svg"
+                        data-product-image5="/miAppHamburguesa/Frontend/src/assets/img/Menu/sulphur.svg">
+                        <!-- Columna de imagen -->
+                        <div class="menu-item-column image-column">
+                            <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/hmg4.png" alt="Chanante"
+                                class="menu-item-img">
+                        </div>
+                        <!-- Columna de texto e información -->
+                        <div class="menu-item-column info-column">
+                            <div class="menu-item-header">
+                                <h3 class="menu-item-title">Chanante</h3>
+                                <div class="menu-item-price-action">
+                                    <button class="add-button">
+                                        <i class="bi bi-plus-circle"></i>
+                                        <!-- Asumiendo que quieres usar un ícono de 'plus' -->
+                                    </button>
+                                    <span class="price">12,50 €</span>
+                                </div>
+                            </div>
+                            <p class="menu-item-description">
+                                Carne dry aged de 200g entre 40 y 50 días de maduración., bacon crujiente, cebolla roja
+                                encurtida, queso provolone dulce, pepinillo y la salsa gringa de Vibes.
+                                .
+                            </p>
+                            <div class="menu-item-icons">
+                                <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/leche.svg" alt="leche">
+                                <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/gluten.svg" alt="gluten">
+                                <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/huevos.svg" alt="huevo">
+                                <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/sulphur.svg" alt="sulfuro">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--Quinta Burger-->
+
+                    <div class="menu-item" id="product10" data-product-name="Dotty Hawley" data-product-price="14.50"
+                        data-product-description="Dry aged de 200g entre 40 y 50 días de maduración, queso Monterey Jack, los Mac&Cheese con la receta de Dotty, salsa BBQ casera y Doritos Bits."
+                        data-product-allergens="Alergenos: Láctosa, gluten, soja, huevo, y Sulfitos."                        
+                        data-product-image1="/miAppHamburguesa/Frontend/src/assets/img/Menu/hmg5.png"
+                        data-product-image2="/miAppHamburguesa/Frontend/src/assets/img/Menu/gluten.svg"
+                        data-product-image3="/miAppHamburguesa/Frontend/src/assets/img/Menu/sulphur.svg">
+                        <!-- Columna de imagen -->
+                        <div class="menu-item-column image-column">
+                            <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/hmg5.png" alt="Dotty Hawley"
+                                class="menu-item-img">
+                        </div>
+                        <!-- Columna de texto e información -->
+                        <div class="menu-item-column info-column">
+                            <div class="menu-item-header">
+                                <h3 class="menu-item-title">Dotty Hawley</h3>
+                                <div class="menu-item-price-action">
+                                    <button class="add-button">
+                                        <i class="bi bi-plus-circle"></i>
+                                        <!-- Asumiendo que quieres usar un ícono de 'plus' -->
+                                    </button>
+                                    <span class="price">14.50 €</span>
+                                </div>
+                            </div>
+                            <p class="menu-item-description">
+                                Dry aged de 200g entre 40 y 50 días de maduración, queso Monterey Jack, los Mac&Cheese
+                                con la receta de Dotty, salsa BBQ casera y Doritos Bits.
+                                
+                            </p>
+                            <div class="menu-item-icons">
+                                <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/leche.svg" alt="leche">
+                                <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/gluten.svg" alt="gluten">
+                                <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/soybeans.svg" alt="soja">
+                                <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/huevos.svg" alt="huevo">
+                                <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/sulphur.svg" alt="sulfuro">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--Sexta Burger-->
+
+                    <div class="menu-item" id="product11" data-product-name="Baile De Pollo" data-product-price="11.50"
+                        data-product-description="Crispy chicken marinado durante 12 horas, queso cheddar, relish de pepinillo, cebolla roja encurtida y la salsa gringa de Vibes."
+                        data-product-allergens="Alergenos: Láctosa, mostaza, gluten, huevo, y sulfitos."
+                        data-product-image1=" /miAppHamburguesa/Frontend/src/assets/img/Menu/hmg6.png"
+                        data-product-image2="/miAppHamburguesa/Frontend/src/assets/img/Menu/leche.svg"
+                        data-product-image3="/miAppHamburguesa/Frontend/src/assets/img/Menu/mustard.svg"
+                        data-product-image4="/miAppHamburguesa/Frontend/src/assets/img/Menu/gluten.svg"
+                        data-product-image5="/miAppHamburguesa/Frontend/src/assets/img/Menu/huevo.svg"
+                        data-product-image6="/miAppHamburguesa/Frontend/src/assets/img/Menu/sulphur.svg">
+                        <!-- Columna de imagen -->
+                        <div class="menu-item-column image-column">
+                            <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/hmg6.png" alt="Baile De Pollo"
+                                class="menu-item-img">
+                        </div>
+                        <!-- Columna de texto e información -->
+                        <div class="menu-item-column info-column">
+                            <div class="menu-item-header">
+                                <h3 class="menu-item-title">Baile De Pollo</h3>
+                                <div class="menu-item-price-action">
+                                    <button class="add-button">
+                                        <i class="bi bi-plus-circle"></i>
+                                        <!-- Asumiendo que quieres usar un ícono de 'plus' -->
+                                    </button>
+                                    <span class="price">11.50 €</span>
+                                </div>
+                            </div>
+                            <p class="menu-item-description">
+                                Crispy chicken marinado durante 12 horas, queso cheddar, relish de pepinillo, cebolla
+                                roja encurtida y la salsa gringa de Vibes.
+                                
+                            </p>
+                            <div class="menu-item-icons">
+                                <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/leche.svg" alt="leche">
+                                <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/mustard.svg" alt="mostaza">
+                                <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/gluten.svg" alt="gluten">
+                                <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/huevos.svg" alt="huevo">
+                                <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/sulphur.svg" alt="sulfuro">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--Postres-->
+
+            <div class="column left-column">
+                <div class="titulo-seccion" id="tabThree">
+                    <h2 style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Postres</h2>
+                </div>
+                <div class="tabs-content">
+                    <!-- Item del menú -->
+                    <div class="menu-item" id="product12" data-product-name="Lotus Cheesecake" data-product-price="6.00"
+                        data-product-description="Tarta de queso con crema y galleta lotus."
+                        data-product-allergens="Alergenos: Gluten, soja, huevo y sulfitos."
+                        data-product-image1="/miAppHamburguesa/Frontend/src/assets/img/Menu/QuesoLotus.png"
+                        data-product-image2="/miAppHamburguesa/Frontend/src/assets/img/Menu/gluten.svg"
+                        data-product-image3="/miAppHamburguesa/Frontend/src/assets/img/Menu/soybeans.svg"
+                        data-product-image4="/miAppHamburguesa/Frontend/src/assets/img/Menu/huevos.svg"
+                        data-product-image5="/miAppHamburguesa/Frontend/src/assets/img/Menu/sulphur.svg">
+
+                        <!-- Columna de imagen -->
+                        <div class="menu-item-column image-column">
+                            <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/QuesoLotus.png"
+                                alt="Lotus Cheesecake" class="menu-item-img">
+                        </div>
+                        <!-- Columna de texto e información -->
+                        <div class="menu-item-column info-column">
+                            <div class="menu-item-header">
+                                <h3 class="menu-item-title">Lotus Cheesecake</h3>
+                                <div class="menu-item-price-action">
+                                    <button class="add-button">
+                                        <i class="bi bi-plus-circle"></i>
+                                        <!-- Asumiendo que quieres usar un ícono de 'plus' -->
+                                    </button>
+                                    <span class="price">6,00 €</span>
+                                </div>
+                            </div>
+                            <p class="menu-item-description">
+                                Tarta de queso con crema y galleta lotus
+                            </p>
+                            <div class="menu-item-icons">
+                                <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/gluten.svg" alt="gluten">
+                                <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/soybeans.svg" alt="soja">
+                                <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/huevos.svg" alt="huevo">
+                                <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/sulphur.svg" alt="sulfuro">
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- segundo postre -->
+
+
+                    <div class="menu-item" id="product13" data-product-name="Tarta de queso" data-product-price="5.50"
+                        data-product-description="Tarta cremosa de queso con base de galleta." 
+                        data-product-allergens="Alergenos: Láctosa, gluten, huevo y sulfitos."
+                        data-product-image1=" /miAppHamburguesa/Frontend/src/assets/img/Menu/CheeseCakeBasic.png"
+                        data-product-image2="/miAppHamburguesa/Frontend/src/assets/img/Menu/leche.svg"
+                        data-product-image3="/miAppHamburguesa/Frontend/src/assets/img/Menu/gluten.svg"
+                        data-product-image4="/miAppHamburguesa/Frontend/src/assets/img/Menu/huevos.svg"
+                        data-product-image5="/miAppHamburguesa/Frontend/src/assets/img/Menu/sulphur.svg">
+
+                        <h2 style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">
+                        </h2>
+                        <!-- Columna de imagen -->
+                        <div class="menu-item-column image-column">
+                            <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/CheeseCakeBasic.png"
+                                alt="Nachos Rainforest" class="menu-item-img">
+                        </div>
+                        <!-- Columna de texto e información -->
+                        <div class="menu-item-column info-column">
+                            <div class="menu-item-header">
+                                <h3 class="menu-item-title">Tarta de queso</h3>
+                                <div class="menu-item-price-action">
+                                    <button class="add-button">
+                                        <i class="bi bi-plus-circle"></i>
+                                        <!-- Asumiendo que quieres usar un ícono de 'plus' -->
+                                    </button>
+                                    <span class="price">5,50 €</span>
+                                </div>
+                            </div>
+                            <p class="menu-item-description">
+                                Tarta cremosa de queso con base de galleta.
+                            </p>
+                            <div class="menu-item-icons">
+                                <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/leche.svg" alt="leche">
+                                <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/gluten.svg" alt="gluten">
+                                <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/huevos.svg" alt="huevo">
+                                <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/sulphur.svg" alt="sulfuro">
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- Tercer postre -->
+
+
+                    <div class="menu-item" id="product14" data-product-name="Lion Cheesecake" data-product-price="6.00"
+                        data-product-description="Cheesecake de cereales Lion con base de Oreo." 
+                        data-product-allergens="Alergenos: Láctosa, nueces, gluten, cacahuetes, huevo y sulfitos."
+                        data-product-image1=" /miAppHamburguesa/Frontend/src/assets/img/Menu/LionCake.png"
+                        data-product-image2="/miAppHamburguesa/Frontend/src/assets/img/Menu/leche.svg"
+                        data-product-image3="/miAppHamburguesa/Frontend/src/assets/img/Menu/nuts.svg"
+                        data-product-image4="/miAppHamburguesa/Frontend/src/assets/img/Menu/gluten.svg"
+                        data-product-image5="/miAppHamburguesa/Frontend/src/assets/img/Menu/peanuts.svg"
+                        data-product-image6="/miAppHamburguesa/Frontend/src/assets/img/Menu/huevos.svg"
+                        data-product-image7="/miAppHamburguesa/Frontend/src/assets/img/Menu/sulphur.svg">
+
+                        <!-- Columna de imagen -->
+                        <div class="menu-item-column image-column">
+                            <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/LionCake.png"
+                                alt="Nachos Rainforest" class="menu-item-img">
+                        </div>
+                        <!-- Columna de texto e información -->
+                        <div class="menu-item-column info-column">
+                            <div class="menu-item-header">
+                                <h3 class="menu-item-title">Lion Cheesecake</h3>
+                                <div class="menu-item-price-action">
+                                    <button class="add-button">
+                                        <i class="bi bi-plus-circle"></i>
+                                        <!-- Asumiendo que quieres usar un ícono de 'plus' -->
+                                    </button>
+                                    <span class="price">6,00 €</span>
+                                </div>
+                            </div>
+                            <p class="menu-item-description">
+                                Cheesecake de cereales Lion con base de Oreo
+                            </p>
+                            <div class="menu-item-icons">
+                                <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/leche.svg" alt="leche">
+                                <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/nuts.svg" alt="nueces">
+                                <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/gluten.svg" alt="gluten">
+                                <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/peanuts.svg" alt="cacahuetes">
+                                <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/huevos.svg" alt="huevo">
+                                <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/sulphur.svg" alt="sulfuro">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--ENSALADAS-->
+            <div class="column left-column">
+                <div class="titulo-seccion" id="tabFour">
+                    <h2 style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Ensaladas</h2>
+                </div>
+                <div class="tabs-content">
+                    <!-- Item del menú -->
+                    <div class="menu-item" id="product15" data-product-name="Ensalada Cesar" data-product-price="8.00"
+                        data-product-description="Pechuga de pollo crujiente, queso rallado, crujientes de queso, aliñada con salsa César sobre una base de lechuga romana y otras mezclas, acompañada de barritas de pan de cristal."
+                        data-product-allergens="Alergenos: Gluten, sulfitos, láctosa, mostaza, ,nueces, cacahuetes, huevo y soja."
+                        data-product-image1="/miAppHamburguesa/Frontend/src/assets/img/Menu/EnsaladaCesar.jpg"
+                        data-product-image2="/miAppHamburguesa/Frontend/src/assets/img/Menu/gluten.svg"
+                        data-product-image3="/miAppHamburguesa/Frontend/src/assets/img/Menu/sulphur.svg"
+                        data-product-image4="/miAppHamburguesa/Frontend/src/assets/img/Menu/leche.svg"
+                        data-product-image5="/miAppHamburguesa/Frontend/src/assets/img/Menu/mustard.svg"
+                        data-product-image6="/miAppHamburguesa/Frontend/src/assets/img/Menu/nuts.svg"
+                        data-product-image7="/miAppHamburguesa/Frontend/src/assets/img/Menu/peanuts.svg"
+                        data-product-image8="/miAppHamburguesa/Frontend/src/assets/img/Menu/huevos.svg"
+                        data-product-image9="/miAppHamburguesa/Frontend/src/assets/img/Menu/soybeans.svg">
+
+                        <!-- Columna de imagen -->
+                        <div class="menu-item-column image-column">
+                            <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/EnsaladaCesar.jpg"
+                                alt="Lotus Cheesecake" class="menu-item-img">
+                        </div>
+                        <!-- Columna de texto e información -->
+                        <div class="menu-item-column info-column">
+                            <div class="menu-item-header">
+                                <h3 class="menu-item-title">Ensalada Cesar</h3>
+                                <div class="menu-item-price-action">
+                                    <button class="add-button">
+                                        <i class="bi bi-plus-circle"></i>
+                                        <!-- Asumiendo que quieres usar un ícono de 'plus' -->
+                                    </button>
+                                    <span class="price">8,00 €</span>
+                                </div>
+                            </div>
+                            <p class="menu-item-description">
+                                Pechuga de pollo crujiente, queso rallado, crujientes de queso, aliñada con salsa César
+                                sobre una base de lechuga romana y otras mezclas, acompañada de barritas de pan de
+                                cristal.
+                            </p>
+                            <div class="menu-item-icons">
+                                <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/gluten.svg" alt="gluten">
+                                <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/sulphur.svg" alt="sulfuro">
+                                <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/leche.svg" alt="leche">
+                                <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/mustard.svg" alt="mostaza">
+                                <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/nuts.svg" alt="nueces">
+                                <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/peanuts.svg" alt="cacahuetes">
+                                <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/huevos.svg" alt="huevo">
+                                <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/soybeans.svg" alt="soja">
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- segunda ensalada -->
+
+
+                    <div class="menu-item" id="product16" data-product-name="CobSalad" data-product-price="7.50"
+                        data-product-description="Mezcla de lechugas, pollo crujiente estilo sureño, aguacate, bacon crispy, arroz, tomates cherri y maíz. Salsa a elegir entre queso azul o Gingersoy."
+                        data-product-allergens="Alergenos: Gluten, láctosa, mostaza, sulfitos, huevo y soja."
+                        data-product-image1=" /miAppHamburguesa/Frontend/src/assets/img/Menu/CobSalad.png"
+                        data-product-image2="/miAppHamburguesa/Frontend/src/assets/img/Menu/gluten.svg"
+                        data-product-image3="/miAppHamburguesa/Frontend/src/assets/img/Menu/leche.svg"
+                        data-product-image4="/miAppHamburguesa/Frontend/src/assets/img/Menu/mustard.svg"
+                        data-product-image5="/miAppHamburguesa/Frontend/src/assets/img/Menu/sulphur.svg"
+                        data-product-image6="/miAppHamburguesa/Frontend/src/assets/img/Menu/huevos.svg"
+                        data-product-image7="/miAppHamburguesa/Frontend/src/assets/img/Menu/soybeans.svg">
+
+                        <h2 style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">
+                        </h2>
+                        <!-- Columna de imagen -->
+                        <div class="menu-item-column image-column">
+                            <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/CobSalad.png"
+                                alt="Nachos Rainforest" class="menu-item-img">
+                        </div>
+                        <!-- Columna de texto e información -->
+                        <div class="menu-item-column info-column">
+                            <div class="menu-item-header">
+                                <h3 class="menu-item-title">Cob Salad</h3>
+                                <div class="menu-item-price-action">
+                                    <button class="add-button">
+                                        <i class="bi bi-plus-circle"></i>
+                                        <!-- Asumiendo que quieres usar un ícono de 'plus' -->
+                                    </button>
+                                    <span class="price">7,50 €</span>
+                                </div>
+                            </div>
+                            <p class="menu-item-description">
+                                Mezcla de lechugas, pollo crujiente estilo sureño, aguacate, bacon crispy, arroz,
+                                tomates cherri y maíz. Salsa a elegir entre queso azul o Gingersoy.
+                            </p>
+                            <div class="menu-item-icons">
+                                <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/gluten.svg" alt="gluten">
+                                <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/leche.svg" alt="leche">
+                                <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/mustard.svg" alt="mostaza">
+                                <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/huevos.svg" alt="huevos">
+                                <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/soybeans.svg" alt="soja">
+                                <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/sulphur.svg" alt="sulfuro">
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- Tercera ensalada -->
+
+
+                    <div class="menu-item" id="product17" data-product-name="Ensalada Vibes" data-product-price="7.00"
+                        data-product-description="Lechuga, tomate, cebolla, maíz, atún, huevo cocido, zanahoria y remolacha."
+                        data-product-allergens="Alergenos: Huevo, pescado, y sulfitos."
+                        data-product-image1=" /miAppHamburguesa/Frontend/src/assets/img/Menu/EnsaladaVibes.jpg"
+                        data-product-image2="/miAppHamburguesa/Frontend/src/assets/img/Menu/huevos.svg"
+                        data-product-image3="/miAppHamburguesa/Frontend/src/assets/img/Menu/pescado.svg"
+                        data-product-image4="/miAppHamburguesa/Frontend/src/assets/img/Menu/sulphur.svg">
+
+                        <!-- Columna de imagen -->
+                        <div class="menu-item-column image-column">
+                            <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/EnsaladaVibes.jpg"
+                                alt="Nachos Rainforest" class="menu-item-img">
+                        </div>
+                        <!-- Columna de texto e información -->
+                        <div class="menu-item-column info-column">
+                            <div class="menu-item-header">
+                                <h3 class="menu-item-title">Ensalada Vibes</h3>
+                                <div class="menu-item-price-action">
+                                    <button class="add-button">
+                                        <i class="bi bi-plus-circle"></i>
+                                        <!-- Asumiendo que quieres usar un ícono de 'plus' -->
+                                    </button>
+                                    <span class="price">7,00 €</span>
+                                </div>
+                            </div>
+                            <p class="menu-item-description">
+                                Lechuga, tomate, cebolla, maíz, atún, huevo cocido, zanahoria y remolacha.
+                            </p>
+                            <div class="menu-item-icons">
+                                <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/huevos.svg" alt="huevo">
+                                <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/pescado.svg" alt="pescado">
+                                <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/sulphur.svg" alt="sulfuro">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--BEBIDAS-->
+            <div class="column left-column">
+                <div class="titulo-seccion" id="tabFive">
+                    <h2 style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Bebidas
+                    </h2>
+                </div>
+                <div class="tabs-content">
+                    <!-- Item del menú -->
+                    <div class="menu-item" id="product18" data-product-name="Coca-cola Original"
+                        data-product-price="2.50" 
+                        data-product-image1="/miAppHamburguesa/Frontend/src/assets/img/Menu/cocaoriginal.jpg">
+
+                        <!-- Columna de imagen -->
+                        <div class="menu-item-column image-column">
+                            <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/cocaoriginal.jpg"
+                                alt="Lotus Cheesecake" class="menu-item-img">
+                        </div>
+                        <!-- Columna de texto e información -->
+                        <div class="menu-item-column info-column">
+                            <div class="menu-item-header">
+                                <h3 class="menu-item-title">Coca-cola Original</h3>
+                                <div class="menu-item-price-action">
+                                    <button class="add-button">
+                                        <i class="bi bi-plus-circle"></i>
+                                        <!-- Asumiendo que quieres usar un ícono de 'plus' -->
+                                    </button>
+                                    <span class="price">2,50 €</span>
+                                </div>
+                            </div>
+                            <p class="menu-item-description">
+
+                            </p>
+                            <div class="menu-item-icons">
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- segunda BEBIDA -->
+
+
+                    <div class="menu-item" id="product18" data-product-name="Coca-cola Zero" data-product-price="2.50"
+                        data-product-image1="/miAppHamburguesa/Frontend/src/assets/img/Menu/cacazero.jpg">
+
+                        <!-- Columna de imagen -->
+                        <div class="menu-item-column image-column">
+                            <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/cacazero.jpg"
+                                alt="Lotus Cheesecake" class="menu-item-img">
+                        </div>
+                        <!-- Columna de texto e información -->
+                        <div class="menu-item-column info-column">
+                            <div class="menu-item-header">
+                                <h3 class="menu-item-title">Coca-cola Zero</h3>
+                                <div class="menu-item-price-action">
+                                    <button class="add-button">
+                                        <i class="bi bi-plus-circle"></i>
+                                        <!-- Asumiendo que quieres usar un ícono de 'plus' -->
+                                    </button>
+                                    <span class="price">2,50 €</span>
+                                </div>
+                            </div>
+                            <p class="menu-item-description">
+
+                            </p>
+                            <div class="menu-item-icons">
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- tercera BEBIDA-->
+
+
+                    <div class="menu-item" id="product20" data-product-name="Coca-cola Zero Zero"
+                        data-product-price="2,50" 
+                        data-product-image1=" /miAppHamburguesa/Frontend/src/assets/img/Menu/cacazerozero.jpg">
+
+                        <!-- Columna de imagen -->
+                        <div class="menu-item-column image-column">
+                            <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/cacazerozero.jpg"
+                                alt="Nachos Rainforest" class="menu-item-img">
+                        </div>
+                        <!-- Columna de texto e información -->
+                        <div class="menu-item-column info-column">
+                            <div class="menu-item-header">
+                                <h3 class="menu-item-title">Coca-cola Zero Zero</h3>
+                                <div class="menu-item-price-action">
+                                    <button class="add-button">
+                                        <i class="bi bi-plus-circle"></i>
+                                        <!-- Asumiendo que quieres usar un ícono de 'plus' -->
+                                    </button>
+                                    <span class="price">2,50 €</span>
+                                </div>
+                            </div>
+                            <p class="menu-item-description">
+
+                            </p>
+                            <div class="menu-item-icons">
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="menu-item" id="product18" data-product-name="Fanta Naranja" data-product-price="2.50"
+                        data-product-image1="/miAppHamburguesa/Frontend/src/assets/img/Menu/fantalimon.jpg">
+
+                        <!-- Columna de imagen -->
+                        <div class="menu-item-column image-column">
+                            <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/fantalimon.jpg"
+                                alt="Lotus Cheesecake" class="menu-item-img">
+                        </div>
+                        <!-- Columna de texto e información -->
+                        <div class="menu-item-column info-column">
+                            <div class="menu-item-header">
+                                <h3 class="menu-item-title">Fanta Naranja</h3>
+                                <div class="menu-item-price-action">
+                                    <button class="add-button">
+                                        <i class="bi bi-plus-circle"></i>
+                                        <!-- Asumiendo que quieres usar un ícono de 'plus' -->
+                                    </button>
+                                    <span class="price">2,50 €</span>
+                                </div>
+                            </div>
+                            <p class="menu-item-description">
+                            </p>
+                            <div class="menu-item-icons">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="menu-item" id="product18" data-product-name="Nestea" data-product-price="2,50" 
+                        data-product-image1="/miAppHamburguesa/Frontend/src/assets/img/Menu/fantanaranja.jpg">
+
+                        <!-- Columna de imagen -->
+                        <div class="menu-item-column image-column">
+                            <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/fantanaranja.jpg"
+                                alt="Lotus Cheesecake" class="menu-item-img">
+                        </div>
+                        <!-- Columna de texto e información -->
+                        <div class="menu-item-column info-column">
+                            <div class="menu-item-header">
+                                <h3 class="menu-item-title">Nestea</h3>
+                                <div class="menu-item-price-action">
+                                    <button class="add-button">
+                                        <i class="bi bi-plus-circle"></i>
+                                        <!-- Asumiendo que quieres usar un ícono de 'plus' -->
+                                    </button>
+                                    <span class="price">2,50 €</span>
+                                </div>
+                            </div>
+                            <p class="menu-item-description">
+
+                            </p>
+                            <div class="menu-item-icons">
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="menu-item" id="product18" data-product-name="Fanta Limón" data-product-price="2.50"
+                        data-product-image1="/miAppHamburguesa/Frontend/src/assets/img/Menu/fantalimon1.jpg">
+
+                        <!-- Columna de imagen -->
+                        <div class="menu-item-column image-column">
+                            <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/fantalimon1.jpg"
+                                alt="Lotus Cheesecake" class="menu-item-img">
+                        </div>
+                        <!-- Columna de texto e información -->
+                        <div class="menu-item-column info-column">
+                            <div class="menu-item-header">
+                                <h3 class="menu-item-title">Fanta Limón</h3>
+                                <div class="menu-item-price-action">
+                                    <button class="add-button">
+                                        <i class="bi bi-plus-circle"></i>
+                                        <!-- Asumiendo que quieres usar un ícono de 'plus' -->
+                                    </button>
+                                    <span class="price">2.50 €</span>
+                                </div>
+                            </div>
+                            <p class="menu-item-description">
+
+                            </p>
+                            <div class="menu-item-icons">
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="menu-item" id="product18" data-product-name="Aquarius Naranja" data-product-price="2.50"
+                        data-product-image1="/miAppHamburguesa/Frontend/src/assets/img/Menu/aquariusnaranja.jpg">
+
+                        <!-- Columna de imagen -->
+                        <div class="menu-item-column image-column">
+                            <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/aquariusnaranja.jpg"
+                                alt="Lotus Cheesecake" class="menu-item-img">
+                        </div>
+                        <!-- Columna de texto e información -->
+                        <div class="menu-item-column info-column">
+                            <div class="menu-item-header">
+                                <h3 class="menu-item-title">Aquarius Naranja</h3>
+                                <div class="menu-item-price-action">
+                                    <button class="add-button">
+                                        <i class="bi bi-plus-circle"></i>
+                                        <!-- Asumiendo que quieres usar un ícono de 'plus' -->
+                                    </button>
+                                    <span class="price">2,50 €</span>
+                                </div>
+                            </div>
+                            <p class="menu-item-description">
+
+                            </p>
+                            <div class="menu-item-icons">
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="menu-item" id="product18" data-product-name="Aquarius Limón" data-product-price="2,50"
+                        data-product-image1="/miAppHamburguesa/Frontend/src/assets/img/Menu/aquariuslimon.jpg">
+
+                        <!-- Columna de imagen -->
+                        <div class="menu-item-column image-column">
+                            <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/aquariuslimon.jpg"
+                                alt="Lotus Cheesecake" class="menu-item-img">
+                        </div>
+                        <!-- Columna de texto e información -->
+                        <div class="menu-item-column info-column">
+                            <div class="menu-item-header">
+                                <h3 class="menu-item-title">Aquarius Limón</h3>
+                                <div class="menu-item-price-action">
+                                    <button class="add-button">
+                                        <i class="bi bi-plus-circle"></i>
+                                        <!-- Asumiendo que quieres usar un ícono de 'plus' -->
+                                    </button>
+                                    <span class="price">2,50 €</span>
+                                </div>
+                            </div>
+                            <p class="menu-item-description">
+
+                            </p>
+                            <div class="menu-item-icons">
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="menu-item" id="product18" data-product-name="Agua" data-product-price="1.90" 
+                        data-product-image1="/miAppHamburguesa/Frontend/src/assets/img/Menu/agua.jpg">
+
+                        <!-- Columna de imagen -->
+                        <div class="menu-item-column image-column">
+                            <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/agua.jpg" alt="Lotus Cheesecake"
+                                class="menu-item-img">
+                        </div>
+                        <!-- Columna de texto e información -->
+                        <div class="menu-item-column info-column">
+                            <div class="menu-item-header">
+                                <h3 class="menu-item-title">Agua</h3>
+                                <div class="menu-item-price-action">
+                                    <button class="add-button">
+                                        <i class="bi bi-plus-circle"></i>
+                                        <!-- Asumiendo que quieres usar un ícono de 'plus' -->
+                                    </button>
+                                    <span class="price">1.90 €</span>
+                                </div>
+                            </div>
+                            <p class="menu-item-description">
+
+                            </p>
+                            <div class="menu-item-icons">
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="menu-item" id="product18" data-product-name="Ambar" data-product-price="2.50" 
+                        data-product-image1="/miAppHamburguesa/Frontend/src/assets/img/Menu/Ambar.jpg">
+
+                        <!-- Columna de imagen -->
+                        <div class="menu-item-column image-column">
+                            <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/Ambar.jpg"
+                                alt="Lotus Cheesecake" class="menu-item-img">
+                        </div>
+                        <!-- Columna de texto e información -->
+                        <div class="menu-item-column info-column">
+                            <div class="menu-item-header">
+                                <h3 class="menu-item-title">Ambar</h3>
+                                <div class="menu-item-price-action">
+                                    <button class="add-button">
+                                        <i class="bi bi-plus-circle"></i>
+                                        <!-- Asumiendo que quieres usar un ícono de 'plus' -->
+                                    </button>
+                                    <span class="price">2,50 €</span>
+                                </div>
+                            </div>
+                            <p class="menu-item-description">
+                              
+                            </p>
+                            <div class="menu-item-icons">
+                     
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <!-- Columna del pedido a la derecha -->
+        <div class="order-column">
+            <div class="order-header">
+                <i class="bi bi-receipt-cutoff me-2"></i><span class="order-title">Tu pedido</span>
+            </div>
+            <div class="order-content">
+                <div id="minimum-order-notice" class="order-minimum alert alert-warning fs-6 p-2 px-3" role="alert">
+                    <i class="bi bi-exclamation-triangle-fill me-2"></i>
+                    <span>Pedido mínimo: <b>16,00&nbsp;€</b></span>
+                </div>
+                <div class="order-logo">
+                    <img src="/miAppHamburguesa/Frontend/src/assets/img/Home/BurgerVibes.svg" alt="Brand Logo"
+                        class="order-brand-logo">
+                </div>
+                <div class="order-empty">
+                    <span>Tu pedido está vacío, añade algún producto para continuar</span>
+                </div>
+
+
+                <div class="order-items">
+                    <!-- Los elementos del pedido se agregarán aquí dinámicamente -->
+                </div>
+            </div>
+            <div class="order-footer">
+                <div class="order-total">
+                    <span>Total:</span>
+                    <span class="total-amount">0,00 €</span>
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+
+
+    <!--MODALES DE CADA PRODUCTO-->
+
+    <div id="productModal" class="modal" style="display:none;">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <img src="" id="productImage" class="modal-image">
+            <h2 id="productModalTitle"></h2>
+            <p id="descripcion"></p>
+            <p id="alegernos"></p>
+            <img id="allergenImage1" alt="gluten" style="width: 24px; height: auto;">
+            <img id="allergenImage2" alt="sulfuro" style="width: 24px; height: auto;">
+            <img id="allergenImage3" alt="láctosa" style="width: 24px; height: auto;">
+            <img id="allergenImage4" alt="huevo" style="width: 24px; height: auto;">
+            <img id="allergenImage5" alt="pescado" style="width: 24px; height: auto;">
+            <img id="allergenImage6" alt="nueces" style="width: 24px; height: auto;">
+            <img id="allergenImage7" alt="cacahuetes" style="width: 24px; height: auto;">
+            <img id="allergenImage8" alt="soja" style="width: 24px; height: auto;">
+            <img id="allergenImage9" alt="mostaza" style="width: 24px; height: auto;">
+            <div class="quantity-control">
+                <button class="minus-btn">-</button>
+                <input type="number" id="quantity" value="1" min="1">
+                <button class="plus-btn">+</button>
+            </div>
+            <div class="modal-footer ">
+                <div class="btn-añadir"></div>
+                <button type="button" class="add-to-cart-btn">
+                    <span>Añadir al carrito - </span><span class="price-span" style="display: none;">0 €</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+
+    <footer id="siteFooter">
+        <div class="footer-links">
+            <a href="/miAppHamburguesa/Frontend/public/html_Español/CookiesValenciaShop.html">Configuración de cookies</a>
+            <a href="/miAppHamburguesa/Frontend/public/html_Español/Politica_Privacidad.html" target="_blank">Política de privacidad</a>
+            <a href="/miAppHamburguesa/Frontend/public/html_Español/Terminos_Condiciones.html" target="_blank">Términos y condiciones</a>
+        </div>
+        <hr>
+        <div class="last-part">
+            <div class="footer-branding">
+                <img width="120" src="/miAppHamburguesa/Frontend/src/assets/img/Home/BurgerVibes.svg" alt="Logo">
+            </div>
+            <div class="footer-language-selector">
+                <label for="language-select">Idioma</label>
+                <select id="language-select">
+                    <option value="en">EN</option>
+                    <option value="es" selected>ES</option>
+                </select>
+            </div>
+        </div>
+    </footer>
+
+
+
+
+    <!--SCRIPT LOGICA DEL MENU-->
+    <script src="/miAppHamburguesa/Frontend/src/js/LogicaMenu/ModalsProductosDinamico.js"></script>
+    <script src="/miAppHamburguesa/Frontend/src/js/LogicaMenu/Carrito.js"></script>
+
+
+</body>
+
+</html>
+
+
+<!--<div class="modal-content">
+    <div class="modal-header sticky-top bg-white border-bottom py-2 px-3">
+        <h5 class="modal-title text-center fs-5 ps-2 py-1 fw-normal w-100">Alitas Thai</h5><button type="button"
+            class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+    <div class="modal-body p-0 align-items-center">
+        <div data-v-f6003611=""><img data-v-f6003611="" class="item-img" alt="Item image" lazy="loaded"
+                src="https://content.sinqro.com/913bcf5354_2e84667798_79991706008813alitasthai_1.jpg">
+            <h4 data-v-f6003611="" class="line-breaks mx-4 mt-4 text-secondary fs-6 fw-light">Alitas de pollo cocinadas
+                a baja temperatura sumergidas en una salsa agripicante que te hará volar la cabeza.
+
+                Alergenos: Gluten, Sulfitos y trigo.</h4>
+            <div data-v-f6003611="" class="flex-wrap d-flex mx-4 mt-2"><img
+                    src="https://img.delitbee.com/icons/allergens/gluten.svg" class="me-2 mt-2" data-bs-toggle="tooltip"
+                    data-bs-title="Gluten" tabindex="0"><img src="https://img.delitbee.com/icons/allergens/sulphur.svg"
+                    class="me-2 mt-2" data-bs-toggle="tooltip" data-bs-title="Sulfitos" tabindex="0"></div>
+        </div><
+        <div class="px-4">
+            <div></div>
+            <div class="mt-5">
+                <div class="mb-3 d-flex flex-column justify-content-center align-items-center">
+                    <div class="text-center">¿Cuántas unidades de Alitas Thai como esta quieres?</div>
+                    <div class="dtb-cart-control d-flex align-items-center my-3">
+                        <div class="px-2 cursor-pointer"><i class="bi bi-dash-circle-fill fs-3 text-primary"></i></div>
+                        <div class="fs-4 mx-2 fw-bolder">1</div>
+                        <div class="px-2 cursor-pointer"><i class="bi bi-plus-circle-fill fs-3 text-primary"></i></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer sticky-bottom bg-light"><button type="button"
+            class="btn btn-primary d-flex flex-row align-items-center justify-content-center w-100"><i
+                class="bi bi-plus-circle-fill fs-3 me-2"></i><span>Añadir a las notas · 8,00&nbsp;€</span></button>
+    </div>
+</div>
+
+-->

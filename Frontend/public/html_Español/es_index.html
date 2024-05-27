@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/x-icon" href="/miAppHamburguesa/Frontend/src/assets/img/Home/BurgerVibes.svg">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/miAppHamburguesa/Frontend/src/css/home.css">
+    <link rel="stylesheet" href="/miAppHamburguesa/Frontend/src/css/scrollbar.css">
+    <link rel="stylesheet" href="/miAppHamburguesa/Frontend/src/css/Modal.css">
+    <link rel="stylesheet" href="/miAppHamburguesa/Frontend/src/css/BotonLengua.css">
+    <link rel="stylesheet" href="/miAppHamburguesa/Frontend/src/css/idioma.css">
+    <link rel="stylesheet" href="/miAppHamburguesa/Frontend/src/css/loader.css">
+    <link rel="stylesheet" href="/miAppHamburguesa/Frontend/src/css/cookie.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+    <link href="https://fonts.googleapis.com/css2?family=Sedgwick+Ave&display=swap" rel="stylesheet">
+    <title>BurgerVibes</title>
+</head>
+
+<body>
+
+    <!--LOADER-->
+    <div id="burger-loader-wrapper">
+        <div id="burger-loader"></div>
+    </div>
+
+    <!--NAVEGACION-->
+    <header>
+        <nav id="container-xxl" class="container-xxl">
+            <div class="navbar">
+                <a href="#" class="navbar-brand">
+                    <!-- Asegúrate de tener tu imagen de logo disponible en la ruta especificada -->
+                    <img src="/miAppHamburguesa/Frontend/src/assets/img/Home/BurgerVibes.svg" alt="Logotipo" id="logo">
+
+                </a>
+                <button class="navbar-toggler" type="button">&#9776;</button>
+                <ul class="navbar-nav">
+                    <li></li><img src="/miAppHamburguesa/Frontend/src/assets/img/Home/BurgerVibes.svg" alt="Logotipo"
+                        id="logo" class="logo-responsive">
+                    <li><a href="#concepto" class="nav-link">Historia</a></li>
+                    <li><a href="/miAppHamburguesa/Alergenos/AlérgenosFinal.pdf" download="AlérgenosFinal.pdf" class="nav-link">Alergenos</a></li>
+                    <li><a href="#opiniones" class="nav-link">Opiniones</a></li>
+                    <li><a href="#galeria" class="nav-link">Galería</a></li>
+                    <li><a href="#Contacto" class="nav-link">Contacto</a></li>
+                    <li><a href="#carta" class="nav-link">Carta</a></li>
+                    <li><a href="/miAppHamburguesa/Frontend/public/html_Español/ZonaPrivada/ZonaPrivLog.html" class="nav-link">Personal</a></li>
+                    <span id="customModalClose" class="custom-close-responsive">&times;</span>
+                    <a href="javascript:void(0);" class="pedido-online-responsive" id="navbarOrderButton2">Pide
+                        online</a>
+                    <a href="javascript:void(0);" class="reserva-online-responsive" id="reservaMesaButton">Reserva
+                        mesa</a>
+                </ul>
+                <a href="javascript:void(0);" class="pedido-online" id="navbarOrderButton">Pide online</a>
+            </div>
+        </nav>
+        <!--HERO-CARRUSEL-->
+        <div class="container-hero">
+            <div id="hero" class="hero carousel">
+                <div class="carousel-inner">
+                    <!-- Slide 1 -->
+                    <div class="carousel-item active">
+                        <div class="hero-content">
+                            <div class="hero-row">
+                                <div class="hero-column">
+                                    <h1 class="hero-title">
+                                        ¡Bienvenidos a Burger Vibes! <br> La experiencia gastronómica definitiva <br>
+                                        llega
+                                        a Zaragoza
+                                    </h1>
+                                    <div class="hero-buttons">
+                                        <a href="javascript:void(0);" class="hero-button primary-button"
+                                            id="heroOrderButton">Pide online</a>
+                                        <a href="javascript:void(0);" class="hero-button light-button"
+                                            id="reservaMesaButtonInicio">Reserva
+                                            mesa</a>
+                                    </div>
+                                </div>
+                                <div class="hero-column2">
+                                    <div class="hero-hidden">
+                                        <p class="hero-subtitle">
+                                            ¡Dale un mordisco a la vida <br> con Burger Vibes! 🍔
+                                        </p>
+                                        <img src="/miAppHamburguesa/Frontend/src/assets/img/Home/Hero_hamburguesa.png"
+                                            alt="Imagen de fondo" style="object-fit: contain; max-height: 500px;" id="FotoHome">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Slide 2 con la nueva imagen promocional -->
+                    <div class="carousel-item" id="GranBurger">
+                        <img src="/miAppHamburguesa/Frontend/src/assets/img/Home/Menu_Hamburguesa.png"
+                            alt="Promoción La Gran Burger" class="Foto2">
+                    </div>
+                    <!-- Slide 3 -->
+                    <div class="carousel-item" id="Slide3">
+                        <img src="/miAppHamburguesa/Frontend/src/assets/img/Home/2x1_Español.png"
+                            alt="Nueva Hamburguesa" id="2x1" class="Foto3">
+                    </div>
+                    <!-- Continuar con los demás slides si es necesario -->
+
+                </div>
+                <!-- Flechas de navegación -->
+                <a class="carousel-control prev" href="#hero" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"><i
+                            class="fas fa-chevron-left"></i></span>
+                    <span class="sr-only"></span>
+                </a>
+                <a class="carousel-control next" href="#hero" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"><i
+                            class="fas fa-chevron-right"></i></span>
+                    <span class="sr-only"></span>
+                </a>
+
+
+                <!-- Indicadores de puntos en la parte inferior -->
+                <div class="carousel-indicators">
+                    <span class="dot active" data-slide-to="0"></span>
+                    <span class="dot" data-slide-to="1"></span>
+                    <span class="dot" data-slide-to="2"></span>
+                    <!-- Agregar más puntos si se añaden más slides -->
+                </div>
+            </div>
+        </div>
+    </header>
+
+
+
+    <!--SLOGAN-->
+    <div class="slogan-section">
+        <p class="slogan">¡Más que Sabor, es una experiencia 😋 - BurgerVibes!</p>
+    </div>
+
+
+    <!--Modal carta-->
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <div class="custom-modal-header">
+                <span id="customModalCloseCarta" class="custom-close">&times;</span>
+                <img src="/miAppHamburguesa/Frontend/src/assets/img/Home/BurgerVibes.svg" alt="Vibes Logo"
+                    class="modal-logo">
+            </div>
+            <div class="custom-modal-body">
+
+                <div class="carta-location">
+                    <p>Zaragoza</p>
+                    <div class="verCartaBtn">
+                        <a href="/miAppHamburguesa/Frontend/public/html_Español/Carta/es_cartazgznobuy_.html"
+                            class="ver-carta" style="text-decoration: none; color: #000;">
+                            <p id="VerCarta">Ver Carta</p>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="carta-location">
+                    <p>Valencia</p>
+                    <div class="verCartaBtn">
+                        <a href="/miAppHamburguesa/Frontend/public/html_Español/Carta/es_cartavalenobuy.html"
+                            class="ver-carta" style="text-decoration: none; color: #000;">
+                            <p id="VerCarta">Ver Carta</p>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="descargarCartaBtn">
+                    <a href="/miAppHamburguesa/MENU/BurgerVibes.pdf" download="BurgerVibes.pdf" class="descargar-carta"
+                        style="text-decoration: none; color: #000;">
+                        <p id="descargarBtn">Descargar Carta</p>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Modal PEDIDO -->
+    <div id="customOrderModal" class="custom-modal">
+        <div class="custom-modal-dialog">
+            <div class="custom-modal-content">
+                <div class="custom-modal-header">
+                    <span id="customModalClose" class="custom-close">&times;</span>
+                    <img src="/miAppHamburguesa/Frontend/src/assets/img/Home/BurgerVibes.svg" alt="Vibes Logo"
+                        class="modal-logo">
+                </div>
+                <div class="custom-modal-body">
+                    <!-- Aquí irá el contenido del modal, como textos, botones, etc. -->
+                    <div class="modal-warning">
+                        <p>⚠️ Antes de confirmar tu pedido, verifica el restaurante seleccionado.</p>
+                        <p>No podemos hacernos responsables de pedidos realizados en el restaurante equivocado.</p>
+                        <p>¡Agradecemos tu comprensión! 🍔</p>
+                    </div>
+                    <div class="location-section">
+                        <img src="/miAppHamburguesa/Frontend/src/assets/img/Home/Bandera_de_Aragón.svg.png"
+                            alt="Bandera de Zaragoza" class="location-flag" />
+                        <p class="location-name">Zaragoza</p>
+                    </div>
+                    <a href="https://www.ubereats.com/es?utm_source=AdWords_Brand&utm_campaign=CM2225035-search-google-brand_162_-99_ES-National_e_web_acq_cpc_es-ES_T1_Generic_BM_uber%20eats_kwd-111378724137_639006252462_150940917024_b_c&campaign_id=19130929568&adg_id=150940917024&fi_id=&match=b&net=g&dev=c&dev_m=&ad_id=639006252462&cre=639006252462&kwid=kwd-111378724137&kw=uber%20eats&placement=&tar=&gclsrc=aw.ds&gad_source=1&gclid=Cj0KCQjw0MexBhD3ARIsAEI3WHIjG3NHH-_fACyPC1PfeIrqmWHC1GF6QEjvLgu-uXk_JapCMiufVXEaAi3rEALw_wcB"
+                        target="_blank" class="modal-button delivery-button">
+                        Pide a domicilio con
+                        <img src="/miAppHamburguesa/Frontend/src/assets/img/Home/Uber_Eats.png" width="80px"
+                            style="margin-bottom: -1px; margin-right: 5px;">
+                    </a>
+                    <a href="/miAppHamburguesa/Frontend/public/html_Español/Carta/es_carta_Zaragoza.html"
+                        target="_blank" class="modal-button pickup-button">
+                        Pide para recoger Zaragoza
+                    </a>
+                    <hr class="divider">
+                    <div class="location-section">
+                        <img src="/miAppHamburguesa/Frontend/src/assets/img/Home/Bandera_de_Valencia.svg.png"
+                            alt="Bandera de Zaragoza" class="location-flag" />
+                        <p class="location-name">Valencia</p>
+                    </div>
+                    <a href="https://www.ubereats.com/es?utm_source=AdWords_Brand&utm_campaign=CM2225035-search-google-brand_162_-99_ES-National_e_web_acq_cpc_es-ES_T1_Generic_BM_uber%20eats_kwd-111378724137_639006252462_150940917024_b_c&campaign_id=19130929568&adg_id=150940917024&fi_id=&match=b&net=g&dev=c&dev_m=&ad_id=639006252462&cre=639006252462&kwid=kwd-111378724137&kw=uber%20eats&placement=&tar=&gclsrc=aw.ds&gad_source=1&gclid=Cj0KCQjw0MexBhD3ARIsAEI3WHIjG3NHH-_fACyPC1PfeIrqmWHC1GF6QEjvLgu-uXk_JapCMiufVXEaAi3rEALw_wcB"
+                        target="_blank" class="modal-button delivery-button">
+                        Pide a domicilio con
+                        <img src="/miAppHamburguesa/Frontend/src/assets/img/Home/Uber_Eats.png" width="80px"
+                            style="margin-bottom: -1px; margin-right: 5px;">
+                    </a>
+                    <a href="/miAppHamburguesa/Frontend/public/html_Español/Carta/es_carta_Valencia.html"
+                        target="_blank" class="modal-button pickup-button">
+                        Pide para recoger Valencia
+                    </a>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Modal de reserva-->
+    <div id="reservaMesaModal" class="custom-modal">
+        <div class="custom-modal-dialog">
+            <div class="custom-modal-content">
+                <div class="custom-modal-header">
+                    <span id="reservaMesaClose" class="custom-close">&times;</span>
+                    <img src="/miAppHamburguesa/Frontend/src/assets/img/Home/BurgerVibes.svg" alt="Vibes Logo"
+                        class="modal-logo">
+                </div>
+                <div class="location-section">
+                    <img src="/miAppHamburguesa/Frontend/src/assets/img/Home/Bandera_de_Aragón.svg.png"
+                        alt="Bandera de Zaragoza" class="location-flag" />
+                    <p class="location-name">Zaragoza</p>
+                    <div class="custom-modal-body">
+                        <a href="/miAppHamburguesa/Frontend/public/html_Español/Reservas/ReservaZgz.html"
+                            target="_blank" class="modal-button pickup-button">
+                            Reserva mesa
+                        </a>
+                    </div>
+                    <hr class="divider">
+                    <img src="/miAppHamburguesa/Frontend/src/assets/img/Home/Bandera_de_Valencia.svg.png"
+                        alt="Bandera de Zaragoza" class="location-flag" />
+                    <p class="location-name">Valencia</p>
+                </div>
+                <div class="custom-modal-body">
+                    <a href="/miAppHamburguesa/Frontend/public/html_Español/Reservas/ReservaVal.html" target="_blank"
+                        class="modal-button pickup-button">
+                        Reserva mesa
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <section class="concepto" id="concepto">
+        <div class="container">
+            <div class="columna">
+                <!-- Columna izquierda: Texto y botones -->
+                <div class="columna-izquierda">
+                    <div class="contenido">
+                        <div class="titulo">
+                            <h2>Nuestra Historia
+                                <img src="/miAppHamburguesa/Frontend/src/assets/img/Home/BurgerVibes.svg"
+                                    alt="Logo de BurgerVibes" title="Logo de BurgerVibes" style="width: 40%;" />
+                            </h2>
+                        </div>
+                        <p>BurgerVibes es una hamburguesería en Zaragoza que nace de la amistad y pasión por la comida
+                            entre Alfonso y Gabriel. El objetivo es claro: elevar la experiencia de las hamburguesas a
+                            otro nivel, utilizando recetas creativas y los mejores ingredientes disponibles.</p>
+                        <p>En BurgerVibes, cada hamburguesa cuenta una historia única. Inspirados por su amor compartido
+                            por la comida, Alfonso y Gabriel han creado un espacio donde los clientes pueden disfrutar
+                            de sabores auténticos y momentos inolvidables.</p>
+                        <p>BurgerVibes es más que hamburguesas; es un punto de encuentro para hacer amigos. Disfruta de
+                            nuestras mesas comunitarias en la zona 'Meet & Eat', diseñadas para compartir y conectar,
+                            porque creemos que las mejores conversaciones nacen alrededor de una buena comida.</p>
+                        <div class="botones">
+                            <a href="javascript:void(0);" class="BotonPedido btn-order">Haz tu Pedido</a>
+                            <a href="javascript:void(0);" class="BotonReserva btn-reserva ">Reserva una Mesa</a>
+                        </div>
+
+
+                    </div>
+                </div>
+                <!-- Columna derecha: Imagen o video -->
+                <div class="columna-derecha">
+                    <video src="/miAppHamburguesa/Frontend/src/assets/Videos/ConceptoBueno.mp4" class="img-fluid mb-3"
+                        id="Video" title="Fundadores de BurgerVibes"
+                        alt="Alfonso y Gabriel, los fundadores de BurgerVibes" playsinline autoplay muted loop></video>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!--GALERIA IMAGENES-->
+
+
+    <div class="texto-galeria">
+        <h2>@NUESTRASVIBES</h2>
+    </div>
+    <section class="gallery-container" id="galeria">
+        <div class="gallery">
+            <a href="/miAppHamburguesa/Frontend/public/html_Español/Carta/es_carta_Zaragoza.html#product6">
+                <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/hmg1.png" alt="Hamburguesa 1"
+                    class="gallery-item"> </a>
+            <a href="/miAppHamburguesa/Frontend/public/html_Español/Carta/es_carta_Zaragoza.html#product7">
+                <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/hmg2.png" alt="Hamburguesa 2"
+                    class="gallery-item" id="Hamburguesa2"></a>
+            <a href="/miAppHamburguesa/Frontend/public/html_Español/Carta/es_carta_Zaragoza.html#product8">
+                <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/hmg3.png" alt="Hamburguesa 3"
+                    class="gallery-item" id="Hamburguesa3"></a>
+            <a href="/miAppHamburguesa/Frontend/public/html_Español/Carta/es_carta_Zaragoza.html#product9">
+                <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/hmg4.png" alt="Hamburguesa 4"
+                    class="gallery-item"></a>
+            <img src="/miAppHamburguesa/Frontend/src/assets/img/Home/BurgerVibes.svg" alt="Hamburguesa 5"
+                class="gallery-item" id="CambioImagen">
+            <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/hmg5.png" alt="CambioImagen" id="Tablet"
+                class="gallery-item">
+            <a href="/miAppHamburguesa/Frontend/public/html_Español/Carta/es_carta_Zaragoza.html#product11">
+                <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/hmg6.png" alt="Hamburguesa 6"
+                    class="gallery-item" id="Hamburguesa6"></a>
+        </div>
+    </section>
+
+    <!--Boton de Lenguaje-->
+
+    <div id="language-switcher" class="language-switcher">
+        <button id="language-button" class="language-button">Idioma</button>
+        <div class="dropdown-menu" style="display:none;">
+            <a class="dropdown-item" href="/miAppHamburguesa/Frontend/public/html_Español/es_index.html"
+                data-lang="es">Español</a>
+            <a class="dropdown-item" href="/miAppHamburguesa/Frontend/public/html_Ingles/en_index.html"
+                data-lang="en">English</a>
+        </div>
+    </div>
+
+    <!--Nuestros clientes-->
+    <section class="contenedor-opiniones" style="background-image: url(/miAppHamburguesa/Frontend/src/assets/img/Home/Fondo_Hero.svg);     background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center">
+        <div id="opiniones" class="container-clientes">
+            <div class="fila">
+                <h2 class="titulo-principal">Opiniones sobre BurgerVibes 🧡</h2>
+            </div>
+            <article class="opinion-card">
+                <h3 class="card-title">
+                    Hamburguesas Que Capturan el Corazón
+                </h3>
+                <blockquote class="card-text">
+                    Una experiencia única en cada bocado. Las hamburguesas tienen un sabor
+                    que simplemente no se puede encontrar en otro lugar. Me quedé
+                    impresionado por la calidad de la carne y las combinaciones innovadoras.
+                    ¡Volveré muy pronto!
+                </blockquote>
+                <footer class="footer-card">
+                    Por Antón Borraz
+                    <time datetime="2023-03" class="text-white-50" title="Source Title">Abril de 2023</time>
+                </footer>
+            </article>
+            <article class="opinion-card">
+                <h3 class="card-title">
+                    Sabor Inolvidable en Cada Visita
+                </h3>
+                <blockquote class="card-text">
+                    Fantástica comida y ambiente aún mejor. Me encanta la decoración del
+                    lugar, y el servicio es inmejorable. Probamos la hamburguesa de la casa y estaba deliciosa. La salsa
+                    casera es un secreto que necesito en mi vida. ¡Recomendadísimo¡ <br> <br>
+                </blockquote>
+                <footer class="footer-card">
+                    Por Alejandro Alagón
+                    <time datetime="2023-03" class="text-white-50" title="Source Title">Septiembre de 2022</time>
+                </footer>
+            </article>
+            <article class="opinion-card">
+                <h3 class="card-title">
+                    Un Festín para los Sentidos
+                </h3>
+                <blockquote class="card-text">
+                    No exagero al decir que estas son algunas de las mejores hamburguesas
+                    que he probado. El pan artesano, la carne jugosa y los ingredientes
+                    frescos hacen una diferencia notable.
+                </blockquote>
+                <footer class="footer-card">
+                    Por Alex Iana
+                    <time datetime="2023-03" class="text-white-50" title="Source Title">Enero de 2024</time>
+                </footer>
+            </article>
+        </div>
+    </section>
+
+
+    <!--FOOTER-->
+    <footer class="footer">
+        <div class="footer-credits">
+            <div class="footer-column">
+                <div class="footer-section">
+                    <h4>Horarios Zaragoza</h4>
+                    <div class="horarios-restaurante">
+                        <h3>Hamburguesería BurgerVibes Zaragoza</h3>
+                        <table class="horarios-table">
+                            <tr>
+                                <th>Día</th>
+                                <th>Horario</th>
+                            </tr>
+                            <tr>
+                                <td>Lunes - Jueves</td>
+                                <td>12:00 AM - 21:00 PM</td>
+                            </tr>
+                            <tr>
+                                <td>Viernes - Domingo</td>
+                                <td>12:00 AM - 00:00 PM</td>
+                            </tr>
+                        </table>
+                        <p id="ubi-zaragoza">Av. de Zaragoza, 50, 50004 Zaragoza</p>
+                        <!-- Aquí el iframe de Google Maps -->
+                        <iframe class="ubi1"
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3299.9172237566636!2d-0.8820865847713147!3d41.65013997924538!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd582b9c99f3ae49%3A0x4d2d77a13c7dc669!2sAv.%20de%20Zaragoza%2C%2050%2C%2050004%20Zaragoza!5e0!3m2!1sen!2ses!4v1649172585905!5m2!1sen!2ses"
+                            style="border-radius:10px;" allowfullscreen="" loading="lazy"></iframe>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-column">
+                <div class="footer-section">
+                    <h4>Horarios Valencia</h4>
+                    <div class="horarios-restaurante">
+                        <h3>Hamburguesería BurgerVibes Valencia</h3>
+                        <table class="horarios-table">
+                            <tr>
+                                <th>Día</th>
+                                <th>Horario</th>
+                            </tr>
+                            <tr>
+                                <td>Lunes - Jueves</td>
+                                <td>12:00 AM - 21:00 PM</td>
+                            </tr>
+                            <tr>
+                                <td>Viernes - Domingo</td>
+                                <td>12:00 AM - 00:00 PM</td>
+                            </tr>
+                        </table>
+                        <p id="ubi-valencia">Carrer De Elena Just Castillo, 4</p>
+                        <!-- Aquí el iframe de Google Maps -->
+                        <iframe class="ubi2"
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6160.4648142240785!2d-0.40366601099265115!3d39.46407803987546!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd604f135c7cd745%3A0x71ea33068148130f!2sCarrer%20De%20Elena%20Just%20Castillo%2C%204%2C%20L&#39;Olivereta%2C%2046018%20Valencia!5e0!3m2!1sen!2ses!4v1713473633187!5m2!1sen!2ses"
+                            style="border-radius:10px;" allowfullscreen="" loading="lazy"></iframe>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-column">
+                <div class="footer-section">
+                    <h4>Contacto</h4>
+                    <a href="/miAppHamburguesa/Frontend/public/html_Español/TrabajaNostros.html"
+                        id="TrabajaConNostros">¡Únete a nuestro equipo hoy!</a>
+                    <p id="texto-correo-footer">📧 reservasBurgerVibes@gmail.com</p>
+                    <p>Para cualquier modificación en su reserva, contáctenos a través de nuestro correo o Instagram.
+                    </p>
+                </div>
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <a href="/miAppHamburguesa/Frontend/public/html_Español/ConfigCookies.html">Configuración de
+                        cookies</a>
+                    <a href="/miAppHamburguesa/Frontend/public/html_Español/Terminos_Condiciones.html">Términos y
+                        condiciones</a>
+                    <a href="/miAppHamburguesa/Frontend/public/html_Español/Politica_Privacidad.html">Política de
+                        privacidad</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="pie-de-pagina-contenedor" id="Contacto">
+            <div class="contenido-pie">
+                <a href="#inicio" class="logo-enlace">
+                    <img src="/miAppHamburguesa/Frontend/src/assets/img/Home/BurgerVibes.svg"
+                        alt="Logotipo de BurgerVibes" class="logo-pie">
+                </a>
+
+                <span class="hecho-por">@2024 BurgerVibes</span>
+                <a href="#" target="_blank" class="icono-instagram">
+                    <img src="/miAppHamburguesa/Frontend/src/assets/img/Home/instagram-icon.svg"
+                        alt="Instagram de BurgerVibes" class="imagen-instagram">
+                </a>
+            </div>
+        </div>
+
+    </footer>
+
+    <!--COOKIES-->
+
+
+    <div class="cookies-msg" id="cookies-msg">
+        <div class="cookies-header">
+            <img src="/miAppHamburguesa/Frontend/src/assets/img/Home/Cookie.png" alt="Cookie Icon" class="cookie-icon"
+                style="width: 70px;">
+            <h2 class="cookies-title">Consentimiento de Cookies</h2>
+        </div>
+        <div class="cookies-txt">
+            <p>Este sitio web utiliza cookies y tecnologías relacionadas, que son pequeños archivos o fragmentos de
+                texto descargados a un dispositivo cuando un visitante accede a un sitio web o aplicación. Al utilizar
+                nuestro sitio web, acepta el uso de cookies para brindarle una mejor experiencia.</p>
+
+            <div class="cookies-btn">
+                <button id="aceptar" onclick="aceptar()">Aceptar</button>
+                <button id="rechazar" onclick="rechazar()">Rechazar</button>
+            </div>
+        </div>
+    </div>
+
+    <!--Links de Scripts-->
+    <script src="/miAppHamburguesa/Frontend/src/js/scrollnavbar.js"></script>
+    <script src="/miAppHamburguesa/Frontend/src/js/carrusel.js"></script>
+    <script src="/miAppHamburguesa/Frontend/src/js/modal.js"></script>
+    <script src="/miAppHamburguesa/Frontend/src/js/CambiarLengua.js"></script>
+    <script src="/miAppHamburguesa/Frontend/src/js/loader.js"></script>
+    <script src="/miAppHamburguesa/Frontend/src/js/cookies.js"></script>
+
+</body>
+
+
+</html>

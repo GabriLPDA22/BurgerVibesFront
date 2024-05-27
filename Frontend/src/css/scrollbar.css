@@ -1,0 +1,14 @@
+/* Estilos para la barra de desplazamiento en WebKit (Chrome, Safari) */
+::-webkit-scrollbar {
+    width: 8px; /* Ancho de la barra de desplazamiento */
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #F67906; /* Color del botón de la barra de desplazamiento */
+    border-radius: 4px; /* Forma redondeada del botón de la barra de desplazamiento */
+}
+
+/* Ajustamos la altura de la barra de desplazamiento */
+::-webkit-scrollbar-track {
+    height: 1px; /* Altura de la barra de desplazamiento */
+}

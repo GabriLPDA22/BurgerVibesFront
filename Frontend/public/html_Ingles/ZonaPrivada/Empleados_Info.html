@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/miAppHamburguesa/Frontend/src/css/ZonaPrivada/TodoZonaPRivada.css">
+    <title>Employees</title>
+</head>
+<body>
+    <h1>List of employees</h1>
+    <table id="tablaEmpleado">
+        <thead>
+            <tr>
+                <th>Employee ID</th>
+                <th>Name</th>
+                <th>last name</th>
+                <th>Address</th>
+                <th>Position</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Private Zone ID</th>
+                <th>Password</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Los empleados se agregarán aquí mediante JavaScript -->
+        </tbody>
+    </table>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            margin: 20px 0;
+        }
+
+        table {
+            width: 80%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            display: none; /* Oculta la tabla hasta que se carguen los datos */
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #F67906;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #ddd;
+        }
+    </style>
+
+    <script src="/miAppHamburguesa/Frontend/src/js/Empleados_zona_priv.js"></script>
+</body>
+</html>

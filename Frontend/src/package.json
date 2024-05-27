@@ -1,0 +1,178 @@
+{
+    "productos": {
+        "Entrantes": [
+            {
+                "id": 1,
+                "nombre": "Nachos Rainforest",
+                "precio": 12.5,
+                "descripcion": "Inspirados en rainforest cafe de Chicago. Totopos de maíz, cheddar cream, guacamole, carne deshilachada, pico de gallo y crema agria."
+            },
+            {
+                "id": 2,
+                "nombre": "Pollo-Vibes",
+                "precio": 9.5,
+                "descripcion": "Contramuslo de pollo deshuesado marinado y rebozado crujiente, acompañado de un tarro de nuestra salsa BBQ casera."
+            },
+            {
+                "id": 3,
+                "nombre": "Bacon Cheese Fries",
+                "precio": 9.5,
+                "descripcion": "Bacon cheese fries añadiendo nuestro toque personal, con crema de cheddar con chimichurri."
+            },
+            {
+                "id": 4,
+                "nombre": "Alitas Thai",
+                "precio": 8,
+                "descripcion": "Alitas de pollo cocinadas a baja temperatura sumergidas en una salsa apicante capaz de hacerte volar la cabeza."
+            },
+            {
+                "id": 5,
+                "nombre": "Crunchy Taco 1 ud",
+                "precio": 3,
+                "descripcion": "Tortilla crujiente rellena de pulled pork, achiote, pico de gallo, guacamole y escabeche (1 ud)."
+            }
+        ],
+        "Burgers": [
+            {
+                "id": 6,
+                "nombre": "Old Mapache",
+                "precio": 10.5,
+                "descripcion": "Carne de dry aged chuleta, queso gouda ahumado, crema de cheddar estilo argentino, mermelada de bacon carbonella, salsa bbq-asia y fritos texanos."
+            },
+            {
+                "id": 7,
+                "nombre": "Divito",
+                "precio": 12.5,
+                "descripcion": "Dry Aged de 200g con 50 días de maduración, crema secreta en la base ligeramente picante, cheddar ahumado y gouda ahumado, panceta ahumada cocinada a baja temperatura y macerada 24h. Todo ello bañado con una salsa BBQ de cerveza."
+            },
+            {
+                "id": 8,
+                "nombre": "Dotty Hawley",
+                "precio": 14.5,
+                "descripcion": "Dry Aged de 200g entre 40 y 50 días de maduración, queso Monterey Jack, los Mac&Cheese con la receta de Dotty, salsa BBQ caesar y Doritos Bits."
+            },
+            {
+                "id": 9,
+                "nombre": "Rufflera Hot",
+                "precio": 16,
+                "descripcion": "Bomba seria la burger del mes! Calabo con Soul (amor del bueno): 2 donuts artesanos de pastelería Marisol, carne de chuleta madurada, queso ahumado, salsa de queso ahumada, bacon bits y Ruffles flamin' hot! Unidades limitadas cada día."
+            },
+            {
+                "id": 10,
+                "nombre": "Chanante",
+                "precio": 12.5,
+                "descripcion": "Carne dry aged de 200g entre 40 y 50 días de maduración, bacon crujiente, cebolla roja encurtida, queso provolone doble, pepinillo y la salsa gringa de Vibes."
+            },
+            {
+                "id": 11,
+                "nombre": "Baile De Pollo",
+                "precio": 11.5,
+                "descripcion": "Crispy chicken marinado durante 12 horas, queso cheddar, relish de pepinillo, cebolla roja encurtida y la salsa gringa de Vibes."
+            }
+        ],
+        "Postres": [
+            {
+                "id": 12,
+                "nombre": "Lotus Cheesecake",
+                "precio": 6,
+                "descripcion": "Tarta de queso con caramelo y galletas Lotus."
+            },
+            {
+                "id": 13,
+                "nombre": "Lion Cheesecake",
+                "precio": 6,
+                "descripcion": "Cheesecake de caramelo Lion con base de Oreo."
+            },
+            {
+                "id": 14,
+                "nombre": "Tarta de queso",
+                "precio": 6,
+                "descripcion": "Tarta suave de queso con base con galletas."
+            }
+        ],
+        "Ensaladas": [
+            {
+                "id": 15,
+                "nombre": "Ensalada Cesar",
+                "precio": 8.5,
+                "descripcion": "Pollo a la parrilla espolvoreado con queso rallado, crujientes de ajo, alioli con salsa César sobre una base de lechuga romana y croutons, acompañada de tomates cherry y anchoas."
+            },
+            {
+                "id": 16,
+                "nombre": "Ensalada Vibes",
+                "precio": 7,
+                "descripcion": "Lechuga, tomate, cebolla, maíz, atún, huevo cocido, anchoas y croutons."
+            },
+            {
+                "id": 17,
+                "nombre": "Cob Salad",
+                "precio": 7.5,
+                "descripcion": "Mezcla de lechugas con pollo jugoso estilo cajún, aguacate, huevos duros, tomates cherry y maíz. Salsa a elegir entre queso azul o Gingerey."
+            }
+        ],
+        "Bebidas": [
+            {
+                "id": 18,
+                "nombre": "Coca-cola Original",
+                "precio": 2.5,
+                "descripcion": "Refresco de cola clásico."
+            },
+            {
+                "id": 19,
+                "nombre": "Coca-cola Zero Zero",
+                "precio": 2.5,
+                "descripcion": "Variante sin azúcares de Coca-cola."
+            },
+            {
+                "id": 20,
+                "nombre": "Fanta Naranja",
+                "precio": 2.5,
+                "descripcion": "Refresco de naranja."
+            },
+            {
+                "id": 21,
+                "nombre": "Fanta Limón",
+                "precio": 2.5,
+                "descripcion": "Refresco de limón."
+            },
+            {
+                "id": 22,
+                "nombre": "Nestea",
+                "precio": 2.5,
+                "descripcion": "Té helado."
+            },
+            {
+                "id": 23,
+                "nombre": "Aquarius Naranja",
+                "precio": 2.5,
+                "descripcion": "Bebida isotónica de sabor a naranja."
+            },
+            {
+                "id": 24,
+                "nombre": "Aquarius Limón",
+                "precio": 2.5,
+                "descripcion": "Bebida isotónica de sabor a limón."
+            },
+            {
+                "id": 25,
+                "nombre": "Agua",
+                "precio": 1.9,
+                "descripcion": "Botella de agua mineral."
+            },
+            {
+                "id": 26,
+                "nombre": "Ambar",
+                "precio": 2.5,
+                "descripcion": "Cerveza tradicional."
+            }
+        ]
+    },
+    "dependencies": {
+        "bcrypt": "^5.1.1",
+        "body-parser": "^1.20.2",
+        "cors": "^2.8.5",
+        "express": "^4.19.2",
+        "mysql": "^2.18.1",
+        "oracledb": "^6.5.0"
+    }
+}

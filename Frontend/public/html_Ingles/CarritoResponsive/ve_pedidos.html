@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mis Pedidos</title>
+    <link href="https://fonts.googleapis.com/css2?family=Sedgwick+Ave&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #121212;
+            color: #ffffff;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            text-align: center;
+            padding: 20px;
+            background-color: #ff6600;
+            margin: 0;
+            font-family: 'Sedgwick Ave', cursive;
+        }
+        .pedido-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+        .pedido {
+            background-color: #1e1e1e;
+            border: 2px solid #ff6600;
+            border-radius: 10px;
+            width: 80%;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease;
+        }
+        .pedido:hover {
+            transform: scale(1.05);
+        }
+        .pedido h2 {
+            margin: 0 0 10px 0;
+            font-family: 'Sedgwick Ave', cursive;
+        }
+        .pedido p {
+            margin: 5px 0;
+        }
+        .nota, .productos {
+            margin-top: 10px;
+            font-style: italic;
+            color: #cccccc;
+        }
+        .productos {
+            font-weight: bold;
+            color: #ffcc00;
+            font-family: 'Sedgwick Ave', cursive;
+        }
+    </style>
+</head>
+<body>
+    <h1>Mis Pedidos</h1>
+    <div id="pedidoContainer" class="pedido-container"></div>
+
+    <script>
+        const fetchPedido = async () => {
+            try {
+                const response = await fetch('http://localhost:8080/api/pedido');
+                if (!response.ok) {
+                    throw new Error('Network response was not ok ' + response.statusText);
+                }
+                const data = await response.json();
+                console.log(data);  // Añade esta línea para depuración
+                printPedido(data);
+            } catch (error) {
+                console.error('Error al obtener el pedido:', error);
+            }
+        };
+
+        const printPedido = (pedidos) => {
+            const container = document.getElementById('pedidoContainer');
+
+            pedidos.forEach(detalle => {
+                const { NOMBRE, HORA_ENTREGA, NOTA, NOMBRE_PRODUCTO } = detalle;
+
+                // Verificar que los datos se están recibiendo correctamente
+                console.log('Detalle:', detalle);
+
+                const pedidoHtml = `
+                    <div class="pedido">
+                        <h2>Pedido realizado por: ${NOMBRE}</h2>
+                        <p>Hora de entrega: <span class="hora-entrega">${HORA_ENTREGA || 'No hay'}</span></p>
+                        <p class="nota">Nota: ${NOTA || 'No hay'}</p>
+                        <p>Su pedido será entregado a la hora indicada. ¡Gracias por su compra!</p>
+                    </div>
+                `;
+
+                container.innerHTML += pedidoHtml;
+            });
+        };
+
+        fetchPedido();
+    </script>
+</body>
+</html>
