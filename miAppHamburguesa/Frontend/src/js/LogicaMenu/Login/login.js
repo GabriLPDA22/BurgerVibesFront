@@ -4,7 +4,7 @@
  * de autenticación del usuario.
  */
 
-document.addEventListener('DOMContentLoaded', () => {
+/*document.addEventListener('DOMContentLoaded', () => {
     const modalLogin = document.getElementById('modalLogin');
     const modalRegister = document.getElementById('modalRegister');
     const loginBtn = document.getElementById('loginBtn');
@@ -184,4 +184,4 @@ document.addEventListener('DOMContentLoaded', () => {
 
     updateUI();
 });
-
+*/

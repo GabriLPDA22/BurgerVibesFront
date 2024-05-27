@@ -34,12 +34,13 @@
             color: #000000;
             margin: 0;
             padding: 0;
-            height: 350vh;
+            height: 300vh;
             display: flex;
             justify-content: center;
             align-items: center;
             flex-direction: column;
             margin-top: 8%;
+            margin-bottom: 8%;
         }
 
         h1 {
@@ -115,6 +116,47 @@
 
         .action-buttons button:hover {
             background-color: #ff7700;
+        }
+         /* Media queries for responsive design */
+         @media (max-width: 425px) {
+            body {
+                height: auto;
+                margin-top: 20px;
+                padding: 10px;
+            }
+
+            h1 {
+                font-size: 18px;
+                margin: 10px 0;
+            }
+
+            .button {
+                width: 100%;
+                padding: 10px;
+                font-size: 14px;
+            }
+
+            table,
+            th,
+            td {
+                font-size: 12px;
+                padding: 8px;
+            }
+
+            table {
+                width: 100%;
+            }
+
+            .action-buttons {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .action-buttons button {
+                width: 100%;
+                padding: 8px;
+                font-size: 12px;
+            }
         }
     </style>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
