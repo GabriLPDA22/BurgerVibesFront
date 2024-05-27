@@ -39,11 +39,34 @@
             <i class="fas fa-user"></i> Log in
           </a>
         </div>
+      </div>
+      <!-- Botón para abrir el modal de registro -->
+      <button id="registerBtn">Register</button>
 
-        <div class="register">
-          <a href="#" id="registerBtn">
-            <i class="fas fa-user-plus"></i> Register
-          </a>
+      <!-- Modal de Registro -->
+      <div id="modalRegister" class="modal2" style="display:none;">
+        <div class="modal2-content">
+          <span class="close">&times;</span>
+          <h5>Registro</h5>
+          <form id="registerForm">
+            <label for="registerIdCliente">ID Cliente:</label>
+            <input type="text" id="registerIdCliente" required placeholder="ID Cliente">
+            <label for="registerNombre">Nombre:</label>
+            <input type="text" id="registerNombre" required placeholder="Nombre">
+            <label for="registerDireccion">Dirección:</label>
+            <input type="text" id="registerDireccion" required placeholder="Dirección">
+            <label for="registerEmail">Correo Electrónico:</label>
+            <input type="email" id="registerEmail" required placeholder="Correo Electrónico">
+            <label for="registerTelefono">Teléfono:</label>
+            <input type="text" id="registerTelefono" required placeholder="Teléfono">
+            <label for="registerFechaRegistro">Fecha de Registro:</label>
+            <input type="date" id="registerFechaRegistro" required>
+            <label for="registerNombreUsuario">Nombre de Usuario:</label>
+            <input type="text" id="registerNombreUsuario" required placeholder="Nombre de Usuario">
+            <label for="registerContraseña">Contraseña:</label>
+            <input type="password" id="registerContraseña" required placeholder="Contraseña">
+            <button type="submit">Registrarse</button>
+          </form>
         </div>
       </div>
 
@@ -70,7 +93,7 @@
       </div>
   </nav>
 
-  <div class="main-wrapper" >
+  <div class="main-wrapper">
     <div class="flex-container">
       <div class="content-section">
         <div class="navigation-tabs">
@@ -85,7 +108,7 @@
       </div>
 
 
-      <div class="column left-column" >
+      <div class="column left-column">
         <div class="titulo-seccion" id="tabOne">
           <h2 style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Entrantes</h2>
         </div>
@@ -1294,37 +1317,11 @@
   </div>
 
 
+
   <!-- Modal de registro -->
-  <div id="modalRegister" class="modal2" style="display:none;">
-    <div class="modal2-content">
-      <span class="close">&times;</span>
-      <h5>Registro</h5>
-      <form id="registerForm" method="POST" action="register.php">
-        <label for="registerUsername">Nombre de usuario:</label>
-        <input type="text" id="registerUsername" name="username" autocomplete="username" required
-          placeholder="Nombre de usuario">
+  
 
-        <label for="registerEmail">Correo electrónico:</label>
-        <input type="email" id="registerEmail" name="email" autocomplete="email" required
-          placeholder="Correo electrónico">
 
-        <label for="registerPassword">Contraseña:</label>
-        <input type="password" id="registerPassword" name="password" autocomplete="new-password" required>
-
-        <!-- Campos adicionales -->
-        <label for="registerName">Nombre:</label>
-        <input type="text" id="registerName" name="name" required placeholder="Nombre">
-
-        <label for="registerAddress">Dirección:</label>
-        <input type="text" id="registerAddress" name="address" required placeholder="Dirección">
-
-        <label for="registerPhone">Teléfono:</label>
-        <input type="tel" id="registerPhone" name="phone" required placeholder="Teléfono">
-
-        <button type="submit">Registrar</button>
-      </form>
-    </div>
-  </div>
 
   <!-- Menú del usuario con el nombre de usuario y opción de cerrar sesión -->
   <div id="userMenu" style="display:none;">
@@ -1383,65 +1380,127 @@
   <!--SCRIPT LOGICA DEL MENU-->
   <script src="/miAppHamburguesa/Frontend/src/js/LogicaMenu/ModalsProductosDinamico.js"></script>
   <script src="/miAppHamburguesa/Frontend/src/js/LogicaMenu/Carrito.js"></script>
-  <script src="/miAppHamburguesa/Frontend/src/js/LogicaMenu/Login/login.js"></script>
+
 
   <script>
-    /*function loadMenu() {
-      const data = localStorage.getItem('productsJson');
-      if (!data) return;
-      const productsJson = JSON.parse(data);
+   document.addEventListener('DOMContentLoaded', (event) => {
+        const loginBtn = document.getElementById('loginBtn');
+        const loginForm = document.getElementById('loginForm');
+        const loginModal = document.getElementById('modalLogin');
+        const registerBtn = document.getElementById('registerBtn');
+        const registerForm = document.getElementById('registerForm');
+        const registerModal = document.getElementById('modalRegister');
+        const spanClose = document.getElementsByClassName('close');
 
-      const categories = Object.keys(productsJson.productos);
-      const containerMap = {
-        "Entrantes": "starters-content",
-        "Burgers": "burgers-content",
-        "Postres": "desserts-content",
-        "Ensaladas": "salads-content",
-        "Bebidas": "drinks-content"
-      };
+        loginBtn.onclick = function () {
+            loginModal.style.display = "block";
+        }
 
-      categories.forEach(category => {
-        const containerId = containerMap[category];
-        const container = document.getElementById(containerId);
-        container.innerHTML = ''; // Clear previous content
+        registerBtn.onclick = function () {
+            registerModal.style.display = "block";
+        }
 
-        productsJson.productos[category].forEach(product => {
-          if (product.disponible) {
-            const item = document.createElement('div');
-            item.className = 'menu-item';
-            item.innerHTML = `
-                            <div class="menu-item-column image-column">
-                                <img src="${product.imagen}" alt="${product.nombre}" class="menu-item-img">
-                            </div>
-                            <div class="menu-item-column info-column">
-                                <div class="menu-item-header">
-                                    <h3 class="menu-item-title">${product.nombre}</h3>
-                                    <div class="menu-item-price-action">
-                                        <button class="add-button">
-                                            <i class="bi bi-plus-circle"></i>
-                                        </button>
-                                        <span class="price">${product.precio} €</span>
-                                    </div>
-                                </div>
-                                <p class="menu-item-description">
-                                    ${product.descripcion}
-                                </p>
-                                <div class="menu-item-icons">
-                                    ${product.alergenos?.map(alergeno => `<img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/${alergeno}.svg" alt="${alergeno}">`).join('')}
-                                </div>
-                            </div>
-                        `;
-            container.appendChild(item);
-          }
+        Array.from(spanClose).forEach(function(span) {
+            span.onclick = function () {
+                loginModal.style.display = 'none';
+                registerModal.style.display = 'none';
+            }
         });
-      });
-    }
 
-    document.addEventListener('DOMContentLoaded', function () {
-      loadMenu();
-    });*/
+        window.onclick = function (event) {
+            if (event.target == loginModal || event.target == registerModal) {
+                loginModal.style.display = 'none';
+                registerModal.style.display = 'none';
+            }
+        }
+
+        loginForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const usernameEmail = document.getElementById('loginUsernameEmail').value;
+            const password = document.getElementById('loginPassword').value;
+
+            try {
+                const response = await fetch('http://localhost:8080/BuergerVibes/Controller?ACTION=CLIENTE.LOGIN', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded'
+                    },
+                    body: new URLSearchParams({
+                        usernameEmail: usernameEmail,
+                        password: password
+                    })
+                });
+
+                if (!response.ok) {
+                    throw new Error('Error en la solicitud: ' + response.statusText);
+                }
+
+                const result = await response.text();
+
+                if (result.includes('ERROR')) {
+                    alert('No se pudo iniciar sesión');
+                } else {
+                    alert('Inicio de sesión exitoso');
+                    console.log('Datos del cliente:', result);
+                    loginModal.style.display = "none";
+                    // Aquí puedes redirigir al usuario o realizar otras acciones
+                }
+            } catch (error) {
+                console.error('Error al iniciar sesión:', error);
+                alert('Ocurrió un error al intentar iniciar sesión.');
+            }
+        });
+
+        registerForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const idCliente = document.getElementById('registerIdCliente').value;
+            const nombre = document.getElementById('registerNombre').value;
+            const direccion = document.getElementById('registerDireccion').value;
+            const email = document.getElementById('registerEmail').value;
+            const telefono = document.getElementById('registerTelefono').value;
+            const fechaRegistro = document.getElementById('registerFechaRegistro').value;
+            const nombreUsuario = document.getElementById('registerNombreUsuario').value;
+            const contraseña = document.getElementById('registerContraseña').value;
+
+            try {
+                const response = await fetch('http://localhost:8080/BuergerVibes/Controller?ACTION=CLIENTE.REGISTER', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded'
+                    },
+                    body: new URLSearchParams({
+                        idCliente: idCliente,
+                        nombre: nombre,
+                        direccion: direccion,
+                        email: email,
+                        telefono: telefono,
+                        fechaRegistro: fechaRegistro,
+                        nombreUsuario: nombreUsuario,
+                        contraseña: contraseña
+                    })
+                });
+
+                if (!response.ok) {
+                    throw new Error('Error en la solicitud: ' + response.statusText);
+                }
+
+                const result = await response.text();
+
+                if (result.includes('ERROR')) {
+                    alert('No se pudo registrar el cliente');
+                } else {
+                    alert('Registro exitoso');
+                    console.log('Datos del nuevo cliente:', result);
+                    registerModal.style.display = "none";
+                }
+            } catch (error) {
+                console.error('Error al registrar el cliente:', error);
+                alert('Ocurrió un error al intentar registrar.');
+            }
+        });
+    });
   </script>
-  <script src="/miAppHamburguesa/Frontend/src/js/Productos_zona_piv.js"></script>
+
 </body>
 
 </html>
