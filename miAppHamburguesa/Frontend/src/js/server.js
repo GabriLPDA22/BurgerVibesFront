@@ -2,11 +2,12 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const oracledb = require('oracledb');
 const cors = require('cors');
-
+const pool = require('./db');
+const app = express();
 
 oracledb.outFormat = oracledb.OUT_FORMAT_OBJECT;
 
-const app = express();
+
 app.use(bodyParser.json());
 app.use(cors());
 
@@ -61,9 +62,9 @@ app.post('/register', async (req, res) => {
 
     const result = await connection.execute(
       `SELECT COUNT(*) AS COUNT FROM CLIENTE WHERE EMAIL = :email OR NOMBRE_USUARIO = :username`, {
-        email,
-        username
-      }
+      email,
+      username
+    }
     );
 
     const userExists = result.rows[0][0] > 0;
@@ -141,7 +142,7 @@ app.post('/login', async (req, res) => {
       console.log('Datos del usuario desde la base de datos:', user);
       const responsePayload = {
         message: 'Inicio de sesión exitoso',
-        
+
         idCliente: user['ID_CLIENTE'],  // Usar nombres de campos correctos
         username: user['NOMBRE_USUARIO'],
         email: user['EMAIL']
@@ -185,8 +186,8 @@ app.post('/loginAdminEmpleado', async (req, res) => {
     const result = await connection.execute(
       'SELECT EMAIL, ID_ZONAPRIVADA_EMP, CARGO FROM EMPLEADO WHERE EMAIL = :email AND CONTRASENA = :password',
       [email, password], {
-        outFormat: oracledb.OUT_FORMAT_OBJECT
-      }
+      outFormat: oracledb.OUT_FORMAT_OBJECT
+    }
     );
 
     console.log('Resultado de la consulta:', result);
@@ -260,8 +261,8 @@ app.post('/employeeInfo', async (req, res) => {
     const result = await connection.execute(
       'SELECT NOMBRE, APELLIDOS, CARGO, EMAIL, TELEFONO, DIRECCION FROM EMPLEADO WHERE EMAIL = :email',
       [email], {
-        outFormat: oracledb.OUT_FORMAT_OBJECT
-      }
+      outFormat: oracledb.OUT_FORMAT_OBJECT
+    }
     );
 
     console.log('Resultado de la consulta:', result);
@@ -336,32 +337,36 @@ app.post('/api/pedido', async (req, res) => {
     const resultPedido = await connection.execute(
       `INSERT INTO PEDIDO (ID_PEDIDO, TIPOENTREGA, FECHA, ID_CLIENTE_PED, ID_EMPLEADO_PED, CANTIDAD)
        VALUES (PEDIDO_SEQ.NEXTVAL, 'PICKUP', TO_DATE(:currentDateTime, 'YYYY-MM-DD'), :idCliente, :idEmpleado, :cantidad) RETURNING ID_PEDIDO INTO :idPedido`, {
-        idCliente,
-        idEmpleado,
-        cantidad: items.length,
-        currentDateTime,
-        idPedido: {
-          type: oracledb.NUMBER,
-          dir: oracledb.BIND_OUT
-        }
+      idCliente,
+      idEmpleado,
+      cantidad: items.length,
+      currentDateTime,
+      idPedido: {
+        type: oracledb.NUMBER,
+        dir: oracledb.BIND_OUT
       }
+    }
     );
 
     const idPedido = resultPedido.outBinds.idPedido[0];
     console.log('ID Pedido insertado:', idPedido);
 
+    
     const resultDetalle = await connection.execute(
       `INSERT INTO DETALLESPEDIDO (ID_DETALLES, ID_PEDIDO_DET, NOMBRE, TELEFONO, EMAIL, DIRECCION, HORA_ENTREGA, NOTA, COD_PROMOCIONAL, TOTALPEDIDO)
-       VALUES (DETALLESPEDIDO_SEQ.NEXTVAL, :idPedido, :fullName, :phoneNumber, :email, :address, :pickupTime, :restaurantNote, :promoCode, :totalPedido)`, {
-        idPedido,
-        fullName,
-        phoneNumber,
-        email,
-        address,
-        pickupTime,
-        restaurantNote,
-        promoCode,
-        totalPedido
+       VALUES (DETALLESPEDIDO_SEQ.NEXTVAL, :idPedido, :fullName, :phoneNumber, :email, :address, :pickupTime, :restaurantNote, :promoCode, :totalPedido)
+       RETURNING ID_DETALLES INTO :outNum`
+      , {
+        idPedido: data.idPedido,
+        fullName: data.fullName,
+        phoneNumber: data.phoneNumber,
+        email: data.email,
+        address: data.address,
+        pickupTime: data.pickupTime,
+        restaurantNote: data.restaurantNote,
+        promoCode: data.promoCode,
+        totalPedido: data.totalPedido,
+        outNum: { type: oracledb.NUMBER, dir: oracledb.BIND_OUT }
       }
     );
 
@@ -370,9 +375,9 @@ app.post('/api/pedido', async (req, res) => {
     await connection.execute(
       `INSERT INTO PAGO (ID_PAGO, METODOPAGO, ID_PEDIDO_PAG, PAIS)
        VALUES (PAGO_SEQ.NEXTVAL, 'CARD', :idPedido, :country)`, {
-        idPedido,
-        country
-      }
+      idPedido,
+      country
+    }
     );
 
     // Almacenar los items en localStorage
@@ -417,22 +422,28 @@ app.get('/api/pedido', async (req, res) => {
 
     const result = await connection.execute(
       `SELECT 
-          DETALLESPEDIDO.NOMBRE, 
-          DETALLESPEDIDO.HORA_ENTREGA, 
-          DETALLESPEDIDO.NOTA,
-          DETALLESPEDIDO.ID_PEDIDO_DET,
-          PEDIDO.ID_CLIENTE_PED
-       FROM 
-          PEDIDO
-       JOIN 
-          DETALLESPEDIDO ON PEDIDO.ID_PEDIDO = DETALLESPEDIDO.ID_PEDIDO_DET
-       ORDER BY 
-          DETALLESPEDIDO.HORA_ENTREGA DESC`,
-      [], {
+      DETALLESPEDIDO.NOMBRE, 
+      DETALLESPEDIDO.HORA_ENTREGA, 
+      DETALLESPEDIDO.NOTA,
+      DETALLESPEDIDO.ID_PEDIDO_DET,
+      PEDIDO.ID_CLIENTE_PED AS ID_CLIENTE_PED,
+      PRODUCTO.NOMBRE AS NOMBRE_PRODUCTO,
+      DETALLESPEDIDO.ID_PRODUCTO_DET
+  FROM 
+      DETALLESPEDIDO
+  INNER JOIN 
+      PEDIDO ON PEDIDO.ID_PEDIDO = DETALLESPEDIDO.ID_PEDIDO_DET
+  INNER JOIN 
+      PRODUCTO ON DETALLESPEDIDO.ID_PRODUCTO_DET = PRODUCTO.ID_PRODUCTO
+  ORDER BY 
+      DETALLESPEDIDO.HORA_ENTREGA DESC`,
+      [], 
+      {
         outFormat: oracledb.OUT_FORMAT_OBJECT
       }
     );
 
+    console.log(result.rows);  // Añade esta línea para depuración
     res.json(result.rows);
   } catch (error) {
     console.error('Error al obtener el pedido:', error);
@@ -450,6 +461,12 @@ app.get('/api/pedido', async (req, res) => {
     }
   }
 });
+
+// Asegúrate de que el servidor esté escuchando en el puerto correcto
+/*const PORT = process.env.PORT || 8080;
+app.listen(PORT, () => {
+  console.log(`Servidor corriendo en el puerto ${PORT}`);
+});*/
 
 /**PEDIDOS DE LA PERSONA PARA QUE LOS VEA */
 
@@ -535,7 +552,7 @@ app.get('/api/pedido', async (req, res) => {
     // Insertar pago en la base de datos
     const pagoResult = await connection.execute(
       `INSERT INTO PAGO (ID_PAGO, METODOPAGO, NUM_TARJETA, EXPIRACION, PAIS)
-       VALUES (PAGO_SEQ.NEXTVAL, metodoPago, numTarjeta, TO_DATE(expiracion, 'DD/MM/YYYY'), :pais) 
+       VALUES (PAGO_SEQ.NEXTVAL, metodoPago, numTarjeta, TO_DATE(expiracion, 'DD/MM/YYYY'), :pais)
        RETURNING ID_PAGO INTO id_pago_out`,
       {
         metodoPago,
@@ -552,8 +569,8 @@ app.get('/api/pedido', async (req, res) => {
 
     // Insertar pedido en la base de datos
     const pedidoResult = await connection.execute(
-      `INSERT INTO PEDIDO (ID_PEDIDO, FECHA, TIPOENTREGA, ID_CLIENTE_PED, ID_EMPLEADO_PED, CANTIDAD) 
-       VALUES (id_pedido, SYSDATE, 'Domicilio', idCliente, idEmpleado, cantidad) 
+      `INSERT INTO PEDIDO (ID_PEDIDO, FECHA, TIPOENTREGA, ID_CLIENTE_PED, ID_EMPLEADO_PED, CANTIDAD)
+       VALUES (id_pedido, SYSDATE, 'Domicilio', idCliente, idEmpleado, cantidad)
        RETURNING ID_PEDIDO INTO id_pedido_out`,
       {
         id_pedido: pagoId, // Usa el ID de pago como ID del pedido
