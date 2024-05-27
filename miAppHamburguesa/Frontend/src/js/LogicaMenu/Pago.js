@@ -64,6 +64,20 @@ document.addEventListener('DOMContentLoaded', () => {
         return empleados[randomIndex];
     }
 
+    function getCurrentFormattedDateTime() {
+        const now = new Date();
+        const year = now.getFullYear();
+        const month = String(now.getMonth() + 1).padStart(2, '0'); // Los meses comienzan en 0, así que se suma 1
+        const day = String(now.getDate()).padStart(2, '0');
+        /*const hours = String(now.getHours()).padStart(2, '0');
+        const minutes = String(now.getMinutes()).padStart(2, '0');
+        const seconds = String(now.getSeconds()).padStart(2, '0');*/
+    
+        return `${year}-${month}-${day}`;
+    }
+    
+    
+
     function handlePayment(buttonId) {
         const payButton = document.getElementById(buttonId);
         if (payButton) {
@@ -81,7 +95,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         }
                     }
 
-                    const idCliente = localStorage.getItem('idCliente');
+                    const idCliente = localStorage.getItem('ID_CLIENTE');
                     const idEmpleado = getRandomEmpleado();
 
                     if (!idCliente || !idEmpleado) {
@@ -89,24 +103,24 @@ document.addEventListener('DOMContentLoaded', () => {
                         return;
                     }
 
-                    const cardExpiry = document.getElementById('card-expiry').value;
+                    const pickupTime = document.getElementById('pickup-time').value;
+                    const currentDateTime = getCurrentFormattedDateTime(); // Obtener la fecha y hora actuales
 
                     const paymentDetails = {
                         fullName: document.getElementById('full-name').value,
                         phoneNumber: document.getElementById('phone-number').value,
                         email: document.getElementById('email').value,
                         address: document.getElementById('address').value,
-                        pickupTime: document.getElementById('pickup-time').value,
+                        pickupTime: pickupTime,
+                        currentDateTime: currentDateTime, // Agregar la fecha y hora actuales
                         restaurantNote: document.getElementById('restaurant-note').value,
                         promoCode: document.getElementById('promo-code').value,
                         items: cartItems,
-                        totalPedido: parseFloat(document.getElementById('total-price').textContent.replace('€', '').trim()), // Total calculado localmente
+                        totalPedido: parseFloat(document.getElementById('total-price').textContent.replace('€', '').trim()),
                         metodoPago: 'Tarjeta',
-                        cardNumber: document.getElementById('card-number').value,
-                        cardExpiry: cardExpiry,
                         country: document.getElementById('country').value,
-                        idCliente: idCliente, // Obtener idCliente de localStorage
-                        idEmpleado: idEmpleado // Obtener un idEmpleado aleatorio
+                        idCliente: idCliente,
+                        idEmpleado: idEmpleado
                     };
 
                     console.log('Detalles del pago:', paymentDetails);

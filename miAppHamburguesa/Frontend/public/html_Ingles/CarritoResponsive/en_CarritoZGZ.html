@@ -323,6 +323,12 @@
         </div>
     </main>
 
+    <script>
+        document.getElementById('pickup-time').addEventListener('change', function() {
+            const pickupTime = this.value;
+            localStorage.setItem('pickupTime', pickupTime);
+        });
+    </script>
 
     <script>
         function validateForm() {

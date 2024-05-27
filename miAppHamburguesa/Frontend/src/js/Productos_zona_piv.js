@@ -1,6 +1,222 @@
 
+const urlProducts = 'http://localhost:8080/BuergerVibes/Controller?ACTION=PRODUCTO.FIND_ALL';
 
-let productsJson = JSON.parse(localStorage.getItem('productsJson')) || {
+const fetchProducts = async () => {
+    try {
+        const result = await fetch(urlProducts);
+        const data = await result.json();
+        console.log('Productos obtenidos de la API:', data);
+        printProducts(data);
+    } catch (error) {
+        console.error('Error al obtener datos de la API:', error);
+    }
+};
+
+
+const printProducts = (products) => {
+    const table = document.getElementById('tablaProducto');
+    const tbody = table.querySelector('tbody');
+    table.style.display = 'table';
+    tbody.innerHTML = ''; // Limpiar el contenido anterior
+
+    products.forEach(product => {
+        const {
+            ID_Producto,
+            Precio,
+            Nombre,
+            Descripcion,
+            DisponibleEnVlc,
+            DisponibleEnZgz,
+            ID_Categoria_pro
+        } = product;
+
+        const row = document.createElement('tr');
+
+        row.innerHTML = `
+            <td>${ID_Producto}</td>
+            <td>${Precio}</td>
+            <td>${Nombre}</td>
+            <td>${Descripcion}</td>
+            <td>${DisponibleEnVlc}</td>
+            <td>${DisponibleEnZgz}</td>
+            <td>${ID_Categoria_pro}</td>
+            <td class="action-buttons">
+            <button onclick="openEditModal('${ID_Producto}', '${Precio}', '${Nombre}', '${Descripcion}', '${DisponibleEnVlc}', '${DisponibleEnZgz}', '${ID_Categoria_pro}')">Update</button>
+            <button onclick="deleteProduct('${ID_Producto}')">Delete</button>
+            
+            
+            </td>
+        `;
+
+        tbody.appendChild(row);
+    });
+};
+
+// Esta función abre el modal de edición con los datos del producto
+const openEditModal = (ID_Producto, Precio, Nombre, Descripcion, DisponibleEnVlc, DisponibleEnZgz, ID_Categoria_pro) => {
+    Swal.fire({
+        title: 'Edit Product',
+        html: `
+            <input id="ID_Producto" type="hidden" value="${ID_Producto}">
+            <input id="Precio" class="swal2-input" placeholder="Precio" value="${Precio}">
+            <input id="Nombre" class="swal2-input" placeholder="Nombre" value="${Nombre}">
+            <textarea id="Descripcion" class="swal2-textarea" placeholder="Descripcion">${Descripcion}</textarea>
+            <input id="DisponibleEnVlc" class="swal2-input" placeholder="Disponible en VLC" value="${DisponibleEnVlc}">
+            <input id="DisponibleEnZgz" class="swal2-input" placeholder="Disponible en ZGZ" value="${DisponibleEnZgz}">
+            <input id="ID_Categoria_pro" class="swal2-input" placeholder="ID Categoria" value="${ID_Categoria_pro}">
+        
+        `,
+        focusConfirm: false,
+        preConfirm: () => {
+            return {
+                ID_Producto: document.getElementById('ID_Producto').value,
+                Precio: document.getElementById('Precio').value,
+                Nombre: document.getElementById('Nombre').value,
+                Descripcion: document.getElementById('Descripcion').value,
+                DisponibleEnVlc: document.getElementById('DisponibleEnVlc').value,
+                DisponibleEnZgz: document.getElementById('DisponibleEnZgz').value,
+                ID_Categoria_pro: document.getElementById('ID_Categoria_pro').value
+            };
+        }
+    }).then((result) => {
+        if (result.isConfirmed) {
+            console.log('Datos actualizados:', result.value);
+            updateProduct(result.value.ID_Producto, result.value);
+        }
+    });
+};
+
+const updateProduct = async (ID_Producto, updatedData) => {
+    console.log('Datos a actualizar:', updatedData); // Añadir este log para depuración
+
+    const url = `http://localhost:8080/BuergerVibes/Controller?ACTION=PRODUCTO.UPDATE&ID_PRODUCTO=${(updatedData.ID_Producto)}&PRECIO=${(updatedData.Precio)}&NOMBRE=${(updatedData.Nombre)}&DESCRIPCION=${(updatedData.Descripcion)}&DISPONIBLEENVLC=${(updatedData.DisponibleEnVlc)}&DISPONIBLEENZGZ=${(updatedData.DisponibleEnZgz)}&ID_CATEGORIA_PRO=${(updatedData.ID_Categoria_pro)}`;
+
+    try {
+        const response = await fetch(url, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json' // Aunque estamos usando parámetros en la URL, mantener este encabezado para evitar problemas
+            }
+        });
+        if (!response.ok) {
+            throw new Error('Error al actualizar el producto.');
+        }
+        console.log('Producto actualizado exitosamente');
+        Swal.fire('Producto actualizado', '', 'success');
+        fetchProducts(); // Actualiza la tabla de productos después de la actualización
+    } catch (error) {
+        console.error('Error al actualizar el producto:', error);
+        Swal.fire('Error al actualizar', error.message, 'error');
+    }
+};
+
+
+
+const deleteProduct = (ID_Producto) => {
+    if (confirm(`¿Estás seguro de que quieres borrar el producto con ID: ${ID_Producto}?`)) {
+        fetch(`http://localhost:8080/BuergerVibes/Controller?ACTION=PRODUCTO.DELETE&ID_PRODUCTO=${ID_Producto}`, {
+            method: 'DELETE'
+        })
+            .then(response => {
+                console.log('Respuesta del servidor:', response);
+                if (response.ok) {
+                    alert(`El producto con ID: ${ID_Producto} ha sido borrado.`);
+                    fetchProducts(); // Actualiza la tabla después de borrar
+                } else {
+                    response.text().then(text => {
+                        console.error('Error al borrar el producto:', text);
+                        alert('No se pudo borrar el producto. Inténtelo de nuevo más tarde.');
+                    });
+                }
+            })
+            .catch(error => {
+                console.error('Error en la solicitud DELETE:', error);
+                alert('Ocurrió un error al intentar borrar el producto.');
+            });
+    }
+};
+
+const disableProduct = (ID_Producto) => {
+    alert(`Inhabilitar el producto con ID: ${ID_Producto}`);
+};
+
+const addProduct = () => {
+    Swal.fire({
+        title: 'Add Product',
+        html: `
+        <input id="ID_Product" class="swal2-input" placeholder="Product ID">
+        <input id="Price" class="swal2-input" placeholder="Price">
+        <input id="Name" class="swal2-input" placeholder="Name">
+        <textarea id="Description" class="swal2-textarea" placeholder="Description"></textarea>
+        <input id="AvailableInVlc" class="swal2-input" placeholder="Available in VLC">
+        <input id="AvailableInZgz" class="swal2-input" placeholder="Available in ZGZ">
+        <input id="CategoryID" class="swal2-input" placeholder="Category ID">
+        
+        `,
+        focusConfirm: false,
+        preConfirm: () => {
+            return {
+                ID_Producto: document.getElementById('ID_Producto').value,
+                Precio: document.getElementById('Precio').value,
+                Nombre: document.getElementById('Nombre').value,
+                Descripcion: document.getElementById('Descripcion').value,
+                DisponibleEnVlc: document.getElementById('DisponibleEnVlc').value,
+                DisponibleEnZgz: document.getElementById('DisponibleEnZgz').value,
+                ID_Categoria_pro: document.getElementById('ID_Categoria_pro').value
+            };
+        }
+    }).then((result) => {
+        if (result.isConfirmed) {
+            console.log('Nuevo producto:', result.value);
+            createProduct(result.value);
+        }
+    });
+};
+
+const createProduct = async (newProduct) => {
+    const {
+        ID_Producto,
+        Precio,
+        Nombre,
+        Descripcion,
+        DisponibleEnVlc,
+        DisponibleEnZgz,
+        ID_Categoria_pro
+    } = newProduct;
+
+    const url = `http://localhost:8080/BuergerVibes/Controller?ACTION=PRODUCTO.ADD&ID_PRODUCTO=${ID_Producto}&PRECIO=${Precio}&NOMBRE=${Nombre}&DESCRIPCION=${Descripcion}&DISPONIBLEENVLC=${DisponibleEnVlc}&DISPONIBLEENZGZ=${DisponibleEnZgz}&ID_CATEGORIA_PRO=${ID_Categoria_pro}`;
+
+    try {
+        const response = await fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            body: new URLSearchParams(newProduct)
+        });
+        if (!response.ok) {
+            throw new Error('Error al crear el producto.');
+        }
+        console.log('Producto creado exitosamente');
+        Swal.fire('Producto creado', '', 'success');
+        fetchProducts(); // Actualiza la tabla de productos después de la creación
+    } catch (error) {
+        console.error('Error al crear el producto:', error);
+        Swal.fire('Error al crear el producto', error.message, 'error');
+    }
+};
+
+document.getElementById('updateButton').addEventListener('click', () => {
+    // Recargar la página
+    location.reload();
+});
+
+document.getElementById('updateButton').addEventListener('click', fetchProducts);
+document.getElementById('addButton').addEventListener('click', addProduct);
+
+fetchProducts();
+
+/*let productsJson = JSON.parse(localStorage.getItem('productsJson')) || {
     "productos": {
         "Entrantes": [
             { "id": 1, "nombre": "Nachos Rainforest", "precio": 12.5, "descripcion": "Inspired by Rainforest Cafe in Chicago. Corn chips, cheddar cream, guacamole, shredded meat, pico de gallo, and sour cream.", "disponible": true },
@@ -225,4 +441,4 @@ document.addEventListener('DOMContentLoaded', function() {
     loadFromLocalStorage();
     loadProducts();
     updateMenu(); // Actualiza el menú al cargar la página
-});
+});*/

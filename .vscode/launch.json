@@ -4,12 +4,19 @@
     // Para más información, visite: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
-        
+
         {
-            "type": "msedge",
+            "type": "chrome",
             "request": "launch",
-            "name": "Open ZonaPrivLog.html",
-            "file": "d:\\Gabriel\\Programacion\\HTML,CSS,JS\\TFG_Front\\miAppHamburguesa\\Frontend\\public\\html_Ingles\\ZonaPrivada\\ZonaPrivLog.html"
+            "name": "Open en_carta_Valencia.html",
+            "file": "D:\\Gabriel\\Programacion\\HTML,CSS,JS\\TFG_Front\\miAppHamburguesa\\Frontend\\public\\html_Ingles\\Carta\\en_carta_Valencia.html"
+        }
+
+        ,{
+            "type": "chrome",
+            "request": "launch",
+            "name": "Open en_CarritoVAL.html",
+            "file": "D:\\Gabriel\\Programacion\\HTML,CSS,JS\\TFG_Front\\miAppHamburguesa\\Frontend\\public\\html_Ingles\\CarritoResponsive\\en_CarritoVAL.html"
         }
     ]
 }

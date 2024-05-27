@@ -42,7 +42,6 @@ app.get('/', (req, res) => {
 
 // Ruta para registrar un nuevo usuario
 app.post('/register', async (req, res) => {
-  // Extrae los datos del cuerpo de la solicitud
   const {
     username,
     email,
@@ -51,19 +50,15 @@ app.post('/register', async (req, res) => {
     address,
     phone
   } = req.body;
-  // Genera un ID único para el cliente basado en la marca de tiempo actual
   const idCliente = new Date().getTime().toString();
-  // Obtiene la fecha actual en formato YYYY-MM-DD
   const fechaRegistro = new Date().toISOString().split('T')[0];
   let connection;
 
   console.log('Datos recibidos del formulario:', req.body); // Depuración
 
   try {
-    // Conéctate a la base de datos
     connection = await oracledb.getConnection(dbConfig);
 
-    // Verifica si el usuario o el email ya existen
     const result = await connection.execute(
       `SELECT COUNT(*) AS COUNT FROM CLIENTE WHERE EMAIL = :email OR NOMBRE_USUARIO = :username`, {
         email,
@@ -74,12 +69,10 @@ app.post('/register', async (req, res) => {
     const userExists = result.rows[0][0] > 0;
 
     if (userExists) {
-      // Si el usuario ya existe, envía un mensaje de error
       res.status(400).send({
         message: 'El usuario ya existe. Inicia sesión.'
       });
     } else {
-      // Si el usuario no existe, inserta los datos del nuevo usuario en la base de datos
       const insertSQL = `
         INSERT INTO CLIENTE (ID_CLIENTE, NOMBRE_USUARIO, EMAIL, CONTRASEÑA, NOMBRE, DIRECCION, TELEFONO, FECHAREGISTRO)
         VALUES (:idCliente, :username, :email, :password, :name, :address, :phone, TO_DATE(:fechaRegistro, 'YYYY-MM-DD'))
@@ -105,19 +98,18 @@ app.post('/register', async (req, res) => {
 
       console.log('Resultado de la inserción:', resultInsert); // Depuración
 
-      // Envía una respuesta de éxito
+      // Asegurarse de enviar `idCliente` de vuelta al cliente
       res.send({
         message: 'Registro exitoso',
+        idCliente, // Aquí se envía `idCliente` de vuelta
         username,
         email
       });
     }
   } catch (err) {
-    // Manejo de errores
     console.error("Error al registrar el usuario:", err);
     res.status(500).send(`Error al registrar el usuario: ${err.message}`);
   } finally {
-    // Cierra la conexión a la base de datos
     if (connection) {
       try {
         await connection.close();
@@ -128,47 +120,41 @@ app.post('/register', async (req, res) => {
   }
 });
 
-// Ruta para iniciar sesión
+
+
 app.post('/login', async (req, res) => {
-  const {
-    usernameEmail,
-    password
-  } = req.body;
+  const { usernameEmail, password } = req.body;
   let connection;
 
   try {
-    // Conéctate a la base de datos
     connection = await oracledb.getConnection(dbConfig);
 
-    // Verifica las credenciales del usuario
     const result = await connection.execute(
-      `SELECT ID_CLIENTE, NOMBRE_USUARIO, EMAIL FROM CLIENTE WHERE (EMAIL = :usernameEmail OR NOMBRE_USUARIO = :usernameEmail) AND CONTRASEÑA = :password`, {
-        usernameEmail,
-        password
-      }
+      `SELECT ID_CLIENTE, NOMBRE_USUARIO, EMAIL FROM CLIENTE WHERE (EMAIL = :usernameEmail OR NOMBRE_USUARIO = :usernameEmail) AND CONTRASEÑA = :password`,
+      { usernameEmail, password }
     );
 
+    console.log('Resultado de la consulta:', result);
+
     if (result.rows.length > 0) {
-      // Si las credenciales son correctas, envía los datos del usuario
       const user = result.rows[0];
-      console.log('Datos del usuario:', user); // Depuración
-      res.send({
+      console.log('Datos del usuario desde la base de datos:', user);
+      const responsePayload = {
         message: 'Inicio de sesión exitoso',
-        idCliente: user[0],
-        username: user[1],
-        email: user[2]
-      });
+        
+        idCliente: user['ID_CLIENTE'],  // Usar nombres de campos correctos
+        username: user['NOMBRE_USUARIO'],
+        email: user['EMAIL']
+      };
+      localStorage.setItem('idCliente', data.idCliente); // Almacenar idCliente en localStorage
+      console.log('Payload enviado al cliente:', responsePayload);
+      res.json(responsePayload);
     } else {
-      // Si las credenciales son incorrectas, envía un mensaje de error
-      res.status(401).send({
-        message: 'Credenciales incorrectas'
-      });
+      res.status(401).json({ message: 'Credenciales incorrectas' });
     }
   } catch (err) {
-    // Manejo de errores
-    res.status(500).send(`Error al iniciar sesión: ${err.message}`);
+    res.status(500).json({ message: `Error al iniciar sesión: ${err.message}` });
   } finally {
-    // Cierra la conexión a la base de datos
     if (connection) {
       try {
         await connection.close();
@@ -178,7 +164,6 @@ app.post('/login', async (req, res) => {
     }
   }
 });
-
 
 
 /**LOGIN EMPLEADOS Y ADMINISTRADORES */
@@ -310,9 +295,22 @@ app.post('/employeeInfo', async (req, res) => {
 
 /* PAGO DEL CLIENTE */
 
-
 app.post('/api/pedido', async (req, res) => {
-  const { fullName, phoneNumber, email, address, pickupTime, restaurantNote, promoCode, cardNumber, cardExpiry, country, items, totalPedido, idCliente, idEmpleado } = req.body;
+  const {
+    fullName,
+    phoneNumber,
+    email,
+    address,
+    pickupTime,
+    currentDateTime,
+    restaurantNote,
+    promoCode,
+    country,
+    items,
+    totalPedido,
+    idCliente,
+    idEmpleado
+  } = req.body;
 
   let connection;
 
@@ -327,19 +325,26 @@ app.post('/api/pedido', async (req, res) => {
       email,
       address,
       pickupTime,
+      currentDateTime,
       restaurantNote,
       promoCode,
-      cardNumber,
-      cardExpiry,
       country,
       totalPedido,
       items
     });
 
     const resultPedido = await connection.execute(
-      `INSERT INTO PEDIDO (FECHA, TIPOENTREGA, ID_CLIENTE_PED, ID_EMPLEADO_PED, CANTIDAD)
-       VALUES (SYSDATE, 'PICKUP', :idCliente, :idEmpleado, :cantidad) RETURNING ID_PEDIDO INTO :idPedido`,
-      { idCliente, idEmpleado, cantidad: items.length, idPedido: { type: oracledb.NUMBER, dir: oracledb.BIND_OUT } }
+      `INSERT INTO PEDIDO (ID_PEDIDO, TIPOENTREGA, FECHA, ID_CLIENTE_PED, ID_EMPLEADO_PED, CANTIDAD)
+       VALUES (PEDIDO_SEQ.NEXTVAL, 'PICKUP', TO_DATE(:currentDateTime, 'YYYY-MM-DD'), :idCliente, :idEmpleado, :cantidad) RETURNING ID_PEDIDO INTO :idPedido`, {
+        idCliente,
+        idEmpleado,
+        cantidad: items.length,
+        currentDateTime,
+        idPedido: {
+          type: oracledb.NUMBER,
+          dir: oracledb.BIND_OUT
+        }
+      }
     );
 
     const idPedido = resultPedido.outBinds.idPedido[0];
@@ -347,23 +352,48 @@ app.post('/api/pedido', async (req, res) => {
 
     const resultDetalle = await connection.execute(
       `INSERT INTO DETALLESPEDIDO (ID_DETALLES, ID_PEDIDO_DET, NOMBRE, TELEFONO, EMAIL, DIRECCION, HORA_ENTREGA, NOTA, COD_PROMOCIONAL, TOTALPEDIDO)
-       VALUES (DETALLESPEDIDO_SEQ.NEXTVAL, :idPedido, :fullName, :phoneNumber, :email, :address, :pickupTime, :restaurantNote, :promoCode, :totalPedido)`,
-      { idPedido, fullName, phoneNumber, email, address, pickupTime, restaurantNote, promoCode, totalPedido }
+       VALUES (DETALLESPEDIDO_SEQ.NEXTVAL, :idPedido, :fullName, :phoneNumber, :email, :address, :pickupTime, :restaurantNote, :promoCode, :totalPedido)`, {
+        idPedido,
+        fullName,
+        phoneNumber,
+        email,
+        address,
+        pickupTime,
+        restaurantNote,
+        promoCode,
+        totalPedido
+      }
     );
 
     console.log('ID Detalle insertado:', resultDetalle.outBinds);
 
     await connection.execute(
-      `INSERT INTO PAGO (METODOPAGO, ID_PEDIDO_PAG, NUM_TARJETA, EXPIRACION, PAIS)
-       VALUES ('CARD', :idPedido, :cardNumber, :cardExpiry, :country)`,
-      { idPedido, cardNumber, cardExpiry, country }
+      `INSERT INTO PAGO (ID_PAGO, METODOPAGO, ID_PEDIDO_PAG, PAIS)
+       VALUES (PAGO_SEQ.NEXTVAL, 'CARD', :idPedido, :country)`, {
+        idPedido,
+        country
+      }
     );
 
+    // Almacenar los items en localStorage
+    let localStorageItems = [];
+    if (typeof window !== 'undefined') {
+      localStorageItems = JSON.parse(localStorage.getItem('orders')) || [];
+    }
+    localStorageItems.push({ idPedido, idCliente, items });
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('orders', JSON.stringify(localStorageItems));
+    }
+
     await connection.commit();
-    res.json({ message: 'Pedido realizado con éxito' });
+    res.json({
+      message: 'Pedido realizado con éxito'
+    });
   } catch (error) {
     console.error('Error al realizar el pedido:', error);
-    res.status(500).json({ message: 'Error al realizar el pedido' });
+    res.status(500).json({
+      message: 'Error al realizar el pedido'
+    });
   } finally {
     if (connection) {
       try {
@@ -376,6 +406,8 @@ app.post('/api/pedido', async (req, res) => {
   }
 });
 
+
+
 app.get('/api/pedido', async (req, res) => {
   let connection;
 
@@ -384,10 +416,18 @@ app.get('/api/pedido', async (req, res) => {
     console.log('Conexión a la base de datos exitosa');
 
     const result = await connection.execute(
-      `SELECT NOMBRE, TO_CHAR(PEDIDO.FECHA, 'DD-MM-YYYY HH24:MI:SS') AS FECHA, DETALLESPEDIDO.HORA_ENTREGA, DETALLESPEDIDO.NOTA 
-       FROM PEDIDO 
-       JOIN DETALLESPEDIDO ON PEDIDO.ID_PEDIDO = DETALLESPEDIDO.ID_PEDIDO_DET
-       ORDER BY PEDIDO.FECHA DESC`,
+      `SELECT 
+          DETALLESPEDIDO.NOMBRE, 
+          DETALLESPEDIDO.HORA_ENTREGA, 
+          DETALLESPEDIDO.NOTA,
+          DETALLESPEDIDO.ID_PEDIDO_DET,
+          PEDIDO.ID_CLIENTE_PED
+       FROM 
+          PEDIDO
+       JOIN 
+          DETALLESPEDIDO ON PEDIDO.ID_PEDIDO = DETALLESPEDIDO.ID_PEDIDO_DET
+       ORDER BY 
+          DETALLESPEDIDO.HORA_ENTREGA DESC`,
       [], {
         outFormat: oracledb.OUT_FORMAT_OBJECT
       }
@@ -410,7 +450,6 @@ app.get('/api/pedido', async (req, res) => {
     }
   }
 });
-
 
 /**PEDIDOS DE LA PERSONA PARA QUE LOS VEA */
 

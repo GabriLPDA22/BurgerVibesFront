@@ -6,11 +6,11 @@ html {
     scroll-behavior: smooth
 }
 
-    .body-no-scroll {
-        overflow: hidden;
-        position: fixed;
-        width: 100%;
-    }
+.body-no-scroll {
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+}
 
 header {
     background-image: url(/miAppHamburguesa/Frontend/src/assets/img/Home/Fondo_Hero.svg);
@@ -37,7 +37,7 @@ body.fade-out {
     display: none;
 }
 
-.reserva-online-responsive{
+.reserva-online-responsive {
     display: none;
 }
 
@@ -57,7 +57,7 @@ body.fade-in {
     z-index: 1000;
     transition: all 0.3s ease-in-out;
     /* Agregamos una transición suave */
-    
+
 }
 
 .navbar-toggler {
@@ -113,7 +113,8 @@ body.fade-in {
 }
 
 
-.pedido-online, .pedido-online-responsive {
+.pedido-online,
+.pedido-online-responsive {
     background-color: #F67906;
     /* Color de fondo del botón */
     border: 1px solid #F67906;
@@ -184,7 +185,8 @@ body.fade-in {
     flex-wrap: wrap;
 }
 
-.hero-column, .hero-column2 {
+.hero-column,
+.hero-column2 {
     flex: 0 0 50%;
     max-width: 50%;
 }
@@ -228,7 +230,7 @@ body.fade-in {
 }
 
 
-.hero-subtitle{
+.hero-subtitle {
     font-family: 'Sedgwick Ave', cursive;
     color: #fff;
     font-size: 39px;
@@ -266,14 +268,14 @@ body.fade-in {
     height: auto;
 }
 
-.Foto2{
+.Foto2 {
     margin-left: 25%;
     height: 680px;
 }
 
-.Foto3{
-    object-fit: contain; 
-    max-height: 681px; 
+.Foto3 {
+    object-fit: contain;
+    max-height: 681px;
     max-width: 681px;
 }
 
@@ -376,7 +378,7 @@ body.fade-in {
 /*CONCEPTO*/
 .concepto {
     padding: 50px 0;
-    
+
 }
 
 .container {
@@ -414,12 +416,13 @@ body.fade-in {
     justify-content: flex-end;
 
 }
-#Video{
-    margin-top: 25%; 
-    margin-right:auto; 
+
+#Video {
+    margin-top: 25%;
+    margin-right: auto;
     width: 100%;
 }
- 
+
 
 .contenido h2 {
     font-size: 40px;
@@ -540,11 +543,12 @@ body.fade-in {
 
 }
 
-#Tablet, #Tablet_ingles{
+#Tablet,
+#Tablet_ingles {
     display: none;
 }
 
-.gallery-item{
+.gallery-item {
     width: 100%;
     height: auto;
     aspect-ratio: 1 / 1;
@@ -584,7 +588,7 @@ body.fade-in {
     margin-bottom: 50px;
 }
 
-#opinion2{
+#opinion2 {
     height: 243.5px;
 }
 
@@ -798,17 +802,17 @@ body.fade-in {
 
 
 
-@media (max-width: 1400px){
+@media (max-width: 1400px) {
 
-    .hero-title{
+    .hero-title {
         padding-left: 7px;
     }
 
-    .hero-button{
+    .hero-button {
         margin-left: 5px;
     }
 
-    .concepto .botones{
+    .concepto .botones {
         display: flex;
         flex-direction: row;
         margin: 0;
@@ -823,34 +827,35 @@ body.fade-in {
         margin: 0;
     }
 
-    .titulo h2{
+    .titulo h2 {
         display: flex;
         flex-direction: column-reverse;
-        
+
     }
 
-    .texto-galeria h2{
+    .texto-galeria h2 {
         font-size: 60px;
     }
 
-    .concepto p{
+    .concepto p {
         align-items: center;
         text-align: center;
     }
 
-    #Video{
+    #Video {
         margin-top: 50%;
     }
 
 }
 
-@media (max-width: 1395px),(max-width: 3000px) {
+@media (max-width: 1395px),
+(max-width: 3000px) {
 
-    .Foto3{
+    .Foto3 {
         margin-left: 25%;
     }
 
-    .carousel-item.active{
+    .carousel-item.active {
         height: 685px;
     }
 }
@@ -863,6 +868,19 @@ body.fade-in {
 }
 
 @media (max-width: 1024px) {
+    .language-button {
+        margin-left: 80%;
+    }
+
+    html {
+        margin-left: 3%;
+        margin-right: 3%;
+    }
+
+    .carousel-control {
+        display: none;
+    }
+
     .pedido-online {
         display: none;
     }
@@ -889,9 +907,10 @@ body.fade-in {
         transition: right 0.3s;
         z-index: 999;
         padding-top: 3rem;
-        overflow-y: auto; /* Usar 'auto' para que el scroll solo aparezca cuando es necesario */
+        overflow-y: auto;
+        /* Usar 'auto' para que el scroll solo aparezca cuando es necesario */
     }
-    
+
 
     .navbar-nav.open {
         display: flex;
@@ -907,7 +926,7 @@ body.fade-in {
         font-size: 30px;
         cursor: pointer;
         z-index: 2;
-        
+
     }
 
     /* Solo mostramos el botón de cierre cuando .navbar-nav tiene la clase .open */
@@ -918,7 +937,7 @@ body.fade-in {
     .logo-responsive {
         position: relative;
         margin-top: 0px;
-        width: 240px; 
+        width: 240px;
     }
 
     .navbar-nav.open .logo-responsive,
@@ -934,12 +953,21 @@ body.fade-in {
 /*RSPONSIVE-HERO*/
 
 @media(max-width:768px), (max-width: 884px) {
+    .language-button {
+        margin-left: -25%;
+    }
 
-    .carousel-item.active{
+    html {
+        margin-left: 3%;
+        margin-right: 3%;
+    }
+
+    .carousel-item.active {
         height: 350px;
     }
 
-    .carousel-control-prev-icon,.carousel-control-next-icon{
+    .carousel-control-prev-icon,
+    .carousel-control-next-icon {
         display: none;
     }
 
@@ -949,7 +977,7 @@ body.fade-in {
         flex-wrap: nowrap;
     }
 
-    #FotoHome{
+    #FotoHome {
         height: 350px;
     }
 
@@ -967,17 +995,18 @@ body.fade-in {
         align-items: center;
     }
 
-    
-    .Foto2, .Foto3{
+
+    .Foto2,
+    .Foto3 {
         width: 50%;
         height: 354px;
 
     }
 
-    .Foto3{
+    .Foto3 {
         margin-left: 25%;
     }
-    
+
     .hero-subtitle {
         display: none;
     }
@@ -989,9 +1018,10 @@ body.fade-in {
 
 
 /*RESPONSIVE-CONCEPTO*/
-@media (max-width: 768px), (max-width: 884px) {
+@media (max-width: 768px),
+(max-width: 884px) {
 
-    .contenido h2{
+    .contenido h2 {
         display: flex;
         flex-direction: column-reverse;
         margin: 0;
@@ -1002,24 +1032,25 @@ body.fade-in {
         margin-top: 30px;
     }
 
-    .contenido p{
+    .contenido p {
         text-align: center;
         margin: 0;
         padding: 10px;
     }
 
-    .columna{
+    .columna {
         display: flex;
         flex-direction: column;
         align-items: flex-start;
         font-size: 50px;
     }
 
-    #Video{
+    #Video {
         margin-top: 10px;
     }
 
-    .BotonReserva, .BotonPedido{
+    .BotonReserva,
+    .BotonPedido {
         margin: 10px;
     }
 }
@@ -1028,18 +1059,21 @@ body.fade-in {
 
 /*RESPONSIVE GALERIA*/
 
-@media (max-width: 768px), (max-width: 884px) {
+@media (max-width: 768px),
+(max-width: 884px) {
 
-    .gallery{
+    .gallery {
         display: grid;
         grid-template-columns: repeat(2, 2fr);
     }
 
-    #CambioImagen, #CambioImagen_ingles{
+    #CambioImagen,
+    #CambioImagen_ingles {
         display: none;
     }
 
-    #Tablet, #Tablet_ingles{
+    #Tablet,
+    #Tablet_ingles {
         display: block;
     }
 
@@ -1055,7 +1089,9 @@ body.fade-in {
 
 /*RESPONSIVE OPINIONES*/
 
-@media (max-width: 768px), (max-width: 884px),(max-width: 320px) {
+@media (max-width: 768px),
+(max-width: 884px),
+(max-width: 320px) {
     .container-clientes {
         flex-direction: column;
         text-align: center;
@@ -1077,7 +1113,9 @@ body.fade-in {
 
 
 /*RESPONSIVE DEL FOOTER*/
-@media (max-width: 768px), (max-width: 884px),(max-width: 320px) {
+@media (max-width: 768px),
+(max-width: 884px),
+(max-width: 320px) {
     .footer-column {
         width: 100%;
         margin-bottom: 20px;
@@ -1121,22 +1159,23 @@ body.fade-in {
 /*NAVBVAR*/
 
 @media (max-width:430px) {
-    .navbar-nav{
+    .navbar-nav {
         width: 100%;
     }
 
-    .carousel-item.active{
+    .carousel-item.active {
         position: relative;
         display: flex;
         flex-direction: row;
         width: 100%;
     }
 
-    #language-button{
+    #language-button {
         margin-left: 50%;
     }
 
-    .carousel-control.next,.carousel-control-prev-icon{
+    .carousel-control.next,
+    .carousel-control-prev-icon {
         display: none;
     }
 
@@ -1144,55 +1183,57 @@ body.fade-in {
 
 /*HERO*/
 
-@media (max-width: 430px),(max-width: 390px) {
+@media (max-width: 430px),
+(max-width: 390px) {
 
-    .hero-button{
+    .hero-button {
         display: flex;
         text-align: center;
         gap: 0px;
         margin-top: 7px;
     }
 
-    .hero-column{
+    .hero-column {
         width: 70%;
     }
 
-    .carousel-indicators{
+    .carousel-indicators {
         margin-top: 10px;
     }
 
-    .carousel-item.active{
-        width:100%;
-        height:393px;
+    .carousel-item.active {
+        width: 100%;
+        height: 393px;
         margin: 0;
-        
-    }  
 
-    .Foto2{
+    }
+
+    .Foto2 {
         width: 100%;
         height: auto;
         margin: 0;
     }
 
-    
-    .hero-button{
+
+    .hero-button {
         display: none;
     }
 
-    .navbar{
+    .navbar {
         overflow: scroll;
     }
 
-    .Foto2, .Foto3{
+    .Foto2,
+    .Foto3 {
         margin: 0;
         height: auto;
     }
 
-    .Foto3{
+    .Foto3 {
         object-fit: contain;
         align-items: center;
         width: 100%;
-        
+
     }
 
 }
@@ -1201,13 +1242,14 @@ body.fade-in {
 
 /*CONCEPTO*/
 
-@media (max-width: 430px),((max-width: 390px)) {
+@media (max-width: 430px),
+((max-width: 390px)) {
 
-    .botones{
+    .botones {
         margin-left: 5%;
     }
 
-    .contenido p{
+    .contenido p {
         text-align: center;
     }
 
@@ -1218,7 +1260,8 @@ body.fade-in {
         margin: 0;
     }
 
-    .BotonReserva, .BotonPedido{
+    .BotonReserva,
+    .BotonPedido {
         margin: 0;
     }
 
@@ -1228,23 +1271,23 @@ body.fade-in {
 /*OPINIONES*/
 
 @media (max-width:430px) {
-    .opinion-card{
+    .opinion-card {
         text-align: left;
     }
 
-    .card-text{
+    .card-text {
         padding-bottom: 25px;
         margin-left: 0;
-        
+
     }
 
-    .footer-card{
+    .footer-card {
         text-align: left;
         margin-left: 25px;
-        margin-right:0 ;
+        margin-right: 0;
     }
 
-    .container-clientes{
+    .container-clientes {
         box-shadow: none;
     }
 }
@@ -1252,19 +1295,21 @@ body.fade-in {
 /*GALERIA*/
 
 @media (max-width:430px) {
-    .gallery{
+    .gallery {
         display: grid;
         grid-template-columns: repeat(1, 1fr);
     }
 
-    
+
 }
 
 /*FOOTER*/
 
-@media (max-width: 430px),((max-width: 390px)) {
+@media (max-width: 430px),
+((max-width: 390px)) {
 
-    .ubi1, .ubi2{
+    .ubi1,
+    .ubi2 {
         margin-left: 10%;
     }
 }
@@ -1273,74 +1318,72 @@ body.fade-in {
 /*CONCEPTO*/
 
 @media (max-width:375px) {
-    .contenido p{
+    .contenido p {
         font-size: 15px;
         text-align: center;
     }
 
 
-}   
+}
 
 
 /*320px*/
 
 
-@media (max-width: 320px){
+@media (max-width: 320px) {
 
-    .hero-title{
+    .hero-title {
         max-width: 100%;
     }
 
-    .carousel-item.active{
-        width:100%;
-        height:393px;
+    .carousel-item.active {
+        width: 100%;
+        height: 393px;
         margin: 0;
-        
-    }  
+
+    }
 
 }
 
 
-@media (max-width: 320px),(max-width:350px){
-    .texto-galeria h2{
+@media (max-width: 320px),
+(max-width:350px) {
+    .texto-galeria h2 {
         font-size: 30px;
     }
 
 
-    .slogan-section p{
+    .slogan-section p {
         font-size: 20px;
     }
 
-    .container-clientes{
+    .container-clientes {
         width: 80%;
     }
 
-    .card-text, .footer-card{
+    .card-text,
+    .footer-card {
         text-align: center;
     }
 
-    .horarios-table{
+    .horarios-table {
         width: 250px;
         margin-left: 10px;
     }
 
-    .footer-section p{
+    .footer-section p {
         font-size: 14px;
 
     }
 
-    .concepto .botones{
+    .concepto .botones {
         display: flex;
         flex-direction: column;
     }
 
     .navbar-nav {
         width: 319px;
-       
+
     }
 
-}   
-
-
-
-
+}
