@@ -2,11 +2,9 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const oracledb = require('oracledb');
 const cors = require('cors');
-const pool = require('./db');
 const app = express();
 
 oracledb.outFormat = oracledb.OUT_FORMAT_OBJECT;
-
 
 app.use(bodyParser.json());
 app.use(cors());
@@ -121,8 +119,6 @@ app.post('/register', async (req, res) => {
   }
 });
 
-
-
 app.post('/login', async (req, res) => {
   const { usernameEmail, password } = req.body;
   let connection;
@@ -165,7 +161,6 @@ app.post('/login', async (req, res) => {
     }
   }
 });
-
 
 /**LOGIN EMPLEADOS Y ADMINISTRADORES */
 
@@ -357,15 +352,15 @@ app.post('/api/pedido', async (req, res) => {
        VALUES (DETALLESPEDIDO_SEQ.NEXTVAL, :idPedido, :fullName, :phoneNumber, :email, :address, :pickupTime, :restaurantNote, :promoCode, :totalPedido)
        RETURNING ID_DETALLES INTO :outNum`
       , {
-        idPedido: data.idPedido,
-        fullName: data.fullName,
-        phoneNumber: data.phoneNumber,
-        email: data.email,
-        address: data.address,
-        pickupTime: data.pickupTime,
-        restaurantNote: data.restaurantNote,
-        promoCode: data.promoCode,
-        totalPedido: data.totalPedido,
+        idPedido,
+        fullName,
+        phoneNumber,
+        email,
+        address,
+        pickupTime,
+        restaurantNote,
+        promoCode,
+        totalPedido,
         outNum: { type: oracledb.NUMBER, dir: oracledb.BIND_OUT }
       }
     );
@@ -410,8 +405,6 @@ app.post('/api/pedido', async (req, res) => {
     }
   }
 });
-
-
 
 app.get('/api/pedido', async (req, res) => {
   let connection;
@@ -461,6 +454,7 @@ app.get('/api/pedido', async (req, res) => {
     }
   }
 });
+
 
 // Asegúrate de que el servidor esté escuchando en el puerto correcto
 /*const PORT = process.env.PORT || 8080;
