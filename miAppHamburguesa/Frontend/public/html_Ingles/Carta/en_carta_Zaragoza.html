@@ -39,13 +39,38 @@
             <i class="fas fa-user"></i> Log in
           </a>
         </div>
-  
+
         <div class="register">
           <a href="#" id="registerBtn">
             <i class="fas fa-user-plus"></i> Register
           </a>
         </div>
       </div>
+
+      <!-- Modal de Registro -->
+      <div id="modalRegister" class="modal2">
+        <div class="modal2-content">
+          <span class="close">&times;</span>
+          <h5>Registro</h5>
+          <form id="registerForm">
+            <label for="registerNombre">Nombre:</label>
+            <input type="text" id="registerNombre" required placeholder="Nombre">
+            <label for="registerDireccion">Dirección:</label>
+            <input type="text" id="registerDireccion" required placeholder="Dirección">
+            <label for="registerEmail">Correo Electrónico:</label>
+            <input type="email" id="registerEmail" required placeholder="Correo Electrónico">
+            <label for="registerTelefono">Teléfono:</label>
+            <input type="text" id="registerTelefono" required placeholder="Teléfono">
+
+            <label for="registerNombreUsuario">Nombre de Usuario:</label>
+            <input type="text" id="registerNombreUsuario" required placeholder="Nombre de Usuario">
+            <label for="registerContraseña">Contraseña:</label>
+            <input type="password" id="registerContraseña" required placeholder="Contraseña">
+            <button type="submit">Registrarse</button>
+          </form>
+        </div>
+      </div>
+
 
       <!-- Menú de usuario -->
       <div id="userMenu" class="dropdown" style="display:none;">
@@ -58,12 +83,12 @@
         <!-- Contenido del menú de usuario -->
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
           <a class="dropdown-item" href="/miAppHamburguesa/Frontend/public/html_Ingles/Carta/en_carta_Zaragoza.html"><i
-              class="fas fa-shopping-cart"></i> New Order</a>
+              class="fas fa-shopping-cart"></i> Nuevo pedido</a>
           <a class="dropdown-item"
-          href="/miAppHamburguesa/Frontend/public/html_Ingles/CarritoResponsive/ve_pedidos.html">"><i
-              class="fas fa-clipboard-list"></i> My Orders</a>
+            href="/miAppHamburguesa/Frontend/public/html_Ingles/CarritoResponsive/ve_pedidos.html"><i
+              class="fas fa-clipboard-list"></i> Mis pedidos</a>
           <!-- Agrega un ID aquí para el enlace de desconexión -->
-          <a class="dropdown-item" href="#" id="signOutLink"><i class="fas fa-sign-out-alt"></i> Sign out</a>
+          <a class="dropdown-item" href="#" id="signOutLink"><i class="fas fa-sign-out-alt"></i> Desconectar</a>
         </div>
 
       </div>
@@ -82,37 +107,31 @@
           </ul>
         </div>
       </div>
+
+
       <div class="column left-column">
         <div class="titulo-seccion" id="tabOne">
           <h2 style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Entrantes</h2>
         </div>
         <div class="tabs-content">
-          <!-- Item del menú -->
-
-          <!--PRIMER ENTRANTE-->
-
+          <!-- Items del menú -->
           <div class="menu-item" id="product1" data-product-name="Rainforest Nachos" data-product-price="12.50"
-            data-product-description=" Inspired by Chicago rainforest coffee. Corn chips, cheddar cream, guacamole,
-            shredded beef, pico de gallo and sour cream."
+            data-product-description="Inspired by Chicago rainforest coffee. Corn chips, cheddar cream, guacamole, shredded beef, pico de gallo and sour cream."
             data-product-allergens="Allergens: Gluten, lactose and Sulfites."
             data-product-image1="/miAppHamburguesa/Frontend/src/assets/img/Menu/Nachos.jpg"
             data-product-image2="/miAppHamburguesa/Frontend/src/assets/img/Menu/gluten.svg"
             data-product-image3="/miAppHamburguesa/Frontend/src/assets/img/Menu/sulphur.svg"
             data-product-image4="/miAppHamburguesa/Frontend/src/assets/img/Menu/leche.svg">
-
-            <!-- Columna de imagen -->
             <div class="menu-item-column image-column">
               <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/Nachos.jpg" alt="Rainforest Nachos"
                 class="menu-item-img" id="Cabezera">
             </div>
-            <!-- Columna de texto e información -->
             <div class="menu-item-column info-column">
               <div class="menu-item-header">
                 <h3 class="menu-item-title">Rainforest Nachos</h3>
                 <div class="menu-item-price-action">
                   <button class="add-button">
                     <i class="bi bi-plus-circle"></i>
-                    <!-- Asumiendo que quieres usar un ícono de 'plus' -->
                   </button>
                   <span class="price">12,50 €</span>
                 </div>
@@ -128,6 +147,7 @@
               </div>
             </div>
           </div>
+
 
 
           <!--SEGUNDO ENTRANTE-->
@@ -1229,22 +1249,19 @@
           '/miAppHamburguesa/Frontend/public/html_Ingles/CarritoResponsive/en_CarritoZGZ.html'; // La ruta a la que quieres que el botón lleve
       }
     });
-
-    function confirmOrder() {
-      // Implementa la lógica de confirmación del pedido aquí
-      console.log('Pedido confirmado con éxito!');
-    }
   </script>
 
   <script>
-    document.addEventListener('DOMContentLoaded', function () {
+    /*document.addEventListener('DOMContentLoaded', function () {
       // Establece la ubicación basada en el atributo data-nombredelsitio del contenedor del carrito
-      const zaragozaContainer = document.getElementById('zaragoza-orders-container');
-      if (zaragozaContainer) {
-        document.body.dataset.location = zaragozaContainer.getAttribute('data-nombredelsitio');
+      const valenciaContainer = document.getElementById('valencia-orders-container');
+      if (valenciaContainer) {
+        document.body.dataset.location = valenciaContainer.getAttribute('data-nombredelsitio');
         console.log("Ubicación del carrito configurada automáticamente a:", document.body.dataset.location);
+      } else {
+        console.error("No se encontró el contenedor de pedidos de Valencia.");
       }
-    });
+    });*/
   </script>
 
 
@@ -1284,115 +1301,50 @@
 
   <!--MODAL DEL LOGIN-->
 
- <!-- Modal de login -->
- <div id="modalLogin" class="modal2" style="display:none;">
-  <div class="modal2-content">
-    <span class="close">&times;</span>
-    <h5>Inicio de sesión</h5>
-    <form id="loginForm">
-      <label for="loginUsernameEmail">Nombre de usuario o correo electrónico:</label>
-      <input type="text" id="loginUsernameEmail" autocomplete="username" required placeholder="Usuario o email">
 
-      <label for="loginPassword">Contraseña:</label>
-      <input type="password" id="loginPassword" autocomplete="current-password" required>
-
-      <button type="submit">Iniciar sesión</button>
-    </form>
-  </div>
-</div>
-
-<!-- Modal de registro -->
-<div id="modalRegister" class="modal2" style="display:none;">
-  <div class="modal2-content">
+  <div id="modalLogin" class="modal2">
+    <div class="modal2-content">
       <span class="close">&times;</span>
-      <h5>Registro</h5>
-      <form id="registerForm">
-          <label for="registerUsername">Nombre de usuario:</label>
-          <input type="text" id="registerUsername" autocomplete="username" required placeholder="Nombre de usuario">
+      <h5>Inicio de sesión</h5>
+      <form id="loginForm">
+        <label for="loginUsernameEmail">Nombre de usuario o correo electrónico:</label>
+        <input type="text" id="loginUsernameEmail" required placeholder="Nombre de usuario o correo electrónico">
 
-          <label for="registerEmail">Correo electrónico:</label>
-          <input type="email" id="registerEmail" autocomplete="email" required placeholder="Correo electrónico">
+        <label for="loginPassword">Contraseña:</label>
+        <input type="password" id="loginPassword" required placeholder="Contraseña">
 
-          <label for="registerPassword">Contraseña:</label>
-          <input type="password" id="registerPassword" autocomplete="new-password" required>
-
-          <!-- Campos adicionales -->
-          <label for="registerName">Nombre:</label>
-          <input type="text" id="registerName" required placeholder="Nombre">
-
-          <label for="registerAddress">Dirección:</label>
-          <input type="text" id="registerAddress" required placeholder="Dirección">
-
-          <label for="registerPhone">Teléfono:</label>
-          <input type="tel" id="registerPhone" required placeholder="Teléfono">
-
-          <button type="submit">Registrar</button>
+        <button type="submit">Iniciar sesión</button>
       </form>
-  </div>
-</div>
-
-
-<footer id="siteFooter">
-  <div class="footer-links">
-    <a href="/miAppHamburguesa/Frontend/public/html_Español/CookiesValenciaShop.html">Cookie settings</a>
-    <a href="/miAppHamburguesa/Frontend/public/html_Ingles/en_Politica_Privacidad.html" target="_blank">Politics of
-      privacy</a>
-    <a href="/miAppHamburguesa/Frontend/public/html_Ingles/En_Terminos_Condiciones.html" target="_blank">Terms and
-      conditions</a>
-  </div>
-  <hr>
-  <div class="last-part">
-    <div class="footer-branding">
-      <img width="120" src="/miAppHamburguesa/Frontend/src/assets/img/Home/BurgerVibes.svg" alt="Logo">
-    </div>
-    <div class="footer-language-selector">
-      <label for="language-select">Language</label>
-      <select id="language-select">
-        <option value="en">EN</option>
-        <option value="es" selected>ES</option>
-      </select>
     </div>
   </div>
+
+
 
 
   <!-- Modal de registro -->
-  <div id="modalRegister" class="modal2" style="display:none;">
-    <div class="modal2-content">
-      <span class="close">&times;</span>
-      <h5>Registro</h5>
-      <form id="registerForm" method="POST" action="http://localhost:8080/register">
-        <label for="registerUsername">Nombre de usuario:</label>
-        <input type="text" id="registerUsername" name="username" autocomplete="username" required
-          placeholder="Nombre de usuario">
 
-        <label for="registerEmail">Correo electrónico:</label>
-        <input type="email" id="registerEmail" name="email" autocomplete="email" required
-          placeholder="Correo electrónico">
 
-        <label for="registerPassword">Contraseña:</label>
-        <input type="password" id="registerPassword" name="password" autocomplete="new-password" required>
 
-        <!-- Campos adicionales -->
-        <label for="registerName">Nombre:</label>
-        <input type="text" id="registerName" name="name" required placeholder="Nombre">
 
-        <label for="registerAddress">Dirección:</label>
-        <input type="text" id="registerAddress" name="address" required placeholder="Dirección">
-
-        <label for="registerPhone">Teléfono:</label>
-        <input type="tel" id="registerPhone" name="phone" required placeholder="Teléfono">
-
-        <button type="submit">Registrar</button>
-      </form>
+  <!-- Menú del usuario con el nombre de usuario y opción de cerrar sesión -->
+  <div id="userMenu" style="display:none;">
+    <span id="usernameDisplay"></span>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+      <a class="dropdown-item" href="/miAppHamburguesa/Frontend/public/html_Ingles/Carta/en_carta_Zaragoza.html"><i
+          class="fas fa-shopping-cart"></i> Nuevo pedido</a>
+      <a class="dropdown-item"
+        href="/miAppHamburguesa/Frontend/public/html_Ingles/CarritoResponsive/en_CarritoZGZ.html"><i
+          class="fas fa-clipboard-list"></i> Mis pedidos</a>
+      <!-- Agrega un ID aquí para el enlace de desconexión -->
+      <a class="dropdown-item" href="#" id="signOutLink"><i class="fas fa-sign-out-alt"></i> Desconectar</a>
     </div>
   </div>
-
 
 
 
   <footer id="siteFooter">
     <div class="footer-links">
-      <a href="/miAppHamburguesa/Frontend/public/html_Español/CookiesValenciaShop.html">Cookie settings</a>
+      <a href="/miAppHamburguesa/Frontend/public/html_Español/CookiesZaragozaShop.html">Cookie settings</a>
       <a href="/miAppHamburguesa/Frontend/public/html_Ingles/en_Politica_Privacidad.html" target="_blank">Politics of
         privacy</a>
       <a href="/miAppHamburguesa/Frontend/public/html_Ingles/En_Terminos_Condiciones.html" target="_blank">Terms and
@@ -1432,6 +1384,8 @@
   <script src="/miAppHamburguesa/Frontend/src/js/LogicaMenu/ModalsProductosDinamico.js"></script>
   <script src="/miAppHamburguesa/Frontend/src/js/LogicaMenu/Carrito.js"></script>
   <script src="/miAppHamburguesa/Frontend/src/js/LogicaMenu/Login/login.js"></script>
+
+
 
 </body>
 

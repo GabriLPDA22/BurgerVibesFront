@@ -1,4 +1,4 @@
-const express = require('express');
+/*const express = require('express');
 const bodyParser = require('body-parser');
 const oracledb = require('oracledb');
 const cors = require('cors');
@@ -40,7 +40,7 @@ app.get('/', (req, res) => {
 /* LOGIN Y REGISTRO CLIENTE */
 
 // Ruta para registrar un nuevo usuario
-app.post('/register', async (req, res) => {
+/*app.post('/register', async (req, res) => {
   const {
     username,
     email,
@@ -164,7 +164,7 @@ app.post('/login', async (req, res) => {
 
 /**LOGIN EMPLEADOS Y ADMINISTRADORES */
 
-app.post('/loginAdminEmpleado', async (req, res) => {
+/*app.post('/loginAdminEmpleado', async (req, res) => {
   const {
     email,
     password
@@ -291,7 +291,7 @@ app.post('/employeeInfo', async (req, res) => {
 
 /* PAGO DEL CLIENTE */
 
-app.post('/api/pedido', async (req, res) => {
+/*app.post('/api/pedido', async (req, res) => {
   const {
     fullName,
     phoneNumber,
