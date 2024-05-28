@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const hours = String(now.getHours()).padStart(2, '0');
         const minutes = String(now.getMinutes()).padStart(2, '0');
         const seconds = String(now.getSeconds()).padStart(2, '0');
-    
+
         return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
     }
 
@@ -146,13 +146,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     console.log('Detalles del pago:', paymentDetails);
 
                     try {
-                        const response = await fetch('http://localhost:8080/BuergerVibes/Controller?ACTION=PEDIDO.CREATE', {
+                        const response = await fetch('http://localhost:8080/BuergerVibes/Controller?ACTION=PEDIDO.ADD', {
                             method: 'POST',
                             headers: {
                                 'Content-Type': 'application/x-www-form-urlencoded'
                             },
                             body: new URLSearchParams({
-                                ACTION: 'PEDIDO.CREATE',
                                 fullName: paymentDetails.fullName,
                                 phoneNumber: paymentDetails.phoneNumber,
                                 email: paymentDetails.email,
