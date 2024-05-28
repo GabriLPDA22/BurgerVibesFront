@@ -77,7 +77,7 @@
         <form id="formAccesoEmpleados">
             <label for="userEmailEmpleados">Email:</label>
             <input type="email" id="userEmailEmpleados" required>
-            <label for="userPasswordEmpleados">password:</label>
+            <label for="userPasswordEmpleados">Password:</label>
             <input type="password" id="userPasswordEmpleados" required>
             <button type="submit">Access</button>
         </form>
@@ -85,51 +85,61 @@
 
 
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const loginFormEmpleados = document.getElementById('formAccesoEmpleados');
+    document.addEventListener('DOMContentLoaded', () => {
+    const loginPopup = document.getElementById('loginPopupEmpleados');
+    const formAccesoEmpleados = document.getElementById('formAccesoEmpleados');
+    const closeBtn = document.querySelector('.close-btn');
 
-            if (loginFormEmpleados) {
-                loginFormEmpleados.addEventListener('submit', async (event) => {
-                    event.preventDefault();
-                    const email = document.getElementById('userEmailEmpleados').value;
-                    const password = document.getElementById('userPasswordEmpleados').value;
+    // Mostrar el popup
+    loginPopup.style.display = 'block';
 
-                    console.log('Attempting to login with email:', email); // Log para depurar
+    // Cerrar el popup
+    closeBtn.addEventListener('click', () => {
+        loginPopup.style.display = 'none';
+    });
 
-                    try {
-                        const response = await fetch('http://localhost:8080/loginAdminEmpleado', {
-                            method: 'POST',
-                            headers: {
-                                'Content-Type': 'application/json'
-                            },
-                            body: JSON.stringify({ email, password })
-                        });
+    formAccesoEmpleados.addEventListener('submit', async (event) => {
+        event.preventDefault();
 
-                        if (!response.ok) {
-                            throw new Error('Error en la respuesta del servidor');
-                        }
+        const email = document.getElementById('userEmailEmpleados').value;
+        const password = document.getElementById('userPasswordEmpleados').value;
 
-                        const responseData = await response.json();
-                        alert('Inicio de sesión exitoso');
+        try {
+            const response = await fetch('http://localhost:8080/BuergerVibes/Controller?ACTION=EMPLEADO.LOGIN', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: new URLSearchParams({
+                    ACTION: 'EMPLEADO.LOGIN',
+                    email: email,
+                    password: password
+                })
+            });
 
-                        console.log('Login response data:', responseData); // Log para depurar
+            const result = await response.json();
 
-                        if (responseData.role === 'admin') {
-                            window.location.href = 'zona_privada.html';
-                        } else if (responseData.role === 'employee') {
-                            localStorage.setItem('employeeEmail', responseData.email);  // Guarda el email del empleado en localStorage
-                            console.log('Email guardado en local storage:', responseData.email); // Log para verificar
-                            window.location.href = 'zona_privada_empleados.html';
-                        } else {
-                            alert('Rol no reconocido');
-                        }
-                    } catch (error) {
-                        console.error('Error:', error);
-                        alert('Error al conectar con el servidor');
-                    }
-                });
+            if (response.ok) {
+                if (result.role === 'admin') {
+                    alert('Inicio de sesión exitoso como administrador');
+                    // Redirigir al área de administrador
+                    window.location.href = 'zona_privada.html';
+                } else if (result.role === 'employee') {
+                    alert('Inicio de sesión exitoso como empleado');
+                    // Redirigir al área de empleado
+                    window.location.href = 'zona_privada_empleados.html';
+                } else {
+                    alert('Credenciales incorrectas');
+                }
+            } else {
+                alert(result.message || 'Error al iniciar sesión');
             }
-        });
+        } catch (error) {
+            console.error('Error:', error);
+            alert('Error al conectar con el servidor');
+        }
+    });
+});
 
 
     </script>

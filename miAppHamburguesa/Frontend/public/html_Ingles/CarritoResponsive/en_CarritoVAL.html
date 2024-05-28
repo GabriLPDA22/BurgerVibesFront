@@ -380,11 +380,6 @@
         });
     </script>
 
-    <script>
-       
-    </script>
-
-
     <!--MODAL DEL LOGIN-->
 
     <!-- Modal de login -->
@@ -408,36 +403,28 @@
 
 
     <!-- Modal de registro -->
-    <div id="modalRegister" class="modal2" style="display:none;">
+    <div id="modalRegister" class="modal2">
         <div class="modal2-content">
-            <span class="close">&times;</span>
-            <h5>Registro</h5>
-            <form id="registerForm" method="POST" action="register.php">
-                <label for="registerUsername">Nombre de usuario:</label>
-                <input type="text" id="registerUsername" name="username" autocomplete="username" required
-                    placeholder="Nombre de usuario">
+          <span class="close">&times;</span>
+          <h5>Registro</h5>
+          <form id="registerForm">
+            <label for="registerNombre">Nombre:</label>
+            <input type="text" id="registerNombre" required placeholder="Nombre">
+            <label for="registerDireccion">Dirección:</label>
+            <input type="text" id="registerDireccion" required placeholder="Dirección">
+            <label for="registerEmail">Correo Electrónico:</label>
+            <input type="email" id="registerEmail" required placeholder="Correo Electrónico">
+            <label for="registerTelefono">Teléfono:</label>
+            <input type="text" id="registerTelefono" required placeholder="Teléfono">
 
-                <label for="registerEmail">Correo electrónico:</label>
-                <input type="email" id="registerEmail" name="email" autocomplete="email" required
-                    placeholder="Correo electrónico">
-
-                <label for="registerPassword">Contraseña:</label>
-                <input type="password" id="registerPassword" name="password" autocomplete="new-password" required>
-
-                <!-- Campos adicionales -->
-                <label for="registerName">Nombre:</label>
-                <input type="text" id="registerName" name="name" required placeholder="Nombre">
-
-                <label for="registerAddress">Dirección:</label>
-                <input type="text" id="registerAddress" name="address" required placeholder="Dirección">
-
-                <label for="registerPhone">Teléfono:</label>
-                <input type="tel" id="registerPhone" name="phone" required placeholder="Teléfono">
-
-                <button type="submit">Registrar</button>
-            </form>
+            <label for="registerNombreUsuario">Nombre de Usuario:</label>
+            <input type="text" id="registerNombreUsuario" required placeholder="Nombre de Usuario">
+            <label for="registerContraseña">Contraseña:</label>
+            <input type="password" id="registerContraseña" required placeholder="Contraseña">
+            <button type="submit">Registrarse</button>
+          </form>
         </div>
-    </div>
+      </div>
 
 
 
