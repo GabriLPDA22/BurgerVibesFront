@@ -234,9 +234,8 @@ document.addEventListener('DOMContentLoaded', function () {
             return;
         }
 
-        // Asegúrate de que cada ítem tiene un ID de producto (idProductoDet)
         const orderItems = cart.items.map(item => ({
-            idProductoDet: item.idProductoDet || "DEFAULT_ID", // Asegúrate de que este campo existe en el objeto item
+            idProductoDet: item.idProductoDet || "DEFAULT_ID",
             name: item.name,
             quantity: item.quantity,
             price: item.price
@@ -245,7 +244,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const order = {
             username: username,
             timestamp: new Date().getTime(),
-            items: orderItems, // Aquí usamos los ítems asegurándonos de incluir el idProductoDet
+            items: orderItems,
             location: location
         };
 
@@ -278,6 +277,5 @@ document.addEventListener('DOMContentLoaded', function () {
             console.error("No se encontró el elemento para mostrar el total del carrito.");
         }
     }
-
-
 });
+    
