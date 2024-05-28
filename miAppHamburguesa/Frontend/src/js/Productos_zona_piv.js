@@ -41,9 +41,10 @@ const printProducts = (products) => {
             <td>${DisponibleEnZgz}</td>
             <td>${ID_Categoria_pro}</td>
             <td class="action-buttons">
-            <button onclick="openEditModal('${ID_Producto}', '${Precio}', '${Nombre}', '${Descripcion}', '${DisponibleEnVlc}', '${DisponibleEnZgz}', '${ID_Categoria_pro}')">Update</button>
-            <button onclick="deleteProduct('${ID_Producto}')">Delete</button>
-            
+            <button onclick="openEditModal('${ID_Producto}', '${Precio}', '${Nombre}', '${Descripcion}', '${DisponibleEnVlc}', '${DisponibleEnZgz}', '${ID_Categoria_pro}')">Editar</button>
+
+            <button onclick="deleteProduct('${ID_Producto}')">Borrar</button>
+            <button onclick="disableProduct('${ID_Producto}')">Inhabilitar</button>
             
             </td>
         `;
@@ -55,7 +56,7 @@ const printProducts = (products) => {
 // Esta función abre el modal de edición con los datos del producto
 const openEditModal = (ID_Producto, Precio, Nombre, Descripcion, DisponibleEnVlc, DisponibleEnZgz, ID_Categoria_pro) => {
     Swal.fire({
-        title: 'Edit Product',
+        title: 'Editar Producto',
         html: `
             <input id="ID_Producto" type="hidden" value="${ID_Producto}">
             <input id="Precio" class="swal2-input" placeholder="Precio" value="${Precio}">
@@ -64,7 +65,6 @@ const openEditModal = (ID_Producto, Precio, Nombre, Descripcion, DisponibleEnVlc
             <input id="DisponibleEnVlc" class="swal2-input" placeholder="Disponible en VLC" value="${DisponibleEnVlc}">
             <input id="DisponibleEnZgz" class="swal2-input" placeholder="Disponible en ZGZ" value="${DisponibleEnZgz}">
             <input id="ID_Categoria_pro" class="swal2-input" placeholder="ID Categoria" value="${ID_Categoria_pro}">
-        
         `,
         focusConfirm: false,
         preConfirm: () => {
@@ -81,36 +81,41 @@ const openEditModal = (ID_Producto, Precio, Nombre, Descripcion, DisponibleEnVlc
     }).then((result) => {
         if (result.isConfirmed) {
             console.log('Datos actualizados:', result.value);
-            updateProduct(result.value.ID_Producto, result.value);
+            updateProduct(result.value);
         }
     });
 };
 
-const updateProduct = async (ID_Producto, updatedData) => {
-    console.log('Datos a actualizar:', updatedData); // Añadir este log para depuración
-
-    const url = `http://localhost:8080/BuergerVibes/Controller?ACTION=PRODUCTO.UPDATE&ID_PRODUCTO=${(updatedData.ID_Producto)}&PRECIO=${(updatedData.Precio)}&NOMBRE=${(updatedData.Nombre)}&DESCRIPCION=${(updatedData.Descripcion)}&DISPONIBLEENVLC=${(updatedData.DisponibleEnVlc)}&DISPONIBLEENZGZ=${(updatedData.DisponibleEnZgz)}&ID_CATEGORIA_PRO=${(updatedData.ID_Categoria_pro)}`;
+const updateProduct = async (product) => {
+    const url = `http://localhost:8080/BuergerVibes/Controller?ACTION=PRODUCTO.UPDATE`;
+    const params = new URLSearchParams({
+        ID_PRODUCTO: product.ID_Producto,
+        NOMBRE: product.Nombre,
+        DESCRIPCION: product.Descripcion,
+        PRECIO: product.Precio,
+        ID_CATEGORIA_PRO: product.ID_Categoria_pro,
+        DISPONIBLEENVLC: product.DisponibleEnVlc,
+        DISPONIBLEENZGZ: product.DisponibleEnZgz
+    });
 
     try {
         const response = await fetch(url, {
-            method: 'PUT',
+            method: 'POST',
             headers: {
-                'Content-Type': 'application/json' // Aunque estamos usando parámetros en la URL, mantener este encabezado para evitar problemas
-            }
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            body: params
         });
-        if (!response.ok) {
-            throw new Error('Error al actualizar el producto.');
+        if (response.ok) {
+            alert('Producto actualizado exitosamente.');
+            fetchProducts(); // Actualizar la lista de productos después de la actualización
+        } else {
+            throw new Error('Error al actualizar producto.');
         }
-        console.log('Producto actualizado exitosamente');
-        Swal.fire('Producto actualizado', '', 'success');
-        fetchProducts(); // Actualiza la tabla de productos después de la actualización
     } catch (error) {
-        console.error('Error al actualizar el producto:', error);
-        Swal.fire('Error al actualizar', error.message, 'error');
+        console.error('Error al actualizar producto:', error);
     }
 };
-
-
 
 const deleteProduct = (ID_Producto) => {
     if (confirm(`¿Estás seguro de que quieres borrar el producto con ID: ${ID_Producto}?`)) {
@@ -142,16 +147,15 @@ const disableProduct = (ID_Producto) => {
 
 const addProduct = () => {
     Swal.fire({
-        title: 'Add Product',
+        title: 'Añadir Producto',
         html: `
-        <input id="ID_Product" class="swal2-input" placeholder="Product ID">
-        <input id="Price" class="swal2-input" placeholder="Price">
-        <input id="Name" class="swal2-input" placeholder="Name">
-        <textarea id="Description" class="swal2-textarea" placeholder="Description"></textarea>
-        <input id="AvailableInVlc" class="swal2-input" placeholder="Available in VLC">
-        <input id="AvailableInZgz" class="swal2-input" placeholder="Available in ZGZ">
-        <input id="CategoryID" class="swal2-input" placeholder="Category ID">
-        
+            <input id="ID_Producto" class="swal2-input" placeholder="ID del producto">
+            <input id="Precio" class="swal2-input" placeholder="Precio">
+            <input id="Nombre" class="swal2-input" placeholder="Nombre">
+            <textarea id="Descripcion" class="swal2-textarea" placeholder="Descripcion"></textarea>
+            <input id="DisponibleEnVlc" class="swal2-input" placeholder="Disponible en VLC">
+            <input id="DisponibleEnZgz" class="swal2-input" placeholder="Disponible en ZGZ">
+            <input id="ID_Categoria_pro" class="swal2-input" placeholder="ID Categoria">
         `,
         focusConfirm: false,
         preConfirm: () => {
@@ -206,16 +210,12 @@ const createProduct = async (newProduct) => {
     }
 };
 
-document.getElementById('updateButton').addEventListener('click', () => {
-    // Recargar la página
-    location.reload();
-});
+
 
 document.getElementById('updateButton').addEventListener('click', fetchProducts);
 document.getElementById('addButton').addEventListener('click', addProduct);
 
 fetchProducts();
-
 /*let productsJson = JSON.parse(localStorage.getItem('productsJson')) || {
     "productos": {
         "Entrantes": [
