@@ -1,7 +1,55 @@
-function addToCart(productName, productPrice, quantity) {
-    console.log('Añadiendo al carrito:', productName, quantity, '@', productPrice);
+const urlProducts = 'http://localhost:8080/BuergerVibes/Controller?ACTION=PRODUCTO.FIND_ALL';
 
-    const customerName = localStorage.getItem('username');
+const fetchProducts = async () => {
+    try {
+        const result = await fetch(urlProducts);
+        const data = await result.json();
+        console.log('Productos obtenidos de la API:', data);
+        printProducts(data);
+    } catch (error) {
+        console.error('Error al obtener datos de la API:', error);
+    }
+};
+
+const printProducts = (products) => {
+    const productList = document.getElementById('product-list');
+    productList.innerHTML = ''; // Limpiar el contenido anterior
+
+    products.forEach(product => {
+        const {
+            ID_Producto,
+            Precio,
+            Nombre,
+            Descripcion,
+            DisponibleEnVlc,
+            DisponibleEnZgz,
+            ID_Categoria_pro,
+            Producto_IMG
+        } = product;
+
+        const productCard = document.createElement('div');
+        productCard.className = 'product-card';
+
+        productCard.innerHTML = `
+            <img src="${Producto_IMG}" alt="${Nombre}">
+            <div class="product-details">
+                <h2>${Nombre}</h2>
+                <p>${Descripcion}</p>
+                <p class="price">€${Precio.toFixed(2)}</p>
+                <div class="actions">
+                    <button onclick="addToCart('${Nombre}', ${Precio.toFixed(2)}, 1)">Añadir al carrito</button>
+                </div>
+            </div>
+        `;
+
+        productList.appendChild(productCard);
+    });
+};
+
+const addToCart = (productName, productPrice, quantity) => {
+    console.log(`Producto ${productName} añadido al carrito.`);
+    // Añadir lógica del carrito aquí
+    const customerName = localStorage.getItem('username') || 'Anonymous';
 
     var existingItem = Array.from(document.querySelectorAll('.order-item'))
         .find(item => item.querySelector('.product-name').textContent === productName);
@@ -12,14 +60,10 @@ function addToCart(productName, productPrice, quantity) {
         var newQuantity = currentQuantity + quantity;
         var priceDifference = productPrice * (newQuantity - currentQuantity);
 
-        console.log('Producto ya en carrito. Cantidad actual:', currentQuantity, 'Nueva cantidad:', newQuantity, 'Diferencia de precio:', priceDifference);
-
         input.value = newQuantity;
         existingItem.querySelector('.product-price').textContent = (productPrice * newQuantity).toFixed(2) + ' €';
         updateTotal(priceDifference);
     } else {
-        console.log('Producto nuevo en carrito. Total a añadir:', productPrice * quantity);
-
         var orderItem = document.createElement('div');
         orderItem.classList.add('order-item');
         orderItem.innerHTML = `
@@ -38,11 +82,9 @@ function addToCart(productName, productPrice, quantity) {
     }
 
     updateLocalStorage();
+};
 
-    console.log("Estado del carrito almacenado:", JSON.parse(localStorage.getItem('carrito')));
-}
-
-function updateQuantity(button, change, productPrice) {
+const updateQuantity = (button, change, productPrice) => {
     var input = button.parentNode.querySelector('input[type="number"]');
     var currentQuantity = parseInt(input.value);
     var newQuantity = currentQuantity + change;
@@ -60,7 +102,6 @@ function updateQuantity(button, change, productPrice) {
             productItem.parentNode.removeChild(productItem);
             priceDifference = -currentProductPrice;
             updateTotal(priceDifference);
-            updateLocalStorage();
         } else {
             productPriceElement.textContent = newProductPrice.toFixed(2) + ' €';
             updateTotal(priceDifference);
@@ -68,18 +109,17 @@ function updateQuantity(button, change, productPrice) {
     } else {
         console.log('No se puede reducir la cantidad por debajo de 0.');
     }
-}
+};
 
-function removeItem(button) {
+const removeItem = (button) => {
     var productItem = button.parentNode;
     var productPrice = parseFloat(productItem.querySelector('.product-price').textContent);
     productItem.parentNode.removeChild(productItem);
     var priceDifference = -productPrice;
     updateTotal(priceDifference);
-    updateLocalStorage();
-}
+};
 
-function updateTotal(change) {
+const updateTotal = (change) => {
     var totalAmountElement = document.querySelector('.total-amount');
     var currentTotal = parseFloat(totalAmountElement.textContent.replace('€', '').trim());
     var newTotal = currentTotal + change;
@@ -87,9 +127,9 @@ function updateTotal(change) {
 
     updateLocalStorage();
     updateCartInterface();
-}
+};
 
-function updateLocalStorage() {
+const updateLocalStorage = () => {
     let cart = {
         items: []
     };
@@ -106,12 +146,10 @@ function updateLocalStorage() {
         });
     });
 
-    console.log("Guardando carrito en localStorage:", cart);
     localStorage.setItem('carrito', JSON.stringify(cart));
-    console.log("Carrito guardado:", JSON.parse(localStorage.getItem('carrito')));
-}
+};
 
-function updateCartInterface() {
+const updateCartInterface = () => {
     var totalAmountElement = document.querySelector('.total-amount');
     var currentTotal = parseFloat(totalAmountElement.textContent.replace('€', '').replace(',', '.'));
     var reviewOrderButton = document.querySelector('.order-toggle-button .total-amount');
@@ -147,19 +185,12 @@ function updateCartInterface() {
         document.querySelector('.order-empty').style.display = 'block';
         document.querySelector('.order-total').style.display = 'none';
     }
-}
+};
 
 document.addEventListener('DOMContentLoaded', function () {
     var storedCart = localStorage.getItem('carrito');
     if (storedCart) {
         var cart = JSON.parse(storedCart);
-
-        if (cart.customerName) {
-            var usernameDisplay = document.getElementById('usernameDisplay');
-            if (usernameDisplay) {
-                usernameDisplay.textContent = cart.customerName;
-            }
-        }
 
         if (cart.items && cart.items.length > 0) {
             cart.items.forEach(item => {
@@ -278,4 +309,5 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 });
-    
+
+fetchProducts();

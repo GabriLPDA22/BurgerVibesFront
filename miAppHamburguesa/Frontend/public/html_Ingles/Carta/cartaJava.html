@@ -232,14 +232,15 @@
                     Descripcion,
                     DisponibleEnVlc,
                     DisponibleEnZgz,
-                    ID_Categoria_pro
+                    ID_Categoria_pro,
+                    Producto_IMG
                 } = product;
 
                 const productCard = document.createElement('div');
                 productCard.className = 'product-card';
 
                 productCard.innerHTML = `
-                    <img src="https://via.placeholder.com/150" alt="${Nombre}">
+                    <img src="${Producto_IMG}" alt="${Nombre}">
                     <div class="product-details">
                         <h2>${Nombre}</h2>
                         <p>${Descripcion}</p>
