@@ -43,60 +43,63 @@
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', async function() {
-            const email = localStorage.getItem('employeeEmail'); // Obtiene el email del almacenamiento local
+    document.addEventListener('DOMContentLoaded', async function() {
+    const email = localStorage.getItem('employeeEmail'); // Obtiene el email del almacenamiento local
 
-            console.log('Email retrieved from local storage:', email); // Log para depurar
+    console.log('Email retrieved from local storage:', email); // Log para depurar
 
-            if (!email) {
-                alert('The employees email address was not found.');
-                return;
+    if (!email) {
+        alert('The employee\'s email address was not found.');
+        return;
+    }
+
+    const urlEmployeeInfo = 'http://localhost:8080/BuergerVibes/Controller?ACTION=EMPLEADO.INFO';
+
+    const fetchEmployeeInfo = async (email) => {
+        try {
+            const response = await fetch(urlEmployeeInfo, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: new URLSearchParams({
+                    email: email
+                })
+            });
+
+            if (!response.ok) {
+                throw new Error('Error in getting employee information');
             }
 
-            const urlEmployeeInfo = 'http://localhost:8080/employeeInfo';
+            const data = await response.json();
+            console.log('Información del empleado obtenida de la API:', data);
+            return data;
+        } catch (error) {
+            console.error('Error al obtener datos del empleado de la API:', error);
+            return null;
+        }
+    };
 
-            const fetchEmployeeInfo = async (email) => {
-                try {
-                    const response = await fetch(urlEmployeeInfo, {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify({ email })
-                    });
+    const printEmployeeInfo = (employee) => {
+        const infoDiv = document.getElementById('employeeInfo');
 
-                    if (!response.ok) {
-                        throw new Error('Error in getting employee information');
-                    }
+        if (employee) {
+            infoDiv.innerHTML = `
+                <p><strong>Nombre:</strong> ${employee.nombre} ${employee.apellidos}</p>
+                <p><strong>Cargo:</strong> ${employee.cargo}</p>
+                <p><strong>Email:</strong> ${employee.email}</p>
+                <p><strong>Teléfono:</strong> ${employee.telefono}</p>
+                <p><strong>Dirección:</strong> ${employee.direccion}</p>
+            `;
+        } else {
+            infoDiv.innerHTML = '<p>Error al cargar la información del empleado.</p>';
+        }
+    };
 
-                    const data = await response.json();
-                    console.log('Información del empleado obtenida de la API:', data);
-                    return data;
-                } catch (error) {
-                    console.error('Error al obtener datos del empleado de la API:', error);
-                    return null;
-                }
-            };
+    const employee = await fetchEmployeeInfo(email);
+    printEmployeeInfo(employee);
+});
 
-            const printEmployeeInfo = (employee) => {
-                const infoDiv = document.getElementById('employeeInfo');
-
-                if (employee) {
-                    infoDiv.innerHTML = `
-                        <p><strong>Nombre:</strong> ${employee.NOMBRE} ${employee.APELLIDOS}</p>
-                        <p><strong>Cargo:</strong> ${employee.CARGO}</p>
-                        <p><strong>Email:</strong> ${employee.EMAIL}</p>
-                        <p><strong>Teléfono:</strong> ${employee.TELEFONO}</p>
-                        <p><strong>Dirección:</strong> ${employee.DIRECCION}</p>
-                    `;
-                } else {
-                    infoDiv.innerHTML = '<p>Error al cargar la información del empleado.</p>';
-                }
-            };
-
-            const employee = await fetchEmployeeInfo(email);
-            printEmployeeInfo(employee);
-        });
     </script>
 </body>
 

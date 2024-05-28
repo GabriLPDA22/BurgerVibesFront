@@ -85,7 +85,7 @@
 
 
     <script>
-    document.addEventListener('DOMContentLoaded', () => {
+   document.addEventListener('DOMContentLoaded', () => {
     const loginPopup = document.getElementById('loginPopupEmpleados');
     const formAccesoEmpleados = document.getElementById('formAccesoEmpleados');
     const closeBtn = document.querySelector('.close-btn');
@@ -111,23 +111,23 @@
                     'Content-Type': 'application/x-www-form-urlencoded'
                 },
                 body: new URLSearchParams({
-                    ACTION: 'EMPLEADO.LOGIN',
                     email: email,
                     password: password
                 })
             });
 
             const result = await response.json();
+            console.log('Response from server:', result); // Log the response for debugging
 
             if (response.ok) {
-                if (result.role === 'admin') {
-                    alert('Inicio de sesión exitoso como administrador');
-                    // Redirigir al área de administrador
-                    window.location.href = 'zona_privada.html';
-                } else if (result.role === 'employee') {
-                    alert('Inicio de sesión exitoso como empleado');
-                    // Redirigir al área de empleado
-                    window.location.href = 'zona_privada_empleados.html';
+                if (result.role === 'admin' || result.role === 'employee') {
+                    alert('Inicio de sesión exitoso');
+                    // Almacenar el email en localStorage
+                    console.log('Storing email in local storage:', result.email); // Log before storing
+                    localStorage.setItem('employeeEmail', result.email);
+                    // Redirigir al área correspondiente
+                    const redirectUrl = result.role === 'admin' ? 'zona_privada.html' : 'zona_privada_empleados.html';
+                    window.location.href = redirectUrl;
                 } else {
                     alert('Credenciales incorrectas');
                 }
@@ -140,6 +140,8 @@
         }
     });
 });
+
+
 
 
     </script>
