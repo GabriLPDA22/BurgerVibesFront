@@ -52,19 +52,17 @@ document.addEventListener('DOMContentLoaded', (event) => {
               throw new Error('Error en la solicitud: ' + response.statusText);
           }
 
-          const result = await response.text();
-
-          if (result.includes('ERROR')) {
-              alert('No se pudo iniciar sesión');
+          const result = await response.json();
+          if (result.message) {
+              alert(result.message);
           } else {
               alert('Inicio de sesión exitoso');
               console.log('Datos del cliente:', result);
-              const usuario = parseUsuario(result);
               localStorage.setItem('authenticated', 'true');
-              localStorage.setItem('username', usuario.nombreUsuario);
+              localStorage.setItem('username', result.NombreUsuario);
               loginModal.style.display = "none";
 
-              // Aquí actualizamos la interfaz del usuario
+              // Actualizar la interfaz del usuario
               updateUI();
           }
       } catch (error) {
@@ -97,8 +95,9 @@ document.addEventListener('DOMContentLoaded', (event) => {
                   email: email,
                   telefono: telefono,
                   fechaRegistro: fechaRegistro,
-                  nombreUsuario: nombreUsuario,
-                  contraseña: contraseña
+                  contraseña: contraseña,
+                  nombreUsuario: nombreUsuario
+                  
               })
           });
 
@@ -106,19 +105,17 @@ document.addEventListener('DOMContentLoaded', (event) => {
               throw new Error('Error en la solicitud: ' + response.statusText);
           }
 
-          const result = await response.text();
-
-          if (result.includes('ERROR')) {
-              alert('No se pudo registrar el cliente');
+          const result = await response.json();
+          if (result.message) {
+              alert(result.message);
           } else {
               alert('Registro exitoso');
               console.log('Datos del nuevo cliente:', result);
-              const usuario = parseUsuario(result);
               localStorage.setItem('authenticated', 'true');
-              localStorage.setItem('username', usuario.nombreUsuario);
+              localStorage.setItem('username', result.NombreUsuario);
               registerModal.style.display = "none";
 
-              // Aquí actualizamos la interfaz del usuario
+              // Actualizar la interfaz del usuario
               updateUI();
           }
       } catch (error) {
@@ -145,11 +142,11 @@ document.addEventListener('DOMContentLoaded', (event) => {
           if (userMenu) {
               userMenu.style.display = 'block';
           }
-          const loginElement = document.querySelector('.login');
+          const loginElement = document.getElementById('loginBtn');
           if (loginElement) {
               loginElement.style.display = 'none';
           }
-          const registerElement = document.querySelector('.register');
+          const registerElement = document.getElementById('registerBtn');
           if (registerElement) {
               registerElement.style.display = 'none';
           }
@@ -161,11 +158,11 @@ document.addEventListener('DOMContentLoaded', (event) => {
           if (userMenu) {
               userMenu.style.display = 'none';
           }
-          const loginElement = document.querySelector('.login');
+          const loginElement = document.getElementById('loginBtn');
           if (loginElement) {
               loginElement.style.display = 'inline-block';
           }
-          const registerElement = document.querySelector('.register');
+          const registerElement = document.getElementById('registerBtn');
           if (registerElement) {
               registerElement.style.display = 'inline-block';
           }

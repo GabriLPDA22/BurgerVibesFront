@@ -1,4 +1,4 @@
-/*const express = require('express');
+const express = require('express');
 const bodyParser = require('body-parser');
 const oracledb = require('oracledb');
 const cors = require('cors');
@@ -22,8 +22,8 @@ async function init() {
     pool = await oracledb.createPool(dbConfig);
     console.log('Pool created');
 
-    app.listen(8080, () => {
-      console.log('Server is running on port 8080');
+    app.listen(80, () => {
+      console.log('Server is running on port 80');
     });
   } catch (err) {
     console.error('Error creating pool', err);
@@ -393,7 +393,7 @@ app.post('/employeeInfo', async (req, res) => {
       }
     }
   }
-});
+});*/
 
 
 app.get('/api/pedido', async (req, res) => {
