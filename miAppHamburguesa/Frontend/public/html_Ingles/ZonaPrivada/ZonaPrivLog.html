@@ -85,64 +85,62 @@
 
 
     <script>
-   document.addEventListener('DOMContentLoaded', () => {
-    const loginPopup = document.getElementById('loginPopupEmpleados');
-    const formAccesoEmpleados = document.getElementById('formAccesoEmpleados');
-    const closeBtn = document.querySelector('.close-btn');
+        document.addEventListener('DOMContentLoaded', () => {
+            const loginPopup = document.getElementById('loginPopupEmpleados');
+            const formAccesoEmpleados = document.getElementById('formAccesoEmpleados');
+            const closeBtn = document.querySelector('.close-btn');
 
-    // Mostrar el popup
-    loginPopup.style.display = 'block';
+            // Mostrar el popup
+            loginPopup.style.display = 'block';
 
-    // Cerrar el popup
-    closeBtn.addEventListener('click', () => {
-        loginPopup.style.display = 'none';
-    });
-
-    formAccesoEmpleados.addEventListener('submit', async (event) => {
-        event.preventDefault();
-
-        const email = document.getElementById('userEmailEmpleados').value;
-        const password = document.getElementById('userPasswordEmpleados').value;
-
-        try {
-            const response = await fetch('http://localhost:8080/BuergerVibes/Controller?ACTION=EMPLEADO.LOGIN', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded'
-                },
-                body: new URLSearchParams({
-                    email: email,
-                    password: password
-                })
+            // Cerrar el popup y redirigir a index.html
+            closeBtn.addEventListener('click', () => {
+                window.location.href = '/miAppHamburguesa/Frontend/public/html_Ingles/en_index.html';
             });
 
-            const result = await response.json();
-            console.log('Response from server:', result); // Log the response for debugging
+            formAccesoEmpleados.addEventListener('submit', async (event) => {
+                event.preventDefault();
 
-            if (response.ok) {
-                if (result.role === 'admin' || result.role === 'employee') {
-                    alert('Inicio de sesión exitoso');
-                    // Almacenar el email en localStorage
-                    console.log('Storing email in local storage:', result.email); // Log before storing
-                    localStorage.setItem('employeeEmail', result.email);
-                    // Redirigir al área correspondiente
-                    const redirectUrl = result.role === 'admin' ? 'zona_privada.html' : 'zona_privada_empleados.html';
-                    window.location.href = redirectUrl;
-                } else {
-                    alert('Credenciales incorrectas');
+                const email = document.getElementById('userEmailEmpleados').value;
+                const password = document.getElementById('userPasswordEmpleados').value;
+
+                try {
+                    const response = await fetch('http://localhost:8080/BuergerVibes/Controller?ACTION=EMPLEADO.LOGIN', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/x-www-form-urlencoded'
+                        },
+                        body: new URLSearchParams({
+                            email: email,
+                            password: password
+                        })
+                    });
+
+                    const result = await response.json();
+                    console.log('Response from server:', result); // Log the response for debugging
+
+                    if (response.ok) {
+                        if (result.role === 'admin' || result.role === 'employee') {
+                            alert('Inicio de sesión exitoso');
+                            // Almacenar el email en localStorage
+                            console.log('Storing email in local storage:', result.email); // Log before storing
+                            localStorage.setItem('employeeEmail', result.email);
+                            // Redirigir al área correspondiente
+                            const redirectUrl = result.role === 'admin' ? 'zona_privada.html' : 'zona_privada_empleados.html';
+                            window.location.href = redirectUrl;
+                        } else {
+                            alert('Credenciales incorrectas');
+                        }
+                    } else {
+                        alert(result.message || 'Error al iniciar sesión');
+                    }
+                } catch (error) {
+                    console.error('Error:', error);
+                    alert('Error al conectar con el servidor');
                 }
-            } else {
-                alert(result.message || 'Error al iniciar sesión');
-            }
-        } catch (error) {
-            console.error('Error:', error);
-            alert('Error al conectar con el servidor');
-        }
-    });
-});
-
-
-
+            });
+        });
+   
 
     </script>
 

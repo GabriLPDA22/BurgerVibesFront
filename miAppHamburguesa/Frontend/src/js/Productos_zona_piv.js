@@ -41,10 +41,10 @@ const printProducts = (products) => {
             <td>${DisponibleEnZgz}</td>
             <td>${ID_Categoria_pro}</td>
             <td class="action-buttons">
-            <button onclick="openEditModal('${ID_Producto}', '${Precio}', '${Nombre}', '${Descripcion}', '${DisponibleEnVlc}', '${DisponibleEnZgz}', '${ID_Categoria_pro}')">Editar</button>
+            <button onclick="openEditModal('${ID_Producto}', '${Precio}', '${Nombre}', '${Descripcion}', '${DisponibleEnVlc}', '${DisponibleEnZgz}', '${ID_Categoria_pro}')">Update</button>
 
-            <button onclick="deleteProduct('${ID_Producto}')">Borrar</button>
-            <button onclick="disableProduct('${ID_Producto}')">Inhabilitar</button>
+            <button onclick="deleteProduct('${ID_Producto}')">Delete</button>
+        
             
             </td>
         `;
