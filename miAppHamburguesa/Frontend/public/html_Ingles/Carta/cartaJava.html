@@ -39,8 +39,9 @@
         }
 
         #product-list {
-            margin-left: -13%;
-            margin-right: 25%;
+            margin-left: -23%;
+            margin-right: 28%;
+            width: 100%;
         }
 
         .product-card img {
@@ -84,6 +85,165 @@
 
         .product-details .actions button:hover {
             background-color: #d35400;
+        }
+
+        @media (max-width: 1400px) {
+            #product-list {
+                margin-left: -20%;
+                margin-right: -20%;
+            }
+
+            .product-details {
+                padding: 20px;
+                flex: 1;
+                justify-content: center;
+
+            }
+
+            .container {
+                width: 70%;
+            }
+
+        }
+
+        @media (max-width:884px) {
+            #product-list {
+                margin-left: -50%;
+                margin-right: 7%;
+                width: 100%;
+            }
+
+            .product-details {
+                padding: 20px;
+                flex: 1;
+                justify-content: center;
+
+            }
+
+            .actions {
+                margin: 0;
+            }
+
+            .container {
+                width: 50%;
+            }
+
+            .navigation-tabs {
+                font-size: 23px;
+            }
+
+        }
+
+        @media (max-width: 768px) {
+            #product-list {
+                margin-left: -50%;
+                margin-right: 7%;
+                width: 100%;
+            }
+
+            .product-details {
+                padding: 20px;
+                flex: 1;
+                justify-content: center;
+
+            }
+
+            .actions {
+                margin: 0;
+            }
+
+            .container {
+                width: 50%;
+            }
+
+            .navigation-tabs {
+                font-size: 23px;
+            }
+
+            #siteFooter {
+                width: 50%;
+            }
+        }
+
+        @media (max-width: 430px) {
+
+            #product-list {
+                margin: 0;
+                max-width: 100%;
+            }
+
+            .product-details {
+                width: 100%;
+                font-size: 30px;
+            }
+
+            #siteFooter {
+                width: 100%;
+                font-size: 32px;
+            }
+
+            #MENU_USUARIO {
+                font-size: 60px;
+            }
+
+            #boton {
+
+                font-size: 30px;
+            }
+
+            .container {
+                width: 100%;
+            }
+
+            .nav-content {
+                font-size: 50px;
+            }
+
+            .restaurant-info .restaurant-name {
+                padding-left: 20px;
+                font-size: 46px;
+            }
+
+            #dropdownMenuButton {
+                font-size: 50px;
+            }
+
+            .dropdown-item {
+                font-size: 50px;
+            }
+
+            .navigation-tabs {
+                font-size: 48px;
+            }
+
+            .order-toggle-button {
+                font-size: 30px;
+                margin-bottom: 77px;
+            }
+
+            #loginUsernameEmail,
+            #loginPassword,
+            #registerNombre,
+            #registerDireccion,
+            #registerEmail,
+            #registerTelefono #registerNombreUsuario,
+            #registerContraseña,
+            .submit {
+                font-size: 40px;
+                height: 30%;
+            }
+
+            #loginForm,
+            #registerForm {
+                font-size: 40px;
+            }
+
+            .modal2-content {
+                margin-top: 30%;
+                height: auto;
+                font-size: 40px;
+            }
+
         }
     </style>
 </head>
@@ -169,7 +329,7 @@
                 </button>
 
                 <!-- Contenido del menú de usuario -->
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="MENU_USUARIO">
                     <a class="dropdown-item"
                         href="/miAppHamburguesa/Frontend/public/html_Ingles/Carta/en_carta_Valencia.html"><i
                             class="fas fa-shopping-cart"></i> Nuevo pedido</a>
@@ -246,7 +406,7 @@
                         <p>${Descripcion}</p>
                         <p class="price">€${Precio.toFixed(2)}</p>
                         <div class="actions">
-                            <button onclick="addToCart('${Nombre}', ${Precio.toFixed(2)}, 1)">Añadir al carrito</button>
+                            <button id="boton" onclick="addToCart('${Nombre}', ${Precio.toFixed(2)}, 1)">Añadir al carrito</button>
                         </div>
                     </div>
                 `;
