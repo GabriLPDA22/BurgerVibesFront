@@ -51,7 +51,7 @@ function renderCartItems(items) {
     } else {
         console.error("El elemento para mostrar el precio total no se encontró.");
     }
-}
+};
 
 document.addEventListener('DOMContentLoaded', () => {
     function getRandomEmpleado() {
@@ -69,14 +69,34 @@ document.addEventListener('DOMContentLoaded', () => {
         const year = now.getFullYear();
         const month = String(now.getMonth() + 1).padStart(2, '0'); // Los meses comienzan en 0, así que se suma 1
         const day = String(now.getDate()).padStart(2, '0');
-        /*const hours = String(now.getHours()).padStart(2, '0');
+        const hours = String(now.getHours()).padStart(2, '0');
         const minutes = String(now.getMinutes()).padStart(2, '0');
-        const seconds = String(now.getSeconds()).padStart(2, '0');*/
-    
-        return `${year}-${month}-${day}`;
+        const seconds = String(now.getSeconds()).padStart(2, '0');
+
+        return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
     }
-    
-    
+
+    function updateUI() {
+        const isAuthenticated = localStorage.getItem('authenticated') === 'true';
+        if (isAuthenticated) {
+            const username = localStorage.getItem('username');
+            if (username) {
+                document.getElementById('usernameDisplay').innerText = username;
+            }
+            document.getElementById('userMenu').style.display = 'block';
+            document.querySelector('.login').style.display = 'none';
+            document.querySelector('.register').style.display = 'none';
+            document.getElementById('paymentFormContainer').style.display = 'block';
+            document.getElementById('loginMessageContainer').style.display = 'none';
+        } else {
+            document.getElementById('userMenu').style.display = 'none';
+            document.querySelector('.login').style.display = 'inline-block';
+            document.querySelector('.register').style.display = 'inline-block';
+            document.getElementById('paymentFormContainer').style.display = 'none';
+        }
+    }
+
+    updateUI();
 
     function handlePayment(buttonId) {
         const payButton = document.getElementById(buttonId);
@@ -95,7 +115,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         }
                     }
 
-                    const idCliente = localStorage.getItem('ID_CLIENTE');
+                    const idCliente = localStorage.getItem('ID_CLIENTE') || new Date().getTime().toString(); // Genera un ID único basado en la hora actual si no está en localStorage
                     const idEmpleado = getRandomEmpleado();
 
                     if (!idCliente || !idEmpleado) {
@@ -125,13 +145,27 @@ document.addEventListener('DOMContentLoaded', () => {
 
                     console.log('Detalles del pago:', paymentDetails);
 
-                    try {
-                        const response = await fetch('http://localhost:8080/api/pedido', {
+                  /*  try {
+                        const response = await fetch('http://localhost:8080/BuergerVibes/Controller?ACTION=PEDIDO.ADD', {
                             method: 'POST',
                             headers: {
-                                'Content-Type': 'application/json'
+                                'Content-Type': 'application/x-www-form-urlencoded'
                             },
-                            body: JSON.stringify(paymentDetails)
+                            body: new URLSearchParams({
+                                fullName: paymentDetails.fullName,
+                                phoneNumber: paymentDetails.phoneNumber,
+                                email: paymentDetails.email,
+                                address: paymentDetails.address,
+                                pickupTime: paymentDetails.pickupTime,
+                                restaurantNote: paymentDetails.restaurantNote,
+                                promoCode: paymentDetails.promoCode,
+                                country: paymentDetails.country,
+                                items: JSON.stringify(paymentDetails.items),
+                                totalPedido: paymentDetails.totalPedido,
+                                idCliente: paymentDetails.idCliente,
+                                idEmpleado: paymentDetails.idEmpleado,
+                                currentDateTime: paymentDetails.currentDateTime
+                            })
                         });
 
                         if (!response.ok) {
@@ -139,13 +173,13 @@ document.addEventListener('DOMContentLoaded', () => {
                             throw new Error('Error en la respuesta del servidor: ' + errorText);
                         }
 
-                        const responseText = await response.json();
+                        const result = await response.json();
                         alert('Pago exitoso');
                         localStorage.removeItem('carrito'); // Limpiar el carrito después del pago exitoso
                     } catch (error) {
                         console.error('Error:', error);
                         alert('Error al conectar con el servidor: ' + error.message);
-                    }
+                    }*/
                 } else {
                     document.getElementById('paymentFormContainer').style.display = 'none';
                     document.getElementById('loginMessageContainer').style.display = 'block';

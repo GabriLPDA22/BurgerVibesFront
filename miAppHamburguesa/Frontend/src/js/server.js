@@ -1,4 +1,4 @@
-const express = require('express');
+/*const express = require('express');
 const bodyParser = require('body-parser');
 const oracledb = require('oracledb');
 const cors = require('cors');
@@ -395,7 +395,7 @@ app.post('/employeeInfo', async (req, res) => {
   }
 });*/
 
-
+/*
 app.get('/api/pedido', async (req, res) => {
   let connection;
 

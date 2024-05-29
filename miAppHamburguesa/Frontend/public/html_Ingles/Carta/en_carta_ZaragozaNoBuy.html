@@ -21,7 +21,7 @@
   <nav>
     <div class="nav-content">
       <div class="logo">
-        <a href="/miAppHamburguesa/Frontend/public/html_Ingles/en_index.html" style="display: flex;
+        <a href="/miAppHamburguesa/Frontend/public/html_Ingles/Carta/cartaJava_ZGZ.html" style="display: flex;
         align-items: center;
         text-decoration: none;">
           <img src="/miAppHamburguesa/Frontend/src/assets/img/Home/BurgerVibes.svg" alt="Logo">
@@ -33,11 +33,44 @@
       </div>
 
       <!-- Botón de inicio de sesión -->
-      <div class="login">
-        <a href="#" id="loginBtn">
-          <i class="fas fa-user"></i> Log in
-        </a>
+      <div class="usuario">
+        <div class="login">
+          <a href="#" id="loginBtn">
+            <i class="fas fa-user"></i> Log in
+          </a>
+        </div>
+
+        <div class="register">
+          <a href="#" id="registerBtn">
+            <i class="fas fa-user-plus"></i> Register
+          </a>
+        </div>
       </div>
+
+      <!-- Modal de Registro -->
+      <div id="modalRegister" class="modal2">
+        <div class="modal2-content">
+          <span class="close">&times;</span>
+          <h5>Registro</h5>
+          <form id="registerForm">
+            <label for="registerNombre">Nombre:</label>
+            <input type="text" id="registerNombre" required placeholder="Nombre">
+            <label for="registerDireccion">Dirección:</label>
+            <input type="text" id="registerDireccion" required placeholder="Dirección">
+            <label for="registerEmail">Correo Electrónico:</label>
+            <input type="email" id="registerEmail" required placeholder="Correo Electrónico">
+            <label for="registerTelefono">Teléfono:</label>
+            <input type="text" id="registerTelefono" required placeholder="Teléfono">
+
+            <label for="registerNombreUsuario">Nombre de Usuario:</label>
+            <input type="text" id="registerNombreUsuario" required placeholder="Nombre de Usuario">
+            <label for="registerContraseña">Contraseña:</label>
+            <input type="password" id="registerContraseña" required placeholder="Contraseña">
+            <button type="submit">Registrarse</button>
+          </form>
+        </div>
+      </div>
+
 
       <!-- Menú de usuario -->
       <div id="userMenu" class="dropdown" style="display:none;">
@@ -49,10 +82,13 @@
 
         <!-- Contenido del menú de usuario -->
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <a class="dropdown-item" href="#"><i class="fas fa-shopping-cart"></i> New order</a>
-          <a class="dropdown-item" href="#"><i class="fas fa-clipboard-list"></i> My orders</a>
+          <a class="dropdown-item" href="/miAppHamburguesa/Frontend/public/html_Ingles/Carta/en_carta_Valencia.html"><i
+              class="fas fa-shopping-cart"></i> Nuevo pedido</a>
+          <a class="dropdown-item"
+            href="/miAppHamburguesa/Frontend/public/html_Ingles/CarritoResponsive/ve_pedidos.html"><i
+              class="fas fa-clipboard-list"></i> Mis pedidos</a>
           <!-- Agrega un ID aquí para el enlace de desconexión -->
-          <a class="dropdown-item" href="#" id="signOutLink"><i class="fas fa-sign-out-alt"></i> Disconnect</a>
+          <a class="dropdown-item" href="#" id="signOutLink"><i class="fas fa-sign-out-alt"></i> Desconectar</a>
         </div>
 
       </div>
@@ -71,37 +107,31 @@
           </ul>
         </div>
       </div>
+
+
       <div class="column left-column">
         <div class="titulo-seccion" id="tabOne">
-          <h2 style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Starters</h2>
+          <h2 style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Entrantes</h2>
         </div>
         <div class="tabs-content">
-          <!-- Item del menú -->
-
-          <!--PRIMER ENTRANTE-->
-
+          <!-- Items del menú -->
           <div class="menu-item" id="product1" data-product-name="Rainforest Nachos" data-product-price="12.50"
-            data-product-description=" Inspired by Chicago rainforest coffee. Corn chips, cheddar cream, guacamole,
-            shredded beef, pico de gallo and sour cream."
+            data-product-description="Inspired by Chicago rainforest coffee. Corn chips, cheddar cream, guacamole, shredded beef, pico de gallo and sour cream."
             data-product-allergens="Allergens: Gluten, lactose and Sulfites."
             data-product-image1="/miAppHamburguesa/Frontend/src/assets/img/Menu/Nachos.jpg"
             data-product-image2="/miAppHamburguesa/Frontend/src/assets/img/Menu/gluten.svg"
             data-product-image3="/miAppHamburguesa/Frontend/src/assets/img/Menu/sulphur.svg"
             data-product-image4="/miAppHamburguesa/Frontend/src/assets/img/Menu/leche.svg">
-
-            <!-- Columna de imagen -->
             <div class="menu-item-column image-column">
               <img src="/miAppHamburguesa/Frontend/src/assets/img/Menu/Nachos.jpg" alt="Rainforest Nachos"
                 class="menu-item-img" id="Cabezera">
             </div>
-            <!-- Columna de texto e información -->
             <div class="menu-item-column info-column">
               <div class="menu-item-header">
                 <h3 class="menu-item-title">Rainforest Nachos</h3>
                 <div class="menu-item-price-action">
                   <button class="add-button">
                     <i class="bi bi-plus-circle"></i>
-                    <!-- Asumiendo que quieres usar un ícono de 'plus' -->
                   </button>
                   <span class="price">12,50 €</span>
                 </div>
@@ -117,6 +147,7 @@
               </div>
             </div>
           </div>
+
 
 
           <!--SEGUNDO ENTRANTE-->
@@ -1176,7 +1207,8 @@
   </div>
 
 
-  <!-- Columna del pedido a la derecha -->
+
+  <!-- Columna del pedido a la derecha valencia -->
   <div class="order-column">
     <div class="order-header">
       <i class="bi bi-receipt-cutoff me-2"></i><span class="order-title">Your order</span>
@@ -1203,89 +1235,24 @@
         <span class="total-amount">0,00 €</span>
       </div>
       <div class="btnConf">
-        <button id="confirm-order-btn" onclick="confirmOrder()">To confirm order</button>
+
       </div>
     </div>
   </div>
 
 
 
-  <script>
-    document.getElementById('confirm-order-btn').addEventListener('click', function () {
-      if (!this.disabled) {
-        window.location.href =
-          '/miAppHamburguesa/Frontend/public/html_Español/CarritoResponsive/CarritoZGZ.html'; // La ruta a la que quieres que el botón lleve
-      }
-    });
 
-    function confirmOrder() {
-      // Implementa la lógica de confirmación del pedido aquí
-      console.log('Pedido confirmado con éxito!');
-    }
-
-
-  </script>
-
-
-
-
-  <!--MODALES DE CADA PRODUCTO-->
-
-  <div id="productModal" class="modal" style="display:none;">
-    <div class="modal-content">
-      <span class="close">&times;</span>
-      <img src="" id="productImage" class="modal-image">
-      <h2 id="productModalTitle"></h2>
-      <p id="descripcion"></p>
-      <p id="alegernos"></p>
-      <img id="allergenImage1" alt="gluten" style="width: 24px; height: auto;">
-      <img id="allergenImage2" alt="sulfuro" style="width: 24px; height: auto;">
-      <img id="allergenImage3" alt="láctosa" style="width: 24px; height: auto;">
-      <img id="allergenImage4" alt="huevo" style="width: 24px; height: auto;">
-      <img id="allergenImage5" alt="pescado" style="width: 24px; height: auto;">
-      <img id="allergenImage6" alt="nueces" style="width: 24px; height: auto;">
-      <img id="allergenImage7" alt="cacahuetes" style="width: 24px; height: auto;">
-      <img id="allergenImage8" alt="soja" style="width: 24px; height: auto;">
-      <img id="allergenImage9" alt="mostaza" style="width: 24px; height: auto;">
-      <div class="quantity-control">
-        <button class="minus-btn">-</button>
-        <input type="number" id="quantity" value="1" min="1">
-        <button class="plus-btn">+</button>
-      </div>
-      <div class="modal-footer ">
-        <div class="btn-añadir"></div>
-        <button type="button" class="add-to-cart-btn">
-          <span>Add to cart - </span><span class="price-span" style="display: none;">0 €</span>
-        </button>
-      </div>
-    </div>
-  </div>
-
-
-  <!--MODAL DEL LOGIN-->
-
-  <div id="modalLogin" class="modal2">
-    <div class="modal2-content">
-      <span class="close">&times;</span>
-      <h5>Login</h5>
-      <form id="loginForm">
-        <label for="username">Username:</label>
-        <input type="text" id="username" required>
-        <label for="password">Password:</label>
-        <input type="password" id="password" required>
-        <button type="submit">Log in</button>
-      </form>
-    </div>
-  </div>
 
 
   <footer id="siteFooter">
     <div class="footer-links">
-      <a href="/miAppHamburguesa/Frontend/public/html_Español/CookiesZaragozaShop.html">Cookie settings</a>
-      <a href="/miAppHamburguesa/Frontend/public/html_Ingles/en_Politica_Privacidad.html" target="_blank">Politics of
+      <a href="/miAppHamburguesa/Frontend/public/html_Ingles/en_CookiesZaragozaShop.html">Settings
+        cookies</a>
+      <a href="/miAppHamburguesa/Frontend/public/html_Ingles/en_Politica_Privacidad.html" target="_blank">Policy
+        of
         privacy</a>
-      <a href="/miAppHamburguesa/Frontend/public/html_Ingles/En_Terminos_Condiciones.html" target="_blank">Terms and
-        conditions</a>
+      <a href="/miAppHamburguesa/Frontend/public/html_Ingles/En_Terminos_Condiciones.html" target="_blank">Terms and conditions</a>
     </div>
     <hr>
     <div class="last-part">
@@ -1293,7 +1260,7 @@
         <img width="120" src="/miAppHamburguesa/Frontend/src/assets/img/Home/BurgerVibes.svg" alt="Logo">
       </div>
       <div class="footer-language-selector">
-        <label for="language-select">Language</label>
+        <label for="language-select">Lenguage</label>
         <select id="language-select">
           <option value="en">EN</option>
           <option value="es" selected>ES</option>
@@ -1301,23 +1268,6 @@
       </div>
     </div>
   </footer>
-
-
-  <!-- Botón para mostrar el carrito con estilos de Bootstrap -->
-  <div class="order-toggle-button">
-    <a href="/miAppHamburguesa/Frontend/public/html_Español/CarritoResponsive/CarritoVAL.html"
-      style="text-decoration: none; color: black;" class="btn btn-primary w-100 d-flex flex-column align-items-center">
-      <div class="d-flex flex-row justify-content-center align-items-center">
-        <i class="bi bi-eye-fill fs-3 me-2"></i>
-        Review order - <span class="total-amount">0,00 €</span>
-      </div>
-      <small>minimum order 16,00&nbsp;€</small>
-    </a>
-  </div>
-
-
-
-
 
   <!--SCRIPT LOGICA DEL MENU-->
   <script src="/miAppHamburguesa/Frontend/src/js/LogicaMenu/ModalsProductosDinamico.js"></script>

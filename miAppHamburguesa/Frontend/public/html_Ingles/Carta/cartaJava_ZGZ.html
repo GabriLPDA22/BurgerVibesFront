@@ -13,7 +13,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Sedgwick+Ave&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
 
-    <title>BurgerVibesValencia</title>
+    <title>BurgerVibesZaragoza</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -39,9 +39,8 @@
         }
 
         #product-list {
-            margin-left: -23%;
-            margin-right: 28%;
-            width: 100%;
+            margin-left: -13%;
+            margin-right: 25%;
         }
 
         .product-card img {
@@ -86,165 +85,6 @@
         .product-details .actions button:hover {
             background-color: #d35400;
         }
-
-        @media (max-width: 1400px) {
-            #product-list {
-                margin-left: -20%;
-                margin-right: -20%;
-            }
-
-            .product-details {
-                padding: 20px;
-                flex: 1;
-                justify-content: center;
-
-            }
-
-            .container {
-                width: 70%;
-            }
-
-        }
-
-        @media (max-width:884px) {
-            #product-list {
-                margin-left: -50%;
-                margin-right: 7%;
-                width: 100%;
-            }
-
-            .product-details {
-                padding: 20px;
-                flex: 1;
-                justify-content: center;
-
-            }
-
-            .actions {
-                margin: 0;
-            }
-
-            .container {
-                width: 50%;
-            }
-
-            .navigation-tabs {
-                font-size: 23px;
-            }
-
-        }
-
-        @media (max-width: 768px) {
-            #product-list {
-                margin-left: -50%;
-                margin-right: 7%;
-                width: 100%;
-            }
-
-            .product-details {
-                padding: 20px;
-                flex: 1;
-                justify-content: center;
-
-            }
-
-            .actions {
-                margin: 0;
-            }
-
-            .container {
-                width: 50%;
-            }
-
-            .navigation-tabs {
-                font-size: 23px;
-            }
-
-            #siteFooter {
-                width: 50%;
-            }
-        }
-
-        @media (max-width: 430px) {
-
-            #product-list {
-                margin: 0;
-                max-width: 100%;
-            }
-
-            .product-details {
-                width: 100%;
-                font-size: 30px;
-            }
-
-            #siteFooter {
-                width: 100%;
-                font-size: 32px;
-            }
-
-            #MENU_USUARIO {
-                font-size: 60px;
-            }
-
-            #boton {
-
-                font-size: 30px;
-            }
-
-            .container {
-                width: 100%;
-            }
-
-            .nav-content {
-                font-size: 50px;
-            }
-
-            .restaurant-info .restaurant-name {
-                padding-left: 20px;
-                font-size: 46px;
-            }
-
-            #dropdownMenuButton {
-                font-size: 50px;
-            }
-
-            .dropdown-item {
-                font-size: 50px;
-            }
-
-            .navigation-tabs {
-                font-size: 48px;
-            }
-
-            .order-toggle-button {
-                font-size: 30px;
-                margin-bottom: 77px;
-            }
-
-            #loginUsernameEmail,
-            #loginPassword,
-            #registerNombre,
-            #registerDireccion,
-            #registerEmail,
-            #registerTelefono #registerNombreUsuario,
-            #registerContraseña,
-            .submit {
-                font-size: 40px;
-                height: 30%;
-            }
-
-            #loginForm,
-            #registerForm {
-                font-size: 40px;
-            }
-
-            .modal2-content {
-                margin-top: 30%;
-                height: auto;
-                font-size: 40px;
-            }
-
-        }
     </style>
 </head>
 
@@ -258,7 +98,7 @@
                     <img src="/miAppHamburguesa/Frontend/src/assets/img/Home/BurgerVibes.svg" alt="Logo">
 
                     <div class="restaurant-info" style="margin-left: 30px;">
-                        <h1 class="restaurant-name" style="text-decoration: none;">BURGERVIBES VALENCIA</h1>
+                        <h1 class="restaurant-name" style="text-decoration: none;">BURGERVIBES ZARAGOZA</h1>
                     </div>
                 </a>
             </div>
@@ -329,12 +169,12 @@
                 </button>
 
                 <!-- Contenido del menú de usuario -->
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="MENU_USUARIO">
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                     <a class="dropdown-item"
-                        href="/miAppHamburguesa/Frontend/public/html_Ingles/Carta/en_carta_Valencia.html"><i
+                        href="/miAppHamburguesa/Frontend/public/html_Ingles/Carta/cartaJava_ZGZ.html"><i
                             class="fas fa-shopping-cart"></i> Nuevo pedido</a>
                     <a class="dropdown-item"
-                        href="/miAppHamburguesa/Frontend/public/html_Ingles/CarritoResponsive/ve_pedidos.html"><i
+                        href="#"><i
                             class="fas fa-clipboard-list"></i> Mis pedidos</a>
                     <!-- Agrega un ID aquí para el enlace de desconexión -->
                     <a class="dropdown-item" href="#" id="signOutLink"><i class="fas fa-sign-out-alt"></i>
@@ -406,7 +246,7 @@
                         <p>${Descripcion}</p>
                         <p class="price">€${Precio.toFixed(2)}</p>
                         <div class="actions">
-                            <button id="boton" onclick="addToCart('${Nombre}', ${Precio.toFixed(2)}, 1)">Añadir al carrito</button>
+                            <button onclick="addToCart('${Nombre}', ${Precio.toFixed(2)}, 1)">Añadir al carrito</button>
                         </div>
                     </div>
                 `;
@@ -681,7 +521,7 @@
 
         fetchProducts();
     </script>
-    <!-- Columna del pedido a la derecha valencia -->
+    <!-- Columna del pedido a la derecha zaragoza -->
     <div class="order-column">
         <div class="order-header">
             <i class="bi bi-receipt-cutoff me-2"></i><span class="order-title">Your order</span>
@@ -721,7 +561,7 @@
         });
     </script>
     <div class="order-toggle-button">
-        <a href="/miAppHamburguesa/Frontend/public/html_Español/CarritoResponsive/CarritoVAL.html"
+        <a href="/miAppHamburguesa/Frontend/public/html_Ingles/CarritoResponsive/en_CarritoZGZ.html"
             style="text-decoration: none; color: black;"
             class="btn btn-primary w-100 d-flex flex-column align-items-center">
             <div class="d-flex flex-row justify-content-center align-items-center">
@@ -733,7 +573,7 @@
     </div>
     <footer id="siteFooter">
         <div class="footer-links">
-            <a href="/miAppHamburguesa/Frontend/public/html_Español/CookiesValenciaShop.html">Cookie
+            <a href="/miAppHamburguesa/Frontend/public/html_Ingles/en_CookiesZaragozaShop.html">Cookie
                 settings</a>
             <a href="/miAppHamburguesa/Frontend/public/html_Ingles/en_Politica_Privacidad.html" target="_blank">Politics
                 of
@@ -756,35 +596,7 @@
             </div>
         </div>
     </footer>
-    <div id="productModal" class="modal" style="display:none;">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <img src="" id="productImage" class="modal-image">
-            <h2 id="productModalTitle"></h2>
-            <p id="descripcion"></p>
-            <p id="alegernos"></p>
-            <img id="allergenImage1" alt="gluten" style="width: 24px; height: auto;">
-            <img id="allergenImage2" alt="sulfuro" style="width: 24px; height: auto;">
-            <img id="allergenImage3" alt="láctosa" style="width: 24px; height: auto;">
-            <img id="allergenImage4" alt="huevo" style="width: 24px; height: auto;">
-            <img id="allergenImage5" alt="pescado" style="width: 24px; height: auto;">
-            <img id="allergenImage6" alt="nueces" style="width: 24px; height: auto;">
-            <img id="allergenImage7" alt="cacahuetes" style="width: 24px; height: auto;">
-            <img id="allergenImage8" alt="soja" style="width: 24px; height: auto;">
-            <img id="allergenImage9" alt="mostaza" style="width: 24px; height: auto;">
-            <div class="quantity-control">
-                <button class="minus-btn">-</button>
-                <input type="number" id="quantity" value="1" min="1">
-                <button class="plus-btn">+</button>
-            </div>
-            <div class="modal-footer ">
-                <div class="btn-añadir"></div>
-                <button type="button" class="add-to-cart-btn">
-                    <span>Add to cart - </span><span class="price-span" style="display: none;">0 €</span>
-                </button>
-            </div>
-        </div>
-    </div>
+   
 </body>
 <script src="/miAppHamburguesa/Frontend/src/js/LogicaMenu/Carrito.js"></script>
 <script src="/miAppHamburguesa/Frontend/src/js/LogicaMenu/Login/login.js"></script>
