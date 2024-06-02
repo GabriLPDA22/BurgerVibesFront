@@ -1,36 +1,31 @@
 /**
  * MODAL DE PIDE ONLINE
  */
-
 document.addEventListener('DOMContentLoaded', function () {
+    // Obtención de referencias a los elementos del DOM
     var modal = document.getElementById('customOrderModal');
-    var btnNavbarEspañol = document.getElementById('navbarOrderButton2');
     var btnNavbar = document.getElementById('navbarOrderButton');
     var btnNavbarIngles = document.getElementById('navbarOrderButtonIngles');
     var btnHero = document.getElementById('heroOrderButton');
     var btnClose = document.getElementById('customModalClose');
 
-
     // Función para mostrar el modal
     function showModal() {
         modal.style.display = 'block';
-
     }
 
     // Función para cerrar el modal
     function closeModal() {
         modal.style.display = 'none';
-
     }
 
-    // Asigna eventos a los botones
+    // Asignar eventos a los botones para abrir el modal
     btnNavbar.onclick = showModal;
     btnHero.onclick = showModal;
-    btnNavbarIngles.onclick=showModal;
+    btnNavbarIngles.onclick = showModal;
     btnClose.onclick = closeModal;
-    
 
-    // Cierra el modal al hacer clic fuera del contenido
+    // Cierra el modal al hacer clic fuera del contenido del modal
     window.onclick = function (event) {
         if (event.target === modal) {
             closeModal();
@@ -38,14 +33,13 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 });
 
-
 /**
- * MODAL DE RESERVA 
+ * MODAL DE RESERVA
  */
 document.addEventListener('DOMContentLoaded', function () {
-    // Obtén el botón de Reserva mesa original, el modal y el botón en inglés
+    // Obtención de referencias a los elementos del DOM
     var reservaMesaButtonInicio = document.getElementById('reservaMesaButtonInicio');
-    var reservaMesaButtonIngles = document.getElementById('reservaMesaButtonIngles'); /*PREGUNTAR VANESSA PORQUE NO FUNCIONA*/
+    var reservaMesaButtonIngles = document.getElementById('reservaMesaButtonIngles');
     var reservaMesaModal = document.getElementById('reservaMesaModal');
     var reservaMesaClose = document.getElementById('reservaMesaClose');
 
@@ -59,13 +53,8 @@ document.addEventListener('DOMContentLoaded', function () {
         reservaMesaModal.style.display = 'none';
     }
 
-    // Agrega evento de clic al botón de Reserva mesa original para mostrar el modal
-  //  reservaMesaButtonInicio.onclick = showReservaMesaModal;//
-
-    // Agrega evento de clic al botón de Reserva mesa en inglés para mostrar el modal
+    // Asignar eventos a los botones para abrir y cerrar el modal
     reservaMesaButtonIngles.onclick = showReservaMesaModal;
-
-    // Agrega evento de clic al botón de cierre del modal
     reservaMesaClose.onclick = closeReservaMesaModal;
 
     // Cierra el modal si se hace clic fuera de él
@@ -76,37 +65,33 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 });
 
-
-
-
 /**
  * MODAL DEL CONCEPTO
  */
 document.addEventListener('DOMContentLoaded', function () {
+    // Obtención de referencias a los elementos del DOM
     var modalOrder = document.getElementById('customOrderModal');
     var modalReserva = document.getElementById('reservaMesaModal');
     var btnsOrder = document.querySelectorAll('.btn-order');
     var btnsReserva = document.querySelectorAll('.btn-reserva');
-    var closeButtons = document.querySelectorAll('.custom-close'); // Asegúrate de que todos los botones de cierre tengan esta clase
+    var closeButtons = document.querySelectorAll('.custom-close');
 
-    // Abrir modal de pedido
+    // Asignar eventos a los botones para abrir los modales
     btnsOrder.forEach(function (btn) {
         btn.addEventListener('click', function () {
             modalOrder.style.display = 'block';
         });
     });
 
-    // Abrir modal de reserva
     btnsReserva.forEach(function (btn) {
         btn.addEventListener('click', function () {
             modalReserva.style.display = 'block';
         });
     });
 
-    // Cerrar modal con el botón de cierre
+    // Asignar eventos a los botones de cierre para cerrar los modales
     closeButtons.forEach(function (button) {
         button.addEventListener('click', function () {
-            // Esto asume que el botón de cierre está dentro del modal que debe cerrar
             var modalToClose = this.closest('.custom-modal');
             if (modalToClose) {
                 modalToClose.style.display = 'none';
@@ -114,7 +99,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // Cerrar modal al hacer clic fuera de él
+    // Cierra el modal al hacer clic fuera de él
     window.addEventListener('click', function (event) {
         if (event.target.classList.contains('custom-modal')) {
             event.target.style.display = 'none';
@@ -122,16 +107,17 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
-/*MODAL CARTA*/
+/**
+ * MODAL CARTA
+ */
 document.addEventListener('DOMContentLoaded', function () {
+    // Obtención de referencias a los elementos del DOM
     var modal = document.getElementById('myModal');
     var btnClose = document.getElementById('customModalCloseCarta');
-
 
     // Función para mostrar el modal
     function showModal() {
         modal.style.display = 'block';
-
     }
 
     // Función para cerrar el modal
@@ -139,21 +125,18 @@ document.addEventListener('DOMContentLoaded', function () {
         modal.style.display = 'none';
     }
 
-    // Cierra el modal al hacer clic en la "x"
+    // Asignar evento de clic al botón de cierre del modal
     btnClose.addEventListener('click', function (event) {
         event.stopPropagation(); // Detiene la propagación para evitar que se dispare el evento del modal
         closeModal();
     });
 
-    // Escucha para el enlace "Carta" en la barra de navegación
+    // Escuchar el enlace "Carta" en la barra de navegación
     var cartaLink = document.querySelector('.nav-link[href="#carta"]');
     cartaLink.addEventListener('click', function (event) {
         event.preventDefault(); // Previene el comportamiento por defecto del enlace
         showModal();
     });
-
-    // Cierra el modal al hacer clic en la "x"
-    btnClose.addEventListener('click', closeModal);
 
     // Cierra el modal al hacer clic fuera del contenido del modal
     window.addEventListener('click', function (event) {

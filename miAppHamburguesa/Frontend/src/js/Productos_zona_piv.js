@@ -1,6 +1,12 @@
-
+// URL de la API para obtener productos
 const urlProducts = 'http://localhost:8080/BuergerVibes/Controller?ACTION=PRODUCTO.FIND_ALL';
 
+/**
+ * Función para obtener productos de la API.
+ * Realiza una solicitud HTTP GET a la URL de productos.
+ * Si la solicitud tiene éxito, convierte la respuesta a JSON y llama a printProducts para mostrar los productos.
+ * En caso de error, lo captura y muestra un mensaje de error en la consola.
+ */
 const fetchProducts = async () => {
     try {
         const result = await fetch(urlProducts);
@@ -12,7 +18,10 @@ const fetchProducts = async () => {
     }
 };
 
-
+/**
+ * Función para imprimir los productos en una tabla.
+ * @param {Array} products - Array de objetos de productos obtenidos de la API.
+ */
 const printProducts = (products) => {
     const table = document.getElementById('tablaProducto');
     const tbody = table.querySelector('tbody');
@@ -41,11 +50,8 @@ const printProducts = (products) => {
             <td>${DisponibleEnZgz}</td>
             <td>${ID_Categoria_pro}</td>
             <td class="action-buttons">
-            <button onclick="openEditModal('${ID_Producto}', '${Precio}', '${Nombre}', '${Descripcion}', '${DisponibleEnVlc}', '${DisponibleEnZgz}', '${ID_Categoria_pro}')">Update</button>
-
-            <button onclick="deleteProduct('${ID_Producto}')">Delete</button>
-        
-            
+                <button onclick="openEditModal('${ID_Producto}', '${Precio}', '${Nombre}', '${Descripcion}', '${DisponibleEnVlc}', '${DisponibleEnZgz}', '${ID_Categoria_pro}')">Update</button>
+                <button onclick="deleteProduct('${ID_Producto}')">Delete</button>
             </td>
         `;
 
@@ -53,7 +59,16 @@ const printProducts = (products) => {
     });
 };
 
-// Esta función abre el modal de edición con los datos del producto
+/**
+ * Función para abrir el modal de edición con los datos del producto.
+ * @param {string} ID_Producto - ID del producto.
+ * @param {number} Precio - Precio del producto.
+ * @param {string} Nombre - Nombre del producto.
+ * @param {string} Descripcion - Descripción del producto.
+ * @param {boolean} DisponibleEnVlc - Disponibilidad en VLC.
+ * @param {boolean} DisponibleEnZgz - Disponibilidad en ZGZ.
+ * @param {string} ID_Categoria_pro - ID de la categoría del producto.
+ */
 const openEditModal = (ID_Producto, Precio, Nombre, Descripcion, DisponibleEnVlc, DisponibleEnZgz, ID_Categoria_pro) => {
     Swal.fire({
         title: 'Editar Producto',
@@ -86,6 +101,10 @@ const openEditModal = (ID_Producto, Precio, Nombre, Descripcion, DisponibleEnVlc
     });
 };
 
+/**
+ * Función para actualizar un producto en la base de datos.
+ * @param {Object} product - Objeto con los datos del producto a actualizar.
+ */
 const updateProduct = async (product) => {
     const url = `http://localhost:8080/BuergerVibes/Controller?ACTION=PRODUCTO.UPDATE`;
     const params = new URLSearchParams({
@@ -117,6 +136,10 @@ const updateProduct = async (product) => {
     }
 };
 
+/**
+ * Función para eliminar un producto de la base de datos.
+ * @param {string} ID_Producto - ID del producto a eliminar.
+ */
 const deleteProduct = (ID_Producto) => {
     if (confirm(`¿Estás seguro de que quieres borrar el producto con ID: ${ID_Producto}?`)) {
         fetch(`http://localhost:8080/BuergerVibes/Controller?ACTION=PRODUCTO.DELETE&ID_PRODUCTO=${ID_Producto}`, {
@@ -141,10 +164,18 @@ const deleteProduct = (ID_Producto) => {
     }
 };
 
+/**
+ * Función para inhabilitar un producto.
+ * @param {string} ID_Producto - ID del producto a inhabilitar.
+ */
 const disableProduct = (ID_Producto) => {
     alert(`Inhabilitar el producto con ID: ${ID_Producto}`);
 };
 
+/**
+ * Función para añadir un nuevo producto.
+ * Abre un modal para ingresar los datos del nuevo producto.
+ */
 const addProduct = () => {
     Swal.fire({
         title: 'Añadir Producto',
@@ -177,6 +208,10 @@ const addProduct = () => {
     });
 };
 
+/**
+ * Función para crear un nuevo producto en la base de datos.
+ * @param {Object} newProduct - Objeto con los datos del nuevo producto.
+ */
 const createProduct = async (newProduct) => {
     const {
         ID_Producto,
@@ -210,12 +245,13 @@ const createProduct = async (newProduct) => {
     }
 };
 
-
-
+// Asignar eventos a los botones de actualizar y añadir producto
 document.getElementById('updateButton').addEventListener('click', fetchProducts);
 document.getElementById('addButton').addEventListener('click', addProduct);
 
+// Obtener y mostrar los productos cuando se carga la página
 fetchProducts();
+
 /*let productsJson = JSON.parse(localStorage.getItem('productsJson')) || {
     "productos": {
         "Entrantes": [

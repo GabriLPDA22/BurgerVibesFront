@@ -1,17 +1,30 @@
+// Referencia al modal de producto
 const modal = document.getElementById('productModal');
-const orderToggleButton = document.querySelector('.order-toggle-button'); // Asegúrate de que el selector sea correcto
+// Referencia al botón de alternar pedido
+const orderToggleButton = document.querySelector('.order-toggle-button');
+// Array para almacenar los productos añadidos al carrito
 let carrito = [];
-let currentProductPrice = 0; // Variable global para almacenar el precio del producto actual
+// Variable global para almacenar el precio del producto actual
+let currentProductPrice = 0;
 
+/**
+ * Función para actualizar el precio total en el modal según la cantidad seleccionada.
+ * @param {number} productPrice - El precio unitario del producto.
+ * @param {number} cantidad - La cantidad del producto.
+ */
 function actualizarPrecioTotal(productPrice, cantidad) {
   const span = document.querySelector('.add-to-cart-btn > span');
   const precioTotal = (cantidad * productPrice).toFixed(2);
   span.textContent = `Añadir al carrito - ${precioTotal} €`;
 }
 
+// Esperar a que el DOM esté completamente cargado antes de ejecutar el script
 document.addEventListener('DOMContentLoaded', function () {
+  
+  // Añadir eventos de clic a cada elemento del menú
   document.querySelectorAll('.menu-item').forEach(function (item) {
     item.addEventListener('click', function () {
+      // Recoger atributos del producto desde el elemento del menú
       const productAttributes = {
         name: this.getAttribute('data-product-name'),
         price: parseFloat(this.getAttribute('data-product-price')),
@@ -20,6 +33,7 @@ document.addEventListener('DOMContentLoaded', function () {
         images: []
       };
 
+      // Recoger imágenes del producto
       for (let i = 1; i <= 10; i++) {
         let image = this.getAttribute(`data-product-image${i}`);
         if (image) {
@@ -34,7 +48,8 @@ document.addEventListener('DOMContentLoaded', function () {
       modal.querySelector('#alegernos').textContent = productAttributes.allergens;
       document.getElementById('quantity').value = 1;
 
-      currentProductPrice = productAttributes.price; // Establecer precio actual
+      // Establecer el precio actual del producto
+      currentProductPrice = productAttributes.price;
       actualizarPrecioTotal(currentProductPrice, 1);
 
       // Actualizar imágenes de alérgenos
@@ -49,10 +64,12 @@ document.addEventListener('DOMContentLoaded', function () {
       // Ocultar el botón de revisar pedido
       orderToggleButton.style.display = 'none';
 
+      // Mostrar el modal
       modal.style.display = 'block';
     });
   });
 
+  // Añadir producto al carrito cuando se hace clic en el botón de añadir al carrito
   modal.querySelector('.add-to-cart-btn').addEventListener('click', () => {
     const cantidad = parseInt(document.getElementById('quantity').value);
     carrito.push({
@@ -62,9 +79,13 @@ document.addEventListener('DOMContentLoaded', function () {
       precioTotal: (cantidad * currentProductPrice).toFixed(2)
     });
     console.log(carrito);
-    closeModal(); // Llamada a la función que cierra el modal y muestra el botón
+    closeModal(); // Cerrar el modal y mostrar el botón de alternar pedido si es necesario
   });
 
+  /**
+   * Función para cerrar el modal de producto.
+   * Muestra el botón de alternar pedido si el ancho de la pantalla es de 430px o menos.
+   */
   function closeModal() {
     modal.style.display = 'none';
     
@@ -77,14 +98,13 @@ document.addEventListener('DOMContentLoaded', function () {
         // Para pantallas más grandes, ajusta según sea necesario
         orderToggleButton.style.display = 'none'; // O cualquier otro estilo necesario para pantallas grandes
     }
-}
-
-
+  }
 
   // Event listener para el botón de cierre del modal
   modal.querySelector('.close').addEventListener('click', () => {
     closeModal();
   });
+
   // Event listener para cerrar el modal haciendo clic fuera de él
   window.addEventListener('click', function (event) {
     if (event.target == modal) {
@@ -92,7 +112,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 
-
+  // Añadir eventos a los botones de control de cantidad
   document.querySelectorAll('.quantity-control button').forEach(button => {
     button.addEventListener('click', () => {
       const quantityInput = document.getElementById('quantity');

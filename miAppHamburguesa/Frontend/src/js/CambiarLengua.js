@@ -1,13 +1,17 @@
+// Evento que se ejecuta cuando el DOM está completamente cargado
 document.addEventListener('DOMContentLoaded', function () {
+    // Referencias a elementos del DOM
     const languageButton = document.getElementById('language-button');
     const dropdownMenu = document.querySelector('.dropdown-menu');
     const dropdownItems = document.querySelectorAll('.dropdown-item');
 
+    // Añadir evento de clic al botón de idioma
     languageButton.addEventListener('click', function() {
         // Mostrar u ocultar el menú desplegable
         dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block';
     });
 
+    // Añadir eventos de clic a cada elemento del menú desplegable
     dropdownItems.forEach(item => {
         item.addEventListener('click', function (event) {
             event.preventDefault();
@@ -30,17 +34,16 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
-
 /**
  * Evitar el flasheo del slogan al cargar la web 
  */
-
 document.addEventListener('DOMContentLoaded', function() {
     // Asegurarse de que el cuerpo de la página se desvanezca
     document.body.classList.add('fade-in');
 
     const dropdownItems = document.querySelectorAll('.dropdown-item');
 
+    // Añadir eventos de clic a cada elemento del menú desplegable
     dropdownItems.forEach(item => {
         item.addEventListener('click', function(event) {
             event.preventDefault();
@@ -57,6 +60,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
+// Evento que se ejecuta cuando la ventana se carga completamente
 window.addEventListener('load', function() {
     // Asegurarse de que el cuerpo de la página se desvanezca
     if (document.body.classList.contains('fade-out')) {

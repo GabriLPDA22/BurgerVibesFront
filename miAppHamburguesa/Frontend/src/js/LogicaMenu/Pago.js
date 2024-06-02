@@ -1,8 +1,11 @@
+// Evento que se ejecuta cuando el DOM está completamente cargado
 document.addEventListener('DOMContentLoaded', function() {
+    // Obtener el carrito almacenado en localStorage
     let storedCart = localStorage.getItem('carrito');
     if (storedCart) {
         let cart;
         try {
+            // Intentar parsear el carrito almacenado
             cart = JSON.parse(storedCart);
             console.log("Carrito después de parsear:", cart);
         } catch (error) {
@@ -10,6 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
             cart = null;
         }
 
+        // Verificar si el carrito tiene una estructura válida de 'items'
         if (cart && cart.items && Array.isArray(cart.items)) {
             renderCartItems(cart.items);
         } else {
@@ -20,6 +24,11 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
+/**
+ * Función para renderizar los elementos del carrito.
+ * Crea y muestra elementos HTML para cada artículo en el carrito.
+ * @param {Array} items - Array de objetos de artículos en el carrito.
+ */
 function renderCartItems(items) {
     let itemsContainer = document.querySelector('.my-3');
     if (!itemsContainer) {
@@ -53,7 +62,12 @@ function renderCartItems(items) {
     }
 };
 
+// Otro evento que se ejecuta cuando el DOM está completamente cargado
 document.addEventListener('DOMContentLoaded', () => {
+    /**
+     * Función para obtener un empleado aleatorio.
+     * @returns {string} Un ID de empleado aleatorio.
+     */
     function getRandomEmpleado() {
         const empleados = [
             'EMP001', 'EMP004', 'EMP007', 'EMP010', 'EMP013', 'EMP016', 'EMP019',
@@ -64,6 +78,10 @@ document.addEventListener('DOMContentLoaded', () => {
         return empleados[randomIndex];
     }
 
+    /**
+     * Función para obtener la fecha y hora actual formateada.
+     * @returns {string} La fecha y hora actual en formato 'YYYY-MM-DD HH:MM:SS'.
+     */
     function getCurrentFormattedDateTime() {
         const now = new Date();
         const year = now.getFullYear();
@@ -76,6 +94,9 @@ document.addEventListener('DOMContentLoaded', () => {
         return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
     }
 
+    /**
+     * Función para actualizar la interfaz de usuario según el estado de autenticación.
+     */
     function updateUI() {
         const isAuthenticated = localStorage.getItem('authenticated') === 'true';
         if (isAuthenticated) {
@@ -96,8 +117,13 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    // Inicializar la interfaz de usuario
     updateUI();
 
+    /**
+     * Función para manejar el evento de pago.
+     * @param {string} buttonId - ID del botón de pago.
+     */
     function handlePayment(buttonId) {
         const payButton = document.getElementById(buttonId);
         if (payButton) {
@@ -188,6 +214,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    // Manejar el pago para los botones con los IDs 'payButton_VAL' y 'payButton_ZGZ'
     handlePayment('payButton_VAL');
     handlePayment('payButton_ZGZ');
 });
